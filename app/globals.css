@@ -112,7 +112,7 @@ main::before {
 .hero-showcase {
   position: relative;
   left: auto;
-  width: 100vw;
+  width: 100%;
   height: 66.667svh;
   min-height: 520px;
   margin: 0 0 52px;
@@ -136,7 +136,7 @@ main::before {
   z-index: 0;
   top: 50%;
   left: 50%;
-  width: min(100vw, calc(66.667svh * 2.6667));
+  width: min(100%, calc(66.667svh * 2.6667));
   height: auto;
   aspect-ratio: 8 / 3;
   max-height: 100%;
@@ -170,7 +170,7 @@ main::before {
   position: absolute;
   z-index: 4;
   top: 26px;
-  right: max(24px, calc((100vw - min(100vw, calc(66.667svh * 2.6667))) / 2 + 24px));
+  right: max(24px, calc((100% - min(100%, calc(66.667svh * 2.6667))) / 2 + 24px));
   width: 234px;
   padding: 12px;
   direction: rtl;
@@ -461,7 +461,7 @@ footer {
   .social-panel {
     top: 76px;
     right: 14px;
-    width: min(320px, calc(100vw - 28px));
+    width: min(320px, calc(100% - 28px));
     padding: 0;
     border: 0;
     border-radius: 18px;
@@ -549,6 +549,7 @@ footer {
     }
   }
 }
+
 
 
 
