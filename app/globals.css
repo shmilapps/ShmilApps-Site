@@ -500,11 +500,25 @@ footer {
   }
 
   .social-content p {
-    display: none;
+    display: block;
+    width: min(260px, 100%);
+    margin: 0 0 8px auto;
+    padding: 0 4px;
+    font-size: 0.64rem;
+    line-height: 1.28;
+    text-align: right;
+  }
+
+  main[dir="ltr"] .social-content p {
+    margin: 0 auto 8px 0;
+    text-align: left;
   }
 
   .social-grid {
-    padding: 10px;
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto;
+    padding: 8px;
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 18px;
     background: rgba(0, 0, 0, 0.18);
@@ -512,16 +526,19 @@ footer {
   }
 
   .construction .social-link {
-    min-height: 40px;
-    padding: 4px 8px;
+    width: max-content;
+    min-width: 126px;
+    min-height: 32px;
+    padding: 3px 7px;
+    gap: 8px;
     background: rgba(0, 12, 3, 0.58);
-    font-size: 0.92rem;
+    font-size: 0.74rem;
   }
 
   .social-mark {
-    width: 31px;
-    height: 31px;
-    flex-basis: 31px;
+    width: 25px;
+    height: 25px;
+    flex-basis: 25px;
   }
 
   .sound-toggle {
@@ -549,6 +566,7 @@ footer {
     }
   }
 }
+
 
 
 
