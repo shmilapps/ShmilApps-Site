@@ -118,7 +118,7 @@ export default function Home() {
           </aside>
         </div>
         <div className="construction-copy">
-          <div className="status"><span aria-hidden="true" /> {text.status}</div>
+
           <h1 id="page-title">{text.title}</h1>
           <p>{text.line1}<br />{text.line2}</p>
           <div className="contact-links">
@@ -143,3 +143,4 @@ export default function Home() {
     </main>
   );
 }
+
