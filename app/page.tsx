@@ -14,6 +14,7 @@ const content = {
     steps: ['מבינים את הצורך', 'בונים את הפתרון הנכון', 'גורמים לו לעבוד בעולם האמיתי'],
     follow: 'עקבו אחרינו',
     sharing: 'ברשתות שלנו אנחנו משתפים פתרונות שבנינו, תהליכי עבודה, תובנות מקצועיות, הדרכות ותוכן מעולמות התוכנה, ה־AI, שוק ההון והקריפטו.',
+    soundOn: 'הפעל קול',
   },
   en: {
     status: 'Website under construction',
@@ -26,6 +27,7 @@ const content = {
     steps: ['Understand the need', 'Build the right solution', 'Make it work in the real world'],
     follow: 'Follow ShmilApps',
     sharing: 'Across our channels we share products we build, working processes, professional insights, training and content about software, AI, capital markets and crypto.',
+    soundOn: 'Turn sound on',
   },
 };
 
@@ -43,15 +45,40 @@ const socialLinks = [
 
 export default function Home() {
   const [language, setLanguage] = useState<'he' | 'en'>('he');
+  const [socialOpen, setSocialOpen] = useState(false);
+  const [soundBlocked, setSoundBlocked] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const mobileViewport = window.matchMedia('(max-width: 900px)');
-    // Re-select the source when resizing across the mobile breakpoint.
     const reloadVideo = () => videoRef.current?.load();
     mobileViewport.addEventListener('change', reloadVideo);
     return () => mobileViewport.removeEventListener('change', reloadVideo);
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    video.volume = 1;
+    const playAttempt = video.play();
+    if (playAttempt) {
+      playAttempt.catch(() => {
+        video.muted = true;
+        video.play().catch(() => undefined);
+        setSoundBlocked(true);
+      });
+    }
+  }, []);
+
+  const enableSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = false;
+    video.volume = 1;
+    video.play().then(() => setSoundBlocked(false)).catch(() => setSoundBlocked(true));
+  };
 
   const text = content[language];
   const isHebrew = language === 'he';
@@ -64,22 +91,29 @@ export default function Home() {
       <section className="construction" aria-labelledby="page-title">
         <div className="glow" aria-hidden="true" />
         <div className="hero-showcase">
-          <video ref={videoRef} className="logo-video" autoPlay muted loop playsInline poster="/brand/shmilapps-hero-transparent.webp" aria-label="ShmilApps — Turning Ideas into Digital Reality">
+          <video ref={videoRef} className="logo-video" autoPlay loop playsInline poster="/brand/shmilapps-hero-transparent.webp" aria-label="ShmilApps — Turning Ideas into Digital Reality">
             <source src="/brand/LogoClip_Mobile_1080x1560.mp4" type="video/mp4" media="(max-width: 900px)" />
             <source src="/brand/LogoClip_Desktop_1920x720.mp4" type="video/mp4" />
           </video>
-          <aside className="social-panel" aria-labelledby="social-title">
-            <h2 id="social-title">{text.follow}</h2>
-            <p>{text.sharing}</p>
-            <div className="social-grid">
-              {socialLinks.map((social) => (
-                <a key={social.name} className="social-link" href={social.href} target="_blank" rel="noreferrer">
-                  <span className="social-mark" aria-hidden="true">
-                    <img src={social.icon} alt="" />
-                  </span>
-                  <span>{social.name}</span>
-                </a>
-              ))}
+          {soundBlocked && (
+            <button className="sound-toggle" type="button" onClick={enableSound}>{text.soundOn}</button>
+          )}
+          <aside className={`social-panel ${socialOpen ? 'open' : ''}`} aria-labelledby="social-title">
+            <button className="social-toggle" type="button" onClick={() => setSocialOpen((open) => !open)} aria-expanded={socialOpen} aria-controls="social-links">
+              <span id="social-title">{text.follow}</span>
+            </button>
+            <div id="social-links" className="social-content">
+              <p>{text.sharing}</p>
+              <div className="social-grid">
+                {socialLinks.map((social) => (
+                  <a key={social.name} className="social-link" href={social.href} target="_blank" rel="noreferrer">
+                    <span className="social-mark" aria-hidden="true">
+                      <img src={social.icon} alt="" />
+                    </span>
+                    <span>{social.name}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </aside>
         </div>
