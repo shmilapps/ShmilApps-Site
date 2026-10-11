@@ -15,6 +15,7 @@ const content = {
     follow: 'עקבו אחרינו',
     sharing: 'ברשתות שלנו אנחנו משתפים פתרונות שבנינו, תהליכי עבודה, תובנות מקצועיות, הדרכות ותוכן מעולמות התוכנה, ה־AI, שוק ההון והקריפטו.',
     soundOn: 'הפעל קול',
+    rateUs: 'Rate Us',
   },
   en: {
     status: 'Website under construction',
@@ -28,10 +29,13 @@ const content = {
     follow: 'Follow ShmilApps',
     sharing: 'Across our channels we share products we build, working processes, professional insights, training and content about software, AI, capital markets and crypto.',
     soundOn: 'Turn sound on',
+    rateUs: 'Rate Us',
   },
 };
 
-const socialLinks = [
+type SocialLink = { name: string; icon: string; href: string; labelKey?: 'rateUs'; wideIcon?: boolean };
+
+const socialLinks: SocialLink[] = [
   { name: 'LinkedIn', icon: '/brand/social/linkedin.svg', href: 'https://www.linkedin.com/company/shmilapps' },
   { name: 'Instagram', icon: 'https://api.iconify.design/skill-icons/instagram.svg', href: 'https://www.instagram.com/shmilapps/' },
   { name: 'TikTok', icon: 'https://api.iconify.design/logos/tiktok-icon.svg', href: 'https://www.tiktok.com/@shmilapps' },
@@ -41,6 +45,7 @@ const socialLinks = [
   { name: 'Telegram', icon: 'https://api.iconify.design/logos/telegram.svg', href: 'https://t.me/ShmilApps' },
   { name: 'Discord', icon: 'https://api.iconify.design/logos/discord-icon.svg', href: 'https://discord.gg/Fkn9ysu3Wr' },
   { name: 'GitHub', icon: 'https://api.iconify.design/mdi/github.svg?color=%23ffffff', href: 'https://github.com/shmilapps' },
+  { name: 'Google Review', labelKey: 'rateUs', icon: '/brand/social/google-review.png', href: 'https://g.page/r/CcEwvuImT8vJEBM/review', wideIcon: true },
 ];
 
 export default function Home() {
@@ -107,10 +112,10 @@ export default function Home() {
               <div className="social-grid">
                 {socialLinks.map((social) => (
                   <a key={social.name} className="social-link" href={social.href} target="_blank" rel="noreferrer">
-                    <span className="social-mark" aria-hidden="true">
+                    <span className={`social-mark ${social.wideIcon ? 'review-mark' : ''}`} aria-hidden="true">
                       <img src={social.icon} alt="" />
                     </span>
-                    <span>{social.name}</span>
+                    <span>{social.labelKey ? text[social.labelKey] : social.name}</span>
                   </a>
                 ))}
               </div>
@@ -143,4 +148,6 @@ export default function Home() {
     </main>
   );
 }
+
+
 

@@ -47,7 +47,7 @@ main::before {
   left: 28px;
   display: flex;
   direction: ltr;
-  gap: 4px;
+  gap: 3px;
   padding: 4px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
@@ -171,8 +171,8 @@ main::before {
   z-index: 4;
   top: 26px;
   right: max(24px, calc((100% - min(100%, calc(66.667svh * 2.6667))) / 2 + 24px));
-  width: 234px;
-  padding: 12px;
+  width: 224px;
+  padding: 10px;
   direction: rtl;
   text-align: right;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -193,7 +193,7 @@ main[dir="ltr"] .social-panel {
   background: transparent;
   color: #fff;
   text-align: inherit;
-  font: 800 1.35rem/1.1 Arial, Helvetica, sans-serif;
+  font: 800 1.22rem/1.08 Arial, Helvetica, sans-serif;
   cursor: default;
 }
 
@@ -215,14 +215,14 @@ main[dir="rtl"] .social-toggle span::after {
 .social-content p {
   margin: 8px 0 10px;
   color: #aeb7af;
-  font-size: 0.72rem;
-  line-height: 1.32;
+  font-size: 0.66rem;
+  line-height: 1.25;
 }
 
 .social-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4px;
+  gap: 3px;
   margin: 0;
   direction: ltr;
 }
@@ -230,15 +230,15 @@ main[dir="rtl"] .social-toggle span::after {
 .construction .social-link {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 36px;
+  gap: 9px;
+  min-height: 31px;
   width: 100%;
-  padding: 3px 8px;
+  padding: 2px 7px;
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 12px;
   background: rgba(0, 12, 3, 0.69);
   color: #eef4ee;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
   text-align: left;
   text-decoration: none;
@@ -255,10 +255,10 @@ main[dir="rtl"] .social-toggle span::after {
 }
 
 .social-mark {
-  flex: 0 0 30px;
+  flex: 0 0 26px;
   display: grid;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   place-items: center;
   padding: 3px;
 }
@@ -268,6 +268,20 @@ main[dir="rtl"] .social-toggle span::after {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.review-mark {
+  flex-basis: 34px;
+  width: 34px;
+  height: 26px;
+  padding: 0;
+}
+
+.review-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.18));
 }
 
 .social-link[href*="x.com"] .social-mark img {
@@ -293,7 +307,7 @@ main[dir="rtl"] .social-toggle span::after {
   border-radius: 999px;
   background: rgba(94, 190, 24, 0.07);
   color: #d5ff8c;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
@@ -322,7 +336,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
   direction: ltr;
 }
 
@@ -399,7 +413,7 @@ p {
   border-radius: 18px;
   background: linear-gradient(145deg, rgba(22, 49, 18, 0.55), rgba(3, 8, 4, 0.8));
   color: #f3f8f3;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
@@ -496,7 +510,11 @@ footer {
 
   .social-panel.open .social-content {
     display: block;
+    max-height: calc(66.667svh - 170px);
     margin-top: 8px;
+    padding-bottom: 8px;
+    overflow-y: auto;
+    scrollbar-width: thin;
   }
 
   .social-content p {
@@ -541,6 +559,13 @@ footer {
     flex-basis: 25px;
   }
 
+  .review-mark {
+    width: 34px;
+    flex-basis: 34px;
+    height: 25px;
+    padding: 0;
+  }
+
   .sound-toggle {
     bottom: 14px;
   }
@@ -566,6 +591,11 @@ footer {
     }
   }
 }
+
+
+
+
+
 
 
 
