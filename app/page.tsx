@@ -97,8 +97,8 @@ export default function Home() {
         <div className="glow" aria-hidden="true" />
         <div className="hero-showcase">
           <video ref={videoRef} className="logo-video" autoPlay loop playsInline poster="/brand/shmilapps-hero-transparent.webp" aria-label="ShmilApps — Turning Ideas into Digital Reality">
-            <source src="/brand/LogoClip_Mobile_1080x1560.mp4" type="video/mp4" media="(max-width: 900px)" />
-            <source src="/brand/LogoClip_Desktop_1920x720.mp4" type="video/mp4" />
+            <source src="/brand/Galaxy_16x5_mobile.mp4" type="video/mp4" media="(max-width: 900px)" />
+            <source src="/brand/Galaxy_16x5_desktop.mp4" type="video/mp4" />
           </video>
           {soundBlocked && (
             <button className="sound-toggle" type="button" onClick={enableSound}>{text.soundOn}</button>
@@ -148,6 +148,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
