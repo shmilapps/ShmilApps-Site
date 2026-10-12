@@ -154,9 +154,10 @@ main::before {
   position: absolute;
   z-index: 5;
   left: 50%;
-  bottom: 18px;
-  width: 44px;
-  height: 44px;
+  top: 22px;
+  bottom: auto;
+  width: 37px;
+  height: 37px;
   display: grid;
   place-items: center;
   transform: translateX(-50%);
@@ -177,8 +178,8 @@ main::before {
 
 .speaker-icon {
   display: block;
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   overflow: visible;
 }
 
@@ -226,6 +227,8 @@ main::before {
 }
 
 main[dir="ltr"] .social-panel {
+  left: 24px;
+  right: auto;
   direction: ltr;
   text-align: left;
 }
@@ -655,11 +658,13 @@ footer {
   }
 
   .sound-toggle {
-    left: 50%;
-    bottom: 12px;
-    width: 42px;
-    height: 42px;
-    transform: translateX(-50%);
+    top: 14px;
+    right: 14px;
+    left: auto;
+    bottom: auto;
+    width: 36px;
+    height: 36px;
+    transform: none;
   }
 
   .approach-list {
