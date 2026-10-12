@@ -97,7 +97,7 @@ export default function Home() {
       <section className="construction" aria-labelledby="page-title">
         <div className="glow" aria-hidden="true" />
         <div className="hero-showcase">
-          <video ref={videoRef} className="logo-video" autoPlay loop playsInline poster="/brand/shmilapps-hero-transparent.webp" aria-label="ShmilApps — Turning Ideas into Digital Reality">
+          <video ref={videoRef} className="logo-video" autoPlay loop muted playsInline preload="auto" aria-label="ShmilApps — Turning Ideas into Digital Reality">
             <source src="/brand/Galaxy_16x6_mobile.mp4" type="video/mp4" media="(max-width: 900px)" />
             <source src="/brand/Galaxy_10top_33bottom_desktop.mp4" type="video/mp4" />
           </video>
