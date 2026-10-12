@@ -101,7 +101,7 @@ export default function Home() {
             <source src="/brand/Galaxy_16x5_mobile.mp4" type="video/mp4" media="(max-width: 900px)" />
             <source src="/brand/Galaxy_16x5_desktop.mp4" type="video/mp4" />
           </video>
-          <button className={`sound-toggle ${soundEnabled ? 'is-sound-on' : 'is-sound-off'}`} type="button" onClick={toggleSound} aria-label={soundEnabled ? text.soundOff : text.soundOn} aria-pressed={soundEnabled}>
+          <button className={`sound-toggle ${soundEnabled ? 'show-sound-off-action' : 'show-sound-on-action'}`} type="button" onClick={toggleSound} aria-label={soundEnabled ? text.soundOff : text.soundOn} aria-pressed={soundEnabled}>
             <svg className="speaker-icon" viewBox="0 0 32 32" aria-hidden="true">
               <path className="speaker-body" d="M4 13.5h6.1L18 6.7c.9-.8 2.3-.1 2.3 1.1v16.4c0 1.2-1.4 1.9-2.3 1.1l-7.9-6.8H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2Z" />
               <path className="sound-wave wave-one" d="M23.5 12.2a6.1 6.1 0 0 1 0 7.6" />

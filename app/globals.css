@@ -202,11 +202,11 @@ main::before {
   opacity: 0;
 }
 
-.sound-toggle.is-sound-on .sound-wave {
+.sound-toggle.show-sound-on-action .sound-wave {
   opacity: 1;
 }
 
-.sound-toggle.is-sound-off .mute-slash {
+.sound-toggle.show-sound-off-action .mute-slash {
   opacity: 1;
 }
 
@@ -500,7 +500,8 @@ footer {
   .hero-showcase {
     height: 33.333svh;
     min-height: 210px;
-    margin-bottom: 38px;
+    margin-bottom: 118px;
+    overflow: visible;
   }
 
   .hero-showcase::before {
@@ -517,7 +518,7 @@ footer {
   }
 
   .social-panel {
-    top: calc(33.333svh + 10px);
+    top: calc(100% + 10px);
     right: 14px;
     width: min(260px, calc(100% - 28px));
     padding: 0;
@@ -530,6 +531,10 @@ footer {
 
   .social-panel.open {
     z-index: 30;
+  }
+
+  .social-panel.open + * {
+    margin-top: 0;
   }
 
   .social-toggle {
