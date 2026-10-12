@@ -113,7 +113,7 @@ main::before {
   position: relative;
   left: auto;
   width: 100%;
-  height: clamp(520px, 37.5vw, 860px);
+  height: max(520px, 37.5vw);
   min-height: 520px;
   margin: 0 0 48px;
   transform: none;
