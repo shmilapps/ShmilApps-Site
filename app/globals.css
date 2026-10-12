@@ -141,7 +141,7 @@ main::before {
   aspect-ratio: 16 / 6;
   max-height: none;
   transform: translate(-50%, -50%);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   background: #000;
   border: 0;
