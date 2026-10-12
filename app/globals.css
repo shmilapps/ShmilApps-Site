@@ -566,6 +566,31 @@ footer {
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
   }
 
+
+  main[dir="ltr"] .social-panel {
+    right: auto;
+    left: 14px;
+  }
+
+  main[dir="ltr"] .social-toggle {
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  main[dir="ltr"] .social-panel.open .social-content {
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  main[dir="ltr"] .social-grid {
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  main[dir="ltr"] .construction .social-link {
+    justify-content: flex-start;
+    text-align: left;
+  }
   .social-toggle span::after {
     display: none;
   }
@@ -670,6 +695,7 @@ footer {
     }
   }
 }
+
 
 
 
