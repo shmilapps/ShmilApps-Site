@@ -594,11 +594,11 @@ footer {
 
   .social-panel.open .social-content {
     display: block;
-    width: min(176px, 100%);
+    width: fit-content;
     max-height: none;
     margin-top: 8px;
     margin-left: auto;
-    padding: 8px;
+    padding: 5px;
     overflow: visible;
     pointer-events: auto;
     border: 1px solid rgba(255, 255, 255, 0.22);
@@ -609,7 +609,7 @@ footer {
 
   .social-content p {
     display: block;
-    width: min(168px, 100%);
+    width: 128px;
     margin: 0 0 8px auto;
     padding: 0 4px;
     color: rgba(255, 255, 255, 0.86);
