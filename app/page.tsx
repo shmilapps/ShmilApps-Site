@@ -99,7 +99,7 @@ export default function Home() {
         <div className="hero-showcase">
           <video ref={videoRef} className="logo-video" autoPlay loop playsInline poster="/brand/shmilapps-hero-transparent.webp" aria-label="ShmilApps — Turning Ideas into Digital Reality">
             <source src="/brand/Galaxy_16x6_mobile.mp4" type="video/mp4" media="(max-width: 900px)" />
-            <source src="/brand/Galaxy_16x6_desktop.mp4" type="video/mp4" />
+            <source src="/brand/Galaxy_10top_33bottom_desktop.mp4" type="video/mp4" />
           </video>
           <button className={`sound-toggle ${soundEnabled ? 'show-sound-off-action' : 'show-sound-on-action'}`} type="button" onClick={toggleSound} aria-label={soundEnabled ? text.soundOff : text.soundOn} aria-pressed={soundEnabled}>
             <svg className="speaker-icon" viewBox="0 0 32 32" aria-hidden="true">
