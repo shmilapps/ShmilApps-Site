@@ -113,8 +113,8 @@ main::before {
   position: relative;
   left: auto;
   width: 100%;
-  height: 44svh;
-  min-height: 410px;
+  height: 52svh;
+  min-height: 520px;
   margin: 0 0 48px;
   transform: none;
   overflow: hidden;
