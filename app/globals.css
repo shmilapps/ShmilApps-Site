@@ -214,10 +214,10 @@ main::before {
 .social-panel {
   position: absolute;
   z-index: 4;
-  top: 26px;
+  top: 76px;
   right: 24px;
-  width: 224px;
-  padding: 10px;
+  width: 202px;
+  padding: 9px;
   direction: rtl;
   text-align: right;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -503,7 +503,7 @@ footer {
   .hero-showcase {
     height: 33.333svh;
     min-height: 210px;
-    margin-bottom: 118px;
+    margin-bottom: 132px;
     overflow: visible;
   }
 
@@ -521,9 +521,10 @@ footer {
   }
 
   .social-panel {
-    top: calc(100% + 10px);
+    top: auto;
     right: 14px;
-    width: min(260px, calc(100% - 28px));
+    bottom: 12px;
+    width: min(230px, calc(100% - 28px));
     padding: 0;
     border: 0;
     border-radius: 18px;
@@ -593,11 +594,11 @@ footer {
 
   .social-panel.open .social-content {
     display: block;
-    width: min(230px, 100%);
+    width: min(208px, 100%);
     max-height: none;
     margin-top: 8px;
     margin-left: auto;
-    padding: 9px;
+    padding: 8px;
     overflow: visible;
     pointer-events: auto;
     border: 1px solid rgba(255, 255, 255, 0.22);
@@ -608,13 +609,13 @@ footer {
 
   .social-content p {
     display: block;
-    width: min(210px, 100%);
+    width: min(192px, 100%);
     margin: 0 0 8px auto;
     padding: 0 4px;
     color: rgba(255, 255, 255, 0.86);
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
-    font-size: 0.66rem;
-    line-height: 1.28;
+    font-size: 0.63rem;
+    line-height: 1.22;
     text-align: right;
   }
 
@@ -636,7 +637,7 @@ footer {
 
   .construction .social-link {
     width: max-content;
-    min-width: 118px;
+    min-width: 116px;
     min-height: 31px;
     padding: 2px 7px;
     gap: 7px;
@@ -703,3 +704,16 @@ footer {
 
 
 
+
+@media (max-width: 900px) {
+  .social-panel.open .social-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
+
+  main[dir="ltr"] .social-panel.open .social-content {
+    right: auto;
+    left: 0;
+  }
+}
