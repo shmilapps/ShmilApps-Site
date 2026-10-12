@@ -15,6 +15,7 @@ const content = {
     follow: 'עקבו אחרינו',
     sharing: 'ברשתות שלנו אנחנו משתפים פתרונות שבנינו, תהליכי עבודה, תובנות מקצועיות, הדרכות ותוכן מעולמות התוכנה, ה־AI, שוק ההון והקריפטו.',
     soundOn: 'הפעל קול',
+    soundOff: 'כבה קול',
     rateUs: 'Rate Us',
   },
   en: {
@@ -26,9 +27,10 @@ const content = {
     intro: 'We turn real-world needs into practical digital solutions — from custom software and applications to applied AI, automation, intelligent agents, data-driven systems and integrations.',
     approach: 'Our approach is simple',
     steps: ['Understand the need', 'Build the right solution', 'Make it work in the real world'],
-    follow: 'Follow ShmilApps',
+    follow: 'Follow us',
     sharing: 'Across our channels we share products we build, working processes, professional insights, training and content about software, AI, capital markets and crypto.',
     soundOn: 'Turn sound on',
+    soundOff: 'Turn sound off',
     rateUs: 'Rate Us',
   },
 };
@@ -51,7 +53,7 @@ const socialLinks: SocialLink[] = [
 export default function Home() {
   const [language, setLanguage] = useState<'he' | 'en'>('he');
   const [socialOpen, setSocialOpen] = useState(false);
-  const [soundBlocked, setSoundBlocked] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -65,24 +67,23 @@ export default function Home() {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = false;
+    video.muted = true;
     video.volume = 1;
-    const playAttempt = video.play();
-    if (playAttempt) {
-      playAttempt.catch(() => {
-        video.muted = true;
-        video.play().catch(() => undefined);
-        setSoundBlocked(true);
-      });
-    }
+    video.play().catch(() => undefined);
   }, []);
 
-  const enableSound = () => {
+  const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
-    video.muted = false;
-    video.volume = 1;
-    video.play().then(() => setSoundBlocked(false)).catch(() => setSoundBlocked(true));
+
+    const nextSoundEnabled = !soundEnabled;
+    video.muted = !nextSoundEnabled;
+    video.volume = nextSoundEnabled ? 1 : 0;
+    video.play().then(() => setSoundEnabled(nextSoundEnabled)).catch(() => {
+      video.muted = true;
+      video.volume = 0;
+      setSoundEnabled(false);
+    });
   };
 
   const text = content[language];
@@ -100,9 +101,9 @@ export default function Home() {
             <source src="/brand/Galaxy_16x5_mobile.mp4" type="video/mp4" media="(max-width: 900px)" />
             <source src="/brand/Galaxy_16x5_desktop.mp4" type="video/mp4" />
           </video>
-          {soundBlocked && (
-            <button className="sound-toggle" type="button" onClick={enableSound}>{text.soundOn}</button>
-          )}
+          <button className={`sound-toggle ${soundEnabled ? 'enabled' : ''}`} type="button" onClick={toggleSound} aria-label={soundEnabled ? text.soundOff : text.soundOn} aria-pressed={soundEnabled}>
+            <span className="speaker-icon" aria-hidden="true" />
+          </button>
           <aside className={`social-panel ${socialOpen ? 'open' : ''}`} aria-labelledby="social-title">
             <button className="social-toggle" type="button" onClick={() => setSocialOpen((open) => !open)} aria-expanded={socialOpen} aria-controls="social-links">
               <span id="social-title">{text.follow}</span>
