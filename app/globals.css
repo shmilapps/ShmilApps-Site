@@ -113,7 +113,7 @@ main::before {
   position: relative;
   left: auto;
   width: 100%;
-  height: 52svh;
+  height: clamp(520px, 37.5vw, 860px);
   min-height: 520px;
   margin: 0 0 48px;
   transform: none;
@@ -141,7 +141,7 @@ main::before {
   aspect-ratio: 16 / 6;
   max-height: none;
   transform: translate(-50%, -50%);
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
   background: #000;
   border: 0;
