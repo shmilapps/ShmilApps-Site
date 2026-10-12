@@ -176,53 +176,37 @@ main::before {
 }
 
 .speaker-icon {
-  position: relative;
-  width: 23px;
-  height: 23px;
+  display: block;
+  width: 25px;
+  height: 25px;
+  overflow: visible;
 }
 
-.speaker-icon::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 8px;
-  width: 7px;
-  height: 8px;
-  border-radius: 2px;
-  background: currentColor;
-  box-shadow: 6px -5px 0 -1px currentColor, 6px 5px 0 -1px currentColor;
+.speaker-body {
+  fill: currentColor;
 }
 
-.speaker-icon::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 5px;
-  width: 10px;
-  height: 13px;
-  border: 2px solid currentColor;
-  border-left: 0;
-  border-radius: 0 999px 999px 0;
-  opacity: 0.95;
+.sound-wave {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.7;
+  stroke-linecap: round;
+  opacity: 0;
 }
 
-.sound-toggle.enabled .speaker-icon::after {
-  content: "";
+.mute-slash {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.1;
+  stroke-linecap: round;
+  opacity: 0;
 }
 
-.sound-toggle:not(.enabled) .speaker-icon {
-  opacity: 0.86;
+.sound-toggle.is-sound-on .sound-wave {
+  opacity: 1;
 }
 
-.sound-toggle:not(.enabled) .speaker-icon::after {
-  right: -1px;
-  top: 10px;
-  width: 24px;
-  height: 3px;
-  border: 0;
-  border-radius: 999px;
-  background: currentColor;
-  transform: rotate(-42deg);
+.sound-toggle.is-sound-off .mute-slash {
   opacity: 1;
 }
 
@@ -533,10 +517,9 @@ footer {
   }
 
   .social-panel {
-    top: auto;
+    top: calc(33.333svh + 10px);
     right: 14px;
-    bottom: 12px;
-    width: min(320px, calc(100% - 28px));
+    width: min(260px, calc(100% - 28px));
     padding: 0;
     border: 0;
     border-radius: 18px;
@@ -602,11 +585,11 @@ footer {
 
   .social-panel.open .social-content {
     display: block;
-    width: min(300px, 100%);
+    width: min(230px, 100%);
     max-height: none;
     margin-top: 8px;
     margin-left: auto;
-    padding: 10px;
+    padding: 9px;
     overflow: visible;
     pointer-events: auto;
     border: 1px solid rgba(255, 255, 255, 0.22);
@@ -617,7 +600,7 @@ footer {
 
   .social-content p {
     display: block;
-    width: min(260px, 100%);
+    width: min(210px, 100%);
     margin: 0 0 8px auto;
     padding: 0 4px;
     color: rgba(255, 255, 255, 0.86);
@@ -645,10 +628,10 @@ footer {
 
   .construction .social-link {
     width: max-content;
-    min-width: 126px;
+    min-width: 118px;
     min-height: 31px;
     padding: 2px 7px;
-    gap: 8px;
+    gap: 7px;
     background: rgba(0, 20, 8, 0.82);
     font-size: 0.72rem;
   }
@@ -667,11 +650,11 @@ footer {
   }
 
   .sound-toggle {
-    left: 16px;
+    left: 50%;
     bottom: 12px;
     width: 42px;
     height: 42px;
-    transform: none;
+    transform: translateX(-50%);
   }
 
   .approach-list {
