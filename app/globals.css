@@ -481,11 +481,23 @@ footer {
     border-radius: 18px;
     background: transparent;
     box-shadow: none;
+    overflow: visible;
+  }
+
+  .social-panel.open {
+    position: fixed;
+    z-index: 30;
+    top: 184px;
+    right: 14px;
+    left: 14px;
+    width: auto;
+    pointer-events: none;
   }
 
   .social-toggle {
     width: auto;
     margin-left: auto;
+    pointer-events: auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -510,20 +522,29 @@ footer {
 
   .social-panel.open .social-content {
     display: block;
-    max-height: min(54svh, 360px);
+    width: min(300px, 100%);
+    max-height: min(62svh, 520px);
     margin-top: 8px;
-    padding-bottom: 8px;
+    margin-left: auto;
+    padding: 12px;
     overflow-y: auto;
+    pointer-events: auto;
     scrollbar-width: thin;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+    background: rgba(0, 8, 3, 0.82);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.55), 0 0 24px rgba(116, 255, 22, 0.16);
   }
 
   .social-content p {
     display: block;
     width: min(260px, 100%);
-    margin: 0 0 8px auto;
+    margin: 0 0 10px auto;
     padding: 0 4px;
-    font-size: 0.64rem;
-    line-height: 1.28;
+    color: rgba(255, 255, 255, 0.86);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    font-size: 0.7rem;
+    line-height: 1.38;
     text-align: right;
   }
 
@@ -536,11 +557,11 @@ footer {
     width: max-content;
     max-width: 100%;
     margin-left: auto;
-    padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 18px;
-    background: rgba(0, 0, 0, 0.18);
-    box-shadow: 0 0 18px rgba(116, 255, 22, 0.12);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .construction .social-link {
@@ -549,7 +570,7 @@ footer {
     min-height: 32px;
     padding: 3px 7px;
     gap: 8px;
-    background: rgba(0, 12, 3, 0.58);
+    background: rgba(0, 20, 8, 0.82);
     font-size: 0.74rem;
   }
 
@@ -591,6 +612,8 @@ footer {
     }
   }
 }
+
+
 
 
 
