@@ -157,7 +157,6 @@ main[dir="ltr"] .main-nav {
 .main-nav > a:hover,
 .main-nav > a:focus-visible,
 .nav-item:hover .nav-menu-trigger,
-.nav-item:focus-within .nav-menu-trigger,
 .ai-link:hover,
 .ai-link:focus-visible {
   border-color: rgba(186, 255, 0, 0.34);
@@ -167,15 +166,24 @@ main[dir="ltr"] .main-nav {
 }
 
 
-main[dir="rtl"] .nav-menu-trigger {
-  flex-direction: row-reverse;
+main[dir="ltr"] .nav-menu-trigger .nav-label {
+  order: 1;
 }
 
-main[dir="ltr"] .nav-menu-trigger {
-  flex-direction: row;
+main[dir="ltr"] .nav-menu-trigger .dropdown-arrow {
+  order: 2;
 }
+
+main[dir="rtl"] .nav-menu-trigger .dropdown-arrow {
+  order: 1;
+}
+
+main[dir="rtl"] .nav-menu-trigger .nav-label {
+  order: 2;
+}
+
 .nav-menu-trigger span {
-  color: #c7ff73;
+  color: currentColor;
   font-size: 1rem;
   transform: translateY(-1px);
 }
@@ -211,8 +219,7 @@ main[dir="ltr"] .nav-menu-trigger {
   transition: opacity 0.16s ease, transform 0.16s ease;
 }
 
-.nav-item:hover .nav-menu,
-.nav-item:focus-within .nav-menu {
+.nav-item:hover .nav-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0);
