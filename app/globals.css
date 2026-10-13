@@ -45,13 +45,14 @@ main::before {
   position: fixed;
   z-index: 60;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
-  min-height: 72px;
-  display: grid;
-  grid-template-columns: 330px minmax(560px, 1fr) 330px;
+  min-height: 58px;
+  display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 10px 32px;
+  justify-content: center;
+  padding: 8px 320px;
   direction: ltr;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.96), rgba(0, 10, 3, 0.9));
   border-bottom: 1px solid rgba(186, 255, 0, 0.14);
@@ -71,8 +72,10 @@ main[dir="rtl"] .ai-link {
 }
 
 .brand-link {
-  grid-column: 3;
-  justify-self: end;
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -113,8 +116,6 @@ main[dir="ltr"] .main-nav {
 }
 
 .main-nav {
-  grid-column: 2;
-  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,9 +124,10 @@ main[dir="ltr"] .main-nav {
 }
 
 .header-actions {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: start;
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -257,6 +259,11 @@ main[dir="ltr"] .nav-menu {
   top: auto;
   left: auto;
   flex: 0 0 auto;
+  order: 1;
+}
+
+.site-header .ai-link {
+  order: 2;
 }
 
 .mobile-menu-button,
@@ -441,7 +448,7 @@ main[dir="ltr"] .nav-menu {
 .construction {
   width: 100%;
   margin: auto;
-  padding: 72px 0 34px;
+  padding: 58px 0 34px;
   text-align: center;
   position: relative;
 }
