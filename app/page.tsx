@@ -209,6 +209,8 @@ export default function Home() {
   };
 
   const text = content[language];
+  const services = servicesContent[language];
+  const appPage = appDevelopmentPage[language];
   const isHebrew = language === 'he';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -400,3 +402,4 @@ export default function Home() {
     </main>
   );
 }
+
