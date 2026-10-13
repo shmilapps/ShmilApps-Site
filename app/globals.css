@@ -166,6 +166,14 @@ main[dir="ltr"] .main-nav {
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.16), inset 0 0 0 1px rgba(186, 255, 0, 0.08);
 }
 
+
+main[dir="rtl"] .nav-menu-trigger {
+  flex-direction: row-reverse;
+}
+
+main[dir="ltr"] .nav-menu-trigger {
+  flex-direction: row;
+}
 .nav-menu-trigger span {
   color: #c7ff73;
   font-size: 1rem;

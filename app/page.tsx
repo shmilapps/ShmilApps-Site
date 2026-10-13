@@ -144,21 +144,21 @@ export default function Home() {
         <nav className="main-nav" aria-label="Website sections" dir={isHebrew ? 'rtl' : 'ltr'}>
           <a href={navAnchors.home}>{text.nav.home}</a>
           <div className="nav-item has-menu">
-            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.services}<span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
               {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services} onClick={closeFocusedMenu}>{item}</a>)}
               <a className="more-link" href={navAnchors.services} onClick={closeFocusedMenu}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.portfolio}<span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
               {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={closeFocusedMenu}>{item}</a>)}
               <a className="more-link" href={navAnchors.portfolio} onClick={closeFocusedMenu}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.follow}<span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}>{social.labelKey ? text[social.labelKey] : social.name}</a>
