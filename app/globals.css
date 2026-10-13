@@ -220,6 +220,12 @@ main[dir="ltr"] .main-nav {
   transform: translate(-50%, 0);
 }
 
+.main-nav.suppress-dropdowns .nav-menu {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+}
+
 main[dir="rtl"] .nav-menu {
   direction: rtl;
   text-align: right;

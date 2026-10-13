@@ -93,6 +93,7 @@ export default function Home() {
   const [socialOpen, setSocialOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [suppressDropdowns, setSuppressDropdowns] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -117,6 +118,10 @@ export default function Home() {
     }
   };
 
+  const handleDropdownTitleClick = () => {
+    setSuppressDropdowns(true);
+    closeFocusedMenu();
+  };
   const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -141,29 +146,29 @@ export default function Home() {
           <span className="brand-dot" aria-hidden="true" />
           <span>ShmilApps</span>
         </a>
-        <nav className="main-nav" aria-label="Website sections" dir={isHebrew ? 'rtl' : 'ltr'}>
+        <nav className={`main-nav${suppressDropdowns ? ' suppress-dropdowns' : ''}`} aria-label="Website sections" dir={isHebrew ? 'rtl' : 'ltr'} onPointerLeave={() => setSuppressDropdowns(false)}>
           <a href={navAnchors.home}>{text.nav.home}</a>
           <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={navAnchors.services} onClick={closeFocusedMenu}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+            <a className="nav-menu-trigger" href={navAnchors.services} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
             <div className="nav-menu">
-              {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services} onClick={closeFocusedMenu}>{item}</a>)}
-              <a className="more-link" href={navAnchors.services} onClick={closeFocusedMenu}>{text.nav.more}</a>
+              {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services} onClick={handleDropdownTitleClick}>{item}</a>)}
+              <a className="more-link" href={navAnchors.services} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={navAnchors.portfolio} onClick={closeFocusedMenu}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+            <a className="nav-menu-trigger" href={navAnchors.portfolio} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
             <div className="nav-menu">
-              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={closeFocusedMenu}>{item}</a>)}
-              <a className="more-link" href={navAnchors.portfolio} onClick={closeFocusedMenu}>{text.nav.more}</a>
+              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={handleDropdownTitleClick}>{item}</a>)}
+              <a className="more-link" href={navAnchors.portfolio} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={navAnchors.follow} onClick={closeFocusedMenu}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+            <a className="nav-menu-trigger" href={navAnchors.follow} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}>{social.labelKey ? text[social.labelKey] : social.name}</a>
               ))}
-              <a className="more-link" href={navAnchors.follow} onClick={closeFocusedMenu}>{text.nav.more}</a>
+              <a className="more-link" href={navAnchors.follow} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
           <a href={navAnchors.about}>{text.nav.about}</a>
