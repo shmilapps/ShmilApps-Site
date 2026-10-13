@@ -66,52 +66,52 @@ const content = {
 type SocialLink = { name: string; icon: string; href: string; labelKey?: 'rateUs'; wideIcon?: boolean };
 
 const navAnchors = {
-  home: '#home',
-  services: '#services',
-  portfolio: '#portfolio',
-  follow: '#follow',
-  about: '#about',
-  contact: '#contact',
-  assistant: '#ai-assistant',
+  home: '/#home',
+  services: '/#services',
+  portfolio: '/#portfolio',
+  follow: '/#follow',
+  about: '/#about',
+  contact: '/#contact',
+  assistant: '/#ai-assistant',
 };
 
 type ServiceSummary = { title: string; summary: string; href: string };
 type ServicePanel = { title: string; summary: string; body: string[]; bullets?: string[]; faqs?: { question: string; answer: string }[] };
 
 const serviceHrefs = [
-  '#service-app-development',
-  '#services',
-  '#services',
-  '#services',
-  '#services',
-  '#services',
-  '#services',
-  '#services',
-  '#services',
+  '/services/app-development',
+  '/#services',
+  '/#services',
+  '/#services',
+  '/#services',
+  '/#services',
+  '/#services',
+  '/#services',
+  '/#services',
 ];
 
 const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   he: [
-    { title: 'פיתוח אפליקציות', summary: 'אפליקציות מובייל ו־Web מותאמות לעסק, משלב הרעיון ועד מוצר עובד.', href: '#service-app-development' },
-    { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '#services' },
-    { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '#services' },
-    { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '#services' },
-    { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '#services' },
-    { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '#services' },
-    { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '#services' },
-    { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '#services' },
-    { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '#services' },
+    { title: 'פיתוח אפליקציות', summary: 'אפליקציות מובייל ו־Web מותאמות לעסק, משלב הרעיון ועד מוצר עובד.', href: '/services/app-development' },
+    { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/#services' },
+    { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/#services' },
+    { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/#services' },
+    { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/#services' },
+    { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/#services' },
+    { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/#services' },
+    { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/#services' },
+    { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/#services' },
   ],
   en: [
-    { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '#service-app-development' },
-    { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '#services' },
-    { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '#services' },
-    { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '#services' },
-    { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '#services' },
-    { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '#services' },
-    { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '#services' },
-    { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '#services' },
-    { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '#services' },
+    { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
+    { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/#services' },
+    { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/#services' },
+    { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/#services' },
+    { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/#services' },
+    { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/#services' },
+    { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/#services' },
+    { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/#services' },
+    { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/#services' },
   ],
 };
 
@@ -212,6 +212,8 @@ export default function Home() {
   const services = servicesContent[language];
   const appPage = appDevelopmentPage[language];
   const isHebrew = language === 'he';
+  const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname;
+  const isAppDevelopmentRoute = currentPath === '/services/app-development';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
       <header className="site-header" aria-label="Main navigation">
@@ -291,6 +293,43 @@ export default function Home() {
           </nav>
         </div>
       </header>
+      {isAppDevelopmentRoute ? (
+        <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
+          <div className="service-sticky-hero" style={{ backgroundImage: 'url(/brand/services/app-development-hero.png)' }}>
+            <div className="service-hero-overlay">
+              <h2 id="app-development-title">{appPage.title}</h2>
+              <p>{appPage.subtitle}</p>
+            </div>
+          </div>
+          <div className="service-page-content">
+            {appPage.panels.map((panel) => (
+              <details className="service-detail" key={panel.title}>
+                <summary>
+                  <span>
+                    <strong>{panel.title}</strong>
+                    <small>{panel.summary}</small>
+                  </span>
+                  <em>{text.nav.more}</em>
+                </summary>
+                <div className="service-detail-body">
+                  {panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
+                  {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
+                </div>
+              </details>
+            ))}
+            <section className="service-contact" aria-labelledby="service-contact-title">
+              <h3 id="service-contact-title">{appPage.contact.title}</h3>
+              {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
+              <div className="service-contact-links">
+                <a href="tel:+972547886780">{appPage.contact.phone}: +972547886780</a>
+                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer">{appPage.contact.whatsapp}</a>
+                <a href="mailto:shmilapps@gmail.com">{appPage.contact.email}: shmilapps@gmail.com</a>
+              </div>
+            </section>
+          </div>
+        </section>
+      ) : (
       <section id="home" className="construction" aria-labelledby="page-title">
         <div className="glow" aria-hidden="true" />
         <div className="hero-showcase">
@@ -346,44 +385,18 @@ export default function Home() {
           </ol>
         </section>
 
-        <section id="services" className="placeholder-section" aria-labelledby="services-title">
-          <h2 id="services-title">{text.nav.services}</h2>
-          <p>{isHebrew ? 'בקרוב נפרט כאן את השירותים המרכזיים של ShmilApps.' : 'Soon we will detail the core ShmilApps services here.'}</p>
-        </section>
-
-        <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
-          <div className="service-sticky-hero" style={{ backgroundImage: 'url(/brand/services/app-development-hero.png)' }}>
-            <div className="service-hero-overlay">
-              <h2 id="app-development-title">{appPage.title}</h2>
-              <p>{appPage.subtitle}</p>
-            </div>
+        <section id="services" className="services-section" aria-labelledby="services-title">
+          <div className="section-heading">
+            <h2 id="services-title">{text.nav.services}</h2>
+            <p>{isHebrew ? 'בחרו שירות כדי לקרוא הסבר קצר, או היכנסו לדף המלא של השירות הרלוונטי.' : 'Choose a service for a short overview, or open the full page for the relevant service.'}</p>
           </div>
-          <div className="service-page-content">
-            {appPage.panels.map((panel) => (
-              <details className="service-detail" key={panel.title}>
-                <summary>
-                  <span>
-                    <strong>{panel.title}</strong>
-                    <small>{panel.summary}</small>
-                  </span>
-                  <em>{text.nav.more}</em>
-                </summary>
-                <div className="service-detail-body">
-                  {panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                  {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
-                  {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
-                </div>
-              </details>
+          <div className="services-list">
+            {services.map((service) => (
+              <a className="service-card" href={service.href} key={service.title}>
+                <strong>{service.title}</strong>
+                <span>{service.summary}</span>
+              </a>
             ))}
-            <section className="service-contact" aria-labelledby="service-contact-title">
-              <h3 id="service-contact-title">{appPage.contact.title}</h3>
-              {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
-              <div className="service-contact-links">
-                <a href="tel:+972547886780">{appPage.contact.phone}: +972547886780</a>
-                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer">{appPage.contact.whatsapp}</a>
-                <a href="mailto:shmilapps@gmail.com">{appPage.contact.email}: shmilapps@gmail.com</a>
-              </div>
-            </section>
           </div>
         </section>
 
@@ -398,6 +411,7 @@ export default function Home() {
         </section>
 
       </section>
+      )}
       <footer>© 2026 ShmilApps · shmilapps.com</footer>
     </main>
   );
