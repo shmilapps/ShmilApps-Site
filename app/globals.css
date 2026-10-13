@@ -42,19 +42,20 @@ main::before {
 
 
 .site-header {
-  position: fixed;
+  position: sticky;
   z-index: 60;
-  top: 8px;
-  left: 0;
-  right: 0;
+  top: 0;
   width: 100%;
-  min-height: 52px;
+  min-height: 72px;
   display: grid;
-  grid-template-columns: 300px minmax(520px, 1fr) 300px;
+  grid-template-columns: 330px minmax(560px, 1fr) 330px;
   align-items: center;
-  gap: 16px;
-  padding: 0 32px;
-  pointer-events: none;
+  gap: 18px;
+  padding: 10px 32px;
+  direction: ltr;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.96), rgba(0, 10, 3, 0.9));
+  border-bottom: 1px solid rgba(186, 255, 0, 0.14);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45), 0 0 22px rgba(116, 255, 22, 0.08);
 }
 
 .brand-link,
@@ -70,23 +71,30 @@ main::before {
   justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 9px 13px;
+  gap: 8px;
+  min-height: 42px;
+  padding: 6px 12px 6px 8px;
   direction: ltr;
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 999px;
-  background: rgba(0, 10, 4, 0.42);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 16, 5, 0.58);
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.01em;
-  pointer-events: auto;
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.08);
 }
 
+.brand-logo {
+  width: 34px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 4px;
+  filter: drop-shadow(0 0 5px rgba(186, 255, 0, 0.18));
+}
+
 .brand-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 999px;
   background: var(--lime);
   box-shadow: 0 0 16px rgba(186, 255, 0, 0.85);
@@ -100,7 +108,6 @@ main::before {
   justify-content: center;
   gap: 16px;
   min-width: 0;
-  pointer-events: auto;
 }
 
 .header-actions {
@@ -110,7 +117,6 @@ main::before {
   display: flex;
   align-items: center;
   gap: 8px;
-  pointer-events: auto;
 }
 
 .main-nav > a,
@@ -123,8 +129,7 @@ main::before {
   gap: 6px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  background: rgba(0, 10, 4, 0.38);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 16, 5, 0.58);
   color: #fff;
   padding: 0 16px;
   font: 800 0.96rem/1.1 Arial, Helvetica, sans-serif;
@@ -142,7 +147,7 @@ main::before {
 .ai-link:hover,
 .ai-link:focus-visible {
   border-color: rgba(186, 255, 0, 0.34);
-  background: rgba(15, 45, 10, 0.62);
+  background: rgba(15, 45, 10, 0.72);
   color: #fff;
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.16), inset 0 0 0 1px rgba(186, 255, 0, 0.08);
 }
@@ -157,14 +162,16 @@ main::before {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding-bottom: 18px;
-  margin-bottom: -18px;
+  padding-bottom: 16px;
+  margin-bottom: -16px;
+  direction: ltr;
 }
 
 .nav-menu {
   position: absolute;
   top: calc(100% - 2px);
-  inset-inline-start: 50%;
+  left: 50%;
+  right: auto;
   width: max-content;
   min-width: 235px;
   max-width: min(370px, calc(100vw - 42px));
@@ -173,7 +180,7 @@ main::before {
   padding: 9px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 18px;
-  background: rgba(0, 8, 3, 0.88);
+  background: rgba(0, 8, 3, 0.92);
   backdrop-filter: blur(14px);
   opacity: 0;
   pointer-events: none;
@@ -216,13 +223,48 @@ main::before {
 
 .ai-link {
   border-color: rgba(186, 255, 0, 0.28);
-  background: linear-gradient(120deg, rgba(7, 124, 55, 0.52), rgba(115, 217, 0, 0.2));
+  background: linear-gradient(120deg, rgba(7, 124, 55, 0.6), rgba(115, 217, 0, 0.24));
   font-size: 0.9rem;
   font-weight: 900;
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.12);
 }
 
 .site-header .language-switcher {
+  position: static;
+  z-index: auto;
+  top: auto;
+  left: auto;
+  flex: 0 0 auto;
+}
+
+.mobile-menu-button,
+.mobile-menu-layer {
+  display: none;
+}
+
+.placeholder-section {
+  width: min(820px, calc(100% - 32px));
+  margin: 58px auto 0;
+  padding: 34px 24px;
+  border: 1px solid rgba(186, 255, 0, 0.12);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(22, 49, 18, 0.38), rgba(3, 8, 4, 0.72));
+  box-shadow: 0 0 28px rgba(116, 255, 22, 0.07);
+}
+
+.placeholder-section h2 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.placeholder-section p {
+  margin-bottom: 0;
+}
+
+.ai-placeholder {
+  border-color: rgba(255, 214, 70, 0.18);
+  background: linear-gradient(145deg, rgba(70, 63, 14, 0.26), rgba(3, 8, 4, 0.74));
+}.language-switcher {
   position: static;
   z-index: auto;
   top: auto;
@@ -437,7 +479,7 @@ main::before {
   position: absolute;
   z-index: 5;
   left: 50%;
-  top: 58px;
+  top: 22px;
   bottom: auto;
   width: 37px;
   height: 37px;

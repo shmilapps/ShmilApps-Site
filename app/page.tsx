@@ -137,6 +137,7 @@ export default function Home() {
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
       <header className="site-header" aria-label="Main navigation">
         <a className="brand-link" href={navAnchors.home} aria-label="ShmilApps home" onClick={() => setMobileMenuOpen(false)}>
+          <img className="brand-logo" src="/brand/shmilapps-mini-logo.png" alt="" />
           <span className="brand-dot" aria-hidden="true" />
           <span>ShmilApps</span>
         </a>
