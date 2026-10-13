@@ -26,6 +26,7 @@ const content = {
       contact: 'צור קשר',
       assistant: 'עוזר AI',
       more: 'עוד...',
+      less: 'פחות...',
       closeMenu: 'סגור תפריט',
       openMenu: 'פתח תפריט',
     },
@@ -55,6 +56,7 @@ const content = {
       contact: 'Contact',
       assistant: 'AI Assistant',
       more: 'More...',
+      less: 'Less...',
       closeMenu: 'Close menu',
       openMenu: 'Open menu',
     },
@@ -161,7 +163,13 @@ const socialLinks: SocialLink[] = [
 ];
 
 export default function Home() {
-  const [language, setLanguage] = useState<'he' | 'en'>('he');
+  const [language, setLanguageState] = useState<'he' | 'en'>(() => {
+    if (typeof window === 'undefined') return 'he';
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang === 'en' || urlLang === 'he') return urlLang;
+    const storedLang = window.localStorage.getItem('shmilapps-language');
+    return storedLang === 'en' ? 'en' : 'he';
+  });
   const [socialOpen, setSocialOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -183,6 +191,26 @@ export default function Home() {
     video.volume = 1;
     video.play().catch(() => undefined);
   }, []);
+
+  const setLanguage = (nextLanguage: 'he' | 'en') => {
+    setLanguageState(nextLanguage);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('shmilapps-language', nextLanguage);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', nextLanguage);
+      window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+    }
+  };
+
+  const withLanguage = (href: string) => {
+    if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return href;
+    const [pathAndQuery, hash = ''] = href.split('#');
+    const [path, query = ''] = pathAndQuery.split('?');
+    const params = new URLSearchParams(query);
+    params.set('lang', language);
+    const queryString = params.toString();
+    return `${path}${queryString ? `?${queryString}` : ''}${hash ? `#${hash}` : ''}`;
+  };
 
   const closeFocusedMenu = () => {
     if (document.activeElement instanceof HTMLElement) {
@@ -217,41 +245,41 @@ export default function Home() {
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
       <header className="site-header" aria-label="Main navigation">
-        <a className="brand-link" href={navAnchors.home} aria-label="ShmilApps home" onClick={() => setMobileMenuOpen(false)}>
+        <a className="brand-link" href={withLanguage(navAnchors.home)} aria-label="ShmilApps home" onClick={() => setMobileMenuOpen(false)}>
           <img className="brand-logo" src="/brand/shmilapps-mini-logo.png" alt="" />
           <span className="brand-dot" aria-hidden="true" />
           <span>ShmilApps</span>
         </a>
         <nav className={`main-nav${suppressDropdowns ? ' suppress-dropdowns' : ''}`} aria-label="Website sections" dir={isHebrew ? 'rtl' : 'ltr'} onPointerLeave={() => setSuppressDropdowns(false)}>
-          <a href={navAnchors.home}>{text.nav.home}</a>
+          <a href={withLanguage(navAnchors.home)}>{text.nav.home}</a>
           <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={navAnchors.services} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+            <a className="nav-menu-trigger" href={withLanguage(navAnchors.services)} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
             <div className="nav-menu">
-              {text.servicesMenu.map((item, index) => <a key={item} href={serviceHrefs[index] ?? navAnchors.services} onClick={handleDropdownTitleClick}>{item}</a>)}
-              <a className="more-link" href={navAnchors.services} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
+              {text.servicesMenu.map((item, index) => <a key={item} href={withLanguage(serviceHrefs[index] ?? navAnchors.services)} onClick={handleDropdownTitleClick}>{item}</a>)}
+              <a className="more-link" href={withLanguage(navAnchors.services)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={navAnchors.portfolio} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+            <a className="nav-menu-trigger" href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
             <div className="nav-menu">
-              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={handleDropdownTitleClick}>{item}</a>)}
-              <a className="more-link" href={navAnchors.portfolio} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
+              {text.portfolioMenu.map((item) => <a key={item} href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{item}</a>)}
+              <a className="more-link" href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={navAnchors.follow} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+            <a className="nav-menu-trigger" href={withLanguage(navAnchors.follow)} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}>{social.labelKey ? text[social.labelKey] : social.name}</a>
               ))}
-              <a className="more-link" href={navAnchors.follow} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
+              <a className="more-link" href={withLanguage(navAnchors.follow)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
-          <a href={navAnchors.about}>{text.nav.about}</a>
-          <a href={navAnchors.contact}>{text.nav.contact}</a>
+          <a href={withLanguage(navAnchors.about)}>{text.nav.about}</a>
+          <a href={withLanguage(navAnchors.contact)}>{text.nav.contact}</a>
         </nav>
         <div className="header-actions">
-          <a className="ai-link" href={navAnchors.assistant}>{text.nav.assistant}</a>
+          <a className="ai-link" href={withLanguage(navAnchors.assistant)}>{text.nav.assistant}</a>
           <div className="language-switcher" role="group" aria-label="Language selection">
             <button className={isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('he')} aria-pressed={isHebrew}><img src="/brand/flag-il.svg" alt="" /> <span>HE</span></button>
             <button className={!isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('en')} aria-pressed={!isHebrew}><img src="/brand/flag-us.svg" alt="" /> <span>EN</span></button>
@@ -269,33 +297,33 @@ export default function Home() {
               <strong>ShmilApps</strong>
               <button type="button" onClick={() => setMobileMenuOpen(false)} aria-label={text.nav.closeMenu}>×</button>
             </div>
-            <a href={navAnchors.home} onClick={() => setMobileMenuOpen(false)}>{text.nav.home}</a>
+            <a href={withLanguage(navAnchors.home)} onClick={() => setMobileMenuOpen(false)}>{text.nav.home}</a>
             <details>
               <summary>{text.nav.services}</summary>
-              {text.servicesMenu.map((item, index) => <a key={item} href={serviceHrefs[index] ?? navAnchors.services} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
-              <a className="more-link" href={navAnchors.services} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
+              {text.servicesMenu.map((item, index) => <a key={item} href={withLanguage(serviceHrefs[index] ?? navAnchors.services)} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
+              <a className="more-link" href={withLanguage(navAnchors.services)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
             <details>
               <summary>{text.nav.portfolio}</summary>
-              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
-              <a className="more-link" href={navAnchors.portfolio} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
+              {text.portfolioMenu.map((item) => <a key={item} href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
+              <a className="more-link" href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
             <details>
               <summary>{text.nav.follow}</summary>
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={() => setMobileMenuOpen(false)}>{social.labelKey ? text[social.labelKey] : social.name}</a>
               ))}
-              <a className="more-link" href={navAnchors.follow} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
+              <a className="more-link" href={withLanguage(navAnchors.follow)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
-            <a href={navAnchors.about} onClick={() => setMobileMenuOpen(false)}>{text.nav.about}</a>
-            <a href={navAnchors.contact} onClick={() => setMobileMenuOpen(false)}>{text.nav.contact}</a>
-            <a className="mobile-ai-link" href={navAnchors.assistant} onClick={() => setMobileMenuOpen(false)}>{text.nav.assistant}</a>
+            <a href={withLanguage(navAnchors.about)} onClick={() => setMobileMenuOpen(false)}>{text.nav.about}</a>
+            <a href={withLanguage(navAnchors.contact)} onClick={() => setMobileMenuOpen(false)}>{text.nav.contact}</a>
+            <a className="mobile-ai-link" href={withLanguage(navAnchors.assistant)} onClick={() => setMobileMenuOpen(false)}>{text.nav.assistant}</a>
           </nav>
         </div>
       </header>
       {isAppDevelopmentRoute ? (
         <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
-          <div className="service-sticky-hero" style={{ backgroundImage: 'url(/brand/services/app-development-hero.png)' }}>
+          <div className="service-sticky-hero" style={{ backgroundImage: 'url(/brand/services/app-development-hero-10x1.png)' }}>
             <div className="service-hero-overlay">
               <h2 id="app-development-title">{appPage.title}</h2>
               <p>{appPage.subtitle}</p>
@@ -303,22 +331,22 @@ export default function Home() {
           </div>
           <div className="service-page-content">
             {appPage.panels.map((panel) => (
-              <details className="service-detail" key={panel.title}>
+              <details className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
                   <span>
                     <strong>{panel.title}</strong>
-                    <small>{panel.summary}</small>
+                    <small className="service-summary-text">{panel.summary}</small>
                   </span>
-                  <em>{text.nav.more}</em>
+                  <em><span className="more-text">{text.nav.more}</span><span className="less-text">{text.nav.less}</span></em>
                 </summary>
-                <div className="service-detail-body">
+                <div className="service-detail-body" dir={isHebrew ? 'rtl' : 'ltr'}>
                   {panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
                 </div>
               </details>
             ))}
-            <section className="service-contact" aria-labelledby="service-contact-title">
+            <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h3 id="service-contact-title">{appPage.contact.title}</h3>
               {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
@@ -385,14 +413,14 @@ export default function Home() {
           </ol>
         </section>
 
-        <section id="services" className="services-section" aria-labelledby="services-title">
+        <section id="services" className="services-section" dir={isHebrew ? 'rtl' : 'ltr'} aria-labelledby="services-title">
           <div className="section-heading">
             <h2 id="services-title">{text.nav.services}</h2>
             <p>{isHebrew ? 'בחרו שירות כדי לקרוא הסבר קצר, או היכנסו לדף המלא של השירות הרלוונטי.' : 'Choose a service for a short overview, or open the full page for the relevant service.'}</p>
           </div>
           <div className="services-list">
             {services.map((service) => (
-              <a className="service-card" href={service.href} key={service.title}>
+              <a className="service-card" href={withLanguage(service.href)} key={service.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <strong>{service.title}</strong>
                 <span>{service.summary}</span>
               </a>
