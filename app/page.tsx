@@ -323,8 +323,9 @@ export default function Home() {
       </header>
       {isAppDevelopmentRoute ? (
         <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
-          <div className="service-sticky-hero" style={{ backgroundImage: 'url(/brand/services/app-development-hero-10x1.png)' }}>
-            <div className="service-hero-overlay">
+          <div className="service-sticky-area">
+            <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/app-development-hero-10x1.png)' }} />
+            <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id="app-development-title">{appPage.title}</h2>
               <p>{appPage.subtitle}</p>
             </div>
@@ -340,6 +341,7 @@ export default function Home() {
                   <em><span className="more-text">{text.nav.more}</span><span className="less-text">{text.nav.less}</span></em>
                 </summary>
                 <div className="service-detail-body" dir={isHebrew ? 'rtl' : 'ltr'}>
+                  <p className="service-summary-continuation">{panel.summary}</p>
                   {panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
@@ -350,9 +352,9 @@ export default function Home() {
               <h3 id="service-contact-title">{appPage.contact.title}</h3>
               {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
-                <a href="tel:+972547886780">{appPage.contact.phone}: +972547886780</a>
-                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer">{appPage.contact.whatsapp}</a>
-                <a href="mailto:shmilapps@gmail.com">{appPage.contact.email}: shmilapps@gmail.com</a>
+                <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span aria-hidden="true">☎</span><span>{appPage.contact.phone}</span><bdi>+972547886780</bdi></a>
+                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span aria-hidden="true">💬</span><span>{appPage.contact.whatsapp}</span></a>
+                <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span aria-hidden="true">✉</span><span>{appPage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
               </div>
             </section>
           </div>

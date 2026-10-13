@@ -1673,3 +1673,129 @@ main[dir="rtl"] .section-heading p {
     padding: 16px;
   }
 }
+
+
+/* Service page refinements */
+.service-page,
+.service-page * {
+  font-family: inherit;
+}
+
+.service-sticky-area {
+  position: fixed;
+  z-index: 40;
+  top: 58px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.94);
+  border-bottom: 1px solid rgba(186, 255, 0, 0.18);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+}
+
+.service-sticky-area .service-sticky-hero {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  min-height: clamp(120px, 10vw, 190px);
+  padding: 0;
+  box-shadow: inset 0 -36px 72px rgba(0, 0, 0, 0.42);
+}
+
+.service-hero-titlebar {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 14px 0 16px;
+  text-align: center;
+}
+
+.service-hero-titlebar h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.8rem, 3.5vw, 3.05rem);
+  line-height: 1.08;
+  font-family: inherit;
+  font-weight: 800;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.82);
+}
+
+.service-hero-titlebar p {
+  margin: 8px 0 0;
+  color: #dbe8dc;
+  font-size: clamp(0.95rem, 1.35vw, 1.1rem);
+  line-height: 1.5;
+}
+
+.service-page-content {
+  margin-top: calc(clamp(120px, 10vw, 190px) + 126px) !important;
+}
+
+.service-detail summary strong,
+.service-card strong,
+.service-contact h3,
+.section-heading h2,
+.placeholder-section h2 {
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+.service-detail[open] .service-summary-text {
+  display: block;
+}
+
+.service-detail[open] summary .service-summary-text {
+  display: none;
+}
+
+.service-summary-continuation {
+  margin-top: 0 !important;
+  color: #e8f2e8 !important;
+  font-weight: 500;
+}
+
+.service-detail summary em,
+.service-detail[open] summary em,
+.service-detail summary em .more-text,
+.service-detail summary em .less-text {
+  color: #dfff7a !important;
+}
+
+.service-contact-links {
+  direction: inherit !important;
+}
+
+.service-contact-links a {
+  gap: 8px;
+  unicode-bidi: isolate;
+}
+
+.service-contact-links a bdi {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+main[dir="rtl"] .service-contact-links a {
+  flex-direction: row;
+}
+
+main[dir="ltr"] .service-contact-links a {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .service-sticky-area {
+    top: 68px;
+  }
+
+  .service-sticky-area .service-sticky-hero {
+    min-height: 86px;
+  }
+
+  .service-hero-titlebar {
+    padding: 10px 0 12px;
+  }
+
+  .service-page-content {
+    margin-top: 194px !important;
+  }
+}
