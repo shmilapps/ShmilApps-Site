@@ -71,8 +71,8 @@ main[dir="rtl"] .ai-link {
 }
 
 .brand-link {
-  grid-column: 1;
-  justify-self: start;
+  grid-column: 3;
+  justify-self: end;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -83,8 +83,8 @@ main[dir="rtl"] .ai-link {
   border-radius: 999px;
   background: rgba(0, 16, 5, 0.58);
   font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.01em;
+  font-weight: 600;
+  letter-spacing: 0;
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.08);
 }
 
@@ -123,9 +123,9 @@ main[dir="ltr"] .main-nav {
 }
 
 .header-actions {
-  grid-column: 3;
+  grid-column: 1;
   grid-row: 1;
-  justify-self: end;
+  justify-self: start;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -144,7 +144,7 @@ main[dir="ltr"] .main-nav {
   background: rgba(0, 16, 5, 0.58);
   color: #fff;
   padding: 0 16px;
-  font: 800 0.96rem/1.1 Arial, Helvetica, sans-serif;
+  font: 600 1rem/1.15 Arial, Helvetica, sans-serif;
   cursor: pointer;
   white-space: nowrap;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
@@ -224,8 +224,8 @@ main[dir="ltr"] .nav-menu {
   border-radius: 11px;
   color: #edf4ed;
   font-size: 0.9rem;
-  font-weight: 700;
-  line-height: 1.35;
+  font-weight: 500;
+  line-height: 1.45;
   white-space: nowrap;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
 }
@@ -247,7 +247,7 @@ main[dir="ltr"] .nav-menu {
   border-color: rgba(186, 255, 0, 0.28);
   background: linear-gradient(120deg, rgba(7, 124, 55, 0.6), rgba(115, 217, 0, 0.24));
   font-size: 0.9rem;
-  font-weight: 900;
+  font-weight: 700;
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.12);
 }
 
