@@ -25,9 +25,12 @@ const content = {
       about: 'מי אנחנו',
       contact: 'צור קשר',
       assistant: 'עוזר AI',
+      more: 'עוד...',
+      closeMenu: 'סגור תפריט',
+      openMenu: 'פתח תפריט',
     },
     servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק ומותג', 'אפיון צרכים אצל הלקוח (FDE)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה AI | שוק ההון | קריפטו'],
-    portfolioMenu: ['שמילונטורי', 'שמילקליק', 'מערכת ETF וירטואלית', 'קומנד סנטר לדיווחי תוצאות', 'בוט מסחר — קריפטו', 'אפליקציה לניהול מבנים', 'אפליקציה לניהול מכוורות', 'עוד...'],
+    portfolioMenu: ['שמילונטורי', 'שמילקליק', 'מערכת ETF וירטואלית', 'קומנד סנטר לדיווחי תוצאות', 'בוט מסחר — קריפטו', 'אפליקציה לניהול מבנים', 'אפליקציה לניהול מכוורות'],
   },
   en: {
     status: 'Website under construction',
@@ -51,9 +54,12 @@ const content = {
       about: 'About',
       contact: 'Contact',
       assistant: 'AI Assistant',
+      more: 'More...',
+      closeMenu: 'Close menu',
+      openMenu: 'Open menu',
     },
     servicesMenu: ['App development', 'Software and management systems', 'Business and brand websites', 'Client needs discovery (FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training: AI | Capital markets | Crypto'],
-    portfolioMenu: ['Shmilventory', 'ShmilClick', 'Virtual ETF system', 'Results command center', 'Crypto trading bot', 'Building management app', 'Apiary management app', 'More...'],
+    portfolioMenu: ['Shmilventory', 'ShmilClick', 'Virtual ETF system', 'Results command center', 'Crypto trading bot', 'Building management app', 'Apiary management app'],
   },
 };
 
@@ -86,6 +92,7 @@ export default function Home() {
   const [language, setLanguage] = useState<'he' | 'en'>('he');
   const [socialOpen, setSocialOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -123,33 +130,33 @@ export default function Home() {
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
       <header className="site-header" aria-label="Main navigation">
-        <a className="brand-link" href={navAnchors.home} aria-label="ShmilApps home">
+        <a className="brand-link" href={navAnchors.home} aria-label="ShmilApps home" onClick={() => setMobileMenuOpen(false)}>
           <span className="brand-dot" aria-hidden="true" />
           <span>ShmilApps</span>
         </a>
         <nav className="main-nav" aria-label="Website sections">
           <a href={navAnchors.home}>{text.nav.home}</a>
           <div className="nav-item has-menu">
-            <a href={navAnchors.services}>{text.nav.services}</a>
-            <button type="button" aria-label={`${text.nav.services} menu`}><span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button">{text.nav.services}<span aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
               {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services}>{item}</a>)}
+              <a className="more-link" href={navAnchors.services}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <a href={navAnchors.portfolio}>{text.nav.portfolio}</a>
-            <button type="button" aria-label={`${text.nav.portfolio} menu`}><span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button">{text.nav.portfolio}<span aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
               {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio}>{item}</a>)}
+              <a className="more-link" href={navAnchors.portfolio}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <a href={navAnchors.follow}>{text.nav.follow}</a>
-            <button type="button" aria-label={`${text.nav.follow} menu`}><span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button">{text.nav.follow}<span aria-hidden="true">⌄</span></button>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer">{social.labelKey ? text[social.labelKey] : social.name}</a>
               ))}
+              <a className="more-link" href={navAnchors.follow}>{text.nav.more}</a>
             </div>
           </div>
           <a href={navAnchors.about}>{text.nav.about}</a>
@@ -161,6 +168,41 @@ export default function Home() {
             <button className={isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('he')} aria-pressed={isHebrew}><img src="/brand/flag-il.svg" alt="" /> <span>HE</span></button>
             <button className={!isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('en')} aria-pressed={!isHebrew}><img src="/brand/flag-us.svg" alt="" /> <span>EN</span></button>
           </div>
+          <button className="mobile-menu-button" type="button" onClick={() => setMobileMenuOpen((open) => !open)} aria-label={mobileMenuOpen ? text.nav.closeMenu : text.nav.openMenu} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation">
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </button>
+        </div>
+        <div className={`mobile-menu-layer ${mobileMenuOpen ? 'open' : ''}`} aria-hidden={!mobileMenuOpen}>
+          <button className="mobile-menu-backdrop" type="button" onClick={() => setMobileMenuOpen(false)} aria-label={text.nav.closeMenu} />
+          <nav id="mobile-navigation" className="mobile-drawer" aria-label="Mobile navigation">
+            <div className="mobile-drawer-head">
+              <strong>ShmilApps</strong>
+              <button type="button" onClick={() => setMobileMenuOpen(false)} aria-label={text.nav.closeMenu}>×</button>
+            </div>
+            <a href={navAnchors.home} onClick={() => setMobileMenuOpen(false)}>{text.nav.home}</a>
+            <details>
+              <summary>{text.nav.services}</summary>
+              {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
+              <a className="more-link" href={navAnchors.services} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
+            </details>
+            <details>
+              <summary>{text.nav.portfolio}</summary>
+              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
+              <a className="more-link" href={navAnchors.portfolio} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
+            </details>
+            <details>
+              <summary>{text.nav.follow}</summary>
+              {socialLinks.map((social) => (
+                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={() => setMobileMenuOpen(false)}>{social.labelKey ? text[social.labelKey] : social.name}</a>
+              ))}
+              <a className="more-link" href={navAnchors.follow} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
+            </details>
+            <a href={navAnchors.about} onClick={() => setMobileMenuOpen(false)}>{text.nav.about}</a>
+            <a href={navAnchors.contact} onClick={() => setMobileMenuOpen(false)}>{text.nav.contact}</a>
+            <a className="mobile-ai-link" href={navAnchors.assistant} onClick={() => setMobileMenuOpen(false)}>{text.nav.assistant}</a>
+          </nav>
         </div>
       </header>
       <section id="home" className="construction" aria-labelledby="page-title">
