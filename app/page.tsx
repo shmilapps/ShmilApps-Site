@@ -17,6 +17,17 @@ const content = {
     soundOn: 'הפעל קול',
     soundOff: 'כבה קול',
     rateUs: 'Rate Us',
+    nav: {
+      home: 'בית',
+      services: 'שירותים',
+      portfolio: 'תיק עבודות',
+      follow: 'עקבו אחרינו',
+      about: 'מי אנחנו',
+      contact: 'צור קשר',
+      assistant: 'עוזר AI',
+    },
+    servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק ומותג', 'אפיון צרכים אצל הלקוח (FDE)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה AI | שוק ההון | קריפטו'],
+    portfolioMenu: ['שמילונטורי', 'שמילקליק', 'מערכת ETF וירטואלית', 'קומנד סנטר לדיווחי תוצאות', 'בוט מסחר — קריפטו', 'אפליקציה לניהול מבנים', 'אפליקציה לניהול מכוורות', 'עוד...'],
   },
   en: {
     status: 'Website under construction',
@@ -32,10 +43,31 @@ const content = {
     soundOn: 'Turn sound on',
     soundOff: 'Turn sound off',
     rateUs: 'Rate Us',
+    nav: {
+      home: 'Home',
+      services: 'Services',
+      portfolio: 'Portfolio',
+      follow: 'Follow us',
+      about: 'About',
+      contact: 'Contact',
+      assistant: 'AI Assistant',
+    },
+    servicesMenu: ['App development', 'Software and management systems', 'Business and brand websites', 'Client needs discovery (FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training: AI | Capital markets | Crypto'],
+    portfolioMenu: ['Shmilventory', 'ShmilClick', 'Virtual ETF system', 'Results command center', 'Crypto trading bot', 'Building management app', 'Apiary management app', 'More...'],
   },
 };
 
 type SocialLink = { name: string; icon: string; href: string; labelKey?: 'rateUs'; wideIcon?: boolean };
+
+const navAnchors = {
+  home: '#home',
+  services: '#services',
+  portfolio: '#portfolio',
+  follow: '#follow',
+  about: '#about',
+  contact: '#contact',
+  assistant: '#ai-assistant',
+};
 
 const socialLinks: SocialLink[] = [
   { name: 'LinkedIn', icon: '/brand/social/linkedin.svg', href: 'https://www.linkedin.com/company/shmilapps' },
@@ -90,11 +122,48 @@ export default function Home() {
   const isHebrew = language === 'he';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
-      <div className="language-switcher" role="group" aria-label="Language selection">
-        <button className={isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('he')} aria-pressed={isHebrew}><img src="/brand/flag-il.svg" alt="" /> <span>HE</span></button>
-        <button className={!isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('en')} aria-pressed={!isHebrew}><img src="/brand/flag-us.svg" alt="" /> <span>EN</span></button>
-      </div>
-      <section className="construction" aria-labelledby="page-title">
+      <header className="site-header" aria-label="Main navigation">
+        <a className="brand-link" href={navAnchors.home} aria-label="ShmilApps home">
+          <span className="brand-dot" aria-hidden="true" />
+          <span>ShmilApps</span>
+        </a>
+        <nav className="main-nav" aria-label="Website sections">
+          <a href={navAnchors.home}>{text.nav.home}</a>
+          <div className="nav-item has-menu">
+            <a href={navAnchors.services}>{text.nav.services}</a>
+            <button type="button" aria-label={`${text.nav.services} menu`}><span aria-hidden="true">⌄</span></button>
+            <div className="nav-menu">
+              {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services}>{item}</a>)}
+            </div>
+          </div>
+          <div className="nav-item has-menu">
+            <a href={navAnchors.portfolio}>{text.nav.portfolio}</a>
+            <button type="button" aria-label={`${text.nav.portfolio} menu`}><span aria-hidden="true">⌄</span></button>
+            <div className="nav-menu">
+              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio}>{item}</a>)}
+            </div>
+          </div>
+          <div className="nav-item has-menu">
+            <a href={navAnchors.follow}>{text.nav.follow}</a>
+            <button type="button" aria-label={`${text.nav.follow} menu`}><span aria-hidden="true">⌄</span></button>
+            <div className="nav-menu social-nav-menu">
+              {socialLinks.map((social) => (
+                <a key={social.name} href={social.href} target="_blank" rel="noreferrer">{social.labelKey ? text[social.labelKey] : social.name}</a>
+              ))}
+            </div>
+          </div>
+          <a href={navAnchors.about}>{text.nav.about}</a>
+          <a href={navAnchors.contact}>{text.nav.contact}</a>
+        </nav>
+        <div className="header-actions">
+          <a className="ai-link" href={navAnchors.assistant}>{text.nav.assistant}</a>
+          <div className="language-switcher" role="group" aria-label="Language selection">
+            <button className={isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('he')} aria-pressed={isHebrew}><img src="/brand/flag-il.svg" alt="" /> <span>HE</span></button>
+            <button className={!isHebrew ? 'active' : ''} type="button" onClick={() => setLanguage('en')} aria-pressed={!isHebrew}><img src="/brand/flag-us.svg" alt="" /> <span>EN</span></button>
+          </div>
+        </div>
+      </header>
+      <section id="home" className="construction" aria-labelledby="page-title">
         <div className="glow" aria-hidden="true" />
         <div className="hero-showcase">
           <video ref={videoRef} className="logo-video" autoPlay loop muted playsInline preload="auto" aria-label="ShmilApps — Turning Ideas into Digital Reality">
@@ -109,7 +178,7 @@ export default function Home() {
               <path className="mute-slash" d="M6.5 5.8 26 25.3" />
             </svg>
           </button>
-          <aside className={`social-panel ${socialOpen ? 'open' : ''}`} aria-labelledby="social-title">
+          <aside id="follow" className={`social-panel ${socialOpen ? 'open' : ''}`} aria-labelledby="social-title">
             <button className="social-toggle" type="button" onClick={() => setSocialOpen((open) => !open)} aria-expanded={socialOpen} aria-controls="social-links">
               <span id="social-title">{text.follow}</span>
             </button>
@@ -128,7 +197,7 @@ export default function Home() {
             </div>
           </aside>
         </div>
-        <div className="construction-copy">
+        <div id="contact" className="construction-copy">
 
           <h1 id="page-title">{text.title}</h1>
           <p>{text.line1}<br />{text.line2}</p>
@@ -138,7 +207,7 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="intro-section" aria-labelledby="welcome-title">
+        <section id="about" className="intro-section" aria-labelledby="welcome-title">
           <h2 id="welcome-title">{text.welcome}</h2>
           <p>{text.intro}</p>
           <h3>{text.approach}</h3>
@@ -147,6 +216,21 @@ export default function Home() {
               <li key={step}><span>{index + 1}</span>{step}</li>
             ))}
           </ol>
+        </section>
+
+        <section id="services" className="placeholder-section" aria-labelledby="services-title">
+          <h2 id="services-title">{text.nav.services}</h2>
+          <p>{isHebrew ? 'בקרוב נפרט כאן את השירותים המרכזיים של ShmilApps.' : 'Soon we will detail the core ShmilApps services here.'}</p>
+        </section>
+
+        <section id="portfolio" className="placeholder-section" aria-labelledby="portfolio-title">
+          <h2 id="portfolio-title">{text.nav.portfolio}</h2>
+          <p>{isHebrew ? 'בקרוב נציג כאן עבודות, מערכות ופרויקטים נבחרים.' : 'Soon we will showcase selected products, systems and projects here.'}</p>
+        </section>
+
+        <section id="ai-assistant" className="placeholder-section ai-placeholder" aria-labelledby="ai-title">
+          <h2 id="ai-title">{text.nav.assistant}</h2>
+          <p>{isHebrew ? 'כאן יוקם עוזר AI שיכיר את ShmilApps, השירותים, התהליכים והרעיונות שנוכל להציע.' : 'This area will host an AI assistant that knows ShmilApps, our services, processes and ideas.'}</p>
         </section>
 
       </section>
