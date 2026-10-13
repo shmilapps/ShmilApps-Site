@@ -44,16 +44,16 @@ main::before {
 .site-header {
   position: fixed;
   z-index: 60;
-  top: 18px;
+  top: 8px;
   left: 0;
   right: 0;
   width: 100%;
   min-height: 52px;
   display: grid;
-  grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
+  grid-template-columns: 300px minmax(520px, 1fr) 300px;
   align-items: center;
   gap: 16px;
-  padding: 0 28px;
+  padding: 0 32px;
   pointer-events: none;
 }
 
@@ -66,8 +66,8 @@ main::before {
 }
 
 .brand-link {
-  grid-column: 3;
-  justify-self: end;
+  grid-column: 1;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -98,15 +98,15 @@ main::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 16px;
   min-width: 0;
   pointer-events: auto;
 }
 
 .header-actions {
-  grid-column: 1;
+  grid-column: 3;
   grid-row: 1;
-  justify-self: start;
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -126,8 +126,8 @@ main::before {
   background: rgba(0, 10, 4, 0.38);
   backdrop-filter: blur(10px);
   color: #fff;
-  padding: 0 14px;
-  font: 800 0.88rem/1.1 Arial, Helvetica, sans-serif;
+  padding: 0 16px;
+  font: 800 0.96rem/1.1 Arial, Helvetica, sans-serif;
   cursor: pointer;
   white-space: nowrap;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.75);
@@ -157,13 +157,13 @@ main::before {
   position: relative;
   display: inline-flex;
   align-items: center;
-  padding-bottom: 14px;
-  margin-bottom: -14px;
+  padding-bottom: 18px;
+  margin-bottom: -18px;
 }
 
 .nav-menu {
   position: absolute;
-  top: calc(100% + 0px);
+  top: calc(100% - 2px);
   inset-inline-start: 50%;
   width: max-content;
   min-width: 235px;
@@ -194,7 +194,7 @@ main::before {
   padding: 9px 11px;
   border-radius: 11px;
   color: #edf4ed;
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.35;
   white-space: nowrap;
@@ -217,7 +217,7 @@ main::before {
 .ai-link {
   border-color: rgba(186, 255, 0, 0.28);
   background: linear-gradient(120deg, rgba(7, 124, 55, 0.52), rgba(115, 217, 0, 0.2));
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   font-weight: 900;
   box-shadow: 0 0 18px rgba(116, 255, 22, 0.12);
 }
@@ -437,7 +437,7 @@ main::before {
   position: absolute;
   z-index: 5;
   left: 50%;
-  top: 84px;
+  top: 58px;
   bottom: auto;
   width: 37px;
   height: 37px;

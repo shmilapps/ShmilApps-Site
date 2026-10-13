@@ -111,6 +111,12 @@ export default function Home() {
     video.play().catch(() => undefined);
   }, []);
 
+  const closeFocusedMenu = () => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
+
   const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -137,26 +143,26 @@ export default function Home() {
         <nav className="main-nav" aria-label="Website sections">
           <a href={navAnchors.home}>{text.nav.home}</a>
           <div className="nav-item has-menu">
-            <button className="nav-menu-trigger" type="button">{text.nav.services}<span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.services}<span aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
-              {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services}>{item}</a>)}
-              <a className="more-link" href={navAnchors.services}>{text.nav.more}</a>
+              {text.servicesMenu.map((item) => <a key={item} href={navAnchors.services} onClick={closeFocusedMenu}>{item}</a>)}
+              <a className="more-link" href={navAnchors.services} onClick={closeFocusedMenu}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <button className="nav-menu-trigger" type="button">{text.nav.portfolio}<span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.portfolio}<span aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
-              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio}>{item}</a>)}
-              <a className="more-link" href={navAnchors.portfolio}>{text.nav.more}</a>
+              {text.portfolioMenu.map((item) => <a key={item} href={navAnchors.portfolio} onClick={closeFocusedMenu}>{item}</a>)}
+              <a className="more-link" href={navAnchors.portfolio} onClick={closeFocusedMenu}>{text.nav.more}</a>
             </div>
           </div>
           <div className="nav-item has-menu">
-            <button className="nav-menu-trigger" type="button">{text.nav.follow}<span aria-hidden="true">⌄</span></button>
+            <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.follow}<span aria-hidden="true">⌄</span></button>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
-                <a key={social.name} href={social.href} target="_blank" rel="noreferrer">{social.labelKey ? text[social.labelKey] : social.name}</a>
+                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}>{social.labelKey ? text[social.labelKey] : social.name}</a>
               ))}
-              <a className="more-link" href={navAnchors.follow}>{text.nav.more}</a>
+              <a className="more-link" href={navAnchors.follow} onClick={closeFocusedMenu}>{text.nav.more}</a>
             </div>
           </div>
           <a href={navAnchors.about}>{text.nav.about}</a>
@@ -280,7 +286,3 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
