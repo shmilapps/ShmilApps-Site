@@ -141,7 +141,7 @@ export default function Home() {
           <span className="brand-dot" aria-hidden="true" />
           <span>ShmilApps</span>
         </a>
-        <nav className="main-nav" aria-label="Website sections">
+        <nav className="main-nav" aria-label="Website sections" dir={isHebrew ? 'rtl' : 'ltr'}>
           <a href={navAnchors.home}>{text.nav.home}</a>
           <div className="nav-item has-menu">
             <button className="nav-menu-trigger" type="button" onClick={(event) => event.currentTarget.blur()}>{text.nav.services}<span aria-hidden="true">⌄</span></button>
