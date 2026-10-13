@@ -341,7 +341,6 @@ export default function Home() {
                   <em><span className="more-text">{text.nav.more}</span><span className="less-text">{text.nav.less}</span></em>
                 </summary>
                 <div className="service-detail-body" dir={isHebrew ? 'rtl' : 'ltr'}>
-                  <p className="service-summary-continuation">{panel.summary}</p>
                   {panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
@@ -352,15 +351,15 @@ export default function Home() {
               <h3 id="service-contact-title">{appPage.contact.title}</h3>
               {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
-                <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span aria-hidden="true">☎</span><span>{appPage.contact.phone}</span><bdi>+972547886780</bdi></a>
-                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span aria-hidden="true">💬</span><span>{appPage.contact.whatsapp}</span></a>
-                <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span aria-hidden="true">✉</span><span>{appPage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
+                <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">☎</span><span>{appPage.contact.phone}</span><bdi>+972547886780</bdi></a>
+                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">💬</span><span>{appPage.contact.whatsapp}</span></a>
+                <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">✉</span><span>{appPage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
               </div>
             </section>
           </div>
         </section>
       ) : (
-      <section id="home" className="construction" aria-labelledby="page-title">
+      <section id="home" className="construction" aria-label="ShmilApps">
         <div className="glow" aria-hidden="true" />
         <div className="hero-showcase">
           <video ref={videoRef} className="logo-video" autoPlay loop muted playsInline preload="auto" aria-label="ShmilApps — Turning Ideas into Digital Reality">
@@ -394,16 +393,6 @@ export default function Home() {
             </div>
           </aside>
         </div>
-        <div id="contact" className="construction-copy">
-
-          <h1 id="page-title">{text.title}</h1>
-          <p>{text.line1}<br />{text.line2}</p>
-          <div className="contact-links">
-            <a href="mailto:shmilapps@gmail.com">shmilapps@gmail.com</a>
-            <a href="tel:+972547886780">+972547886780</a>
-          </div>
-        </div>
-
         <section id="about" className="intro-section" aria-labelledby="welcome-title">
           <h2 id="welcome-title">{text.welcome}</h2>
           <p>{text.intro}</p>
@@ -440,10 +429,23 @@ export default function Home() {
           <p>{isHebrew ? 'כאן יוקם עוזר AI שיכיר את ShmilApps, השירותים, התהליכים והרעיונות שנוכל להציע.' : 'This area will host an AI assistant that knows ShmilApps, our services, processes and ideas.'}</p>
         </section>
 
+        <section id="contact" className="service-contact home-contact" aria-labelledby="home-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
+          <h2 id="home-contact-title">{text.nav.contact}</h2>
+          <p>{isHebrew ? 'רוצים לבדוק רעיון, שירות או שיתוף פעולה?' : 'Want to check an idea, service or collaboration?'}</p>
+          <p>{isHebrew ? 'דברו איתנו ונבין יחד מה נכון לבנות ואיך להתחיל.' : 'Let’s talk and understand what makes sense to build and how to start.'}</p>
+          <div className="service-contact-links">
+            <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">☎</span><span>{appPage.contact.phone}</span><bdi>+972547886780</bdi></a>
+            <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">💬</span><span>{appPage.contact.whatsapp}</span></a>
+            <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">✉</span><span>{appPage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
+          </div>
+        </section>
+
+
       </section>
       )}
       <footer>© 2026 ShmilApps · shmilapps.com</footer>
     </main>
   );
 }
+
 

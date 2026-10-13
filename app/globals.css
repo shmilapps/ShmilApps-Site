@@ -1799,3 +1799,87 @@ main[dir="ltr"] .service-contact-links a {
     margin-top: 194px !important;
   }
 }
+
+/* Final typography, expansion and contact refinements */
+.service-hero-titlebar h2,
+.service-detail summary strong,
+.service-card strong,
+.service-contact h2,
+.service-contact h3,
+.section-heading h2,
+.placeholder-section h2 {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+}
+
+.service-hero-titlebar h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem) !important;
+}
+
+.service-card strong {
+  font-size: 1.08rem !important;
+  line-height: 1.35 !important;
+}
+
+.service-detail[open] summary {
+  border-bottom: 0 !important;
+}
+
+.service-detail[open] summary .service-summary-text {
+  display: block !important;
+}
+
+.service-summary-continuation {
+  display: none !important;
+}
+
+.service-detail-body {
+  padding-top: 0 !important;
+}
+
+.service-detail summary em,
+.service-detail[open] summary em,
+.service-detail summary em .more-text,
+.service-detail summary em .less-text,
+.service-detail[open] summary em .less-text {
+  color: #dfff7a !important;
+}
+
+.home-contact {
+  width: min(920px, calc(100% - 32px));
+  margin: 56px auto 0;
+}
+
+.home-contact h2 {
+  margin: 0 0 14px;
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+  text-align: center;
+}
+
+.service-contact-links a {
+  direction: inherit !important;
+  unicode-bidi: isolate !important;
+}
+
+.service-contact-links a bdi {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+}
+
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  min-width: 1.15em;
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+main[dir="rtl"] .service-contact-links a,
+main[dir="ltr"] .service-contact-links a {
+  flex-direction: row !important;
+}
