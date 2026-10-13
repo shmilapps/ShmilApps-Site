@@ -1371,27 +1371,33 @@ footer {
   position: sticky;
   z-index: 20;
   top: 58px;
-  min-height: 128px;
+  min-height: clamp(210px, 16vw, 300px);
   display: flex;
   align-items: center;
-  padding: 22px max(24px, calc((100vw - 1120px) / 2));
+  padding: 34px max(28px, calc((100vw - 1180px) / 2));
   background-size: cover;
-  background-position: center;
-  border-block: 1px solid rgba(186, 255, 0, 0.16);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.36);
+  background-position: center 52%;
+  border-block: 1px solid rgba(186, 255, 0, 0.24);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34), inset 0 -40px 80px rgba(0, 0, 0, 0.38);
 }
 
 .service-sticky-hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.78));
+  background:
+    radial-gradient(circle at 70% 45%, rgba(186, 255, 0, 0.14), transparent 34%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.34));
   pointer-events: none;
 }
 
 .service-hero-overlay {
   position: relative;
-  max-width: 720px;
+  max-width: 760px;
+  padding: 18px 22px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.38), rgba(5, 25, 5, 0.16));
+  backdrop-filter: blur(2px);
 }
 
 .service-hero-overlay h2 {
