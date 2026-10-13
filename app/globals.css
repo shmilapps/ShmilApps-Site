@@ -60,10 +60,15 @@ main::before {
 }
 
 .brand-link,
-.main-nav a,
-.nav-menu-trigger,
+main[dir="rtl"] .main-nav a,
+main[dir="rtl"] .nav-menu-trigger,
 main[dir="rtl"] .ai-link {
   direction: rtl;
+}
+
+main[dir="ltr"] .main-nav a,
+main[dir="ltr"] .nav-menu-trigger {
+  direction: ltr;
 }
 
 .ai-link {
@@ -154,6 +159,10 @@ main[dir="ltr"] .main-nav {
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+.nav-menu-trigger {
+  flex-direction: row;
+}
+
 .main-nav > a:hover,
 .main-nav > a:focus-visible,
 .nav-item:hover .nav-menu-trigger,
@@ -166,25 +175,11 @@ main[dir="ltr"] .main-nav {
 }
 
 
-main[dir="ltr"] .nav-menu-trigger .nav-label {
-  order: 1;
-}
 
-main[dir="ltr"] .nav-menu-trigger .dropdown-arrow {
-  order: 2;
-}
-
-main[dir="rtl"] .nav-menu-trigger .dropdown-arrow {
-  order: 1;
-}
-
-main[dir="rtl"] .nav-menu-trigger .nav-label {
-  order: 2;
-}
-
-.nav-menu-trigger span {
+.dropdown-arrow {
   color: currentColor;
   font-size: 1rem;
+  line-height: 1;
   transform: translateY(-1px);
 }
 
@@ -194,7 +189,7 @@ main[dir="rtl"] .nav-menu-trigger .nav-label {
   align-items: center;
   padding-bottom: 16px;
   margin-bottom: -16px;
-  direction: ltr;
+  direction: inherit;
 }
 
 .nav-menu {
