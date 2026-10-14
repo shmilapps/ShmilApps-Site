@@ -391,7 +391,9 @@ export default function Home() {
             </div>
           </div>
           <div className="service-page-content">
-            {appPage.panels.map((panel) => (
+            {appPage.panels.map((panel) => {
+              const isExamplePanel = panel.title === appPage.panels[3].title;
+              return (
               <details className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
                   <span>
@@ -401,12 +403,48 @@ export default function Home() {
                   <em><span className="more-text">{text.nav.more}</span><span className="less-text">{text.nav.less}</span></em>
                 </summary>
                 <div className="service-detail-body" dir={isHebrew ? 'rtl' : 'ltr'}>
-                  {panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  {isExamplePanel ? (
+                    <article className="case-study-card service-example-card" dir={isHebrew ? 'rtl' : 'ltr'}>
+                      <header className="case-study-header">
+                        <div className="case-study-logo-wrap">
+                          <img src="/portfolio/shmilventory/shmilventory-logo.png" alt="ShmilVentory" />
+                        </div>
+                        <h3>{portfolioCaseStudy[language].title}</h3>
+                        <p>{portfolioCaseStudy[language].subtitle}</p>
+                      </header>
+                      <div className="case-study-body">
+                        {portfolioCaseStudy[language].paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                      </div>
+                      <div className="case-study-grid">
+                        <section>
+                          <h4>{portfolioCaseStudy[language].benefitsTitle}</h4>
+                          <ul>
+                            {portfolioCaseStudy[language].benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}
+                          </ul>
+                        </section>
+                        <section>
+                          <h4>{portfolioCaseStudy[language].techTitle}</h4>
+                          <p>{portfolioCaseStudy[language].tech}</p>
+                          <h4>{portfolioCaseStudy[language].rolloutTitle}</h4>
+                          <p>{portfolioCaseStudy[language].rollout}</p>
+                          <h4>{portfolioCaseStudy[language].resultTitle}</h4>
+                          <p>{portfolioCaseStudy[language].result}</p>
+                        </section>
+                      </div>
+                      <div className="case-study-video-wrap">
+                        <video controls preload="metadata" playsInline poster="/portfolio/shmilventory/shmilventory-video-poster.png" aria-label="ShmilVentory promotional video">
+                          <source src="/portfolio/shmilventory/shmilventory-ad-web.mp4" type="video/mp4" />
+                        </video>
+                      </div>
+                    </article>
+                  ) : null}
+                  {!isExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
                 </div>
               </details>
-            ))}
+              );
+            })}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h3 id="service-contact-title">{appPage.contact.title}</h3>
               {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
@@ -479,44 +517,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="portfolio-section" aria-labelledby="portfolio-title" dir={isHebrew ? 'rtl' : 'ltr'}>
-          <div className="section-heading">
-            <p className="section-eyebrow">{portfolioCaseStudy[language].eyebrow}</p>
-            <h2 id="portfolio-title">{text.nav.portfolio}</h2>
-          </div>
-          <article className="case-study-card" dir={isHebrew ? 'rtl' : 'ltr'}>
-            <header className="case-study-header">
-              <div className="case-study-logo-wrap">
-                <img src="/portfolio/shmilventory/shmilventory-logo.png" alt="ShmilVentory" />
-              </div>
-              <h3>{portfolioCaseStudy[language].title}</h3>
-              <p>{portfolioCaseStudy[language].subtitle}</p>
-            </header>
-            <div className="case-study-body">
-              {portfolioCaseStudy[language].paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </div>
-            <div className="case-study-grid">
-              <section>
-                <h4>{portfolioCaseStudy[language].benefitsTitle}</h4>
-                <ul>
-                  {portfolioCaseStudy[language].benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}
-                </ul>
-              </section>
-              <section>
-                <h4>{portfolioCaseStudy[language].techTitle}</h4>
-                <p>{portfolioCaseStudy[language].tech}</p>
-                <h4>{portfolioCaseStudy[language].rolloutTitle}</h4>
-                <p>{portfolioCaseStudy[language].rollout}</p>
-                <h4>{portfolioCaseStudy[language].resultTitle}</h4>
-                <p>{portfolioCaseStudy[language].result}</p>
-              </section>
-            </div>
-            <div className="case-study-video-wrap">
-              <video controls preload="metadata" playsInline poster="/portfolio/shmilventory/shmilventory-logo.png" aria-label="ShmilVentory promotional video">
-                <source src="/portfolio/shmilventory/shmilventory-ad-web.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </article>
+        <section id="portfolio" className="placeholder-section" aria-labelledby="portfolio-title">
+          <h2 id="portfolio-title">{text.nav.portfolio}</h2>
+          <p>{isHebrew ? 'בקרוב נציג כאן עבודות, מערכות ופרויקטים נבחרים.' : 'Soon we will showcase selected products, systems and projects here.'}</p>
         </section>
 
         <section id="ai-assistant" className="placeholder-section ai-placeholder" aria-labelledby="ai-title">

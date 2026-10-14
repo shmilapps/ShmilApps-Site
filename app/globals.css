@@ -2050,3 +2050,16 @@ main[dir="ltr"] .case-study-grid li {
   height: auto;
   background: #000;
 }
+
+.service-example-card {
+  margin: 0;
+  border-color: rgba(186, 255, 0, 0.18);
+}
+
+.service-example-card .case-study-grid {
+  grid-template-columns: 1fr;
+}
+
+.service-example-card .case-study-video-wrap {
+  max-width: 640px;
+}
