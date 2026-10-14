@@ -2159,16 +2159,22 @@ main[dir="ltr"] .case-study-grid li {
     grid-column: 2 !important;
     grid-row: 1 !important;
     justify-self: center !important;
-    min-height: 36px !important;
-    min-width: 54px !important;
-    padding: 0 14px !important;
+    min-height: 34px !important;
+    min-width: 42px !important;
+    padding: 0 8px !important;
     font-size: 0 !important;
+    line-height: 1 !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .site-header .ai-link::before {
     content: "AI";
-    font-size: 0.92rem;
+    display: block;
+    font-size: 0.86rem;
     font-weight: 900;
+    line-height: 1;
+    transform: translate(-1px, -0.5px);
   }
 
   .mobile-menu-button {
@@ -2271,5 +2277,7 @@ main[dir="ltr"] .case-study-grid li {
     top: 54px !important;
   }
 }
+
+
 
 
