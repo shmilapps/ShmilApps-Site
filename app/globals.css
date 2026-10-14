@@ -2315,7 +2315,7 @@ main[dir="ltr"] .case-study-grid li {
 
 .ai-page-content {
   width: min(980px, calc(100% - 56px));
-  margin-top: 350px;
+  margin-top: 390px !important;
 }
 
 .ai-chat-shell {
@@ -2553,14 +2553,14 @@ main[dir="rtl"] .ai-chat-input {
 @media (max-width: 1280px) {
   .ai-page-content {
     width: min(920px, calc(100% - 56px));
-    margin-top: 372px;
+    margin-top: 420px !important;
   }
 }
 
 @media (max-width: 1040px) {
   .ai-page-content {
     width: min(900px, calc(100% - 48px));
-    margin-top: 390px;
+    margin-top: 430px !important;
   }
 }
 
@@ -2572,7 +2572,7 @@ main[dir="rtl"] .ai-chat-input {
 
   .ai-page-content {
     width: min(100% - 32px, 980px);
-    margin-top: 356px !important;
+    margin-top: 380px !important;
     overflow-x: hidden;
   }
 
