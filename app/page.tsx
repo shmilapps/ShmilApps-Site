@@ -80,6 +80,66 @@ const navAnchors = {
 type ServiceSummary = { title: string; summary: string; href: string };
 type ServicePanel = { title: string; summary: string; body: string[]; bullets?: string[]; faqs?: { question: string; answer: string }[] };
 
+
+const portfolioCaseStudy = {
+  he: {
+    eyebrow: 'פרויקט לדוגמה',
+    title: 'פיתוח אפליקציית ShmilVentory',
+    subtitle: 'מערכת לניהול ספירות מלאי עבור חברה קמעונאית למוצרים חד־פעמיים בישראל',
+    paragraphs: [
+      'אפליקציית ShmilVentory פותחה עבור חברה קמעונאית למוצרים חד־פעמיים בישראל, במטרה להפוך את תהליך ספירות המלאי מתהליך ידני, איטי ומבוזר לתהליך דיגיטלי, מהיר ומבוקר.',
+      'האפליקציה מאפשרת לעובדים לבצע ספירות מלאי ישירות מהטלפון האישי שלהם בגישת BYOD, ללא צורך במסופונים ייעודיים או ציוד יקר. העובד מתחבר באמצעות אימות SMS, בוחר סניף, סורק ברקוד, מצלם מוצר במידת הצורך, מזין כמות, והמידע נשמר במערכת מרכזית ומסודרת.',
+      'המערכת כוללת ניהול ארגון מלא: עובדים, תפקידים והרשאות, סניפים, אזורי ניהול, מוצרים, תמונות מוצר, ספירות מלאי, דוחות וייצוא נתונים. בסיס הנתונים נבנה מאפס תוך כדי עבודה מול הצרכים האמיתיים של העסק, עם דגש על מקור אמת אחד, הרשאות ברורות, היסטוריית פעולות ותהליך עבודה פשוט למשתמשים בשטח.',
+      'הפרויקט כולל גם התאמה לחיבור למערכת Priority / ERP. החיבור מתוכנן כך שניתן להתאים אותו לכל בית עסק לפי מבנה הנתונים, תהליכי העבודה והייצוא הקיים שלו, ולא כפתרון קשיח שמתאים רק למבנה אחד.',
+    ],
+    benefitsTitle: 'יתרונות מרכזיים',
+    benefits: [
+      'עבודה מהטלפון האישי של העובדים, ללא רכישת ציוד ייעודי.',
+      'סריקת ברקודים מהירה ונוחה.',
+      'תמונות מוצר לזיהוי קל יותר ולצמצום טעויות.',
+      'ניהול עובדים, סניפים, תפקידים והרשאות.',
+      'ניהול ספירות לפי סניף והרשאות.',
+      'דוחות וייצוא נתונים לקבצי XLSX / CSV.',
+      'תשתית לחיבור מותאם למערכת Priority / ERP.',
+      'פתרון שנבנה סביב תהליך עבודה אמיתי בעסק פעיל.',
+    ],
+    techTitle: 'טכנולוגיות',
+    tech: 'הפרויקט פותח באמצעות Flutter ו־Dart, עם Supabase לניהול אימות משתמשים, בסיס נתונים, Storage ופעולות שרת. במערכת נעשה שימוש ב־PostgreSQL, RPCs, Riverpod לניהול מצב, Drift / SQLite לאחסון מקומי וקאש, Mobile Scanner / ML Kit לסריקת ברקודים, Image Picker לתמונות מוצר, וכלי ייצוא ושיתוף לקבצי XLSX / CSV.',
+    rolloutTitle: 'תהליך ההטמעה',
+    rollout: 'תהליך ההטמעה היה טוב וחלק. המערכת נכנסה לעבודה בצורה הדרגתית, עם התאמות לפי הצרכים שעלו מהשטח, בלי לשבור את שגרת העבודה של העובדים. המשתמשים יכלו להתחיל לעבוד מהטלפונים האישיים שלהם, והמנהלים קיבלו שליטה טובה יותר על סניפים, עובדים, מוצרים וספירות מלאי. שביעות הרצון מהמערכת הייתה מעולה.',
+    resultTitle: 'תוצאה עסקית',
+    result: 'המערכת ShmilVentory חסכה זמן, הפחיתה צורך בציוד יקר, צמצמה עבודה ידנית ושיפרה את השליטה בתהליך ספירות המלאי. בעקבות הצלחת הפרויקט, המוצר נמכר גם בגרסת Lite לכמה בתי עסק קטנים, שנהנו מחיסכון משמעותי בהוצאות על ספירות מלאי ומפתרון פשוט יותר לניהול התהליך.',
+  },
+  en: {
+    eyebrow: 'Case study',
+    title: 'ShmilVentory app development',
+    subtitle: 'Inventory counting system for an Israeli retail company in the disposable products market',
+    paragraphs: [
+      'ShmilVentory was developed for an Israeli retail company in the disposable products market, with the goal of turning a manual, slow and scattered inventory-counting process into a faster, digital and controlled workflow.',
+      'The app lets employees perform inventory counts directly from their personal phones using a BYOD approach, without dedicated handheld terminals or expensive equipment. Employees sign in with SMS verification, choose a branch, scan a barcode, photograph a product when needed, enter quantity, and save the data into a centralized system.',
+      'The system includes full organization management: employees, roles and permissions, branches, management areas, products, product images, inventory sessions, reports and data export. The database was built from scratch while working with the real needs of the business, with a focus on one source of truth, clear permissions, action history and a simple field workflow.',
+      'The project also includes adaptation for Priority / ERP connectivity. The connection is designed to be adjusted per business according to its data structure, workflow and existing exports, instead of forcing one rigid integration model.',
+    ],
+    benefitsTitle: 'Key benefits',
+    benefits: [
+      'Employees work from their personal phones, without dedicated inventory hardware.',
+      'Fast and convenient barcode scanning.',
+      'Product images for easier identification and fewer mistakes.',
+      'Employee, branch, role and permission management.',
+      'Inventory sessions managed by branch and permissions.',
+      'Reports and export to XLSX / CSV files.',
+      'Infrastructure for a tailored Priority / ERP connection.',
+      'A solution shaped around a real operational workflow.',
+    ],
+    techTitle: 'Technologies',
+    tech: 'The project was built with Flutter and Dart, using Supabase for authentication, database, Storage and server operations. It also uses PostgreSQL, RPCs, Riverpod for state management, Drift / SQLite for local storage and caching, Mobile Scanner / ML Kit for barcode scanning, Image Picker for product images, and XLSX / CSV export and sharing tools.',
+    rolloutTitle: 'Implementation process',
+    rollout: 'The rollout was smooth and gradual, with adjustments based on needs that came up from the field. Employees could start working from their personal phones, while managers gained clearer control over branches, employees, products and inventory sessions. Satisfaction with the system was excellent.',
+    resultTitle: 'Business result',
+    result: 'ShmilVentory saved time, reduced the need for expensive hardware, minimized manual work and improved control over the inventory-counting process. Following the project’s success, a Lite version was also sold to several small businesses that benefited from a significant reduction in inventory-counting costs and a simpler way to manage the process.',
+  },
+} as const;
+
 const serviceHrefs = [
   '/services/app-development',
   '/#services',
@@ -419,9 +479,36 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="placeholder-section" aria-labelledby="portfolio-title">
-          <h2 id="portfolio-title">{text.nav.portfolio}</h2>
-          <p>{isHebrew ? 'בקרוב נציג כאן עבודות, מערכות ופרויקטים נבחרים.' : 'Soon we will showcase selected products, systems and projects here.'}</p>
+        <section id="portfolio" className="portfolio-section" aria-labelledby="portfolio-title" dir={isHebrew ? 'rtl' : 'ltr'}>
+          <div className="section-heading">
+            <p className="section-eyebrow">{portfolioCaseStudy[language].eyebrow}</p>
+            <h2 id="portfolio-title">{text.nav.portfolio}</h2>
+          </div>
+          <article className="case-study-card" dir={isHebrew ? 'rtl' : 'ltr'}>
+            <header className="case-study-header">
+              <h3>{portfolioCaseStudy[language].title}</h3>
+              <p>{portfolioCaseStudy[language].subtitle}</p>
+            </header>
+            <div className="case-study-body">
+              {portfolioCaseStudy[language].paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <div className="case-study-grid">
+              <section>
+                <h4>{portfolioCaseStudy[language].benefitsTitle}</h4>
+                <ul>
+                  {portfolioCaseStudy[language].benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}
+                </ul>
+              </section>
+              <section>
+                <h4>{portfolioCaseStudy[language].techTitle}</h4>
+                <p>{portfolioCaseStudy[language].tech}</p>
+                <h4>{portfolioCaseStudy[language].rolloutTitle}</h4>
+                <p>{portfolioCaseStudy[language].rollout}</p>
+                <h4>{portfolioCaseStudy[language].resultTitle}</h4>
+                <p>{portfolioCaseStudy[language].result}</p>
+              </section>
+            </div>
+          </article>
         </section>
 
         <section id="ai-assistant" className="placeholder-section ai-placeholder" aria-labelledby="ai-title">
@@ -447,5 +534,6 @@ export default function Home() {
     </main>
   );
 }
+
 
 
