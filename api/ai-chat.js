@@ -109,8 +109,7 @@ export default async function handler(req, res) {
     const data = await openaiResponse.json().catch(() => ({}));
 
     if (!openaiResponse.ok) {
-      const message = data?.error?.message || data?.error?.type || 'OpenAI request failed';
-      return sendJson(res, 502, { error: 'openai_error', detail: message, status: openaiResponse.status });
+      return sendJson(res, 502, { error: 'openai_error' });
     }
 
     const answer = data.output_text
@@ -118,12 +117,11 @@ export default async function handler(req, res) {
       || '';
 
     if (!answer) {
-      return sendJson(res, 502, { error: 'empty_answer', detail: 'OpenAI returned no output text' });
+      return sendJson(res, 502, { error: 'empty_answer' });
     }
 
     return sendJson(res, 200, { answer });
-  } catch (error) {
-    return sendJson(res, 502, { error: 'request_failed', detail: error instanceof Error ? error.message : 'Request failed' });
+  } catch {
+    return sendJson(res, 502, { error: 'request_failed' });
   }
 }
-
