@@ -283,7 +283,8 @@ export default function Home() {
   const [aiError, setAiError] = useState('');
   const videoRef = useRef<HTMLVideoElement>(null);
   const aiChatBodyRef = useRef<HTMLDivElement>(null);
-  const aiInputRef = useRef<HTMLInputElement>(null);
+  const aiInputRef = useRef<HTMLTextAreaElement>(null);
+  const aiSendingRef = useRef(false);
 
   useEffect(() => {
     const mobileViewport = window.matchMedia('(max-width: 900px)');
@@ -338,7 +339,18 @@ export default function Home() {
     chatBody.scrollTop = chatBody.scrollHeight;
   }, [aiMessages, aiLoading]);
 
+  useEffect(() => {
+    const input = aiInputRef.current;
+    if (!input) return;
+    input.style.height = 'auto';
+    input.style.height = `${Math.min(input.scrollHeight, 160)}px`;
+  }, [aiInput]);
+
+  const focusAiInput = () => aiInputRef.current?.focus({ preventScroll: true });
+
   const sendAiMessage = async (rawMessage?: string) => {
+    focusAiInput();
+    if (aiSendingRef.current) return;
     const messageText = (rawMessage ?? aiInput).trim();
     if (!messageText) {
       setAiError(aiPage.empty);
@@ -354,6 +366,7 @@ export default function Home() {
     setAiMessages(nextMessages);
     setAiInput('');
     setAiError('');
+    aiSendingRef.current = true;
     setAiLoading(true);
 
     try {
@@ -373,8 +386,9 @@ export default function Home() {
       setAiError(aiPage.error);
       setAiMessages(nextMessages);
     } finally {
+      aiSendingRef.current = false;
       setAiLoading(false);
-      window.setTimeout(() => aiInputRef.current?.focus(), 0);
+      focusAiInput();
     }
   };
 
@@ -531,7 +545,21 @@ export default function Home() {
                 {aiPage.suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => sendAiMessage(suggestion)} disabled={aiLoading}>{suggestion}</button>)}
               </div>
               <form className="ai-chat-input" onSubmit={(event) => { event.preventDefault(); sendAiMessage(); }}>
-                <input ref={aiInputRef} type="text" value={aiInput} onChange={(event) => setAiInput(event.target.value)} placeholder={aiPage.placeholder} aria-label={aiPage.placeholder} disabled={aiLoading} maxLength={1500} />
+                <textarea
+                  ref={aiInputRef}
+                  rows={1}
+                  value={aiInput}
+                  onChange={(event) => setAiInput(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' && !event.shiftKey && !event.nativeEvent.isComposing) {
+                      event.preventDefault();
+                      sendAiMessage();
+                    }
+                  }}
+                  placeholder={aiPage.placeholder}
+                  aria-label={aiPage.placeholder}
+                  maxLength={1500}
+                />
                 <button type="submit" disabled={aiLoading}>{aiPage.send}</button>
               </form>
               {aiError ? <p className="ai-chat-error" role="alert">{aiError}</p> : null}

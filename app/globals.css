@@ -2446,6 +2446,7 @@ main[dir="rtl"] .ai-message-user {
 
 .ai-message p {
   margin: 0;
+  white-space: pre-wrap;
   font-size: 1rem;
   line-height: 1.75;
 }
@@ -2492,7 +2493,7 @@ main[dir="rtl"] .ai-message-user {
 
 .ai-suggestions button:disabled,
 .ai-chat-input button:disabled,
-.ai-chat-input input:disabled {
+.ai-chat-input textarea:disabled {
   opacity: 0.62;
   cursor: wait;
 }
@@ -2509,11 +2510,17 @@ main[dir="rtl"] .ai-chat-input {
   flex-direction: row-reverse;
 }
 
-.ai-chat-input input {
+.ai-chat-input textarea {
+  box-sizing: border-box;
+  min-height: 48px;
+  max-height: 160px;
+  resize: none;
+  overflow-y: auto;
+  line-height: 1.5;
   flex: 1;
   min-width: 0;
   border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 999px;
+  border-radius: 24px;
   background: rgba(17, 27, 50, 0.92);
   color: #fff;
   padding: 13px 18px;
@@ -2521,7 +2528,7 @@ main[dir="rtl"] .ai-chat-input {
   outline: none;
 }
 
-.ai-chat-input input::placeholder {
+.ai-chat-input textarea::placeholder {
   color: #9ba8b9;
 }
 
@@ -2656,7 +2663,7 @@ main[dir="rtl"] .ai-chat-input {
     gap: 8px;
   }
 
-  .ai-chat-input input {
+  .ai-chat-input textarea {
     min-width: 0;
   }
 
