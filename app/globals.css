@@ -2155,11 +2155,12 @@ main[dir="ltr"] .case-study-grid li {
   }
 
   .site-header .ai-link {
-    position: absolute !important;
-    left: 50% !important;
-    top: 50% !important;
-    transform: translate(-50%, -50%) !important;
     display: inline-flex !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    justify-self: center !important;
+    align-self: center !important;
+    transform: none !important;
     min-height: 34px !important;
     width: 42px !important;
     min-width: 42px !important;
