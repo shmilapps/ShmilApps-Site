@@ -2314,8 +2314,8 @@ main[dir="ltr"] .case-study-grid li {
 }
 
 .ai-page-content {
-  width: min(980px, calc(100% - 48px));
-  margin-top: 330px;
+  width: min(980px, calc(100% - 56px));
+  margin-top: 350px;
 }
 
 .ai-chat-shell {
@@ -2550,6 +2550,20 @@ main[dir="rtl"] .ai-chat-input {
   line-height: 1.7;
 }
 
+@media (max-width: 1280px) {
+  .ai-page-content {
+    width: min(920px, calc(100% - 56px));
+    margin-top: 372px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .ai-page-content {
+    width: min(900px, calc(100% - 48px));
+    margin-top: 390px;
+  }
+}
+
 @media (max-width: 900px) {
   .ai-sticky-area .ai-sticky-hero {
     height: 150px;
@@ -2557,8 +2571,8 @@ main[dir="rtl"] .ai-chat-input {
   }
 
   .ai-page-content {
-    width: min(100% - 28px, 980px);
-    margin-top: 338px !important;
+    width: min(100% - 32px, 980px);
+    margin-top: 356px !important;
     overflow-x: hidden;
   }
 
