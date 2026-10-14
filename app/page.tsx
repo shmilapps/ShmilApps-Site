@@ -345,7 +345,7 @@ export default function Home() {
       return;
     }
 
-    if (aiMessages.length >= 14) {
+    if (aiMessages.length >= 50) {
       setAiError(aiPage.limit);
       return;
     }
@@ -703,8 +703,4 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
 
