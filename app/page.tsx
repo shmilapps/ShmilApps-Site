@@ -30,7 +30,7 @@ const content = {
       closeMenu: 'סגור תפריט',
       openMenu: 'פתח תפריט',
     },
-    servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה'],
+    servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה', 'סקירות מניות וקריפטו', 'תחקירי קריפטו מול בורסאות'],
     portfolioMenu: ['שמילונטורי', 'שמילקליק', 'מערכת ETF וירטואלית', 'קומנד סנטר לדיווחי תוצאות', 'בוט מסחר — קריפטו', 'אפליקציה לניהול מבנים', 'אפליקציה לניהול מכוורות'],
   },
   en: {
@@ -60,7 +60,7 @@ const content = {
       closeMenu: 'Close menu',
       openMenu: 'Open menu',
     },
-    servicesMenu: ['App development', 'Software and management systems', 'Business websites and software brand development', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment'],
+    servicesMenu: ['App development', 'Software and management systems', 'Business websites and software brand development', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment', 'Stock and crypto research', 'Crypto exchange investigations'],
     portfolioMenu: ['Shmilventory', 'ShmilClick', 'Virtual ETF system', 'Results command center', 'Crypto trading bot', 'Building management app', 'Apiary management app'],
   },
 };
@@ -150,6 +150,8 @@ const serviceHrefs = [
   '/#services',
   '/#services',
   '/#services',
+  '/#services',
+  '/#services',
 ];
 
 const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
@@ -163,6 +165,8 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/#services' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/#services' },
     { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/#services' },
+    { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/#services' },
+    { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/#services' },
   ],
   en: [
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
@@ -174,6 +178,8 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/#services' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/#services' },
     { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/#services' },
+    { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/#services' },
+    { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/#services' },
   ],
 };
 
