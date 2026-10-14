@@ -2556,7 +2556,15 @@ main[dir="rtl"] .ai-chat-input {
   }
 
   .ai-page-content {
+    width: min(100% - 18px, 980px);
     margin-top: 292px !important;
+    overflow-x: hidden;
+  }
+
+  .ai-chat-shell {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .ai-chat-header {
@@ -2573,11 +2581,19 @@ main[dir="rtl"] .ai-chat-input {
   .ai-chat-body {
     min-height: 300px;
     max-height: 440px;
-    padding: 18px 12px 52px;
+    padding: 18px 10px 52px;
+    overflow-x: hidden;
   }
 
   .ai-message {
-    gap: 10px;
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .ai-message-user div,
+  .ai-message div {
+    max-width: min(100%, 100%);
+    min-width: 0;
   }
 
   .ai-message div {
@@ -2587,16 +2603,33 @@ main[dir="rtl"] .ai-chat-input {
   .ai-message p {
     font-size: 0.92rem;
     line-height: 1.65;
+    overflow-wrap: anywhere;
   }
 
   .ai-suggestions {
     align-items: flex-start;
-    padding: 10px 12px;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    padding: 10px;
+  }
+
+  .ai-suggestions span {
+    width: 100%;
+  }
+
+  .ai-suggestions button {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
   }
 
   .ai-chat-input {
-    padding: 12px;
+    padding: 12px 10px;
     gap: 8px;
+  }
+
+  .ai-chat-input input {
+    min-width: 0;
   }
 
   .ai-chat-input button {
