@@ -2072,7 +2072,7 @@ main[dir="ltr"] .case-study-grid li {
 
 @media (max-width: 900px) {
   .site-header {
-    position: sticky !important;
+    position: fixed !important;
     top: 0 !important;
     width: 100% !important;
     min-height: 54px !important;
@@ -2088,6 +2088,7 @@ main[dir="ltr"] .case-study-grid li {
     position: static !important;
     transform: none !important;
     justify-self: end !important;
+    flex-direction: row-reverse !important;
     min-height: 38px !important;
     padding: 4px 7px !important;
     gap: 5px !important;
@@ -2258,7 +2259,7 @@ main[dir="ltr"] .case-study-grid li {
   }
 
   .construction {
-    padding-top: 0 !important;
+    padding-top: 54px !important;
   }
 
   .service-page {

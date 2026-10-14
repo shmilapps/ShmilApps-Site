@@ -283,15 +283,6 @@ export default function Home() {
     closeFocusedMenu();
   };
 
-
-  const handleMobileSummaryClick = (event: any, target: string) => {
-    const details = event.currentTarget.parentElement as HTMLDetailsElement | null;
-    if (details?.open) {
-      event.preventDefault();
-      setMobileMenuOpen(false);
-      window.location.href = withLanguage(target);
-    }
-  };
   const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -317,7 +308,7 @@ export default function Home() {
       <header className="site-header" aria-label="Main navigation">
         <a className="brand-link" href={withLanguage(navAnchors.home)} aria-label="ShmilApps home" onClick={() => setMobileMenuOpen(false)}>
           <span className="brand-home-icon" aria-hidden="true">⌂</span>
-          <span className="brand-sa-wrap"><span className="brand-sa">SA</span><span className="brand-dot" aria-hidden="true" /></span>
+          <span className="brand-sa-wrap"><span className="brand-sa">AS</span><span className="brand-dot" aria-hidden="true" /></span>
           <img className="brand-logo" src="/brand/shmilapps-mini-logo.png" alt="" />
           <span className="brand-dot desktop-brand-dot" aria-hidden="true" />
           <span className="brand-name">ShmilApps</span>
@@ -371,17 +362,17 @@ export default function Home() {
             </div>
             <a href={withLanguage(navAnchors.home)} onClick={() => setMobileMenuOpen(false)}>{text.nav.home}</a>
             <details>
-              <summary onClick={(event) => handleMobileSummaryClick(event, navAnchors.services)}>{text.nav.services}</summary>
+              <summary>{text.nav.services}</summary>
               {text.servicesMenu.map((item, index) => <a key={item} href={withLanguage(serviceHrefs[index] ?? navAnchors.services)} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
               <a className="more-link" href={withLanguage(navAnchors.services)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
             <details>
-              <summary onClick={(event) => handleMobileSummaryClick(event, navAnchors.portfolio)}>{text.nav.portfolio}</summary>
+              <summary>{text.nav.portfolio}</summary>
               {text.portfolioMenu.map((item) => <a key={item} href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
               <a className="more-link" href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
             <details>
-              <summary onClick={(event) => handleMobileSummaryClick(event, navAnchors.follow)}>{text.nav.follow}</summary>
+              <summary>{text.nav.follow}</summary>
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={() => setMobileMenuOpen(false)}>{social.labelKey ? text[social.labelKey] : social.name}</a>
               ))}
