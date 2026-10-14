@@ -79,6 +79,7 @@ const navAnchors = {
 
 type ServiceSummary = { title: string; summary: string; href: string };
 type ServicePanel = { title: string; summary: string; body: string[]; bullets?: string[]; faqs?: { question: string; answer: string }[] };
+type AiChatMessage = { role: 'user' | 'assistant'; content: string };
 
 
 const portfolioCaseStudy = {
@@ -227,7 +228,11 @@ const aiAssistantPage = {
     suggestions: ['איזה שירות מתאים לי?', 'כמה זמן לוקח לבנות אפליקציה?', 'איך מתחילים מאפיון או MVP?', 'מה אפשר לעשות עם אוטומציות ו־AI?'],
     placeholder: 'שאלו כל שאלה על השירותים של ShmilApps...',
     send: 'שלח',
-    note: 'בשלב הבא נחבר כאן AI אמיתי עם הגבלות תחום, אורך שיחה והגנות על עלויות.',
+    note: 'העוזר מוגבל לנושאי ShmilApps והשירותים שלנו, עם הגנות על אורך שיחה ועלויות.',
+    loading: 'רגע, אני בודק...',
+    error: 'משהו השתבש בשליחה. נסו שוב בעוד רגע.',
+    empty: 'כתבו שאלה קצרה ואשמח לעזור.',
+    limit: 'כדי לשמור על שיחה ממוקדת, כדאי לסכם את הפנייה ולהמשיך בוואטסאפ או במייל.',
   },
   en: {
     title: 'ShmilApps AI Assistant',
@@ -239,7 +244,11 @@ const aiAssistantPage = {
     suggestions: ['Which service fits my need?', 'How long does app development take?', 'How do we start with discovery or MVP?', 'What can automation and AI do for my business?'],
     placeholder: 'Ask anything about ShmilApps services...',
     send: 'Send',
-    note: 'Next we will connect a real AI here with topic limits, conversation limits and cost protections.',
+    note: 'The assistant is limited to ShmilApps topics and services, with conversation length and cost protections.',
+    loading: 'One moment, I am checking...',
+    error: 'Something went wrong while sending. Please try again in a moment.',
+    empty: 'Write a short question and I will help.',
+    limit: 'To keep the conversation focused, it is best to summarize the inquiry and continue by WhatsApp or email.',
   },
 } as const;
 
@@ -268,7 +277,12 @@ export default function Home() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [suppressDropdowns, setSuppressDropdowns] = useState(false);
+  const [aiMessages, setAiMessages] = useState<AiChatMessage[]>([]);
+  const [aiInput, setAiInput] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState('');
   const videoRef = useRef<HTMLVideoElement>(null);
+  const aiChatBodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mobileViewport = window.matchMedia('(max-width: 900px)');
@@ -315,6 +329,51 @@ export default function Home() {
   const handleDropdownTitleClick = () => {
     setSuppressDropdowns(true);
     closeFocusedMenu();
+  };
+
+  useEffect(() => {
+    const chatBody = aiChatBodyRef.current;
+    if (!chatBody) return;
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, [aiMessages, aiLoading]);
+
+  const sendAiMessage = async (rawMessage?: string) => {
+    const messageText = (rawMessage ?? aiInput).trim();
+    if (!messageText) {
+      setAiError(aiPage.empty);
+      return;
+    }
+
+    if (aiMessages.length >= 14) {
+      setAiError(aiPage.limit);
+      return;
+    }
+
+    const nextMessages: AiChatMessage[] = [...aiMessages, { role: 'user', content: messageText }];
+    setAiMessages(nextMessages);
+    setAiInput('');
+    setAiError('');
+    setAiLoading(true);
+
+    try {
+      const response = await fetch('/api/ai-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ language, messages: nextMessages }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok || !data.answer) {
+        throw new Error('AI response failed');
+      }
+
+      setAiMessages([...nextMessages, { role: 'assistant', content: String(data.answer) }]);
+    } catch {
+      setAiError(aiPage.error);
+      setAiMessages(nextMessages);
+    } finally {
+      setAiLoading(false);
+    }
   };
 
   const toggleSound = () => {
@@ -441,7 +500,7 @@ export default function Home() {
                 </div>
                 <span className="ai-chat-live-dot" aria-hidden="true" />
               </header>
-              <div className="ai-chat-body">
+              <div className="ai-chat-body" ref={aiChatBodyRef}>
                 <article className="ai-message ai-message-bot">
                   <img src="/brand/ai/shmilapps-ai-bot-icon-192.png" alt="" />
                   <div>
@@ -449,15 +508,31 @@ export default function Home() {
                     <time>{isHebrew ? 'עכשיו' : 'Now'}</time>
                   </div>
                 </article>
+                {aiMessages.map((message, index) => (
+                  <article className={`ai-message ${message.role === 'assistant' ? 'ai-message-bot' : 'ai-message-user'}`} key={`${message.role}-${index}`}>
+                    {message.role === 'assistant' ? <img src="/brand/ai/shmilapps-ai-bot-icon-192.png" alt="" /> : null}
+                    <div>
+                      <p>{message.content}</p>
+                      <time>{isHebrew ? 'עכשיו' : 'Now'}</time>
+                    </div>
+                  </article>
+                ))}
+                {aiLoading ? (
+                  <article className="ai-message ai-message-bot ai-message-loading">
+                    <img src="/brand/ai/shmilapps-ai-bot-icon-192.png" alt="" />
+                    <div><p>{aiPage.loading}</p></div>
+                  </article>
+                ) : null}
               </div>
               <div className="ai-suggestions" aria-label={aiPage.suggestionsLabel}>
                 <span>{aiPage.suggestionsLabel}</span>
-                {aiPage.suggestions.map((suggestion) => <button key={suggestion} type="button">{suggestion}</button>)}
+                {aiPage.suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => sendAiMessage(suggestion)} disabled={aiLoading}>{suggestion}</button>)}
               </div>
-              <form className="ai-chat-input">
-                <input type="text" placeholder={aiPage.placeholder} aria-label={aiPage.placeholder} />
-                <button type="button">{aiPage.send}</button>
+              <form className="ai-chat-input" onSubmit={(event) => { event.preventDefault(); sendAiMessage(); }}>
+                <input type="text" value={aiInput} onChange={(event) => setAiInput(event.target.value)} placeholder={aiPage.placeholder} aria-label={aiPage.placeholder} disabled={aiLoading} maxLength={1500} />
+                <button type="submit" disabled={aiLoading}>{aiPage.send}</button>
               </form>
+              {aiError ? <p className="ai-chat-error" role="alert">{aiError}</p> : null}
             </section>
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
