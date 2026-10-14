@@ -308,7 +308,7 @@ export default function Home() {
       <header className="site-header" aria-label="Main navigation">
         <a className="brand-link" href={withLanguage(navAnchors.home)} aria-label="ShmilApps home" onClick={() => setMobileMenuOpen(false)}>
           <span className="brand-home-icon" aria-hidden="true">⌂</span>
-          <span className="brand-sa-wrap"><span className="brand-sa">AS</span><span className="brand-dot" aria-hidden="true" /></span>
+          <span className="brand-sa-wrap"><span className="brand-sa">SA</span><span className="brand-dot" aria-hidden="true" /></span>
           <img className="brand-logo" src="/brand/shmilapps-mini-logo.png" alt="" />
           <span className="brand-dot desktop-brand-dot" aria-hidden="true" />
           <span className="brand-name">ShmilApps</span>
@@ -548,6 +548,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 
