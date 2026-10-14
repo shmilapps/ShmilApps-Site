@@ -2307,7 +2307,7 @@ main[dir="ltr"] .case-study-grid li {
 .ai-sticky-area .ai-sticky-hero {
   height: 200px;
   min-height: 200px;
-  background-size: 100% 100%;
+  background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: inset 0 -34px 70px rgba(0, 0, 0, 0.44), 0 0 34px rgba(139, 255, 21, 0.08);
@@ -2553,5 +2553,6 @@ main[dir="rtl"] .ai-chat-input {
     padding: 0 12px;
   }
 }
+
 
 
