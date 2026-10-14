@@ -74,7 +74,7 @@ const navAnchors = {
   follow: '/#follow',
   about: '/#about',
   contact: '/#contact',
-  assistant: '/#ai-assistant',
+  assistant: '/ai-assistant',
 };
 
 type ServiceSummary = { title: string; summary: string; href: string };
@@ -215,6 +215,34 @@ const appDevelopmentPage: Record<'he' | 'en', { title: string; subtitle: string;
   },
 };
 
+
+const aiAssistantPage = {
+  he: {
+    title: 'עוזר AI של ShmilApps',
+    subtitle: 'צ׳אט חכם שיעזור להבין איזה פתרון מתאים לכם, לשאול שאלות ולבנות פנייה מסודרת.',
+    expert: 'מומחה AI של ShmilApps',
+    status: 'זמין לשיחה על שירותי ShmilApps',
+    welcome: 'שלום! אני עוזר ה־AI של ShmilApps. אפשר לשאול אותי על פיתוח אפליקציות, מערכות ניהול, אתרים, אוטומציות, סקרי שוק, סקירות מניות וקריפטו, ותחקירים מול בורסאות.',
+    suggestionsLabel: 'שאלות מומלצות:',
+    suggestions: ['איזה שירות מתאים לי?', 'כמה זמן לוקח לבנות אפליקציה?', 'איך מתחילים מאפיון או MVP?', 'מה אפשר לעשות עם אוטומציות ו־AI?'],
+    placeholder: 'שאלו כל שאלה על השירותים של ShmilApps...',
+    send: 'שלח',
+    note: 'בשלב הבא נחבר כאן AI אמיתי עם הגבלות תחום, אורך שיחה והגנות על עלויות.',
+  },
+  en: {
+    title: 'ShmilApps AI Assistant',
+    subtitle: 'A smart chat assistant that helps visitors understand the right solution, ask questions and prepare a clear inquiry.',
+    expert: 'ShmilApps AI Expert',
+    status: 'Available for ShmilApps service questions',
+    welcome: 'Hi! I am the ShmilApps AI assistant. You can ask me about app development, management systems, websites, automation, market research, stock and crypto research, and crypto exchange investigations.',
+    suggestionsLabel: 'Suggested questions:',
+    suggestions: ['Which service fits my need?', 'How long does app development take?', 'How do we start with discovery or MVP?', 'What can automation and AI do for my business?'],
+    placeholder: 'Ask anything about ShmilApps services...',
+    send: 'Send',
+    note: 'Next we will connect a real AI here with topic limits, conversation limits and cost protections.',
+  },
+} as const;
+
 const socialLinks: SocialLink[] = [
   { name: 'LinkedIn', icon: '/brand/social/linkedin.svg', href: 'https://www.linkedin.com/company/shmilapps' },
   { name: 'Instagram', icon: 'https://api.iconify.design/skill-icons/instagram.svg', href: 'https://www.instagram.com/shmilapps/' },
@@ -306,9 +334,11 @@ export default function Home() {
   const text = content[language];
   const services = servicesContent[language];
   const appPage = appDevelopmentPage[language];
+  const aiPage = aiAssistantPage[language];
   const isHebrew = language === 'he';
   const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname;
   const isAppDevelopmentRoute = currentPath === '/services/app-development';
+  const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
       <header className="site-header" aria-label="Main navigation">
@@ -390,7 +420,49 @@ export default function Home() {
           </nav>
         </div>
       </header>
-      {isAppDevelopmentRoute ? (
+      {isAiAssistantRoute ? (
+        <section id="ai-assistant-page" className="service-page ai-page" aria-labelledby="ai-page-title">
+          <div className="service-sticky-area ai-sticky-area">
+            <div className="service-sticky-hero ai-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/ai-assistant-hero-8x1-final.png)' }} />
+            <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
+              <h2 id="ai-page-title">{aiPage.title}</h2>
+              <p>{aiPage.subtitle}</p>
+            </div>
+          </div>
+          <div className="service-page-content ai-page-content" dir={isHebrew ? 'rtl' : 'ltr'}>
+            <section className="ai-chat-shell" aria-label={aiPage.title}>
+              <header className="ai-chat-header">
+                <div className="ai-chat-title">
+                  <img src="/brand/ai/shmilapps-ai-bot-icon-192.png" alt="" />
+                  <span>
+                    <strong>{aiPage.expert}</strong>
+                    <small>{aiPage.status}</small>
+                  </span>
+                </div>
+                <span className="ai-chat-live-dot" aria-hidden="true" />
+              </header>
+              <div className="ai-chat-body">
+                <article className="ai-message ai-message-bot">
+                  <img src="/brand/ai/shmilapps-ai-bot-icon-192.png" alt="" />
+                  <div>
+                    <p>{aiPage.welcome}</p>
+                    <time>{isHebrew ? 'עכשיו' : 'Now'}</time>
+                  </div>
+                </article>
+              </div>
+              <div className="ai-suggestions" aria-label={aiPage.suggestionsLabel}>
+                <span>{aiPage.suggestionsLabel}</span>
+                {aiPage.suggestions.map((suggestion) => <button key={suggestion} type="button">{suggestion}</button>)}
+              </div>
+              <form className="ai-chat-input">
+                <input type="text" placeholder={aiPage.placeholder} aria-label={aiPage.placeholder} />
+                <button type="button">{aiPage.send}</button>
+              </form>
+            </section>
+            <p className="ai-page-note">{aiPage.note}</p>
+          </div>
+        </section>
+      ) : isAppDevelopmentRoute ? (
         <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
           <div className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/app-development-hero-10x1.png)' }} />
