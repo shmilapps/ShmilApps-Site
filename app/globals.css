@@ -2037,7 +2037,7 @@ main[dir="ltr"] .case-study-grid li {
 .case-study-video-wrap {
   margin: 26px auto 0;
   max-width: 720px;
-  border: 1px solid rgba(186, 255, 0, 0.22);
+  border: 1px solid rgba(186, 255, 0, 0.16);
   border-radius: 24px;
   overflow: hidden;
   background: #050905;
