@@ -2305,7 +2305,7 @@ main[dir="ltr"] .case-study-grid li {
 }
 
 .ai-sticky-area .ai-sticky-hero {
-  min-height: clamp(120px, 8.5vw, 178px);
+  min-height: clamp(116px, 7.8vw, 162px);
   background-size: cover;
   background-position: center;
   box-shadow: inset 0 -34px 70px rgba(0, 0, 0, 0.44), 0 0 34px rgba(139, 255, 21, 0.08);
@@ -2347,12 +2347,12 @@ main[dir="rtl"] .ai-chat-title {
 
 .ai-chat-title img,
 .ai-message > img {
-  width: 46px;
-  height: 46px;
+  width: 55px;
+  height: 55px;
   object-fit: contain;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(118, 255, 20, 0.16), rgba(1, 8, 4, 0.68));
-  box-shadow: 0 0 18px rgba(118, 255, 20, 0.35);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .ai-chat-title strong {
@@ -2515,8 +2515,8 @@ main[dir="rtl"] .ai-chat-input {
 
   .ai-chat-title img,
   .ai-message > img {
-    width: 38px;
-    height: 38px;
+    width: 46px;
+    height: 46px;
   }
 
   .ai-chat-body {
@@ -2552,3 +2552,4 @@ main[dir="rtl"] .ai-chat-input {
     padding: 0 12px;
   }
 }
+
