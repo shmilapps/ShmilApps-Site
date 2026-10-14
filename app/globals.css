@@ -2305,8 +2305,9 @@ main[dir="ltr"] .case-study-grid li {
 }
 
 .ai-sticky-area .ai-sticky-hero {
-  min-height: clamp(116px, 7.8vw, 162px);
-  background-size: contain;
+  height: 200px;
+  min-height: 200px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   box-shadow: inset 0 -34px 70px rgba(0, 0, 0, 0.44), 0 0 34px rgba(139, 255, 21, 0.08);
@@ -2500,11 +2501,12 @@ main[dir="rtl"] .ai-chat-input {
 
 @media (max-width: 900px) {
   .ai-sticky-area .ai-sticky-hero {
-    min-height: 88px;
+    height: 150px;
+    min-height: 150px;
   }
 
   .ai-page-content {
-    margin-top: 232px !important;
+    margin-top: 292px !important;
   }
 
   .ai-chat-header {
