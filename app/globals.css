@@ -1727,7 +1727,7 @@ main[dir="rtl"] .section-heading p {
 }
 
 .service-page-content {
-  margin-top: calc(clamp(120px, 10vw, 190px) + 126px) !important;
+  margin-top: calc(clamp(120px, 10vw, 190px) + 172px) !important;
 }
 
 .service-detail summary strong,
@@ -1796,7 +1796,7 @@ main[dir="ltr"] .service-contact-links a {
   }
 
   .service-page-content {
-    margin-top: 194px !important;
+    margin-top: 232px !important;
   }
 }
 
@@ -2287,6 +2287,7 @@ main[dir="ltr"] .case-study-grid li {
     top: 54px !important;
   }
 }
+
 
 
 
