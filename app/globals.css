@@ -2175,13 +2175,16 @@ main[dir="ltr"] .case-study-grid li {
 
   .site-header .ai-link::before {
     content: "AI";
-    display: block;
+    display: inline-flex;
     width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
     font-size: 0.86rem;
     font-weight: 900;
     line-height: 1;
     text-align: center;
-    transform: translateY(-0.5px);
+    transform: translate(0.5px, -0.5px);
   }
 
   .mobile-menu-button {
