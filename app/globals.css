@@ -2184,7 +2184,7 @@ main[dir="ltr"] .case-study-grid li {
     font-weight: 900;
     line-height: 1;
     text-align: center;
-    transform: translate(0.5px, -0.5px);
+    transform: translate(1px, -0.5px);
   }
 
   .mobile-menu-button {
@@ -2287,6 +2287,7 @@ main[dir="ltr"] .case-study-grid li {
     top: 54px !important;
   }
 }
+
 
 
 
