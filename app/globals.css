@@ -2314,7 +2314,8 @@ main[dir="ltr"] .case-study-grid li {
 }
 
 .ai-page-content {
-  width: min(980px, calc(100% - 32px));
+  width: min(980px, calc(100% - 48px));
+  margin-top: 330px;
 }
 
 .ai-chat-shell {
@@ -2556,8 +2557,8 @@ main[dir="rtl"] .ai-chat-input {
   }
 
   .ai-page-content {
-    width: min(100% - 18px, 980px);
-    margin-top: 292px !important;
+    width: min(100% - 28px, 980px);
+    margin-top: 338px !important;
     overflow-x: hidden;
   }
 
@@ -2569,7 +2570,20 @@ main[dir="rtl"] .ai-chat-input {
 
   .ai-chat-header {
     min-height: 64px;
-    padding: 10px 12px;
+    padding: 10px;
+  }
+
+  .ai-chat-title {
+    min-width: 0;
+  }
+
+  .ai-chat-title span {
+    min-width: 0;
+  }
+
+  .ai-chat-title strong,
+  .ai-chat-title small {
+    overflow-wrap: anywhere;
   }
 
   .ai-chat-title img,
@@ -2581,7 +2595,7 @@ main[dir="rtl"] .ai-chat-input {
   .ai-chat-body {
     min-height: 300px;
     max-height: 440px;
-    padding: 18px 10px 52px;
+    padding: 18px 8px 52px;
     overflow-x: hidden;
   }
 
