@@ -283,6 +283,7 @@ export default function Home() {
   const [aiError, setAiError] = useState('');
   const videoRef = useRef<HTMLVideoElement>(null);
   const aiChatBodyRef = useRef<HTMLDivElement>(null);
+  const aiInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const mobileViewport = window.matchMedia('(max-width: 900px)');
@@ -373,6 +374,7 @@ export default function Home() {
       setAiMessages(nextMessages);
     } finally {
       setAiLoading(false);
+      window.setTimeout(() => aiInputRef.current?.focus(), 0);
     }
   };
 
@@ -529,7 +531,7 @@ export default function Home() {
                 {aiPage.suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => sendAiMessage(suggestion)} disabled={aiLoading}>{suggestion}</button>)}
               </div>
               <form className="ai-chat-input" onSubmit={(event) => { event.preventDefault(); sendAiMessage(); }}>
-                <input type="text" value={aiInput} onChange={(event) => setAiInput(event.target.value)} placeholder={aiPage.placeholder} aria-label={aiPage.placeholder} disabled={aiLoading} maxLength={1500} />
+                <input ref={aiInputRef} type="text" value={aiInput} onChange={(event) => setAiInput(event.target.value)} placeholder={aiPage.placeholder} aria-label={aiPage.placeholder} disabled={aiLoading} maxLength={1500} />
                 <button type="submit" disabled={aiLoading}>{aiPage.send}</button>
               </form>
               {aiError ? <p className="ai-chat-error" role="alert">{aiError}</p> : null}
