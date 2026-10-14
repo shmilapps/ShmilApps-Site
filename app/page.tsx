@@ -486,6 +486,9 @@ export default function Home() {
           </div>
           <article className="case-study-card" dir={isHebrew ? 'rtl' : 'ltr'}>
             <header className="case-study-header">
+              <div className="case-study-logo-wrap">
+                <img src="/portfolio/shmilventory/shmilventory-logo.png" alt="ShmilVentory" />
+              </div>
               <h3>{portfolioCaseStudy[language].title}</h3>
               <p>{portfolioCaseStudy[language].subtitle}</p>
             </header>
@@ -507,6 +510,11 @@ export default function Home() {
                 <h4>{portfolioCaseStudy[language].resultTitle}</h4>
                 <p>{portfolioCaseStudy[language].result}</p>
               </section>
+            </div>
+            <div className="case-study-video-wrap">
+              <video controls preload="metadata" playsInline poster="/portfolio/shmilventory/shmilventory-logo.png" aria-label="ShmilVentory promotional video">
+                <source src="/portfolio/shmilventory/shmilventory-ad-web.mp4" type="video/mp4" />
+              </video>
             </div>
           </article>
         </section>

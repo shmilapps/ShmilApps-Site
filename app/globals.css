@@ -2018,3 +2018,35 @@ main[dir="ltr"] .case-study-grid li {
     grid-template-columns: 1fr;
   }
 }
+
+.case-study-logo-wrap {
+  width: min(360px, 82%);
+  margin: 0 auto 20px;
+  padding: 14px 18px;
+  border-radius: 24px;
+  background: #f7f9f3;
+  box-shadow: 0 0 28px rgba(186, 255, 0, 0.14), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.case-study-logo-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-study-video-wrap {
+  margin: 26px auto 0;
+  max-width: 720px;
+  border: 1px solid rgba(186, 255, 0, 0.16);
+  border-radius: 24px;
+  overflow: hidden;
+  background: #050905;
+  box-shadow: 0 0 30px rgba(116, 255, 22, 0.08);
+}
+
+.case-study-video-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
+}
