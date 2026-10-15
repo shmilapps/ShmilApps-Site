@@ -420,7 +420,7 @@ const needsDiscoveryPage: typeof appDevelopmentPage = {
         "summary": "מכירים את הצורך, לומדים את השטח, ממחישים פתרון ובונים תוכנית פעולה.",
         "body": [
           "מתחילים במטרות העסק, באתגרים ובתוצאה הרצויה.",
-          "לומדים את דרך העבודה באמצעות שיחות עם משתמשים, בחינת מערכות ותהליכים ותצפיות לפי הצורך.",
+          "מתאמים ביקור ועבודת שטח בעסק של הלקוח: מגדירים יחד את מטרות הביקור, המשתתפים והיקף העבודה. במהלך הביקור לומדים את דרך העבודה באמצעות שיחות עם המשתמשים, בחינת מערכות ותהליכים ותצפיות בשטח.",
           "מחברים את הצרכים העסקיים לדרישות מעשיות ומדייקים סדרי עדיפויות.",
           "ממחישים את הכיוון בתרשימים, מסכים או ניסוי ממוקד כשצריך לבדוק רעיון.",
           "מגדירים היקף, שלבים וקריטריונים להצלחה. אפשר להמשיך לליווי הפיתוח וההטמעה בהיקף שיסוכם."
@@ -536,7 +536,7 @@ const needsDiscoveryPage: typeof appDevelopmentPage = {
         "summary": "Understand the need, study the work, illustrate a solution and create an action plan.",
         "body": [
           "Start with business goals, challenges and the desired result.",
-          "Learn through user conversations, system and process reviews, and observation as needed.",
+          "Coordinate a visit and fieldwork at the client’s business: agree the visit goals, participants and scope. During the visit, learn through user conversations, system and process reviews, and firsthand observation.",
           "Turn business needs into practical requirements and priorities.",
           "Use diagrams, screens or a focused experiment to validate ideas.",
           "Agree scope, stages and success criteria. Development and rollout support can follow under an agreed scope."
@@ -761,6 +761,23 @@ export default function Home() {
       window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
     }
   };
+
+
+  useEffect(() => {
+    const revealCaseStudy = () => {
+      if (window.location.pathname !== '/services/software-management' || window.location.hash !== '#shmilaclick-example') return;
+      const target = document.getElementById('shmilaclick-example');
+      if (!(target instanceof HTMLDetailsElement)) return;
+      target.open = true;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const headerBottom = stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0;
+        window.scrollTo({ top: Math.max(0, window.scrollY + target.getBoundingClientRect().top - headerBottom - 20), behavior: 'instant' });
+      }));
+    };
+    revealCaseStudy();
+    window.addEventListener('hashchange', revealCaseStudy);
+    return () => window.removeEventListener('hashchange', revealCaseStudy);
+  }, [language]);
 
   const withLanguage = (href: string) => {
     if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return href;
@@ -1065,7 +1082,7 @@ export default function Home() {
               const isSoftwareExamplePanel = isSoftwareManagementRoute && panel.title === servicePage.panels[3].title;
               const isWebsiteExamplePanel = isWebsitesBrandingRoute && panel.title === servicePage.panels[3].title;
               return (
-              <details className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
+              <details id={isSoftwareExamplePanel ? "shmilaclick-example" : undefined} open={isSoftwareExamplePanel && typeof window !== "undefined" && window.location.hash === "#shmilaclick-example" ? true : undefined} className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
                   <span>
                     <strong>{panel.title}</strong>
@@ -1185,7 +1202,7 @@ export default function Home() {
                     <h4>{softwareCase.videoTitle}</h4>
                     <div className="case-study-video-wrap"><video controls preload="metadata" playsInline poster="/portfolio/shmilaclick/shmilaclick-video-poster.jpg" aria-label={softwareCase.videoLabel}><source src="/portfolio/shmilaclick/shmilaclick-ad-web.mp4" type="video/mp4" /></video></div>
                     <p>{softwareCase.videoNote}</p>
-                    <a className="website-case-link" href={withLanguage('/services/software-management')}>{isHebrew ? 'לדוגמה המלאה של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a>
+                    <a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לדוגמה המלאה של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a>
                   </section> : null}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
