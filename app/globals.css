@@ -2744,3 +2744,28 @@ main[dir="rtl"] .ai-chat-input {
     outline-offset: 2px;
   }
 }
+
+/* Shared hero height for every mobile page, including future service pages. */
+@media (max-width: 900px) {
+  :root {
+    --mobile-hero-height: 100px;
+  }
+
+  .hero-showcase,
+  .service-sticky-hero,
+  .service-sticky-area .service-sticky-hero,
+  .ai-sticky-area .ai-sticky-hero {
+    box-sizing: border-box;
+    height: var(--mobile-hero-height);
+    min-height: var(--mobile-hero-height);
+    max-height: var(--mobile-hero-height);
+  }
+
+  .service-page-content {
+    margin-top: calc(var(--mobile-hero-height) + 146px) !important;
+  }
+
+  .ai-page-content {
+    margin-top: calc(var(--mobile-hero-height) + 230px) !important;
+  }
+}
