@@ -2824,3 +2824,48 @@ main[dir="rtl"] .ai-chat-input {
 .shmilaclick-case {
   overflow-wrap: anywhere;
 }
+
+.website-brand-case {
+  overflow-wrap: anywhere;
+}
+
+.website-case-preview {
+  margin: 24px 0 16px;
+}
+
+.website-case-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(186, 255, 0, 0.22);
+  border-radius: 16px;
+}
+
+.website-case-preview figcaption {
+  margin-top: 10px;
+  color: #b8c4b9;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  text-align: start;
+}
+
+.website-case-link {
+  display: inline-block;
+  color: #baff00;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.7;
+  text-underline-offset: 4px;
+}
+
+/* The longer branding title needs its measured header offset on desktop too. */
+#service-websites-and-branding .service-page-content {
+  margin-top: var(--subpage-content-top, 442px) !important;
+}
+
+@media (min-width: 901px) {
+  #service-websites-and-branding .service-page-content {
+    margin-top: calc(var(--subpage-content-top, 442px) - 58px) !important;
+  }
+}

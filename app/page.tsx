@@ -144,7 +144,7 @@ const portfolioCaseStudy = {
 const serviceHrefs = [
   '/services/app-development',
   '/services/software-management',
-  '/#services',
+  '/services/websites-and-branding',
   '/#services',
   '/#services',
   '/#services',
@@ -159,7 +159,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   he: [
     { title: 'פיתוח אפליקציות', summary: 'אפליקציות מובייל ו־Web מותאמות לעסק, משלב הרעיון ועד מוצר עובד.', href: '/services/app-development' },
     { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/services/software-management' },
-    { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/#services' },
+    { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/services/websites-and-branding' },
     { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/#services' },
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/#services' },
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/#services' },
@@ -172,7 +172,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   en: [
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
     { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/services/software-management' },
-    { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/#services' },
+    { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/services/websites-and-branding' },
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/#services' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/#services' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/#services' },
@@ -344,6 +344,74 @@ const softwareManagementPage: typeof appDevelopmentPage = {
       { title: 'FAQ', summary: 'Start small, connect existing tools and tailor the interface and user permissions.', body: [], faqs: [{ question: 'Can the system connect to our existing tools?', answer: 'Often yes. We review interfaces, access permissions and available data before committing to an integration.' }, { question: 'Do all our systems need to be replaced at once?', answer: 'Not necessarily. A focused solution or management layer can be built first, with further stages as needed.' }] },
     ],
     contact: { ...appDevelopmentPage.en.contact, lines: ['Want to bring workflows and information into one system?', 'Let’s understand what to build and where to start.'] },
+  },
+};
+
+const websitesBrandingPage: typeof appDevelopmentPage = {
+  he: {
+    title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה',
+    subtitle: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.',
+    panels: [
+      { title: 'למי זה מתאים', summary: 'לעסקים שרוצים אתר שמייצג אותם וליזמים שרוצים להפוך מוצר תוכנה למותג שלם ומזוהה.', body: ['מהרעיון ועד למותג שאפשר לראות, לחוות ולזכור.', 'אתרי עסק ומותגי תוכנה שנבנים סביב הזהות, הקהל והמטרות שלכם — עם תשומת לב לכל פרט ולכל פיקסל.', 'אפשר לבנות אתר לעסק קיים, להשיק מוצר תוכנה חדש, לעצב מחדש נוכחות דיגיטלית או ליצור את המעטפת כולה מאפס.'] },
+      { title: 'תוצרים שיתקבלו', summary: 'מעטפת מלאה לפי הצורך: זהות מותג, תוכן, אתר, עיצוב, מדיה, חוויות אינטראקטיביות וחיבורים.', body: ['השירות יכול לכלול את כל המרכיבים שהעסק או המוצר צריכים. בוחרים יחד מה מתאים לרצון, לקהל, לתקציב ולהיקף העבודה.'], bullets: ['בחירת שם, מסרים ובידול', 'לוגו ושפה חזותית', 'תכנון מבנה האתר וחוויית המשתמש', 'כתיבת תוכן ושפות נוספות לפי הצורך', 'עיצוב ופיתוח אתר עסק, אתר מוצר או דף נחיתה', 'תמונות, הירואים, סרטונים ואנימציות', 'התאמה למחשב, לטאבלט ולמובייל', 'חוויות אינטראקטיביות ועוזרי AI', 'חיבור לכלים ומערכות עסקיות לפי הצורך', 'חומרי השקה ונכסים דיגיטליים למותג', 'הגדרות בסיס לחיפוש ולנגישות בהתאם להיקף שסוכם', 'בדיקות, העלאה לאוויר והדרכה'] },
+      { title: 'התהליך', summary: 'מכירים את העסק והקהל, מגדירים את המותג והמסרים, מעצבים, מפתחים ובודקים עד להשקה.', body: ['מתחילים בשיחת היכרות: מה העסק או המוצר עושים, למי הם פונים ומה האתר צריך להשיג.', 'מגבשים את המסרים, הזהות, השפה החזותית ומבנה העמודים. אפשר לכלול גם שם, לוגו ותכנון חומרי ההשקה.', 'יוצרים תוכן, עיצוב ומדיה, ומפתחים את האתר והחוויות שנבחרו. בוחנים טכנולוגיות ואפקטים בהתאם לערך שהם מוסיפים ולנוחות השימוש.', 'בודקים גדלי מסך, שפות, כיווניות, קישורים, טעינה וזרימת שימוש. לאחר אישור עולים לאוויר, מדריכים וממשיכים לשפר בהתאם לצורך.'] },
+      { title: 'עבודה לדוגמה', summary: 'אתר ShmilApps — החיבור בין מותג, תוכן, עיצוב, מדיה וטכנולוגיה, עם תשומת לב לכל פרט ולכל פיקסל.', body: [] },
+      { title: 'תמחור', summary: 'המחיר מותאם למעטפת הנדרשת: מאתר ממוקד ועד לפיתוח מותג ונוכחות דיגיטלית מקצה לקצה.', body: ['המחיר תלוי בהיקף המיתוג, מספר העמודים, עומק התוכן, כמות השפות, המדיה, האינטראקטיביות והחיבורים.', 'מגדירים מראש תוצרים, שלבים והיקף עבודה. אפשר להתחיל בליבה ולהרחיב בהמשך, בהתאם לצורך ולהיקף שסוכם.', 'אחסון, דומיין, שירותי צד שלישי ותחזוקה מתומחרים או מוסדרים לפי ההצעה. ניתן לתאם בנפרד תמיכה ועדכונים שוטפים.'] },
+      { title: 'לוחות זמנים', summary: 'נקבעים לפי היקף האתר, עבודת המיתוג, יצירת המדיה והחיבורים הנדרשים.', body: ['דף נחיתה ממוקד, אתר עסק ואתר מוצר עשיר דורשים היקפי עבודה שונים. קובעים לוח זמנים ואבני דרך אחרי הבנת הצורך.', 'איסוף חומרים, יצירת תוכן, תרגום ומשוב על העיצוב משפיעים על ההתקדמות. ניתן להשיק בשלבים ולהוסיף יכולות בהמשך.'] },
+      { title: 'שאלות נפוצות', summary: 'אפשר להתחיל בלי לוגו או תוכן, לשדרג אתר קיים ולשלב מדיה ו־AI כחלק מהפתרון.', body: [], faqs: [{ question: 'אין לי עדיין שם, לוגו או טקסטים. אפשר להתחיל?', answer: 'כן. אפשר לבנות יחד את המעטפת מתחילתה, או לעבוד עם חומרים וזהות קיימים.' }, { question: 'אפשר לשלב סרטונים, אנימציות ועוזר AI?', answer: 'כן, בהתאם לצורך ולהיקף שסוכם, תוך התחשבות במהירות, בקריאות ובנוחות השימוש.' }, { question: 'האתר יהיה מותאם למובייל ולשפות נוספות?', answer: 'ההתאמה למכשירים היא חלק מהתכנון. שפות נוספות ותרגום מוגדרים לפי הפרויקט.' }, { question: 'אפשר להמשיך לפתח את האתר אחרי ההשקה?', answer: 'כן. אפשר להוסיף עמודים, מדיה, יכולות וחיבורים, ולתאם תחזוקה ותמיכה בהמשך.' }] },
+    ],
+    contact: { ...appDevelopmentPage.he.contact, lines: ['רוצים אתר שמייצג אתכם או מותג שלם למוצר התוכנה שלכם?', 'ספרו לנו מה אתם מדמיינים, ונבנה יחד את הדרך לנוכחות דיגיטלית ברורה, מקצועית ומזוהה.'] },
+  },
+  en: {
+    title: 'Business websites and software brand development',
+    subtitle: 'Business sites, landing pages and digital assets that present the business or software product professionally.',
+    panels: [
+      { title: 'Who it fits', summary: 'For businesses that need a website reflecting their identity and founders turning software products into recognizable brands.', body: ['From an idea to a brand people can see, experience and remember.', 'Business websites and software brands built around your identity, audience and goals, with attention to every detail and every pixel.', 'Create a website for an existing business, launch a software product, refresh a digital presence or build the complete package from scratch.'] },
+      { title: 'Deliverables', summary: 'A complete package as needed: brand identity, content, website, design, media, interactive experiences and integrations.', body: ['The service can cover everything your business or product needs. We define the right combination around your goals, audience, budget and agreed scope.'], bullets: ['Naming, messaging and positioning', 'Logo and visual identity', 'Website structure and user experience', 'Content and additional languages as needed', 'Business website, product site or landing page design and development', 'Images, hero artwork, videos and animation', 'Desktop, tablet and mobile layouts', 'Interactive experiences and AI assistants', 'Business tool and system integrations as needed', 'Launch materials and digital brand assets', 'Basic search and accessibility setup within the agreed scope', 'Testing, launch and training'] },
+      { title: 'The process', summary: 'Understand the business and audience, define identity and messaging, design, develop and test through launch.', body: ['Start with the business or product, its audience and the website’s goals.', 'Define messaging, identity, visual language and page structure, including naming, logo and launch materials when needed.', 'Create content, design and media, then develop the website and chosen experiences. Technology and effects are selected for the value and usability they add.', 'Check screen sizes, languages, text direction, links, loading and user journeys. After approval, launch, hand over and improve as needed.'] },
+      { title: 'Example project', summary: 'The ShmilApps website — brand, content, design, media and technology, with attention to every detail and every pixel.', body: [] },
+      { title: 'Pricing', summary: 'Tailored to the package, from a focused website to complete brand and digital presence development.', body: ['Pricing depends on branding scope, page count, content, languages, media, interactivity and integrations.', 'Deliverables, stages and scope are agreed in advance. Start with the core and expand later, according to your needs and the agreed scope.', 'Hosting, domains, third-party services and maintenance are arranged according to the proposal. Ongoing support and updates can be agreed separately.'] },
+      { title: 'Timelines', summary: 'Based on website scope, branding work, media creation and required integrations.', body: ['A focused landing page, business website and rich product site involve different workloads. We agree on timing and milestones after discovery.', 'Source materials, content creation, translation and design feedback affect progress. Staged launches can add capabilities over time.'] },
+      { title: 'FAQ', summary: 'Start without a logo or copy, refresh an existing site and include media or AI in the solution.', body: [], faqs: [{ question: 'Can we start without a name, logo or website copy?', answer: 'Yes. We can build the package from the beginning or work with an existing identity and materials.' }, { question: 'Can you include video, animation and an AI assistant?', answer: 'Yes, according to the agreed needs and scope, with attention to speed, readability and usability.' }, { question: 'Will the site work on mobile and in other languages?', answer: 'Device adaptation is part of the design. Additional languages and translation are defined for the project.' }, { question: 'Can the website keep evolving after launch?', answer: 'Yes. Add pages, media, features and integrations, with maintenance and support agreed as needed.' }] },
+    ],
+    contact: { ...appDevelopmentPage.en.contact, lines: ['Want a website that represents you or a complete brand for your software product?', 'Tell us what you have in mind, and we will plan a clear, professional and recognizable digital presence together.'] },
+  },
+};
+
+const websiteBrandCaseStudy = {
+  he: {
+    title: 'אתר ShmilApps',
+    subtitle: 'מהרעיון ועד למותג שאפשר לראות, לחוות ולזכור',
+    intro: 'האתר שבו אתם נמצאים הוא דוגמה לחיבור בין מיתוג, תוכן, עיצוב ופיתוח. כל חלק נבנה כחלק מחוויה אחת: זהות שחורה־ירוקה, דמות רובוט מזוהה, סרטון מותג, הירואים ייעודיים, שפות וניווט עקביים ועוזר AI.',
+    benefitsTitle: 'יתרונות מרכזיים',
+    benefits: ['זהות מותג עקבית — צבעים, מסרים, מדיה ודמות שמחברים בין העמודים.', 'תשומת לב לכל פרט ולכל פיקסל — טיפוגרפיה, יישור, ריווח, כפתורים והתנהגות במכשירים שונים.', 'חוויה בשתי שפות — עברית ואנגלית, עם התאמה לכיווניות ולניווט.', 'מדיה עשירה — סרטון מותג והירואים שנוצרו במיוחד לכל שירות.', 'עוזר AI פעיל — הכוונה ראשונית לשירותים ולצורכי המבקר.', 'בסיס מתפתח — אפשרות להוסיף בהמשך עמודים, תוכן, טכנולוגיות וחוויות חדשות.'],
+    techTitle: 'טכנולוגיות ויכולות',
+    tech: 'האתר משלב פיתוח ב־React ו־TypeScript, עיצוב רספונסיבי, וידאו, אייקונים וגרפיקה, תמונות WebP מותאמות לטעינה ועוזר AI המחובר לשירות שרת. תהליך העדכון מחבר בין ניהול הקוד לפרסום האתר.',
+    processTitle: 'תהליך העבודה',
+    process: 'העבודה התחילה בהגדרת המותג והמסרים והתקדמה לתוכן, מדיה, ניווט ודפי שירות. העיצוב וההתנהגות נבדקים ומשתפרים במחשב ובמובייל, עם התאמות לכל שפה ולכל אזור באתר.',
+    resultTitle: 'התוצאה',
+    result: 'נוכחות דיגיטלית שמציגה את השירותים, מדגימה יכולות בפועל ומאפשרת למבקר להבין מה מתאים לו וליצור קשר. האתר ממשיך להתפתח; יכולות נוספות יוצגו לאחר שייושמו.',
+    previewTitle: 'מבט על האתר',
+    screenshot: '/portfolio/shmilapps/shmilapps-home-he.webp',
+    screenshotAlt: 'צילום דף הבית של ShmilApps בעברית עם סרטון הגלקסיה והמיתוג הירוק',
+    linkText: 'לצפייה בדף הבית',
+  },
+  en: {
+    title: 'The ShmilApps website',
+    subtitle: 'From an idea to a brand people can see, experience and remember',
+    intro: 'The website you are visiting brings branding, content, design and development into one experience: a black-and-green identity, recognizable robot mascot, brand video, dedicated service heroes, consistent bilingual navigation and an AI assistant.',
+    benefitsTitle: 'Key benefits',
+    benefits: ['Consistent brand identity across colors, messaging, media and the mascot.', 'Attention to every detail and every pixel, from typography and spacing to controls and device behavior.', 'A bilingual experience in Hebrew and English, with appropriate text direction and navigation.', 'Rich media, including a brand video and purpose-made service hero artwork.', 'An active AI assistant that helps visitors explore services and clarify their needs.', 'An evolving foundation for additional pages, content, technologies and experiences.'],
+    techTitle: 'Technologies and capabilities',
+    tech: 'React and TypeScript development, responsive styling, video, icons and graphics, WebP images optimized for loading, and an AI assistant connected to a server endpoint. Code management is connected to website publishing.',
+    processTitle: 'The work behind it',
+    process: 'The work started with identity and messaging, followed by content, media, navigation and service pages. Design and behavior are tested and refined on desktop and mobile, with adjustments for each language and page area.',
+    resultTitle: 'The result',
+    result: 'A digital presence that explains services, demonstrates working capabilities and helps visitors find the right direction and get in touch. The website keeps evolving; further capabilities will be presented after implementation.',
+    previewTitle: 'A look at the website',
+    screenshot: '/portfolio/shmilapps/shmilapps-home-en.webp',
+    screenshotAlt: 'ShmilApps English homepage screenshot with the galaxy video and green brand identity',
+    linkText: 'View the homepage',
   },
 };
 
@@ -561,10 +629,12 @@ export default function Home() {
   const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname;
   const isAppDevelopmentRoute = currentPath === '/services/app-development';
   const isSoftwareManagementRoute = currentPath === '/services/software-management';
-  const servicePage = isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const isWebsitesBrandingRoute = currentPath === '/services/websites-and-branding';
+  const servicePage = isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isSoftwareManagementRoute ? 'software-management' : 'app-development';
-  const serviceHero = isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceId = isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const websiteCase = websiteBrandCaseStudy[language];
+  const serviceHero = isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -743,7 +813,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
@@ -756,6 +826,7 @@ export default function Home() {
             {servicePage.panels.map((panel) => {
               const isExamplePanel = isAppDevelopmentRoute && panel.title === servicePage.panels[3].title;
               const isSoftwareExamplePanel = isSoftwareManagementRoute && panel.title === servicePage.panels[3].title;
+              const isWebsiteExamplePanel = isWebsitesBrandingRoute && panel.title === servicePage.panels[3].title;
               return (
               <details className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
@@ -844,7 +915,34 @@ export default function Home() {
                       <p className="case-study-context">{softwareCase.context}</p>
                     </article>
                   ) : null}
-                  {!isExamplePanel && !isSoftwareExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
+                  {isWebsiteExamplePanel ? (
+                    <article className="case-study-card service-example-card website-brand-case" dir={isHebrew ? 'rtl' : 'ltr'}>
+                      <header className="case-study-header">
+                        <h3>{websiteCase.title}</h3>
+                        <p>{websiteCase.subtitle}</p>
+                      </header>
+                      <div className="case-study-body"><p>{websiteCase.intro}</p></div>
+                      <div className="case-study-grid">
+                        <section>
+                          <h4>{websiteCase.benefitsTitle}</h4>
+                          <ul>{websiteCase.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
+                        </section>
+                        <section>
+                          <h4>{websiteCase.techTitle}</h4><p>{websiteCase.tech}</p>
+                          <h4>{websiteCase.processTitle}</h4><p>{websiteCase.process}</p>
+                          <h4>{websiteCase.resultTitle}</h4><p>{websiteCase.result}</p>
+                        </section>
+                      </div>
+                      <figure className="website-case-preview">
+                        <a href={withLanguage('/#home')}>
+                          <img src={websiteCase.screenshot} alt={websiteCase.screenshotAlt} loading="lazy" />
+                        </a>
+                        <figcaption>{websiteCase.previewTitle}</figcaption>
+                      </figure>
+                      <a className="website-case-link" href={withLanguage('/#home')}>{websiteCase.linkText}</a>
+                    </article>
+                  ) : null}
+                  {!isExamplePanel && !isSoftwareExamplePanel && !isWebsiteExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
                 </div>
