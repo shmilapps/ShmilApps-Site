@@ -544,6 +544,30 @@ export default function Home() {
                 <span>{aiPage.suggestionsLabel}</span>
                 {aiPage.suggestions.map((suggestion) => <button key={suggestion} type="button" onClick={() => sendAiMessage(suggestion)} disabled={aiLoading}>{suggestion}</button>)}
               </div>
+              <details
+                className="ai-suggestions-mobile"
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                    event.currentTarget.open = false;
+                  }
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') {
+                    event.currentTarget.open = false;
+                    event.currentTarget.querySelector('summary')?.focus();
+                  }
+                }}
+              >
+                <summary>{isHebrew ? 'שאלות מומלצות' : 'Suggested questions'}</summary>
+                <div className="ai-suggestions-mobile-list">
+                  {aiPage.suggestions.map((suggestion) => (
+                    <button key={suggestion} type="button" disabled={aiLoading} onClick={(event) => {
+                      event.currentTarget.closest('details')?.removeAttribute('open');
+                      sendAiMessage(suggestion);
+                    }}>{suggestion}</button>
+                  ))}
+                </div>
+              </details>
               <form className="ai-chat-input" onSubmit={(event) => { event.preventDefault(); sendAiMessage(); }}>
                 <textarea
                   ref={aiInputRef}
