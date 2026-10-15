@@ -145,7 +145,7 @@ const serviceHrefs = [
   '/services/app-development',
   '/services/software-management',
   '/services/websites-and-branding',
-  '/#services',
+  '/services/needs-discovery-fde',
   '/#services',
   '/#services',
   '/#services',
@@ -160,7 +160,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'פיתוח אפליקציות', summary: 'אפליקציות מובייל ו־Web מותאמות לעסק, משלב הרעיון ועד מוצר עובד.', href: '/services/app-development' },
     { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/services/software-management' },
     { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/services/websites-and-branding' },
-    { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/#services' },
+    { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/services/needs-discovery-fde' },
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/#services' },
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/#services' },
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/#services' },
@@ -173,7 +173,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
     { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/services/software-management' },
     { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/services/websites-and-branding' },
-    { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/#services' },
+    { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/services/needs-discovery-fde' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/#services' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/#services' },
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/#services' },
@@ -376,6 +376,241 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
     ],
     contact: { ...appDevelopmentPage.en.contact, lines: ['Want a website that represents you or a complete brand for your software product?', 'Tell us what you have in mind, and we will plan a clear, professional and recognizable digital presence together.'] },
   },
+};
+
+const needsDiscoveryPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "אפיון צרכים ותכנון פתרונות בגישת FDE",
+    "subtitle": "הפתרון הנכון מתחיל בהבנת העבודה האמיתית.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "לעסקים וארגונים שרוצים להבין מה באמת צריך לשפר, לפני שמחליטים מה לפתח.",
+        "body": [
+          "נכנסים לעומק הפעילות, מקשיבים לאנשים שעושים את העבודה וממפים תהליכים ומערכות. מזהים היכן אפשר לחסוך זמן, להפחית טעויות ולשפר תוצאות.",
+          "FDE הוא קיצור של Forward Deployed Engineering: גישה הנדסית שמתחילה קרוב למשתמשים ולתהליכים שלהם, כולל עבודה אצל הלקוח בהתאם לצורך ולהיקף שסוכם."
+        ],
+        "bullets": [
+          "תהליכים מסורבלים שהפתרון עבורם עדיין לא ברור",
+          "מידע ועבודה שמפוזרים בין אקסלים, הודעות ומערכות",
+          "תכנון מערכת, אפליקציה, אוטומציה או שילוב AI",
+          "מערכת קיימת שכבר אינה עונה לצרכים",
+          "בחירה בין פיתוח חדש, חיבור מערכות ושימוש בכלי קיים"
+        ]
+      },
+      {
+        "title": "תוצרים שיתקבלו",
+        "summary": "מפת צרכים ותוכנית מעשית שאפשר להתקדם איתן לקבלת החלטות ולביצוע.",
+        "body": [
+          "התוצרים מותאמים להיקף הפרויקט ומוגדרים מראש."
+        ],
+        "bullets": [
+          "מיפוי משתמשים, תהליכים, מערכות ומקורות מידע",
+          "זיהוי בעיות, צווארי בקבוק והזדמנויות לשיפור",
+          "הגדרת מטרות, דרישות וסדרי עדיפויות",
+          "תכנון תהליכי עבודה וחוויית שימוש",
+          "תרשימי זרימה, סקיצות מסכים או אבטיפוס לפי הצורך",
+          "מיפוי חיבורים, הרשאות ותלויות",
+          "חלוקה לשלבי ביצוע והגדרת גרסה ראשונה שימושית",
+          "מדדים לבדיקת הצלחת הפתרון"
+        ]
+      },
+      {
+        "title": "התהליך",
+        "summary": "מכירים את הצורך, לומדים את השטח, ממחישים פתרון ובונים תוכנית פעולה.",
+        "body": [
+          "מתחילים במטרות העסק, באתגרים ובתוצאה הרצויה.",
+          "לומדים את דרך העבודה באמצעות שיחות עם משתמשים, בחינת מערכות ותהליכים ותצפיות לפי הצורך.",
+          "מחברים את הצרכים העסקיים לדרישות מעשיות ומדייקים סדרי עדיפויות.",
+          "ממחישים את הכיוון בתרשימים, מסכים או ניסוי ממוקד כשצריך לבדוק רעיון.",
+          "מגדירים היקף, שלבים וקריטריונים להצלחה. אפשר להמשיך לליווי הפיתוח וההטמעה בהיקף שיסוכם."
+        ]
+      },
+      {
+        "title": "עבודה לדוגמה",
+        "summary": "ShmilaClick: היכרות יומיומית עם השטח, משני צדי התהליך, שהפכה למערכת עבודה שימושית.",
+        "body": [
+          "היתרון התחיל בהיכרות יומיומית עם השטח. ליאור ניהל את מערך האחזקה באזור ובמקביל הוביל את פיתוח המערכת. ההיכרות עם האנשים, הציוד וההחלטות שנדרשו בזמן אמת אפשרה לתרגם צרכים אמיתיים לפתרון שהשתלב בעבודה.",
+          "מידע שהיה מפוזר בין מערכות רבות, בעלי תפקידים עם צרכים שונים וסביבת ייצור שפועלת מסביב לשעון הובילו לפיתוח סביבת עבודה חזותית ואחידה.",
+          "כך יתרונות גישת FDE באו לידי ביטוי בפועל: זיהוי בעיות מתוך העבודה עצמה, הבנת המידע שכל תפקיד צריך, משוב ישיר ממשתמשים והתאמות לפי השימוש היומיומי.",
+          "המערכת הבשילה לאורך כחמש שנים, הוטמעה בשני מפעלי ייצור ושימשה כ־1,000 משתמשים. הניסיון משני הצדדים עזר לחבר בין הצורך התפעולי לבין הפתרון הטכנולוגי.",
+          "זו דוגמה לניסיון מקצועי קודם של המייסד, ולא מוצר מסחרי של ShmilApps."
+        ]
+      },
+      {
+        "title": "תמחור",
+        "summary": "הצעת עבודה מותאמת למורכבות התהליכים, למערכות ולרמת הפירוט הנדרשת.",
+        "body": [
+          "לאחר שיחת היכרות נגדיר היקף עבודה ותוצרים ברורים. אפשר להתחיל במיקוד צורך נקודתי, לבצע אפיון פרויקט או לשלב ליווי לאורך הביצוע.",
+          "פיתוח והטמעה, אם נדרשים, מוגדרים בנפרד או כחלק מחבילה מוסכמת."
+        ]
+      },
+      {
+        "title": "לוחות זמנים",
+        "summary": "שלבים ולוח זמנים מוסכם לפי ההיקף, זמינות בעלי התפקידים והמידע הנדרש.",
+        "body": [
+          "משך העבודה תלוי במספר התהליכים, המשתמשים והמערכות וברמת הפירוט. בתחילת העבודה נגדיר אבני דרך ותוצרים לכל שלב."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "אפשר להתחיל גם מבעיה חוזרת, לבדוק מערכת קיימת ולהמשיך לפיתוח ולהטמעה.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "צריך להגיע עם רעיון מגובש?",
+            "answer": "אפשר להתחיל גם מבעיה חוזרת או מתחושה שיש דרך טובה יותר לעבוד."
+          },
+          {
+            "question": "האם כל אפיון מוביל לפיתוח חדש?",
+            "answer": "לעיתים הפתרון הוא שינוי תהליך, חיבור מערכות או כלי קיים."
+          },
+          {
+            "question": "אפשר לאפיין מערכת שכבר קיימת?",
+            "answer": "כן. מזהים פערים ומתכננים שיפור או הרחבה."
+          },
+          {
+            "question": "אפשר לקבל גם פיתוח והטמעה?",
+            "answer": "כן, אפשר להמשיך לביצוע ולליווי השימוש לפי היקף שיוגדר."
+          },
+          {
+            "question": "איפה AI נכנס לתהליך?",
+            "answer": "בוחנים היכן הוא תורם, תוך התייחסות לדיוק, עלות, פרטיות ותחזוקה."
+          },
+          {
+            "question": "איך יודעים שהפתרון עובד?",
+            "answer": "מגדירים מראש תוצאות ומדדים ובודקים אותם עם המשתמשים."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "יש תהליך שמסבך לכם את העבודה?",
+      "lines": [
+        "בואו נבין אותו יחד.",
+        "ספרו לנו איך אתם עובדים היום, איפה הקושי ומה הייתם רוצים לשפר."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Needs discovery and solution planning with FDE",
+    "subtitle": "The right solution starts with understanding real work.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "Businesses and organizations that want to understand what to improve before deciding what to build.",
+        "body": [
+          "We learn how people work, map processes and systems, and identify opportunities to save time, reduce errors and improve results.",
+          "FDE stands for Forward Deployed Engineering: an engineering approach close to users and their workflows, including on-site work according to the agreed scope."
+        ],
+        "bullets": [
+          "Difficult workflows without a clear solution",
+          "Work scattered across spreadsheets, messages and systems",
+          "Planning software, an app, automation or AI",
+          "Existing systems that no longer meet needs",
+          "Choosing between new development, integrations and existing tools"
+        ]
+      },
+      {
+        "title": "Deliverables",
+        "summary": "A needs map and practical plan for decisions and implementation.",
+        "body": [
+          "Deliverables are tailored to the project and agreed in advance."
+        ],
+        "bullets": [
+          "Users, workflows, systems and data sources",
+          "Problems, bottlenecks and improvement opportunities",
+          "Goals, requirements and priorities",
+          "Workflows and user experience",
+          "Flow diagrams, screen sketches or a prototype as needed",
+          "Integrations, permissions and dependencies",
+          "Delivery stages and a useful first version",
+          "Success measures"
+        ]
+      },
+      {
+        "title": "The process",
+        "summary": "Understand the need, study the work, illustrate a solution and create an action plan.",
+        "body": [
+          "Start with business goals, challenges and the desired result.",
+          "Learn through user conversations, system and process reviews, and observation as needed.",
+          "Turn business needs into practical requirements and priorities.",
+          "Use diagrams, screens or a focused experiment to validate ideas.",
+          "Agree scope, stages and success criteria. Development and rollout support can follow under an agreed scope."
+        ]
+      },
+      {
+        "title": "Example project",
+        "summary": "ShmilaClick: firsthand operational and development experience shaped a useful working system.",
+        "body": [
+          "Lior managed maintenance in the operational area while also leading system development. Daily knowledge of the people, equipment and real-time decisions helped translate actual needs into a solution that fit the work.",
+          "Fragmented information, different user roles and round-the-clock manufacturing led to a shared visual workspace.",
+          "The benefits associated with FDE are clear in this experience: discovering problems through real work, understanding what each role needs, receiving direct feedback and adapting to daily use.",
+          "The system evolved over approximately five years, was deployed in two manufacturing plants and served approximately 1,000 users. Experience on both sides connected operational needs with technical decisions.",
+          "This is the founder’s previous professional experience, not a commercial ShmilApps product."
+        ]
+      },
+      {
+        "title": "Pricing",
+        "summary": "Tailored to process complexity, systems and the required level of detail.",
+        "body": [
+          "After an introductory conversation, we agree clear scope and deliverables. Options include focused discovery, project specification and ongoing implementation support.",
+          "Development and rollout are scoped separately or included in an agreed package."
+        ]
+      },
+      {
+        "title": "Timelines",
+        "summary": "Agreed milestones based on scope, stakeholder availability and the information required.",
+        "body": [
+          "Timing depends on processes, users, systems and the required detail. We define milestones and deliverables at the beginning."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "Start with a recurring problem, review an existing system or continue through development and rollout.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Do I need a fully formed idea?",
+            "answer": "No. A recurring problem or an opportunity to improve is enough to start."
+          },
+          {
+            "question": "Does every specification lead to new development?",
+            "answer": "Sometimes a process change, integration or existing tool is the right solution."
+          },
+          {
+            "question": "Can you review an existing system?",
+            "answer": "Yes. We identify gaps and plan improvements or extensions."
+          },
+          {
+            "question": "Can development and rollout follow?",
+            "answer": "Yes, under an agreed scope."
+          },
+          {
+            "question": "Where does AI fit?",
+            "answer": "We assess its value alongside accuracy, cost, privacy and maintenance."
+          },
+          {
+            "question": "How is success checked?",
+            "answer": "We agree results and measures up front and validate them with users."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Is a workflow making work harder?",
+      "lines": [
+        "Let’s understand it together.",
+        "Tell us how you work today, what gets in the way and what you want to improve."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
 };
 
 const websiteBrandCaseStudy = {
@@ -630,11 +865,12 @@ export default function Home() {
   const isAppDevelopmentRoute = currentPath === '/services/app-development';
   const isSoftwareManagementRoute = currentPath === '/services/software-management';
   const isWebsitesBrandingRoute = currentPath === '/services/websites-and-branding';
-  const servicePage = isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const isFdeRoute = currentPath === '/services/needs-discovery-fde';
+  const servicePage = isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -813,7 +1049,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
@@ -824,6 +1060,7 @@ export default function Home() {
           </div>
           <div className="service-page-content">
             {servicePage.panels.map((panel) => {
+              const isFdeExamplePanel = isFdeRoute && panel.title === servicePage.panels[3].title;
               const isExamplePanel = isAppDevelopmentRoute && panel.title === servicePage.panels[3].title;
               const isSoftwareExamplePanel = isSoftwareManagementRoute && panel.title === servicePage.panels[3].title;
               const isWebsiteExamplePanel = isWebsitesBrandingRoute && panel.title === servicePage.panels[3].title;
@@ -943,6 +1180,13 @@ export default function Home() {
                     </article>
                   ) : null}
                   {!isExamplePanel && !isSoftwareExamplePanel && !isWebsiteExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
+
+                  {isFdeExamplePanel ? <section className="case-study-demo" aria-label={softwareCase.videoTitle}>
+                    <h4>{softwareCase.videoTitle}</h4>
+                    <div className="case-study-video-wrap"><video controls preload="metadata" playsInline poster="/portfolio/shmilaclick/shmilaclick-video-poster.jpg" aria-label={softwareCase.videoLabel}><source src="/portfolio/shmilaclick/shmilaclick-ad-web.mp4" type="video/mp4" /></video></div>
+                    <p>{softwareCase.videoNote}</p>
+                    <a className="website-case-link" href={withLanguage('/services/software-management')}>{isHebrew ? 'לדוגמה המלאה של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a>
+                  </section> : null}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
                 </div>
