@@ -285,6 +285,23 @@ export default function Home() {
   const aiChatBodyRef = useRef<HTMLDivElement>(null);
   const aiInputRef = useRef<HTMLTextAreaElement>(null);
   const aiSendingRef = useRef(false);
+  const stickyHeroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const stickyHero = stickyHeroRef.current;
+    if (!stickyHero) return;
+    const updateContentOffset = () => {
+      document.documentElement.style.setProperty('--subpage-content-top', `${stickyHero.getBoundingClientRect().bottom + 20}px`);
+    };
+    const observer = new ResizeObserver(updateContentOffset);
+    observer.observe(stickyHero);
+    updateContentOffset();
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty('--subpage-content-top');
+    };
+  }, []);
+
 
   useEffect(() => {
     const mobileViewport = window.matchMedia('(max-width: 900px)');
@@ -497,7 +514,7 @@ export default function Home() {
       </header>
       {isAiAssistantRoute ? (
         <section id="ai-assistant-page" className="service-page ai-page" aria-labelledby="ai-page-title">
-          <div className="service-sticky-area ai-sticky-area">
+          <div ref={stickyHeroRef} className="service-sticky-area ai-sticky-area">
             <div className="service-sticky-hero ai-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/ai-assistant-hero-6500x500.png)' }} />
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id="ai-page-title">{aiPage.title}</h2>
@@ -593,7 +610,7 @@ export default function Home() {
         </section>
       ) : isAppDevelopmentRoute ? (
         <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
-          <div className="service-sticky-area">
+          <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/app-development-hero-10x1.png)' }} />
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id="app-development-title">{appPage.title}</h2>

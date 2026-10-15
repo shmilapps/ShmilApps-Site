@@ -487,7 +487,7 @@ main[dir="ltr"] .nav-menu {
   left: auto;
   width: 100%;
   height: max(500px, 31.49vw);
-  min-height: 520px;
+  min-height: 500px;
   margin: 0 0 48px;
   transform: none;
   overflow: hidden;
@@ -2745,27 +2745,40 @@ main[dir="rtl"] .ai-chat-input {
   }
 }
 
-/* Shared hero height for every mobile page, including future service pages. */
+/* Shared image hero rule for existing and future subpages. */
+:root {
+  --subpage-hero-height: 200px;
+}
+
+.service-sticky-hero,
+.service-sticky-area .service-sticky-hero,
+.ai-sticky-area .ai-sticky-hero {
+  box-sizing: border-box;
+  height: var(--subpage-hero-height);
+  min-height: var(--subpage-hero-height);
+  max-height: var(--subpage-hero-height);
+}
+
+.service-page-content:not(.ai-page-content) {
+  margin-top: calc(var(--subpage-hero-height) + 126px) !important;
+}
+
 @media (max-width: 900px) {
   :root {
-    --mobile-hero-height: 100px;
+    --subpage-hero-height: 80px;
   }
 
-  .hero-showcase,
-  .service-sticky-hero,
-  .service-sticky-area .service-sticky-hero,
-  .ai-sticky-area .ai-sticky-hero {
-    box-sizing: border-box;
-    height: var(--mobile-hero-height);
-    min-height: var(--mobile-hero-height);
-    max-height: var(--mobile-hero-height);
+  .hero-showcase {
+    height: 33.333svh;
+    min-height: 200px;
+    max-height: none;
   }
 
-  .service-page-content {
-    margin-top: calc(var(--mobile-hero-height) + 146px) !important;
+  .service-page-content:not(.ai-page-content) {
+    margin-top: var(--subpage-content-top, calc(var(--subpage-hero-height) + 200px)) !important;
   }
 
   .ai-page-content {
-    margin-top: calc(var(--mobile-hero-height) + 230px) !important;
+    margin-top: var(--subpage-content-top, calc(var(--subpage-hero-height) + 230px)) !important;
   }
 }
