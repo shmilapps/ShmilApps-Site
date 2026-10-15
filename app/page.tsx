@@ -611,7 +611,7 @@ export default function Home() {
       ) : isAppDevelopmentRoute ? (
         <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
           <div ref={stickyHeroRef} className="service-sticky-area">
-            <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/app-development-hero-10x1.png)' }} />
+            <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/app-development-hero-6500x500-v2.webp)' }} />
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id="app-development-title">{appPage.title}</h2>
               <p>{appPage.subtitle}</p>
