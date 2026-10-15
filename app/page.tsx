@@ -217,6 +217,105 @@ const appDevelopmentPage: Record<'he' | 'en', { title: string; subtitle: string;
 };
 
 
+const shmilaClickCaseStudy = {
+  he: {
+    quote: '״אין מפעל מוליכים למחצה שלא ירצה מערכת כזו…״',
+    title: 'המערכת ShmilaClick',
+    subtitle: 'תמונת מצב חזותית לרצפת הייצור',
+    intro: 'מערכת שמרכזת מידע ממערכות שונות על גבי מפה חזותית של הציוד, ומאפשרת להבין במהירות מה עובד, היכן נדרשת תשומת לב ומה צריך לבדוק עכשיו.',
+    challengeTitle: 'האתגר בשטח',
+    challenge: 'מאות תאי עיבוד, תהליכים רבים ומידע המפוזר בין מערכות ודוחות. מנהל או מהנדס במשמרת צריך להבין במהירות את מצב הציוד, סדרי העדיפויות והפעילויות המתוכננות.',
+    howTitle: 'איך המערכת עובדת',
+    how: 'מפה חזותית של האזור מציגה את הציוד במיקומו ואת הסטטוסים שלו. לחיצה על מכונה פותחת מידע רלוונטי: היסטוריה ותקלות, פקודות עבודה, נתוני תהליך ובקרה, משכי השבתה, הערות משמרת ותוכניות עבודה. המידע מתעדכן באופן שוטף, וניתן לצרף מקורות נוספים לאותה מסגרת.',
+    principle: 'העיקרון המנחה: ריכוז המידע הרלוונטי ממקורות שונים בממשק חזותי אחד, שניתן להרחיב עם הצרכים.',
+    benefitsTitle: 'יתרונות מרכזיים',
+    benefits: [
+      'תמונת שליטה חזותית אחת — ממשק משותף שמרכז את המידע הרלוונטי ממערכות שונות, ומאפשר לכולם לעבוד מתוך תמונת מצב אחידה.',
+      'נתונים בזמן אמת — הצגת מצב הציוד, הפעילויות והחריגות באופן שמתעדכן ברציפות.',
+      'מיקוד לפי תפקיד — כל משתמש יכול להתמקד במידע, במשימות ובסדרי העדיפויות הרלוונטיים לעבודתו.',
+      'הנעה לפעולה ומשחוק — המחשה חזותית של התקדמות, משימות ויעדים, שמעודדת מעורבות ועשייה.',
+      'קבלת החלטות מהירה ומבוססת נתונים — הבנת המצב במבט וגישה לפרטים הנדרשים בלחיצה.',
+      'תמיכה בריבוי משתמשים — מערכת שצמחה לשימוש יום־יומי של כ־1,000 משתמשים.',
+      'מבנה מודולרי — אפשרות להוסיף מקורות מידע וחיבורים למערכות נוספות.',
+      'נולדה מהשטח — פותחה מתוך היכרות ישירה עם הציוד, האנשים והאתגרים של סביבת ייצור פעילה.',
+    ],
+    techTitle: 'טכנולוגיות',
+    tech: [
+      'המערכת פותחה בשילוב של טכנולוגיות ושפות, ובהן Python, React, Java, VB ו־VBA, לצד עבודה עם SQL ובסיסי נתונים של Oracle.',
+      'הפיתוח כלל חיבורים לעשרות מערכות שונות, תוך התמודדות עם הממשקים, מבני הנתונים ומגבלות הגישה של כל אחת מהן, וריכוז המידע בחוויית שימוש חזותית ואחידה.',
+      'המערכת נבנתה עוד לפני עידן כלי ה־AI לכתיבת קוד, באמצעות פיתוח, אינטגרציה ועבודה הנדסית ישירה.',
+    ],
+    rolloutTitle: 'תהליך ההטמעה',
+    rollout: [
+      'המערכת צמחה מתוך הבנת העבודה בשטח, מרעיון ראשוני ועד ליישום מלא. ליאור הוביל אותה משני צדי התהליך: כמנהל מערך אחזקה בחדר נקי וכמוביל פיתוח המוצר.',
+      'לאורך כחמש שנים התפתחה המערכת באמצעות שימוש בפועל, משוב מהמשתמשים והרחבת היכולות בהתאם לצרכים שעלו מהשטח.',
+      'המערכת הוטמעה בשני מפעלי ייצור של חברת סמיקונדקטור גדולה, והגיעה לכ־1,000 משתמשים שבחרו בה ככלי עבודה יום־יומי.',
+    ],
+    history: 'ציון דרך היסטורי: במסמך IMEC משנת 2022 תועדו למעלה מ־800 משתמשים בישראל, פיילוט עם כ־100 משתמשים באריזונה ויותר משני מיליון פעולות מצטברות. נתונים אלה משקפים את מועד התיעוד.',
+    resultTitle: 'תוצאה עסקית',
+    result: 'המערכת שיפרה באופן מהותי את ניהול תחזוקת הציוד בסביבת ייצור שפועלת 24/7:',
+    results: [
+      'ייעול העבודה וצמצום זמני השבתה של מכונות.',
+      'קיצור זמני תגובה ושיפור מהירות קבלת ההחלטות.',
+      'שיפור תעדוף המשימות ותיאום הפעילויות.',
+      'שיפור התיעוד, העברת המידע והשליטה באזור העבודה.',
+      'יצירת תמונת מצב משותפת למנהלים ולצוותים בשטח.',
+    ],
+    videoTitle: 'סרטון הדמיה של המערכת',
+    videoLabel: 'סרטון הדמיה של ShmilaClick',
+    videoNote: 'סרטון המחשה של חוויית העבודה והרעיון, ולא תיעוד מצולם של סביבת הייצור המקורית.',
+    context: 'המערכת פותחה על ידי ליאור במסגרת תפקיד קודם ומוצגת כדוגמה לניסיונו המקצועי. היא אינה מוצר מסחרי של ShmilApps. הניסיון הזה משמש בסיס לפיתוח פתרונות מותאמים לעסקים ולארגונים נוספים.',
+  },
+  en: {
+    quote: '“There isn’t a semiconductor fab that wouldn’t want a system like this…”',
+    title: 'ShmilaClick',
+    subtitle: 'A visual operational picture of the manufacturing floor',
+    intro: 'A system that brings information from multiple sources onto a visual equipment map, helping users quickly understand what is running, what needs attention and what to check next.',
+    challengeTitle: 'The operational challenge',
+    challenge: 'Hundreds of process chambers, many workflows and information scattered across systems and reports. Shift managers and engineers need to understand equipment status, priorities and planned activities quickly.',
+    howTitle: 'How the system works',
+    how: 'A visual area map shows equipment in its physical location and current status. Clicking a tool opens relevant information: history and errors, work orders, process and control data, downtime, shift notes and work plans. Information is updated continuously, and further sources can be added to the same framework.',
+    principle: 'The guiding principle: bring relevant information from different sources into one visual interface that can expand as needs evolve.',
+    benefitsTitle: 'Key benefits',
+    benefits: [
+      'One shared visual operational view — relevant information from multiple systems in a unified interface.',
+      'Real-time data — continuously updated equipment status, activities and exceptions.',
+      'Role-focused information — each user can focus on the data, tasks and priorities relevant to their work.',
+      'Engagement and gamification — visual progress, tasks and goals encourage participation and action.',
+      'Fast, data-based decisions — understand the situation at a glance and access supporting details with a click.',
+      'Multi-user scale — the system grew to approximately 1,000 daily users.',
+      'Modular architecture — additional data sources and system connections can be added.',
+      'Born on the manufacturing floor — developed from firsthand knowledge of the equipment, people and challenges of live operations.',
+    ],
+    techTitle: 'Technologies',
+    tech: [
+      'Development combined Python, React, Java, VB and VBA, alongside SQL and Oracle databases.',
+      'The work involved connections to dozens of different systems, addressing their individual interfaces, data structures and access constraints while bringing the information into one visual experience.',
+      'The system was built before the era of AI coding tools, through direct software development, integration and engineering.',
+    ],
+    rolloutTitle: 'Development and rollout',
+    rollout: [
+      'The system grew from operational needs, from the initial idea to full implementation. Lior led both sides of the process: cleanroom maintenance management and product development.',
+      'Over approximately five years, the system evolved through real use, user feedback and new capabilities responding to needs on the manufacturing floor.',
+      'It was deployed at two manufacturing plants of a major semiconductor company and reached approximately 1,000 users who chose it as a daily working tool.',
+    ],
+    history: 'Historical milestone: the 2022 IMEC document recorded more than 800 users in Israel, a pilot with approximately 100 users in Arizona and over two million cumulative transactions. These figures reflect the time of that document.',
+    resultTitle: 'Business impact',
+    result: 'The system substantially improved equipment-maintenance management in a 24/7 manufacturing environment:',
+    results: [
+      'More efficient work and reduced equipment downtime.',
+      'Faster responses and decision-making.',
+      'Better task prioritization and activity coordination.',
+      'Improved documentation, information sharing and operational visibility.',
+      'A shared operational picture for managers and teams on the floor.',
+    ],
+    videoTitle: 'System demonstration video',
+    videoLabel: 'ShmilaClick demonstration video',
+    videoNote: 'An illustrative video of the workflow and concept, rather than footage of the original manufacturing environment.',
+    context: 'Lior developed the system in a previous professional role. It is presented as an example of his experience, not as a commercial ShmilApps product. This experience informs tailored solutions for other businesses and organizations.',
+  },
+};
+
 const softwareManagementPage: typeof appDevelopmentPage = {
   he: {
     title: 'פיתוח תוכנה ומערכות ניהול',
@@ -463,6 +562,7 @@ export default function Home() {
   const isAppDevelopmentRoute = currentPath === '/services/app-development';
   const isSoftwareManagementRoute = currentPath === '/services/software-management';
   const servicePage = isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const softwareCase = shmilaClickCaseStudy[language];
   const serviceId = isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const serviceHero = isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
@@ -655,11 +755,13 @@ export default function Home() {
           <div className="service-page-content">
             {servicePage.panels.map((panel) => {
               const isExamplePanel = isAppDevelopmentRoute && panel.title === servicePage.panels[3].title;
+              const isSoftwareExamplePanel = isSoftwareManagementRoute && panel.title === servicePage.panels[3].title;
               return (
               <details className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
                   <span>
                     <strong>{panel.title}</strong>
+                    {isSoftwareExamplePanel ? <small className="service-case-quote">{softwareCase.quote}</small> : null}
                     <small className="service-summary-text">{panel.summary}</small>
                   </span>
                   <em><span className="more-text">{text.nav.more}</span><span className="less-text">{text.nav.less}</span></em>
@@ -700,7 +802,49 @@ export default function Home() {
                       </div>
                     </article>
                   ) : null}
-                  {!isExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
+                  {isSoftwareExamplePanel ? (
+                    <article className="case-study-card service-example-card shmilaclick-case" dir={isHebrew ? 'rtl' : 'ltr'}>
+                      <header className="case-study-header">
+                        <h3>{softwareCase.title}</h3>
+                        <p>{softwareCase.subtitle}</p>
+                      </header>
+                      <div className="case-study-body">
+                        <p>{softwareCase.intro}</p>
+                        <h4>{softwareCase.challengeTitle}</h4>
+                        <p>{softwareCase.challenge}</p>
+                        <h4>{softwareCase.howTitle}</h4>
+                        <p>{softwareCase.how}</p>
+                        <p>{softwareCase.principle}</p>
+                      </div>
+                      <div className="case-study-grid">
+                        <section>
+                          <h4>{softwareCase.benefitsTitle}</h4>
+                          <ul>{softwareCase.benefits.map((benefit) => <li key={benefit}>{benefit}</li>)}</ul>
+                        </section>
+                        <section>
+                          <h4>{softwareCase.techTitle}</h4>
+                          {softwareCase.tech.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                          <h4>{softwareCase.rolloutTitle}</h4>
+                          {softwareCase.rollout.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                          <p className="case-study-history">{softwareCase.history}</p>
+                          <h4>{softwareCase.resultTitle}</h4>
+                          <p>{softwareCase.result}</p>
+                          <ul>{softwareCase.results.map((result) => <li key={result}>{result}</li>)}</ul>
+                        </section>
+                      </div>
+                      <section className="case-study-demo" aria-label={softwareCase.videoTitle}>
+                        <h4>{softwareCase.videoTitle}</h4>
+                        <div className="case-study-video-wrap">
+                          <video controls preload="metadata" playsInline poster="/portfolio/shmilaclick/shmilaclick-video-poster.jpg" aria-label={softwareCase.videoLabel}>
+                            <source src="/portfolio/shmilaclick/shmilaclick-ad-web.mp4" type="video/mp4" />
+                          </video>
+                        </div>
+                        <p>{softwareCase.videoNote}</p>
+                      </section>
+                      <p className="case-study-context">{softwareCase.context}</p>
+                    </article>
+                  ) : null}
+                  {!isExamplePanel && !isSoftwareExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
                   {panel.bullets ? <ul>{panel.bullets.map((item) => <li key={item}>{item}</li>)}</ul> : null}
                   {panel.faqs ? <div className="faq-list">{panel.faqs.map((faq) => <div key={faq.question}><h4>{faq.question}</h4><p>{faq.answer}</p></div>)}</div> : null}
                 </div>

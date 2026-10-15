@@ -2782,3 +2782,45 @@ main[dir="rtl"] .ai-chat-input {
     margin-top: var(--subpage-content-top, calc(var(--subpage-hero-height) + 230px)) !important;
   }
 }
+
+/* ShmilaClick follows the shared service case-study layout. */
+.service-detail summary .service-case-quote {
+  display: block;
+  margin: 10px 0 8px;
+  color: #baff00;
+  font-family: inherit;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: start;
+}
+
+.shmilaclick-case .case-study-body h4,
+.shmilaclick-case .case-study-demo h4 {
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  margin: 20px 0 10px;
+}
+
+.shmilaclick-case .case-study-history,
+.shmilaclick-case .case-study-demo p,
+.shmilaclick-case .case-study-context {
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #b8c4b9;
+  text-align: start;
+}
+
+.shmilaclick-case .case-study-demo {
+  margin-top: 24px;
+}
+
+.shmilaclick-case .case-study-context {
+  margin: 24px 0 0;
+}
+
+.shmilaclick-case {
+  overflow-wrap: anywhere;
+}
