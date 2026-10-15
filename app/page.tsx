@@ -515,7 +515,7 @@ export default function Home() {
       {isAiAssistantRoute ? (
         <section id="ai-assistant-page" className="service-page ai-page" aria-labelledby="ai-page-title">
           <div ref={stickyHeroRef} className="service-sticky-area ai-sticky-area">
-            <div className="service-sticky-hero ai-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/ai-assistant-hero-6500x500.png)' }} />
+            <div className="service-sticky-hero ai-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/ai-assistant-hero-6500x500-v2.webp)' }} />
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id="ai-page-title">{aiPage.title}</h2>
               <p>{aiPage.subtitle}</p>
