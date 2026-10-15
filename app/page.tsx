@@ -146,7 +146,7 @@ const serviceHrefs = [
   '/services/software-management',
   '/services/websites-and-branding',
   '/services/needs-discovery-fde',
-  '/#services',
+  '/services/automation-ai',
   '/#services',
   '/#services',
   '/#services',
@@ -161,7 +161,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/services/software-management' },
     { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/services/websites-and-branding' },
     { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/services/needs-discovery-fde' },
-    { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/#services' },
+    { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/services/automation-ai' },
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/#services' },
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/#services' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/#services' },
@@ -174,7 +174,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/services/software-management' },
     { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/services/websites-and-branding' },
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/services/needs-discovery-fde' },
-    { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/#services' },
+    { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/services/automation-ai' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/#services' },
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/#services' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/#services' },
@@ -613,6 +613,239 @@ const needsDiscoveryPage: typeof appDevelopmentPage = {
   }
 };
 
+const automationAiPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "אוטומציות ו־AI לעסקים וליחידים",
+    "subtitle": "פחות עבודה חוזרת, יותר זמן לעבודה שחשובה לכם.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "לעסקים, צוותים ויחידים שרוצים לחסוך עבודה ידנית ולפשט תהליכים.",
+        "body": [
+          "מחברים בין הכלים, המידע והמשימות שלכם כדי לקצר זמני תגובה ולפנות זמן למה שאתם עושים הכי טוב.",
+          "השירות מתאים למי שמעתיק מידע בין מערכות, מטפל בפניות חוזרות, מפיק דוחות ידנית או רוצה עזרה חכמה במשימות היומיום. אפשר להתחיל מתהליך אחד קטן ולהרחיב בהמשך."
+        ]
+      },
+      {
+        "title": "תוצרים שיתקבלו",
+        "summary": "אוטומציות, עוזרי AI וסוכנים שמותאמים לצורך, לכלים ולמידע שלכם.",
+        "body": [
+          "היכולות והחיבורים מוגדרים לפי המערכות הקיימות והגישה שהן מאפשרות."
+        ],
+        "bullets": [
+          "קליטת פנייה, סיווגה והעברתה לטיפול עם התראה",
+          "קריאת מסמכים והפיכתם לנתונים מסודרים, עם בדיקה אנושית לפי הצורך",
+          "עוזר AI שעונה מתוך מידע מאושר ומכוון לצעד הבא",
+          "סיכום פגישות ופניות והפקת טיוטות ומשימות להמשך",
+          "דוחות תקופתיים והתראות על חריגות",
+          "סוכני AI שמשתמשים בכלים ומבצעים רצף פעולות בהרשאות מוגדרות",
+          "בדיקות, הדרכה ותיעוד שימוש לפי היקף הפרויקט"
+        ]
+      },
+      {
+        "title": "התהליך",
+        "summary": "מכירים את העבודה, בוחרים תהליך, בונים ובודקים, מטמיעים ומשפרים.",
+        "body": [
+          "מתחילים בהבנת התהליך והמטרה ובוחרים היכן אוטומציה יכולה לתת ערך.",
+          "לפעמים אוטומציה פשוטה מספיקה. כשנדרשת הבנת טקסט, סיכום או סיווג, בוחנים שילוב AI.",
+          "מגדירים מקורות מידע, הרשאות ונקודות אישור לפעולות שדורשות בקרה.",
+          "בונים ובודקים על מקרים אמיתיים, כולל מידע חסר, תשובות לא ודאיות וכשל בחיבור.",
+          "מטמיעים, מדריכים ובוחנים את התוצאות. תחזוקה ושיפור מתמשך מוגדרים לפי הצורך."
+        ]
+      },
+      {
+        "title": "עבודה לדוגמה",
+        "summary": "עוזר ה־AI של ShmilApps: דוגמה פעילה שאפשר לנסות כבר עכשיו.",
+        "body": [
+          "העוזר הותאם והודרך על בסיס פרטי העסק ShmilApps שסופקו לו: השירותים, הניסיון המקצועי, הפרויקטים, דרך העבודה והתשובות לשאלות נפוצות. המידע משמש אותו בכל שיחה כדי לתת מענה בהקשר של העסק; המודל הבסיסי לא עבר אימון מחדש.",
+          "העוזר עונה על שאלות, מסייע בבירור צרכים ומכוון לפנייה ממוקדת. הוא אינו שולח פניות או מבצע פעולות עסקיות בשם המבקר.",
+          "אפשר להרחיב פתרון כזה לתהליך הכולל קבלת פנייה, הבנת הצורך, סיווג, סיכום והעברה לטיפול. זו המחשה לפתרון אפשרי, ולא תיאור של שרשרת שכבר פועלת באתר.",
+          "בנוסף, בוט למענה בוואטסאפ נמצא בפיתוח ויעלה בקרוב."
+        ]
+      },
+      {
+        "title": "תמחור",
+        "summary": "לפי מורכבות התהליך, מספר החיבורים, היקף הפעולות ורמת ההתאמה.",
+        "body": [
+          "לאחר היכרות נגדיר תוצרים והיקף עבודה ברורים.",
+          "עלויות שימוש בכלי AI ובשירותים חיצוניים, אם נדרשים, יפורטו בהצעה. תחזוקה ושיפור מתמשך מוגדרים לפי הצורך."
+        ]
+      },
+      {
+        "title": "לוחות זמנים",
+        "summary": "לפי היקף התהליך, זמינות הגישה למערכות והבדיקות הנדרשות.",
+        "body": [
+          "מגדירים שלבים ואבני דרך בהתאם לפרויקט. אפשר להתחיל בפתרון ממוקד, למדוד את התועלת ולהרחיב בהדרגה."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "איך מתחילים, מתי צריך AI ומה קורה כשנדרש אישור או טיפול בתקלה?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "האם השירות מתאים גם ליחידים?",
+            "answer": "כן. אפשר לייעל גם משימות אישיות ועבודה עצמאית, לפי הכלים והצרכים שלכם."
+          },
+          {
+            "question": "האם חייבים להחליף את המערכות הקיימות?",
+            "answer": "לא בהכרח. בוחנים חיבור לכלים שכבר קיימים בהתאם לאפשרויות הגישה שלהם."
+          },
+          {
+            "question": "האם כל אוטומציה צריכה AI?",
+            "answer": "לא. בוחרים את הדרך המתאימה לתהליך, ומשלבים AI כשיש לו ערך."
+          },
+          {
+            "question": "אפשר להתחיל ממשימה אחת?",
+            "answer": "כן. אפשר להתחיל ממוקד ולהרחיב לפי התוצאות."
+          },
+          {
+            "question": "מה קורה כשהמערכת לא בטוחה או כשהחיבור נכשל?",
+            "answer": "מגדירים טיפול בחריגות, התראות ואישור אנושי לפי סוג הפעולה והיקף הפרויקט."
+          },
+          {
+            "question": "מי יכול לגשת למידע ולבצע פעולות?",
+            "answer": "מגדירים הרשאות, מקורות מידע וגבולות פעולה לפי הצורך."
+          },
+          {
+            "question": "האם יש עלויות שימוש שוטפות?",
+            "answer": "ייתכנו עלויות של מודלים, פלטפורמות ושירותים חיצוניים. הן יפורטו בהצעה."
+          },
+          {
+            "question": "מקבלים הדרכה ותמיכה?",
+            "answer": "הדרכה, תמיכה ותחזוקה מוגדרות כחלק מהיקף העבודה המוסכם."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "איזו משימה אתם עושים שוב ושוב?",
+      "lines": [
+        "ספרו לנו מה גוזל מכם זמן ובאילו כלים אתם משתמשים.",
+        "נבדוק יחד מה אפשר לשפר ומה הייתם רוצים שיקרה אוטומטית."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Automation and AI for businesses and individuals",
+    "subtitle": "Less repetitive work. More time for what matters to you.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "Businesses, teams and individuals who want to reduce manual work and simplify workflows.",
+        "body": [
+          "Connect tools, information and tasks to shorten response times and focus on what you do best.",
+          "Useful for copying data between systems, repetitive inquiries, manual reporting and everyday tasks. Start with one focused workflow and expand later."
+        ]
+      },
+      {
+        "title": "Deliverables",
+        "summary": "Automation, AI assistants and agents tailored to your needs, tools and information.",
+        "body": [
+          "Capabilities depend on existing systems and the access they provide."
+        ],
+        "bullets": [
+          "Receive, classify and route inquiries with notifications",
+          "Extract structured data from documents with human review as needed",
+          "Assistants answering from approved information",
+          "Meeting and inquiry summaries, drafts and follow-up tasks",
+          "Scheduled reports and exception alerts",
+          "AI agents using tools within defined permissions",
+          "Testing, training and usage documentation within scope"
+        ]
+      },
+      {
+        "title": "The process",
+        "summary": "Understand the work, select a workflow, build and test, then implement and improve.",
+        "body": [
+          "Understand the process and goals and identify where automation adds value.",
+          "Simple automation may be enough. Consider AI for text understanding, summarization or classification.",
+          "Define information sources, permissions and approval checkpoints.",
+          "Test real scenarios, including missing information, uncertain answers and connection failures.",
+          "Roll out, train and review results. Maintenance and improvement are agreed as needed."
+        ]
+      },
+      {
+        "title": "Example project",
+        "summary": "The ShmilApps AI Assistant: a live example you can try today.",
+        "body": [
+          "The assistant has been tailored and instructed using the supplied details of ShmilApps: services, professional experience, projects, working methods and frequently asked questions. It uses this information in conversations to answer in the context of the business; the underlying model has not been retrained.",
+          "It answers questions, clarifies needs and helps prepare a focused inquiry. It does not submit inquiries or perform business actions for visitors.",
+          "A possible extension could receive inquiries, understand needs, classify, summarize and route them for follow-up. This illustrates a potential workflow, not an end-to-end process already running on the site.",
+          "A WhatsApp response bot is also in development and coming soon."
+        ]
+      },
+      {
+        "title": "Pricing",
+        "summary": "Based on workflow complexity, integrations, usage and customization.",
+        "body": [
+          "After an introductory conversation, we agree clear scope and deliverables.",
+          "AI and third-party service usage costs, if needed, are detailed in the proposal. Maintenance and ongoing improvements are agreed as needed."
+        ]
+      },
+      {
+        "title": "Timelines",
+        "summary": "Based on scope, access to systems and required testing.",
+        "body": [
+          "Agree stages and milestones for the project. Start focused, measure the benefit and expand gradually."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "Getting started, choosing AI and handling approvals and exceptions.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Is this for individuals too?",
+            "answer": "Yes. Personal tasks and independent work can also benefit, according to your tools and needs."
+          },
+          {
+            "question": "Must I replace existing systems?",
+            "answer": "Not necessarily. We assess integrations with existing tools and their access options."
+          },
+          {
+            "question": "Does every automation need AI?",
+            "answer": "No. AI is included when it adds value."
+          },
+          {
+            "question": "Can we start with one task?",
+            "answer": "Yes. Start focused and expand based on results."
+          },
+          {
+            "question": "What if an answer is uncertain or a connection fails?",
+            "answer": "We define exception handling, notifications and human approvals according to the workflow."
+          },
+          {
+            "question": "Who can access data and take actions?",
+            "answer": "Permissions, information sources and action boundaries are defined for the project."
+          },
+          {
+            "question": "Are there ongoing costs?",
+            "answer": "Models, platforms and third-party services may have usage costs, detailed in the proposal."
+          },
+          {
+            "question": "Is training and support included?",
+            "answer": "Training, support and maintenance are defined in the agreed scope."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Which task do you repeat again and again?",
+      "lines": [
+        "Tell us what takes your time and which tools you use.",
+        "Let’s explore what can improve and what you want to happen automatically."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
+
 const websiteBrandCaseStudy = {
   he: {
     title: 'אתר ShmilApps',
@@ -883,11 +1116,12 @@ export default function Home() {
   const isSoftwareManagementRoute = currentPath === '/services/software-management';
   const isWebsitesBrandingRoute = currentPath === '/services/websites-and-branding';
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
-  const servicePage = isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const isAutomationRoute = currentPath === '/services/automation-ai';
+  const servicePage = isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v2.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -1066,7 +1300,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
@@ -1077,6 +1311,7 @@ export default function Home() {
           </div>
           <div className="service-page-content">
             {servicePage.panels.map((panel) => {
+              const isAutomationExamplePanel = isAutomationRoute && panel.title === servicePage.panels[3].title;
               const isFdeExamplePanel = isFdeRoute && panel.title === servicePage.panels[3].title;
               const isExamplePanel = isAppDevelopmentRoute && panel.title === servicePage.panels[3].title;
               const isSoftwareExamplePanel = isSoftwareManagementRoute && panel.title === servicePage.panels[3].title;
@@ -1199,6 +1434,12 @@ export default function Home() {
                   ) : null}
                   {!isExamplePanel && !isSoftwareExamplePanel && !isWebsiteExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
 
+
+                  {isAutomationExamplePanel ? <figure className="website-case-preview">
+                    <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>
+                    <figcaption>{isHebrew ? 'עוזר ה־AI של ShmilApps, מותאם למידע ולשירותי העסק' : 'The ShmilApps AI Assistant, tailored to business information and services'}</figcaption>
+                    <a className="website-case-link" href={withLanguage('/ai-assistant')}>{isHebrew ? 'נסו את העוזר' : 'Try the assistant'}</a>
+                  </figure> : null}
                   {isFdeExamplePanel ? <section className="case-study-demo" aria-label={softwareCase.videoTitle}>
                     <h4>{softwareCase.videoTitle}</h4>
                     <div className="case-study-video-wrap"><video controls preload="metadata" playsInline poster="/portfolio/shmilaclick/shmilaclick-video-poster.jpg" aria-label={softwareCase.videoLabel}><source src="/portfolio/shmilaclick/shmilaclick-ad-web.mp4" type="video/mp4" /></video></div>
