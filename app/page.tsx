@@ -1125,6 +1125,7 @@ export default function Home() {
                           <source src="/portfolio/shmilventory/shmilventory-ad-web.mp4" type="video/mp4" />
                         </video>
                       </div>
+                      <p className="app-case-video-note">{isHebrew ? 'זהו סרטון הפרסומת של אפליקציית ShmilVentory, המציג את הרעיון, היכולות וחוויית השימוש שלה.' : 'This promotional video for the ShmilVentory app introduces its concept, capabilities and user experience.'}</p>
                     </article>
                   ) : null}
                   {isSoftwareExamplePanel ? (

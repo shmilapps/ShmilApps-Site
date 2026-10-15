@@ -1464,8 +1464,10 @@ footer {
   display: block;
   margin-top: 7px;
   color: #aeb9af;
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 0.98rem;
+  line-height: 1.78;
 }
 
 .service-detail summary em {
@@ -1665,7 +1667,7 @@ main[dir="rtl"] .section-heading p {
   }
 
   .service-detail summary small {
-    font-size: 0.8rem;
+    font-size: 0.98rem;
   }
 
   .service-detail-body,
