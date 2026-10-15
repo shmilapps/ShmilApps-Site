@@ -143,7 +143,7 @@ const portfolioCaseStudy = {
 
 const serviceHrefs = [
   '/services/app-development',
-  '/#services',
+  '/services/software-management',
   '/#services',
   '/#services',
   '/#services',
@@ -158,7 +158,7 @@ const serviceHrefs = [
 const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   he: [
     { title: 'פיתוח אפליקציות', summary: 'אפליקציות מובייל ו־Web מותאמות לעסק, משלב הרעיון ועד מוצר עובד.', href: '/services/app-development' },
-    { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/#services' },
+    { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/services/software-management' },
     { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/#services' },
     { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/#services' },
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/#services' },
@@ -171,7 +171,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   ],
   en: [
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
-    { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/#services' },
+    { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/services/software-management' },
     { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/#services' },
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/#services' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/#services' },
@@ -216,6 +216,37 @@ const appDevelopmentPage: Record<'he' | 'en', { title: string; subtitle: string;
   },
 };
 
+
+const softwareManagementPage: typeof appDevelopmentPage = {
+  he: {
+    title: 'פיתוח תוכנה ומערכות ניהול',
+    subtitle: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.',
+    panels: [
+      { title: 'למי זה מתאים', summary: 'לעסקים וארגונים שרוצים לחבר מידע, לייעל תהליכים ולקבל שליטה טובה יותר בעבודה השוטפת.', body: ['כשמידע מפוזר בין קבצים, מערכות ואנשים, אפשר לבנות מערכת שמחברת את התהליך ומציגה תמונה ברורה.', 'הפתרון מותאם למשתמשים, להרשאות ולדרך העבודה של העסק — ממערכת פנימית ממוקדת ועד מערכת ניהול רחבה.'] },
+      { title: 'תוצרים שיתקבלו', summary: 'אפיון, ממשק ניהול, תהליכי עבודה, הרשאות, חיבורים ודוחות — לפי צורכי הפרויקט.', body: ['מגדירים יחד מה המערכת צריכה לפתור ואילו תוצרים נדרשים. ההיקף, הגישה לקוד והתמיכה נקבעים מראש בהסכם.'], bullets: ['מיפוי צרכים ותכנון תהליכי עבודה', 'ממשק משתמש וניהול מותאם', 'בסיס נתונים, משתמשים והרשאות לפי הצורך', 'חיבורים למערכות קיימות ודוחות ניהוליים', 'בדיקות, הדרכה והטמעה'] },
+      { title: 'התהליך', summary: 'מתחילים בהבנת העבודה בשטח, מתכננים פתרון ממוקד, מפתחים ובודקים, ואז מטמיעים בהדרגה.', body: ['ממפים את המשתמשים, המידע, הקשיים והמערכות הקיימות. לאחר מכן מגדירים את הגרסה הראשונה ואת החיבורים הנדרשים.', 'הפיתוח מתקדם בשלבים, עם בדיקות ומשוב. המסירה כוללת הדרכה והתאמה לשימוש בפועל לפי היקף העבודה שסוכם.'] },
+      { title: 'עבודה לדוגמה', summary: 'המערכת ShmilaClick — ניסיון בפיתוח מערכת חזותית לניהול תחזוקת ציוד בסביבת ייצור סמיקונדקטור.', body: ['המערכת ShmilaClick פותחה על ידי ליאור במסגרת תפקיד קודם, כדי לסייע בניהול חזותי של תחזוקת ציוד בחדרים נקיים בתעשיית המוליכים למחצה.', 'זו דוגמה לניסיון מקצועי קודם של המייסד, ולא מוצר מסחרי של ShmilApps. ההירו הוא המחשה עיצובית, ולא צילום של המערכת או של סביבת הייצור המקורית.'] },
+      { title: 'תמחור', summary: 'המחיר נקבע לפי היקף המערכת, התהליכים, סוגי המשתמשים והחיבורים הנדרשים.', body: ['לאחר הבנת הצורך ניתן להגדיר היקף עבודה והצעה מתאימה. אפשר להתחיל בגרסה ממוקדת ולהרחיב בהמשך.', 'תחזוקה ותמיכה מתמשכת יכולות להינתן בנפרד, בתשלום ובתיאום מראש.'] },
+      { title: 'לוחות זמנים', summary: 'נקבעים לאחר אפיון, בהתאם למורכבות, לאינטגרציות ולשלבי ההטמעה.', body: ['משך העבודה תלוי בהיקף התהליכים, באיכות המידע הקיים, בחיבורים הנדרשים ובקצב קבלת ההחלטות. מגדירים יחד אבני דרך ברורות.'] },
+      { title: 'שאלות נפוצות', summary: 'אפשר להתחיל קטן, לחבר מערכות קיימות ולהתאים את הממשק והרשאות המשתמשים.', body: [], faqs: [{ question: 'אפשר לחבר את המערכת לכלים שכבר קיימים בעסק?', answer: 'במקרים רבים כן. בודקים את הממשקים, ההרשאות והמידע הזמין לפני שמתחייבים לחיבור.' }, { question: 'האם צריך להחליף את כל המערכות בבת אחת?', answer: 'לא בהכרח. אפשר לבנות פתרון ממוקד או שכבת ניהול, ולהתקדם בשלבים לפי הצורך.' }] },
+    ],
+    contact: { ...appDevelopmentPage.he.contact, lines: ['רוצים לחבר תהליכים ומידע למערכת אחת?', 'דברו איתנו ונבין יחד מה נכון לבנות ואיך להתחיל.'] },
+  },
+  en: {
+    title: 'Software and management systems',
+    subtitle: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.',
+    panels: [
+      { title: 'Who it fits', summary: 'For businesses and organizations that want connected information, smoother processes and better operational control.', body: ['When information is scattered across files, tools and people, a tailored system can connect the workflow and provide a clear view.', 'The solution is designed around business users, permissions and daily operations, from a focused internal tool to a broader management system.'] },
+      { title: 'Deliverables', summary: 'Specification, management interface, workflows, permissions, integrations and reports, according to project needs.', body: ['We define the problem and deliverables together. Scope, source access and support are agreed in advance.'], bullets: ['Needs discovery and workflow planning', 'Tailored user and management interface', 'Database, users and permissions as needed', 'Existing system integrations and management reports', 'Testing, training and rollout'] },
+      { title: 'The process', summary: 'Understand operations, plan a focused solution, develop and test, then roll out in stages.', body: ['We map users, information, pain points and existing systems, then define the first version and required integrations.', 'Development proceeds in stages with testing and feedback. Delivery includes training and practical rollout according to the agreed scope.'] },
+      { title: 'Example project', summary: 'ShmilaClick — experience developing visual equipment-maintenance management for semiconductor manufacturing.', body: ['Lior developed ShmilaClick in a previous professional role to support visual equipment-maintenance management in semiconductor cleanrooms.', 'This is the founder’s prior professional experience, not a commercial ShmilApps product. The hero is an illustration, not a screenshot of the original system or manufacturing environment.'] },
+      { title: 'Pricing', summary: 'Based on system scope, workflows, user roles and required integrations.', body: ['After understanding the need, we define an appropriate scope and proposal. A focused first version can be expanded later.', 'Ongoing maintenance and support can be arranged separately, for an agreed fee.'] },
+      { title: 'Timelines', summary: 'Defined after discovery, based on complexity, integrations and rollout stages.', body: ['Timing depends on workflow scope, existing data quality, integrations and decision pace. We agree on clear milestones together.'] },
+      { title: 'FAQ', summary: 'Start small, connect existing tools and tailor the interface and user permissions.', body: [], faqs: [{ question: 'Can the system connect to our existing tools?', answer: 'Often yes. We review interfaces, access permissions and available data before committing to an integration.' }, { question: 'Do all our systems need to be replaced at once?', answer: 'Not necessarily. A focused solution or management layer can be built first, with further stages as needed.' }] },
+    ],
+    contact: { ...appDevelopmentPage.en.contact, lines: ['Want to bring workflows and information into one system?', 'Let’s understand what to build and where to start.'] },
+  },
+};
 
 const aiAssistantPage = {
   he: {
@@ -430,6 +461,10 @@ export default function Home() {
   const isHebrew = language === 'he';
   const currentPath = typeof window === 'undefined' ? '/' : window.location.pathname;
   const isAppDevelopmentRoute = currentPath === '/services/app-development';
+  const isSoftwareManagementRoute = currentPath === '/services/software-management';
+  const servicePage = isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const serviceId = isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceHero = isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -608,18 +643,18 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : isAppDevelopmentRoute ? (
-        <section id="service-app-development" className="service-page" aria-labelledby="app-development-title">
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute) ? (
+        <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
-            <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/app-development-hero-6500x500-v2.webp)' }} />
+            <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
-              <h2 id="app-development-title">{appPage.title}</h2>
-              <p>{appPage.subtitle}</p>
+              <h2 id={`${serviceId}-title`}>{servicePage.title}</h2>
+              <p>{servicePage.subtitle}</p>
             </div>
           </div>
           <div className="service-page-content">
-            {appPage.panels.map((panel) => {
-              const isExamplePanel = panel.title === appPage.panels[3].title;
+            {servicePage.panels.map((panel) => {
+              const isExamplePanel = isAppDevelopmentRoute && panel.title === servicePage.panels[3].title;
               return (
               <details className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
@@ -673,12 +708,12 @@ export default function Home() {
               );
             })}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
-              <h3 id="service-contact-title">{appPage.contact.title}</h3>
-              {appPage.contact.lines.map((line) => <p key={line}>{line}</p>)}
+              <h3 id="service-contact-title">{servicePage.contact.title}</h3>
+              {servicePage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
-                <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">☎</span><span>{appPage.contact.phone}</span><bdi>+972547886780</bdi></a>
-                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">💬</span><span>{appPage.contact.whatsapp}</span></a>
-                <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">✉</span><span>{appPage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
+                <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">☎</span><span>{servicePage.contact.phone}</span><bdi>+972547886780</bdi></a>
+                <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">💬</span><span>{servicePage.contact.whatsapp}</span></a>
+                <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">✉</span><span>{servicePage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
               </div>
             </section>
           </div>
