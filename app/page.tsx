@@ -392,8 +392,8 @@ const websiteBrandCaseStudy = {
     resultTitle: 'התוצאה',
     result: 'נוכחות דיגיטלית שמציגה את השירותים, מדגימה יכולות בפועל ומאפשרת למבקר להבין מה מתאים לו וליצור קשר. האתר ממשיך להתפתח; יכולות נוספות יוצגו לאחר שייושמו.',
     previewTitle: 'מבט על האתר',
-    screenshot: '/portfolio/shmilapps/shmilapps-home-he.webp',
-    screenshotAlt: 'צילום דף הבית של ShmilApps בעברית עם סרטון הגלקסיה והמיתוג הירוק',
+    screenshot: '/portfolio/shmilapps/shmilapps-home-preview-v2.webp',
+    screenshotAlt: 'צילום מלא של דף הבית של ShmilApps עם סרטון הגלקסיה והמיתוג הירוק',
     linkText: 'לצפייה בדף הבית',
   },
   en: {
@@ -409,8 +409,8 @@ const websiteBrandCaseStudy = {
     resultTitle: 'The result',
     result: 'A digital presence that explains services, demonstrates working capabilities and helps visitors find the right direction and get in touch. The website keeps evolving; further capabilities will be presented after implementation.',
     previewTitle: 'A look at the website',
-    screenshot: '/portfolio/shmilapps/shmilapps-home-en.webp',
-    screenshotAlt: 'ShmilApps English homepage screenshot with the galaxy video and green brand identity',
+    screenshot: '/portfolio/shmilapps/shmilapps-home-preview-v2.webp',
+    screenshotAlt: 'Full ShmilApps homepage screenshot with the galaxy video and green brand identity',
     linkText: 'View the homepage',
   },
 };
