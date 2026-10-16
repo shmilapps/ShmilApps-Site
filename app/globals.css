@@ -2917,3 +2917,9 @@ main[dir="rtl"] .ai-chat-input {
  .main-nav { gap: 3px; }
  .main-nav > a, .nav-menu-trigger { padding-inline: 5px; font-size: .75rem; gap: 3px; }
 }
+
+@media (max-width: 900px) {
+ .mobile-drawer[dir="rtl"], .mobile-drawer[dir="rtl"] a, .mobile-drawer[dir="rtl"] summary { direction: rtl; text-align: right; }
+ .mobile-drawer[dir="rtl"] .mobile-drawer-head { direction: rtl; }
+ .mobile-drawer[dir="ltr"], .mobile-drawer[dir="ltr"] a, .mobile-drawer[dir="ltr"] summary { direction: ltr; text-align: left; }
+}

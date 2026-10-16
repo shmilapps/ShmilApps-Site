@@ -1445,7 +1445,7 @@ export default function Home() {
         </div>
         <div className={`mobile-menu-layer ${mobileMenuOpen ? 'open' : ''}`} aria-hidden={!mobileMenuOpen}>
           <button className="mobile-menu-backdrop" type="button" onClick={() => setMobileMenuOpen(false)} aria-label={text.nav.closeMenu} />
-          <nav id="mobile-navigation" className="mobile-drawer" aria-label="Mobile navigation">
+          <nav id="mobile-navigation" className="mobile-drawer" dir={isHebrew ? 'rtl' : 'ltr'} aria-label="Mobile navigation">
             <div className="mobile-drawer-head">
               <strong>ShmilApps</strong>
               <button type="button" onClick={() => setMobileMenuOpen(false)} aria-label={text.nav.closeMenu}>×</button>
