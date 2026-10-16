@@ -198,7 +198,7 @@ const appDevelopmentPage: Record<'he' | 'en', { title: string; subtitle: string;
       { title: 'לוחות זמנים', summary: 'סקר שוק קצר יחסית; MVP בסיסי לרוב כמה שבועות; אפליקציה מורכבת יכולה לקחת כמה חודשים.', body: ['סקר שוק מקדים ניתן בדרך כלל להכין בזמן קצר יחסית, בהתאם לעומק הבדיקה הנדרש.', 'אפליקציה פשוטה או MVP בסיסי יכולים לקחת כמה שבועות.', 'אפליקציה מורכבת יותר, עם משתמשים, ניהול, דאטה, הרשאות ואינטגרציות, יכולה לקחת כמה חודשים.', 'הזמן תלוי בעיקר ברמת האפיון, כמות הפיצ׳רים, מורכבות החיבורים וקצב קבלת ההחלטות לאורך הדרך.'] },
       { title: 'שאלות נפוצות', summary: 'תשובות קצרות לגבי חנויות אפליקציות, MVP, סקר שוק, חיבורים למערכות ועיצוב.', body: [], faqs: [{ question: 'האם חייבים אפליקציה לחנויות App Store ו־Google Play?', answer: 'לא תמיד. לפעמים אפליקציית Web מתקדמת מספיקה, זולה יותר, מהירה יותר לפיתוח ונגישה מכל מכשיר.' }, { question: 'אפשר להתחיל מגרסה קטנה?', answer: 'כן. בהרבה מקרים עדיף להתחיל מ־MVP - גרסה ראשונה שמכילה רק את הדברים החשובים ביותר.' }, { question: 'מה זה MVP?', answer: 'MVP הוא מוצר ראשוני וממוקד שמכיל את הליבה של הרעיון. הוא מאפשר לבדוק שימוש אמיתי לפני שמשקיעים בפיתוח רחב ומורכב.' }, { question: 'האם סקר השוק חובה?', answer: 'לא תמיד, אבל הוא מומלץ במיוחד כשמדובר ברעיון חדש, מוצר חדש או אפליקציה שצריכה להתחרות בפתרונות קיימים.' }, { question: 'האם אפשר לחבר את האפליקציה למערכות קיימות?', answer: 'כן, במקרים רבים אפשר לחבר ל־CRM, גיליונות, מערכות תשלום, מערכות דיוור, API וכלים נוספים.' }, { question: 'האם מקבלים גם עיצוב?', answer: 'כן, לפי הצורך. אפשר לעבוד עם עיצוב בסיסי, עיצוב מתקדם או התאמה לשפה קיימת של העסק.' }] },
     ],
-    contact: { title: 'צור קשר', lines: ['רוצים לבדוק אם הרעיון שלכם מתאים לאפליקציה?', 'דברו איתנו ונבין יחד מה נכון לבנות, מה אפשר להתחיל ממנו, ואיך להפוך את זה למוצר שעובד בפועל.'], phone: 'טלפון', whatsapp: 'WhatsApp', email: 'מייל' },
+    contact: { title: 'רעיון לאפליקציה? אם אתם יכולים לדמיין את זה, אנחנו יכולים לתת לזה חיים.', lines: ['רוצים לבדוק אם הרעיון שלכם מתאים לאפליקציה?', 'דברו איתנו ונבין יחד מה נכון לבנות, מה אפשר להתחיל ממנו, ואיך להפוך את זה למוצר שעובד בפועל.'], phone: 'טלפון', whatsapp: 'WhatsApp', email: 'מייל' },
   },
   en: {
     title: 'App development',
@@ -212,7 +212,7 @@ const appDevelopmentPage: Record<'he' | 'en', { title: string; subtitle: string;
       { title: 'Timelines', summary: 'Market research is usually short; a basic MVP may take a few weeks; a complex app can take several months.', body: ['Preliminary market research can usually be prepared fairly quickly, depending on the required depth.', 'A simple app or basic MVP may take a few weeks.', 'A more complex app with users, management, data, permissions and integrations can take several months.', 'The timeline mainly depends on specification depth, feature count, integration complexity and decision pace throughout the project.'] },
       { title: 'FAQ', summary: 'Short answers about app stores, MVP, market research, system integrations and design.', body: [], faqs: [{ question: 'Do we have to publish to the App Store and Google Play?', answer: 'Not always. Sometimes an advanced web app is enough, cheaper, faster to develop and accessible from every device.' }, { question: 'Can we start small?', answer: 'Yes. In many cases it is better to start with an MVP - a first version that includes only the most important parts.' }, { question: 'What is an MVP?', answer: 'An MVP is a focused first product that includes the core of the idea. It lets you test real usage before investing in broader development.' }, { question: 'Is market research mandatory?', answer: 'Not always, but it is recommended for a new idea, a new product or an app that will compete with existing solutions.' }, { question: 'Can the app connect to existing systems?', answer: 'Yes, in many cases it can connect to CRM systems, spreadsheets, payment systems, mailing tools, APIs and more.' }, { question: 'Is design included?', answer: 'Yes, as needed. We can work with basic design, advanced design or adapt to an existing business language.' }] },
     ],
-    contact: { title: 'Contact us', lines: ['Want to check whether your idea fits an app?', 'Let’s talk and understand what should be built, what to start with and how to turn it into a working product.'], phone: 'Phone', whatsapp: 'WhatsApp', email: 'Email' },
+    contact: { title: 'An app idea? If you can imagine it, we can bring it to life.', lines: ['Want to check whether your idea fits an app?', 'Let’s talk and understand what should be built, what to start with and how to turn it into a working product.'], phone: 'Phone', whatsapp: 'WhatsApp', email: 'Email' },
   },
 };
 
@@ -329,7 +329,7 @@ const softwareManagementPage: typeof appDevelopmentPage = {
       { title: 'לוחות זמנים', summary: 'נקבעים לאחר אפיון, בהתאם למורכבות, לאינטגרציות ולשלבי ההטמעה.', body: ['משך העבודה תלוי בהיקף התהליכים, באיכות המידע הקיים, בחיבורים הנדרשים ובקצב קבלת ההחלטות. מגדירים יחד אבני דרך ברורות.'] },
       { title: 'שאלות נפוצות', summary: 'אפשר להתחיל קטן, לחבר מערכות קיימות ולהתאים את הממשק והרשאות המשתמשים.', body: [], faqs: [{ question: 'אפשר לחבר את המערכת לכלים שכבר קיימים בעסק?', answer: 'במקרים רבים כן. בודקים את הממשקים, ההרשאות והמידע הזמין לפני שמתחייבים לחיבור.' }, { question: 'האם צריך להחליף את כל המערכות בבת אחת?', answer: 'לא בהכרח. אפשר לבנות פתרון ממוקד או שכבת ניהול, ולהתקדם בשלבים לפי הצורך.' }] },
     ],
-    contact: { ...appDevelopmentPage.he.contact, lines: ['רוצים לחבר תהליכים ומידע למערכת אחת?', 'דברו איתנו ונבין יחד מה נכון לבנות ואיך להתחיל.'] },
+    contact: { ...appDevelopmentPage.he.contact, title: 'העסק עובד קשה? בואו נבנה מערכת שתעבוד בשבילו.', lines: ['רוצים לחבר תהליכים ומידע למערכת אחת?', 'דברו איתנו ונבין יחד מה נכון לבנות ואיך להתחיל.'] },
   },
   en: {
     title: 'Software and management systems',
@@ -343,7 +343,7 @@ const softwareManagementPage: typeof appDevelopmentPage = {
       { title: 'Timelines', summary: 'Defined after discovery, based on complexity, integrations and rollout stages.', body: ['Timing depends on workflow scope, existing data quality, integrations and decision pace. We agree on clear milestones together.'] },
       { title: 'FAQ', summary: 'Start small, connect existing tools and tailor the interface and user permissions.', body: [], faqs: [{ question: 'Can the system connect to our existing tools?', answer: 'Often yes. We review interfaces, access permissions and available data before committing to an integration.' }, { question: 'Do all our systems need to be replaced at once?', answer: 'Not necessarily. A focused solution or management layer can be built first, with further stages as needed.' }] },
     ],
-    contact: { ...appDevelopmentPage.en.contact, lines: ['Want to bring workflows and information into one system?', 'Let’s understand what to build and where to start.'] },
+    contact: { ...appDevelopmentPage.en.contact, title: 'Your business works hard. Let’s build a system that works for it.', lines: ['Want to bring workflows and information into one system?', 'Let’s understand what to build and where to start.'] },
   },
 };
 
@@ -360,7 +360,7 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
       { title: 'לוחות זמנים', summary: 'נקבעים לפי היקף האתר, עבודת המיתוג, יצירת המדיה והחיבורים הנדרשים.', body: ['דף נחיתה ממוקד, אתר עסק ואתר מוצר עשיר דורשים היקפי עבודה שונים. קובעים לוח זמנים ואבני דרך אחרי הבנת הצורך.', 'איסוף חומרים, יצירת תוכן, תרגום ומשוב על העיצוב משפיעים על ההתקדמות. ניתן להשיק בשלבים ולהוסיף יכולות בהמשך.'] },
       { title: 'שאלות נפוצות', summary: 'אפשר להתחיל בלי לוגו או תוכן, לשדרג אתר קיים ולשלב מדיה ו־AI כחלק מהפתרון.', body: [], faqs: [{ question: 'אין לי עדיין שם, לוגו או טקסטים. אפשר להתחיל?', answer: 'כן. אפשר לבנות יחד את המעטפת מתחילתה, או לעבוד עם חומרים וזהות קיימים.' }, { question: 'אפשר לשלב סרטונים, אנימציות ועוזר AI?', answer: 'כן, בהתאם לצורך ולהיקף שסוכם, תוך התחשבות במהירות, בקריאות ובנוחות השימוש.' }, { question: 'האתר יהיה מותאם למובייל ולשפות נוספות?', answer: 'ההתאמה למכשירים היא חלק מהתכנון. שפות נוספות ותרגום מוגדרים לפי הפרויקט.' }, { question: 'אפשר להמשיך לפתח את האתר אחרי ההשקה?', answer: 'כן. אפשר להוסיף עמודים, מדיה, יכולות וחיבורים, ולתאם תחזוקה ותמיכה בהמשך.' }] },
     ],
-    contact: { ...appDevelopmentPage.he.contact, lines: ['רוצים אתר שמייצג אתכם או מותג שלם למוצר התוכנה שלכם?', 'ספרו לנו מה אתם מדמיינים, ונבנה יחד את הדרך לנוכחות דיגיטלית ברורה, מקצועית ומזוהה.'] },
+    contact: { ...appDevelopmentPage.he.contact, title: 'מוכנים לתת לעסק שלכם במה?', lines: ['רוצים אתר שמייצג אתכם או מותג שלם למוצר התוכנה שלכם?', 'ספרו לנו מה אתם מדמיינים, ונבנה יחד את הדרך לנוכחות דיגיטלית ברורה, מקצועית ומזוהה.'] },
   },
   en: {
     title: 'Business websites and software brand development',
@@ -374,7 +374,7 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
       { title: 'Timelines', summary: 'Based on website scope, branding work, media creation and required integrations.', body: ['A focused landing page, business website and rich product site involve different workloads. We agree on timing and milestones after discovery.', 'Source materials, content creation, translation and design feedback affect progress. Staged launches can add capabilities over time.'] },
       { title: 'FAQ', summary: 'Start without a logo or copy, refresh an existing site and include media or AI in the solution.', body: [], faqs: [{ question: 'Can we start without a name, logo or website copy?', answer: 'Yes. We can build the package from the beginning or work with an existing identity and materials.' }, { question: 'Can you include video, animation and an AI assistant?', answer: 'Yes, according to the agreed needs and scope, with attention to speed, readability and usability.' }, { question: 'Will the site work on mobile and in other languages?', answer: 'Device adaptation is part of the design. Additional languages and translation are defined for the project.' }, { question: 'Can the website keep evolving after launch?', answer: 'Yes. Add pages, media, features and integrations, with maintenance and support agreed as needed.' }] },
     ],
-    contact: { ...appDevelopmentPage.en.contact, lines: ['Want a website that represents you or a complete brand for your software product?', 'Tell us what you have in mind, and we will plan a clear, professional and recognizable digital presence together.'] },
+    contact: { ...appDevelopmentPage.en.contact, title: 'Ready to put your business in the spotlight?', lines: ['Want a website that represents you or a complete brand for your software product?', 'Tell us what you have in mind, and we will plan a clear, professional and recognizable digital presence together.'] },
   },
 };
 
