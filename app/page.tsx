@@ -53,7 +53,7 @@ const content = {
       portfolio: 'Portfolio',
       follow: 'Follow us',
       about: 'About',
-      contact: 'Contact',
+      contact: 'Contact us',
       assistant: 'AI Assistant',
       more: 'More...',
       less: 'Less...',
@@ -212,7 +212,7 @@ const appDevelopmentPage: Record<'he' | 'en', { title: string; subtitle: string;
       { title: 'Timelines', summary: 'Market research is usually short; a basic MVP may take a few weeks; a complex app can take several months.', body: ['Preliminary market research can usually be prepared fairly quickly, depending on the required depth.', 'A simple app or basic MVP may take a few weeks.', 'A more complex app with users, management, data, permissions and integrations can take several months.', 'The timeline mainly depends on specification depth, feature count, integration complexity and decision pace throughout the project.'] },
       { title: 'FAQ', summary: 'Short answers about app stores, MVP, market research, system integrations and design.', body: [], faqs: [{ question: 'Do we have to publish to the App Store and Google Play?', answer: 'Not always. Sometimes an advanced web app is enough, cheaper, faster to develop and accessible from every device.' }, { question: 'Can we start small?', answer: 'Yes. In many cases it is better to start with an MVP - a first version that includes only the most important parts.' }, { question: 'What is an MVP?', answer: 'An MVP is a focused first product that includes the core of the idea. It lets you test real usage before investing in broader development.' }, { question: 'Is market research mandatory?', answer: 'Not always, but it is recommended for a new idea, a new product or an app that will compete with existing solutions.' }, { question: 'Can the app connect to existing systems?', answer: 'Yes, in many cases it can connect to CRM systems, spreadsheets, payment systems, mailing tools, APIs and more.' }, { question: 'Is design included?', answer: 'Yes, as needed. We can work with basic design, advanced design or adapt to an existing business language.' }] },
     ],
-    contact: { title: 'Contact', lines: ['Want to check whether your idea fits an app?', 'Let’s talk and understand what should be built, what to start with and how to turn it into a working product.'], phone: 'Phone', whatsapp: 'WhatsApp', email: 'Email' },
+    contact: { title: 'Contact us', lines: ['Want to check whether your idea fits an app?', 'Let’s talk and understand what should be built, what to start with and how to turn it into a working product.'], phone: 'Phone', whatsapp: 'WhatsApp', email: 'Email' },
   },
 };
 
@@ -1209,6 +1209,8 @@ export default function Home() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [suppressDropdowns, setSuppressDropdowns] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
+  const [carouselVersion, setCarouselVersion] = useState(0);
   const [aiMessages, setAiMessages] = useState<AiChatMessage[]>([]);
   const [aiInput, setAiInput] = useState('');
   const [aiLoading, setAiLoading] = useState(false);
@@ -1296,6 +1298,7 @@ export default function Home() {
 
   const handleDropdownTitleClick = () => {
     setSuppressDropdowns(true);
+    setDesktopMenu(null);
     closeFocusedMenu();
   };
 
@@ -1388,7 +1391,7 @@ export default function Home() {
   const softwareCase = shmilaClickCaseStudy[language];
   const serviceId = isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v2.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -1402,22 +1405,22 @@ export default function Home() {
         </a>
         <nav className={`main-nav${suppressDropdowns ? ' suppress-dropdowns' : ''}`} aria-label="Website sections" dir={isHebrew ? 'rtl' : 'ltr'} onPointerLeave={() => setSuppressDropdowns(false)}>
           <a href={withLanguage(navAnchors.home)}>{text.nav.home}</a>
-          <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={withLanguage(navAnchors.services)} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+          <div className={`nav-item has-menu${desktopMenu === 'services' ? ' menu-open' : ''}`} onPointerEnter={() => { setDesktopMenu('services'); setSuppressDropdowns(false); }} onPointerLeave={() => setDesktopMenu(null)}>
+            <button type="button" className="nav-menu-trigger" aria-expanded={desktopMenu === 'services'} onClick={() => { setDesktopMenu(desktopMenu === 'services' ? null : 'services'); setSuppressDropdowns(false); }}><span className="nav-label">{text.nav.services}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
               {text.servicesMenu.map((item, index) => <a key={item} href={withLanguage(serviceHrefs[index] ?? navAnchors.services)} onClick={handleDropdownTitleClick}>{item}</a>)}
               <a className="more-link" href={withLanguage(navAnchors.services)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
-          <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+          <div className={`nav-item has-menu${desktopMenu === 'portfolio' ? ' menu-open' : ''}`} onPointerEnter={() => { setDesktopMenu('portfolio'); setSuppressDropdowns(false); }} onPointerLeave={() => setDesktopMenu(null)}>
+            <button type="button" className="nav-menu-trigger" aria-expanded={desktopMenu === 'portfolio'} onClick={() => { setDesktopMenu(desktopMenu === 'portfolio' ? null : 'portfolio'); setSuppressDropdowns(false); }}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu">
               {text.portfolioMenu.map((item) => <a key={item} href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{item}</a>)}
               <a className="more-link" href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
-          <div className="nav-item has-menu">
-            <a className="nav-menu-trigger" href={withLanguage(navAnchors.follow)} onClick={handleDropdownTitleClick}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></a>
+          <div className={`nav-item has-menu${desktopMenu === 'follow' ? ' menu-open' : ''}`} onPointerEnter={() => { setDesktopMenu('follow'); setSuppressDropdowns(false); }} onPointerLeave={() => setDesktopMenu(null)}>
+            <button type="button" className="nav-menu-trigger" aria-expanded={desktopMenu === 'follow'} onClick={() => { setDesktopMenu(desktopMenu === 'follow' ? null : 'follow'); setSuppressDropdowns(false); }}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
                 <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}>{social.labelKey ? text[social.labelKey] : social.name}</a>
@@ -1585,7 +1588,7 @@ export default function Home() {
               const isSoftwareExamplePanel = isSoftwareManagementRoute && panel.title === servicePage.panels[3].title;
               const isWebsiteExamplePanel = isWebsitesBrandingRoute && panel.title === servicePage.panels[3].title;
               return (
-              <details id={isSoftwareExamplePanel ? "shmilaclick-example" : undefined} open={isSoftwareExamplePanel && typeof window !== "undefined" && window.location.hash === "#shmilaclick-example" ? true : undefined} className="service-detail" key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
+              <details id={isSoftwareExamplePanel ? "shmilaclick-example" : undefined} open={isSoftwareExamplePanel && typeof window !== "undefined" && window.location.hash === "#shmilaclick-example" ? true : undefined} className="service-detail" onToggle={isIntegrationExamplePanel ? (event) => { if (event.currentTarget.open) setCarouselVersion((version) => version + 1); } : undefined} key={panel.title} dir={isHebrew ? 'rtl' : 'ltr'}>
                 <summary>
                   <span>
                     <strong>{panel.title}</strong>
@@ -1703,7 +1706,7 @@ export default function Home() {
                   {!isExamplePanel && !isSoftwareExamplePanel && !isWebsiteExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
 
 
-                  {isIntegrationExamplePanel ? <><IntegrationCarousel language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
+                  {isIntegrationExamplePanel ? <><IntegrationCarousel key={carouselVersion} language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
                   {isAutomationExamplePanel ? <figure className="website-case-preview">
                     <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>
                     <figcaption>{isHebrew ? 'עוזר ה־AI של ShmilApps, מותאם למידע ולשירותי העסק' : 'The ShmilApps AI Assistant, tailored to business information and services'}</figcaption>

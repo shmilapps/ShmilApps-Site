@@ -2883,3 +2883,37 @@ main[dir="rtl"] .ai-chat-input {
 .integration-dots button[aria-current="true"] { background: #baff00; box-shadow: 0 0 9px #76b900; }
 .integration-controls button:focus-visible { outline: 2px solid white; outline-offset: 4px; }
 .integration-slide-caption { text-align: center !important; margin-top: 12px !important; }
+
+/* Desktop navigation is controlled by hover or an explicit toggle. */
+.nav-item:hover .nav-menu { opacity: 0; pointer-events: none; }
+.nav-item.menu-open .nav-menu { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+.main-nav.suppress-dropdowns .nav-menu { opacity: 0; pointer-events: none; }
+@media (min-width: 901px) {
+  .site-header { padding-inline: 290px 190px; }
+  .main-nav { gap: 8px; }
+  .main-nav > a, .nav-menu-trigger { padding-inline: 12px; }
+  .social-panel { top: 24px; bottom: 16px; display: flex; flex-direction: column; }
+  .social-content { min-height: 0; flex: 1; display: flex; flex-direction: column; }
+  .social-grid { min-height: 0; flex: 1; grid-template-rows: repeat(10, minmax(0, 1fr)); }
+  .construction .social-link { min-height: 0; }
+  .hero-showcase { margin-bottom: 24px; }
+  .intro-section { margin-top: 28px; padding-top: 28px; }
+  .integration-carousel { max-width: min(646px, max(221px, calc((100svh - var(--subpage-content-top, 400px) - 140px) * .85))); }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .site-header { padding-inline: 250px 165px; }
+  .header-actions { left: 12px; gap: 5px; }
+  .brand-link { right: 12px; padding-inline: 10px; }
+  .main-nav { gap: 4px; }
+  .main-nav > a, .nav-menu-trigger { font-size: .82rem; padding-inline: 8px; }
+  .site-header .ai-link { font-size: .8rem; padding-inline: 8px; }
+}
+@media (max-width: 900px) {
+  .hero-showcase { margin-bottom: 76px; }
+  .intro-section { margin-top: 22px; padding-top: 24px; }
+}
+
+@media (min-width: 901px) and (max-width: 1000px) {
+ .main-nav { gap: 3px; }
+ .main-nav > a, .nav-menu-trigger { padding-inline: 5px; font-size: .75rem; gap: 3px; }
+}
