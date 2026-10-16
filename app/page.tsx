@@ -147,7 +147,7 @@ const serviceHrefs = [
   '/services/websites-and-branding',
   '/services/needs-discovery-fde',
   '/services/automation-ai',
-  '/#services',
+  '/services/business-integrations',
   '/#services',
   '/#services',
   '/#services',
@@ -162,7 +162,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/services/websites-and-branding' },
     { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/services/needs-discovery-fde' },
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/services/automation-ai' },
-    { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/#services' },
+    { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/services/business-integrations' },
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/#services' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/#services' },
     { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/#services' },
@@ -175,7 +175,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/services/websites-and-branding' },
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/services/needs-discovery-fde' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/services/automation-ai' },
-    { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/#services' },
+    { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/#services' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/#services' },
     { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/#services' },
@@ -846,6 +846,272 @@ const automationAiPage: typeof appDevelopmentPage = {
   }
 };
 
+const integrationsPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "אינטגרציה ופתרונות לעסקים",
+    "subtitle": "מחברים בין המערכות, המידע והתהליכים שלכם.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "לעסקים וארגונים שרוצים שהמידע יעבור בין המערכות ויהפוך לתמונת מצב ברורה.",
+        "body": [
+          "האתר, מערכת הלקוחות, המלאי והדוחות יכולים לעבוד כחלק מתהליך משותף. לומדים את סביבת העבודה הקיימת ובונים חיבורים ופתרונות שמתאימים לעסק ולאנשים שמשתמשים בהם."
+        ],
+        "bullets": [
+          "הזנת אותם נתונים בכמה מערכות",
+          "העברת מידע ידנית בין תוכנות, קבצים ואנשים",
+          "מידע מפוזר ללא תמונת מצב אחידה",
+          "הוספת מערכת חדשה וחיבורה לסביבה הקיימת",
+          "צרכים שכלי המדף אינם מכסים"
+        ]
+      },
+      {
+        "title": "תוצרים שיתקבלו",
+        "summary": "חיבורים, סנכרון, ממשקים ודוחות לפי המערכות והצרכים שלכם.",
+        "body": [
+          "האפשרויות תלויות בגישה שהמערכות מאפשרות. לא כל חיבור חייב לפעול בזמן אמת."
+        ],
+        "bullets": [
+          "מיפוי מערכות, מקורות מידע וחיבורים",
+          "חיבור אתרים, אפליקציות, CRM, ERP וכלים נוספים",
+          "העברת נתונים וסנכרון בכיוון אחד או בשני הכיוונים",
+          "התאמת שדות, פורמטים וכללי עבודה",
+          "חיבור קבצים, גיליונות ומאגרי נתונים",
+          "ממשק משותף ודוחות ממקורות שונים",
+          "הרשאות, תיעוד פעולות וטיפול בשגיאות",
+          "בדיקות, הדרכה ותיעוד החיבור"
+        ]
+      },
+      {
+        "title": "התהליך",
+        "summary": "ממפים את זרימת המידע, מגדירים את החיבור, בונים, בודקים ומטמיעים בהדרגה.",
+        "body": [
+          "מכירים את דרך העבודה וממפים מאיפה המידע מגיע ולאן הוא צריך לעבור.",
+          "מחליטים איזו מערכת אחראית לכל נתון ומגדירים שדות, הרשאות, תדירות עדכון וכללי טיפול בכפילויות.",
+          "בונים את החיבור ובודקים מידע חסר, תקלות תקשורת ומניעת דריסה של נתונים.",
+          "מטמיעים בהדרגה, מדריכים ומגדירים ניטור ותחזוקה לפי הצורך."
+        ]
+      },
+      {
+        "title": "עבודה לדוגמה",
+        "summary": "ShmilaClick ועקרון ADIOS: חיבור מידע מעשרות מערכות לסביבת עבודה ויזואלית אחת.",
+        "body": [
+          "ADIOS - All Data In One System. העיקרון שעליו ליאור השתית את ShmilaClick: להביא למשתמש את המידע הרלוונטי בהקשר שבו הוא צריך אותו.",
+          "לכל מערכת נבנה מחבר ייעודי, שקיבל מהמערכת הראשית את פרטי הבקשה והחזיר את המידע הדרוש, ללא התחברות והקלדה חוזרות מצד המשתמש.",
+          "החיבורים כללו רכיבים רבים של MES, בקרה סטטיסטית של תהליכים, ניהול עובדים, הסמכות וכשירויות, חריגות, תיעוד תקלות והעברת משמרת, מוני שימוש וחלונות עבודה, נתוני קו ויעדי תפוקה ומיפוי אופרציות פתוחות במכונות.",
+          "מערכות המקור המשיכו לפעול, והמידע התחבר לתמונת מצב משותפת עם חיתוכים ותצוגות לפי צורכי העבודה.",
+          "זו דוגמה לניסיון מקצועי קודם של המייסד, ולא מוצר מסחרי של ShmilApps. תמונות הקרוסלה הן המחשות המבוססות על עקרונות המערכת וחומרים שסופקו להצגה."
+        ]
+      },
+      {
+        "title": "תמחור",
+        "summary": "לפי מספר המערכות, אפשרויות הגישה, מורכבות הנתונים והבקרה הנדרשת.",
+        "body": [
+          "מגדירים מראש היקף, תוצרים ותדירות סנכרון. עלויות רישיונות ושירותים חיצוניים, אם ישנן, יפורטו בהצעה.",
+          "אפשר להתחיל בחיבור ממוקד ולהרחיב בהמשך. תחזוקה ותמיכה מוגדרות לפי הצורך."
+        ]
+      },
+      {
+        "title": "לוחות זמנים",
+        "summary": "נקבעים לאחר בדיקת המערכות, זמינות הגישה והיקף החיבור.",
+        "body": [
+          "מגדירים שלבים ואבני דרך בהתאם למורכבות, לאיכות הנתונים ולבדיקות הנדרשות. אפשר להטמיע בהדרגה כדי לבדוק את החיבור בעבודה בפועל."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "מערכות ישנות, חיבור ללא API, עדכון נתונים וטיפול בתקלות.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "אפשר לחבר מערכת ישנה?",
+            "answer": "במקרים רבים כן. בודקים את דרכי הגישה והאפשרויות שהמערכת מאפשרת."
+          },
+          {
+            "question": "מה עושים כשאין API?",
+            "answer": "בוחנים חלופות מותרות כגון ייבוא וייצוא קבצים, גישה מאושרת לנתונים או מחבר מותאם. ההיתכנות נבדקת מראש."
+          },
+          {
+            "question": "האם חייבים להחליף תוכנות קיימות?",
+            "answer": "לא בהכרח. המטרה יכולה להיות חיבור הסביבה הקיימת."
+          },
+          {
+            "question": "האם המידע מתעדכן בזמן אמת?",
+            "answer": "לפי היכולת והצורך: בזמן אמת, במרווחים מוגדרים או לפי בקשת משתמש."
+          },
+          {
+            "question": "איך מונעים כפילויות ודריסת נתונים?",
+            "answer": "מגדירים מזהים, מערכת מקור וכללי עדכון ובודקים אותם לפני ההטמעה."
+          },
+          {
+            "question": "מה קורה כשמערכת אינה זמינה?",
+            "answer": "מגדירים טיפול בשגיאות, התראות וניסיונות חוזרים בהתאם לסוג החיבור."
+          },
+          {
+            "question": "אפשר להוסיף מערכות בהמשך?",
+            "answer": "כן, לפי מבנה הפתרון והגישה למערכות הנוספות."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "איפה המידע נעצר אצלכם בדרך?",
+      "lines": [
+        "ספרו לנו באילו מערכות אתם עובדים ומה אתם מעבירים היום ידנית.",
+        "נבדוק יחד איך אפשר לחבר את הדברים."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Business integrations and solutions",
+    "subtitle": "Connect your systems, information and workflows.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "Businesses and organizations that want information to flow between systems and form a clear operational picture.",
+        "body": [
+          "Your website, customer tools, inventory and reports can work within a shared process. We learn your environment and build connections around the business and its users."
+        ],
+        "bullets": [
+          "Repeated data entry across systems",
+          "Manual transfers between software, files and people",
+          "Fragmented information without a shared view",
+          "Connecting a new system to existing tools",
+          "Needs that off-the-shelf products do not cover"
+        ]
+      },
+      {
+        "title": "Deliverables",
+        "summary": "Integrations, synchronization, interfaces and reports tailored to your systems and needs.",
+        "body": [
+          "Options depend on the access each system supports. Not every integration needs real-time updates."
+        ],
+        "bullets": [
+          "System, data-source and integration mapping",
+          "Connections between websites, apps, CRM, ERP and other tools",
+          "One-way or bidirectional data synchronization",
+          "Field, format and business-rule mapping",
+          "File, spreadsheet and database connections",
+          "Shared interfaces and cross-system reports",
+          "Permissions, activity logs and error handling",
+          "Testing, training and integration documentation"
+        ]
+      },
+      {
+        "title": "The process",
+        "summary": "Map information flows, define the connection, build, test and roll out gradually.",
+        "body": [
+          "Understand where information comes from and where it needs to go.",
+          "Define the source of truth, fields, permissions, update frequency and duplicate handling.",
+          "Build and test missing data, connection failures and protection against unintended overwrites.",
+          "Roll out gradually, train users and agree monitoring and maintenance as needed."
+        ]
+      },
+      {
+        "title": "Example project",
+        "summary": "ShmilaClick and ADIOS: information from dozens of systems in one visual workspace.",
+        "body": [
+          "ADIOS - All Data In One System. The principle Lior established for ShmilaClick: bring relevant information to the user in the context where it is needed.",
+          "A dedicated connector for each system received request details from the main application and returned the required information, without repeated user logins and data entry.",
+          "Connections included many MES components, statistical process control, employee management, qualifications, exceptions, faults and shift handover, usage counters and service windows, line data and output targets, and operation-to-machine availability mapping.",
+          "Source systems continued operating while their information contributed to a shared view with filters and displays shaped around operational needs.",
+          "This is the founder’s previous professional experience, not a commercial ShmilApps product. Carousel visuals illustrate the system principles using materials supplied for presentation."
+        ]
+      },
+      {
+        "title": "Pricing",
+        "summary": "Based on system count, access options, data complexity and required controls.",
+        "body": [
+          "Scope, deliverables and synchronization frequency are agreed in advance. Any license and third-party service costs are detailed in the proposal.",
+          "Start with a focused connection and expand later. Maintenance and support are agreed as needed."
+        ]
+      },
+      {
+        "title": "Timelines",
+        "summary": "Defined after reviewing systems, access availability and integration scope.",
+        "body": [
+          "Agree stages and milestones based on complexity, data quality and testing needs. Gradual rollout validates the integration in daily work."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "Legacy systems, alternatives to APIs, updates and connection failures.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Can you connect a legacy system?",
+            "answer": "Often yes. We review its supported access methods and capabilities."
+          },
+          {
+            "question": "What if there is no API?",
+            "answer": "We assess permitted alternatives such as file imports and exports, approved data access or a custom connector. Feasibility is checked first."
+          },
+          {
+            "question": "Must existing software be replaced?",
+            "answer": "Not necessarily. The goal may be to connect the existing environment."
+          },
+          {
+            "question": "Will updates be real-time?",
+            "answer": "Depending on capabilities and needs: real-time, scheduled or on demand."
+          },
+          {
+            "question": "How are duplicates and overwrites prevented?",
+            "answer": "We define identifiers, authoritative sources and update rules and test them before rollout."
+          },
+          {
+            "question": "What if a system is unavailable?",
+            "answer": "Error handling, alerts and retries are defined for the integration."
+          },
+          {
+            "question": "Can more systems be added later?",
+            "answer": "Yes, depending on the solution structure and access to additional systems."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Where does information get stuck?",
+      "lines": [
+        "Tell us which systems you use and what you transfer manually.",
+        "Let’s explore how to connect the pieces."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
+
+
+const integrationSlideFiles = {
+  he: ['01-he','02-he','03-he','04-en','05-en','06-he'],
+  en: ['01-en','02-en','03-en','04-en','05-en','06-en'],
+};
+const integrationSlideTitles = {
+  he: ['המידע מפוזר בין מערכות','התחברות והזנה חוזרות','מחברים ייעודיים מביאים את המידע','ADIOS - All Data In One System','Say Adios to all other systems','אינטגרציה במלוא העוצמה'],
+  en: ['Information scattered across systems','Repeated logins and data entry','Dedicated connectors bring the information','ADIOS - All Data In One System','Say Adios to all other systems','Integration unleashed'],
+};
+function IntegrationCarousel({ language }: { language: 'he' | 'en' }) {
+  const [index, setIndex] = useState(0);
+  const touchStart = useRef<{x:number;y:number} | null>(null);
+  const hebrew = language === 'he';
+  const move = (delta: number) => setIndex((current) => (current + delta + 6) % 6);
+  return <section className="integration-carousel" role="region" aria-roledescription="carousel" aria-label={hebrew ? 'סיפור האינטגרציה של ShmilaClick' : 'ShmilaClick integration story'}>
+    <div className="integration-slide" onTouchStart={(event) => { const t=event.touches[0]; touchStart.current={x:t.clientX,y:t.clientY}; }} onTouchEnd={(event) => { const start=touchStart.current; touchStart.current=null; if(!start)return; const t=event.changedTouches[0]; const dx=t.clientX-start.x; if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(t.clientY-start.y)) move((dx<0?1:-1)*(hebrew?-1:1)); }}>
+      <img src={'/portfolio/shmilaclick/adios/slide-'+integrationSlideFiles[language][index]+'.webp'} alt={integrationSlideTitles[language][index]} width="1254" height="1254" loading="lazy" />
+    </div>
+    <div className="integration-controls">
+      <button type="button" onClick={()=>move(-1)} aria-label={hebrew ? 'השקף הקודם' : 'Previous slide'}>{hebrew ? '→' : '←'}</button>
+      <div className="integration-dots">{integrationSlideFiles[language].map((_,i)=><button key={i} type="button" aria-label={(hebrew?'מעבר לשקף ':'Go to slide ')+(i+1)} aria-current={i===index?'true':undefined} onClick={()=>setIndex(i)} />)}</div>
+      <button type="button" onClick={()=>move(1)} aria-label={hebrew ? 'השקף הבא' : 'Next slide'}>{hebrew ? '←' : '→'}</button>
+    </div>
+    <p className="integration-slide-caption" aria-live="polite">{index+1} / 6 · {integrationSlideTitles[language][index]}</p>
+  </section>;
+}
+
 const websiteBrandCaseStudy = {
   he: {
     title: 'אתר ShmilApps',
@@ -1117,11 +1383,12 @@ export default function Home() {
   const isWebsitesBrandingRoute = currentPath === '/services/websites-and-branding';
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
   const isAutomationRoute = currentPath === '/services/automation-ai';
-  const servicePage = isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const isIntegrationsRoute = currentPath === '/services/business-integrations';
+  const servicePage = isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v2.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v2.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -1300,7 +1567,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
@@ -1311,6 +1578,7 @@ export default function Home() {
           </div>
           <div className="service-page-content">
             {servicePage.panels.map((panel) => {
+              const isIntegrationExamplePanel = isIntegrationsRoute && panel.title === servicePage.panels[3].title;
               const isAutomationExamplePanel = isAutomationRoute && panel.title === servicePage.panels[3].title;
               const isFdeExamplePanel = isFdeRoute && panel.title === servicePage.panels[3].title;
               const isExamplePanel = isAppDevelopmentRoute && panel.title === servicePage.panels[3].title;
@@ -1435,6 +1703,7 @@ export default function Home() {
                   {!isExamplePanel && !isSoftwareExamplePanel && !isWebsiteExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
 
 
+                  {isIntegrationExamplePanel ? <><IntegrationCarousel language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
                   {isAutomationExamplePanel ? <figure className="website-case-preview">
                     <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>
                     <figcaption>{isHebrew ? 'עוזר ה־AI של ShmilApps, מותאם למידע ולשירותי העסק' : 'The ShmilApps AI Assistant, tailored to business information and services'}</figcaption>

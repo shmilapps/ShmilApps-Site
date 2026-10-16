@@ -2871,3 +2871,15 @@ main[dir="rtl"] .ai-chat-input {
     margin-top: calc(var(--subpage-content-top, 442px) - 58px) !important;
   }
 }
+
+/* ADIOS integration story: square artwork, no cropping or automatic advance. */
+.integration-carousel { width: 100%; max-width: min(760px, max(260px, calc(100svh - var(--subpage-content-top, 400px) - 140px))); margin: 26px auto; scroll-margin-top: var(--subpage-content-top, 400px); }
+.integration-slide { aspect-ratio: 1; background: #000; border: 1px solid rgba(186,255,0,.3); border-radius: 18px; overflow: hidden; touch-action: pan-y; }
+.integration-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.integration-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 16px; }
+.integration-controls > button { width: 44px; height: 44px; border: 1px solid #577719; border-radius: 50%; background: #101b08; color: #dfff7a; font: inherit; font-size: 1.4rem; cursor: pointer; }
+.integration-dots { display: flex; gap: 8px; }
+.integration-dots button { width: 14px; height: 14px; padding: 0; border: 1px solid #9dbb60; border-radius: 50%; background: #18220e; cursor: pointer; }
+.integration-dots button[aria-current="true"] { background: #baff00; box-shadow: 0 0 9px #76b900; }
+.integration-controls button:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+.integration-slide-caption { text-align: center !important; margin-top: 12px !important; }
