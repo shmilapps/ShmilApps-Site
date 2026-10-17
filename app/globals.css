@@ -2941,3 +2941,7 @@ main[dir="rtl"] .ai-chat-input {
 .market-order button:disabled { cursor: not-allowed; }
 .market-file-name { overflow-wrap: anywhere; }
 @media(max-width:900px) { .market-order { padding: 16px; } .market-order-grid { grid-template-columns: 1fr; } }
+
+.market-order-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; padding: 9px 22px; border-radius: 999px; background: #baff00; color: #092000; font: 700 1rem Arial, Helvetica, sans-serif; text-decoration: none; }
+.market-order-cta:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+#service-market-research .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }

@@ -1152,15 +1152,16 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "summary": "סקר שוק ב־99 ש״ח. לא מרוצים? החזר כספי מובטח, ללא שאלות.",
         "body": [
           "מחיר הסקר: 99 ש״ח. הסקר יכול להתמקד בישראל ובחו״ל, לפי הבקשה.",
-          "לא מרוצים מהסקר? החזר כספי מובטח, ללא שאלות.",
+          "אם אינכם שבעי רצון מהסקר, תקבלו החזר כספי, ללא שאלות.",
+          "כ־48 שעות לאחר שליחת סקר השוק נשלח אליכם שאלת שביעות רצון. אם תבקשו החזר, נזכה אתכם.",
           "ממשיכים איתנו לביצוע העבודה? מחיר הסקר יקוזז ממחיר העבודה."
         ]
       },
       {
         "title": "לוחות זמנים",
-        "summary": "מתאמים מועד מסירה לפי הנושא והשוק הנבדק.",
+        "summary": "עד 72 שעות מרגע קבלת מסמך האפיון.",
         "body": [
-          "משך המחקר תלוי במורכבות הבקשה ובזמינות המידע. מועד המסירה יתואם לפני תחילת העבודה."
+          "סקר השוק יימסר בתוך עד 72 שעות מרגע קבלת מסמך האפיון."
         ]
       },
       {
@@ -1178,7 +1179,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
           },
           {
             "question": "מה אם לא אהיה מרוצה?",
-            "answer": "החזר כספי מובטח, ללא שאלות."
+            "answer": "אם אינכם שבעי רצון, תקבלו החזר כספי ללא שאלות. כ־48 שעות לאחר שליחת הסקר נשלח שאלת שביעות רצון; אם תבקשו החזר, נזכה אתכם."
           },
           {
             "question": "מה קורה אם ממשיכים לפיתוח או לביצוע?",
@@ -1240,15 +1241,16 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "summary": "Market research for ₪99. Not satisfied? A money-back guarantee, no questions asked.",
         "body": [
           "Research price: ₪99. Research can cover Israel and international markets according to your request.",
-          "Not satisfied with the research? A money-back guarantee, no questions asked.",
+          "If you are not satisfied with the research, you will receive a refund, no questions asked.",
+          "About 48 hours after sending your research, we will send a satisfaction question. If you request a refund, we will refund your payment.",
           "Continue with us to implementation? The research price is deducted from the project price."
         ]
       },
       {
         "title": "Timelines",
-        "summary": "A delivery date agreed around the topic and target market.",
+        "summary": "Within 72 hours of receiving your specification document.",
         "body": [
-          "Timing depends on request complexity and information availability. Delivery is agreed before work begins."
+          "Your market research will be delivered within 72 hours of receiving your specification document."
         ]
       },
       {
@@ -1266,7 +1268,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
           },
           {
             "question": "What if I am not satisfied?",
-            "answer": "A money-back guarantee, no questions asked."
+            "answer": "If you are not satisfied, you will receive a refund, no questions asked. About 48 hours after sending the research, we will send a satisfaction question; if you request a refund, we will refund your payment."
           },
           {
             "question": "What if we continue to development or implementation?",
@@ -1296,7 +1298,8 @@ function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  return <section className="market-order" id="market-order" dir={he?'rtl':'ltr'} aria-labelledby="market-order-title">
  <h3 id="market-order-title">{he?'הזמנת סקר שוק':'Order market research'}</h3>
  <p className="market-order-price">{he?'99 ש״ח · ישראל וחו״ל':'₪99 · Israel and international markets'}</p>
- <p>{he?'החזר כספי מובטח ללא שאלות. ממשיכים לביצוע? מחיר הסקר יקוזז ממחיר העבודה.':'Money-back guarantee, no questions asked. Continue to implementation and the research price is deducted from the project price.'}</p>
+ <p>{he?'אם אינכם שבעי רצון מהסקר, החזר כספי מובטח ללא שאלות. ממשיכים לביצוע? מחיר הסקר יקוזז ממחיר העבודה.':'If you are not satisfied with the research, a money-back guarantee, no questions asked. Continue to implementation and the research price is deducted from the project price.'}</p>
+ <p>{he?'מסירה עד 72 שעות מקבלת מסמך האפיון. כ־48 שעות לאחר שליחת הסקר נשלח שאלת שביעות רצון. אם תבקשו החזר, נזכה אתכם.':'Delivery within 72 hours of receiving your specification document. About 48 hours after sending the research, we will send a satisfaction question. If you request a refund, we will refund your payment.'}</p>
  <p className="market-order-status" role="note">{he?'ההזמנה המקוונת בהכנה. הטופס אינו שולח או שומר מידע עדיין, ולא ניתן לבצע תשלום. אפשר לפנות אלינו באמצעות פרטי הקשר שמתחת לטופס.':'Online ordering is being prepared. This form does not send or save information yet, and payment is unavailable. Contact us using the details below the form.'}</p>
  <form onSubmit={event=>event.preventDefault()}>
  <div className="market-order-grid">
@@ -1786,6 +1789,7 @@ export default function Home() {
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id={`${serviceId}-title`}>{servicePage.title}</h2>
               <p>{servicePage.subtitle}</p>
+              {isMarketRoute ? <a className="market-order-cta" href="#market-order" onClick={(event) => { event.preventDefault(); const target=document.getElementById('market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
             </div>
           </div>
           <div className="service-page-content">
