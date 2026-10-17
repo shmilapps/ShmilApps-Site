@@ -1122,21 +1122,21 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "title": "למי זה מתאים",
         "summary": "ליזמים, עסקים ויחידים שרוצים להבין את השוק לפני הצעד הבא.",
         "body": [
-          "בודקים רעיון לאפליקציה, מוצר תוכנה, שירות או כיוון עסקי, בישראל ובחו״ל. מחדדים את שאלת המחקר ומחפשים מידע שיעזור לכם להחליט איך להתקדם."
+          "בודקים רעיון לאפליקציה, מוצר תוכנה, שירות או כיוון עסקי, בישראל ובחו״ל. מבינים במה המוצר יכול להתבדל מהפתרונות הקיימים, מזהים הזדמנויות וסיכונים ומקבלים מידע שיעזור לכם להחליט איך להתקדם."
         ]
       },
       {
         "title": "תוצרים שיתקבלו",
-        "summary": "תמונה ברורה של פתרונות קיימים, קהלי יעד, מחירים והזדמנויות.",
+        "summary": "בתוך 72 שעות מקבלת מסמך האפיון: ספר PDF מפורט עם השוואות, מקורות וקישורים.",
         "body": [
-          "סקר ממוקד בצורך שלכם, עם השוואה, מקורות ומסקנות מעשיות. היקף ועומק הבדיקה מותאמים לנושא ולמידע הזמין."
+          "בתוך עד 72 שעות מקבלת מסמך האפיון תקבלו ספר PDF מפורט, הכולל השוואת פתרונות, קהלי יעד, מחירים, בידול, הזדמנויות וסיכונים, לצד מקורות ומסקנות מעשיות. הדוח יכלול גם קישורים לאתרים ולרעיונות של מתחרים, אם ישנם. היקף ועומק הבדיקה מותאמים לנושא ולמידע הזמין."
         ]
       },
       {
         "title": "התהליך",
         "summary": "מספרים לנו על הרעיון, מצרפים אפיון ומגדירים את השוק לבדיקה.",
         "body": [
-          "ממלאים את פרטי הבקשה ומצרפים מסמך אפיון אם יש. ככל שהמידע מפורט וברור יותר, נוכל למקד את המחקר ולהפיק סקר איכותי, מקצועי ורלוונטי יותר.",
+          "ממלאים את פרטי הבקשה ומצרפים מסמך אפיון - הצירוף הוא חובה. ככל שהמידע מפורט וברור יותר, נוכל למקד את המחקר ולהפיק סקר איכותי, מקצועי ורלוונטי יותר.",
           "מגדירים את השאלות והאזורים הרלוונטיים בישראל או בחו״ל, אוספים מידע, משווים ומגבשים מסקנות להמשך."
         ]
       },
@@ -1154,7 +1154,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "body": [
           "מחיר הסקר: 99 ש״ח. הסקר יכול להתמקד בישראל ובחו״ל, לפי הבקשה.",
           "אם אינכם שבעי רצון מהסקר, תקבלו החזר כספי, ללא שאלות.",
-          "כ־48 שעות לאחר שליחת סקר השוק נשלח אליכם שאלת שביעות רצון. אם תבקשו החזר, נזכה אתכם.",
+          "עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולבקש החזר כספי מלא, ללא שאלות.",
           "ממשיכים איתנו לביצוע העבודה? מחיר הסקר יקוזז ממחיר העבודה."
         ]
       },
@@ -1162,7 +1162,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "title": "לוחות זמנים",
         "summary": "עד 72 שעות מרגע קבלת מסמך האפיון.",
         "body": [
-          "סקר השוק יימסר בתוך עד 72 שעות מרגע קבלת מסמך האפיון."
+          "סקר השוק יימסר בתוך עד 72 שעות מרגע קבלת מסמך האפיון. עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות."
         ]
       },
       {
@@ -1172,7 +1172,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "faqs": [
           {
             "question": "צריך להגיע עם אפיון מלא?",
-            "answer": "לא חובה. תיאור ברור עוזר להתחיל, ואפיון מפורט מאפשר מחקר ממוקד ואיכותי יותר."
+            "answer": "חובה לצרף מסמך אפיון להזמנה. ככל שהוא ברור ומפורט יותר, נוכל להפיק מחקר ממוקד ואיכותי יותר."
           },
           {
             "question": "הסקר מתבצע גם בחו״ל?",
@@ -1180,7 +1180,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
           },
           {
             "question": "מה אם לא אהיה מרוצה?",
-            "answer": "אם אינכם שבעי רצון, תקבלו החזר כספי ללא שאלות. כ־48 שעות לאחר שליחת הסקר נשלח שאלת שביעות רצון; אם תבקשו החזר, נזכה אתכם."
+            "answer": "עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות."
           },
           {
             "question": "מה קורה אם ממשיכים לפיתוח או לביצוע?",
@@ -1211,21 +1211,21 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "title": "Who is it for",
         "summary": "Entrepreneurs, businesses and individuals exploring their next step.",
         "body": [
-          "Research an app idea, software product, service or business direction in Israel and abroad. Define the research question and find information that helps you decide how to move forward."
+          "Research an app idea, software product, service or business direction in Israel and abroad. Understand how your product could stand out from existing solutions, identify opportunities and risks, and get information that helps you decide how to move forward."
         ]
       },
       {
         "title": "Deliverables",
-        "summary": "A clear view of existing solutions, audiences, pricing and opportunities.",
+        "summary": "Within 72 hours of receiving your specification: a detailed PDF book with comparisons, sources and links.",
         "body": [
-          "Research focused on your needs, with comparisons, sources and practical conclusions. Depth and scope are tailored to the topic and available information."
+          "Within 72 hours of receiving your specification, you will receive a detailed PDF book covering solutions, audiences, pricing, differentiation, opportunities and risks, with sources and practical conclusions. The report also includes links to competitor websites and ideas, where available. Depth and scope are tailored to the topic and available information."
         ]
       },
       {
         "title": "The process",
         "summary": "Describe the idea, attach a specification and identify the markets to explore.",
         "body": [
-          "Share your request and a specification if available. Clear, detailed information helps us deliver more focused, professional and relevant research.",
+          "Share your request and attach a specification document - this is required. Clear, detailed information helps us deliver more focused, professional and relevant research.",
           "Define the questions and relevant regions in Israel or abroad, collect information, compare and develop conclusions for the next step."
         ]
       },
@@ -1243,7 +1243,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "body": [
           "Research price: ₪99. Research can cover Israel and international markets according to your request.",
           "If you are not satisfied with the research, you will receive a refund, no questions asked.",
-          "About 48 hours after sending your research, we will send a satisfaction question. If you request a refund, we will refund your payment.",
+          "Within 48 hours of receiving the report, you can tell us you are not satisfied and request a full refund, no questions asked.",
           "Continue with us to implementation? The research price is deducted from the project price."
         ]
       },
@@ -1251,7 +1251,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "title": "Timelines",
         "summary": "Within 72 hours of receiving your specification document.",
         "body": [
-          "Your market research will be delivered within 72 hours of receiving your specification document."
+          "Your market research will be delivered within 72 hours of receiving your specification document. Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked."
         ]
       },
       {
@@ -1261,7 +1261,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "faqs": [
           {
             "question": "Do I need a complete specification?",
-            "answer": "No. A clear description helps us start; a detailed specification supports more focused research."
+            "answer": "A specification document is required with your order. The clearer and more detailed it is, the more focused and useful the research can be."
           },
           {
             "question": "Can research cover markets outside Israel?",
@@ -1269,7 +1269,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
           },
           {
             "question": "What if I am not satisfied?",
-            "answer": "If you are not satisfied, you will receive a refund, no questions asked. About 48 hours after sending the research, we will send a satisfaction question; if you request a refund, we will refund your payment."
+            "answer": "Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked."
           },
           {
             "question": "What if we continue to development or implementation?",
@@ -1300,7 +1300,7 @@ function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  <h3 id="market-order-title">{he?'הזמנת סקר שוק':'Order market research'}</h3>
  <p className="market-order-price">{he?'99 ש״ח · ישראל וחו״ל':'₪99 · Israel and international markets'}</p>
  <p>{he?'אם אינכם שבעי רצון מהסקר, החזר כספי מובטח ללא שאלות. ממשיכים לביצוע? מחיר הסקר יקוזז ממחיר העבודה.':'If you are not satisfied with the research, a money-back guarantee, no questions asked. Continue to implementation and the research price is deducted from the project price.'}</p>
- <p>{he?'מסירה עד 72 שעות מקבלת מסמך האפיון. כ־48 שעות לאחר שליחת הסקר נשלח שאלת שביעות רצון. אם תבקשו החזר, נזכה אתכם.':'Delivery within 72 hours of receiving your specification document. About 48 hours after sending the research, we will send a satisfaction question. If you request a refund, we will refund your payment.'}</p>
+ <p>{he?'מסירה עד 72 שעות מקבלת מסמך האפיון. עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות.':'Delivery within 72 hours of receiving your specification document. Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked.'}</p>
  <p className="market-order-status" role="note">{he?'ההזמנה המקוונת בהכנה. הטופס אינו שולח או שומר מידע עדיין, ולא ניתן לבצע תשלום. אפשר לפנות אלינו באמצעות פרטי הקשר שמתחת לטופס.':'Online ordering is being prepared. This form does not send or save information yet, and payment is unavailable. Contact us using the details below the form.'}</p>
  <form onSubmit={event=>event.preventDefault()}>
  <div className="market-order-grid">
@@ -1316,7 +1316,7 @@ function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  </div>
  <label>{he?'קהל יעד, מדינות ודגשים (לא חובה)':'Audience, countries and priorities (optional)'}<textarea name="audience" rows={3} maxLength={5000}/></label>
  <label>{he?'מתחרים וקישורים מוכרים (לא חובה)':'Known competitors and links (optional)'}<textarea name="links" rows={3} maxLength={5000}/></label>
- <label>{he?'צירוף מסמך אפיון (לא חובה)':'Attach a specification (optional)'}<input type="file" accept=".pdf,.docx,.txt" onChange={event=>{const file=event.target.files?.[0];setError('');setFilename('');if(!file)return;if(file.size>10*1024*1024||!['pdf','docx','txt'].includes(file.name.split('.').pop()?.toLowerCase()??'')){setError(he?'בחרו PDF, DOCX או TXT בגודל עד 10MB.':'Choose a PDF, DOCX or TXT file up to 10MB.');event.target.value='';return;}setFilename(file.name);}}/></label>
+ <label>{he?'צירוף מסמך אפיון (חובה)':'Attach a specification (required)'}<input type="file" name="specification" required accept=".pdf,.docx,.txt" onChange={event=>{const file=event.target.files?.[0];setError('');setFilename('');if(!file)return;if(file.size>10*1024*1024||!['pdf','docx','txt'].includes(file.name.split('.').pop()?.toLowerCase()??'')){setError(he?'בחרו PDF, DOCX או TXT בגודל עד 10MB.':'Choose a PDF, DOCX or TXT file up to 10MB.');event.target.value='';return;}setFilename(file.name);}}/></label>
  <small>{he?'ככל שהאפיון מפורט וברור יותר, נוכל להפיק סקר איכותי, מקצועי ורלוונטי יותר. הקובץ נבחר במכשיר בלבד ואינו מועלה כרגע.':'The clearer and more detailed the specification, the more focused and useful the research. The file is selected on your device only and is not uploaded yet.'}</small>
  {filename?<p className="market-file-name"><bdi>{filename}</bdi></p>:null}{error?<p role="alert">{error}</p>:null}
  <fieldset disabled><legend>{he?'תשלום':'Payment'}</legend><label><input type="radio" name="payment"/> {he?'אשראי / ביט דרך Grow (בחיבור בהמשך)':'Card / bit through Grow (connection pending)'}</label><label><input type="radio" name="payment"/> {he?'העברה בנקאית (פרטים יתווספו בהמשך)':'Bank transfer (details to be added)'}</label></fieldset>
