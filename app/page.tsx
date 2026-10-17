@@ -148,7 +148,7 @@ const serviceHrefs = [
   '/services/needs-discovery-fde',
   '/services/automation-ai',
   '/services/business-integrations',
-  '/#services',
+  '/services/market-research',
   '/#services',
   '/#services',
   '/#services',
@@ -163,7 +163,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/services/needs-discovery-fde' },
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/services/automation-ai' },
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/services/business-integrations' },
-    { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/#services' },
+    { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/services/market-research' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/#services' },
     { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/#services' },
     { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/#services' },
@@ -176,7 +176,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/services/needs-discovery-fde' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/services/automation-ai' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
-    { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/#services' },
+    { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/services/market-research' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/#services' },
     { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/#services' },
     { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/#services' },
@@ -1112,6 +1112,214 @@ function IntegrationCarousel({ language }: { language: 'he' | 'en' }) {
   </section>;
 }
 
+const marketResearchPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "סקרי שוק",
+    "subtitle": "לפני שמשקיעים ברעיון, בודקים את השוק.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "ליזמים, עסקים ויחידים שרוצים להבין את השוק לפני הצעד הבא.",
+        "body": [
+          "בודקים רעיון לאפליקציה, מוצר תוכנה, שירות או כיוון עסקי, בישראל ובחו״ל. מחדדים את שאלת המחקר ומחפשים מידע שיעזור לכם להחליט איך להתקדם."
+        ]
+      },
+      {
+        "title": "תוצרים שיתקבלו",
+        "summary": "תמונה ברורה של פתרונות קיימים, קהלי יעד, מחירים והזדמנויות.",
+        "body": [
+          "סקר ממוקד בצורך שלכם, עם השוואה, מקורות ומסקנות מעשיות. היקף ועומק הבדיקה מותאמים לנושא ולמידע הזמין."
+        ]
+      },
+      {
+        "title": "התהליך",
+        "summary": "מספרים לנו על הרעיון, מצרפים אפיון ומגדירים את השוק לבדיקה.",
+        "body": [
+          "ממלאים את פרטי הבקשה ומצרפים מסמך אפיון אם יש. ככל שהמידע מפורט וברור יותר, נוכל למקד את המחקר ולהפיק סקר איכותי, מקצועי ורלוונטי יותר.",
+          "מגדירים את השאלות והאזורים הרלוונטיים בישראל או בחו״ל, אוספים מידע, משווים ומגבשים מסקנות להמשך."
+        ]
+      },
+      {
+        "title": "עבודה לדוגמה",
+        "summary": "איך סקר שוק עוזר להחליט מה נכון לבנות?",
+        "body": [
+          "לדוגמה, לפני פיתוח אפליקציה לניהול עסק אפשר לבדוק אילו פתרונות כבר קיימים, למי הם מתאימים, מה הם מציעים ובאיזה מחיר.",
+          "ההשוואה יכולה לעזור לבחור אם לפתח פתרון חדש, להתמקד בקהל מסוים או להשתמש במוצר קיים. זו המחשה לתהליך המחקר, ולא מקרה לקוח או תוצאות מחקר שבוצע."
+        ]
+      },
+      {
+        "title": "תמחור",
+        "summary": "סקר שוק ב־99 ש״ח. לא מרוצים? החזר כספי מובטח, ללא שאלות.",
+        "body": [
+          "מחיר הסקר: 99 ש״ח. הסקר יכול להתמקד בישראל ובחו״ל, לפי הבקשה.",
+          "לא מרוצים מהסקר? החזר כספי מובטח, ללא שאלות.",
+          "ממשיכים איתנו לביצוע העבודה? מחיר הסקר יקוזז ממחיר העבודה."
+        ]
+      },
+      {
+        "title": "לוחות זמנים",
+        "summary": "מתאמים מועד מסירה לפי הנושא והשוק הנבדק.",
+        "body": [
+          "משך המחקר תלוי במורכבות הבקשה ובזמינות המידע. מועד המסירה יתואם לפני תחילת העבודה."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "אפשר להתחיל מרעיון, לצרף אפיון ולבדוק גם שווקים בחו״ל.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "צריך להגיע עם אפיון מלא?",
+            "answer": "לא חובה. תיאור ברור עוזר להתחיל, ואפיון מפורט מאפשר מחקר ממוקד ואיכותי יותר."
+          },
+          {
+            "question": "הסקר מתבצע גם בחו״ל?",
+            "answer": "כן. אפשר לבקש בדיקה בישראל, במדינות מסוימות או בשוק בינלאומי."
+          },
+          {
+            "question": "מה אם לא אהיה מרוצה?",
+            "answer": "החזר כספי מובטח, ללא שאלות."
+          },
+          {
+            "question": "מה קורה אם ממשיכים לפיתוח או לביצוע?",
+            "answer": "מחיר הסקר יקוזז ממחיר העבודה."
+          },
+          {
+            "question": "האם הסקר מבטיח הצלחה עסקית?",
+            "answer": "הסקר מספק מידע ותובנות לקבלת החלטות. הוא אינו מבטיח תוצאה עסקית."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "יש לכם רעיון? בואו נבדוק איפה הוא פוגש את השוק.",
+      "lines": [
+        "ספרו לנו מה תרצו לבדוק ומה חשוב לכם להבין."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Market research",
+    "subtitle": "Before investing in an idea, understand the market.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "Entrepreneurs, businesses and individuals exploring their next step.",
+        "body": [
+          "Research an app idea, software product, service or business direction in Israel and abroad. Define the research question and find information that helps you decide how to move forward."
+        ]
+      },
+      {
+        "title": "Deliverables",
+        "summary": "A clear view of existing solutions, audiences, pricing and opportunities.",
+        "body": [
+          "Research focused on your needs, with comparisons, sources and practical conclusions. Depth and scope are tailored to the topic and available information."
+        ]
+      },
+      {
+        "title": "The process",
+        "summary": "Describe the idea, attach a specification and identify the markets to explore.",
+        "body": [
+          "Share your request and a specification if available. Clear, detailed information helps us deliver more focused, professional and relevant research.",
+          "Define the questions and relevant regions in Israel or abroad, collect information, compare and develop conclusions for the next step."
+        ]
+      },
+      {
+        "title": "Example project",
+        "summary": "How can market research help decide what to build?",
+        "body": [
+          "For example, before building a business management app, research can identify existing solutions, their audiences, capabilities and pricing.",
+          "The comparison can inform whether to build a new solution, focus on a specific audience or use an existing product. This illustrates a research process, not a client case or completed research findings."
+        ]
+      },
+      {
+        "title": "Pricing",
+        "summary": "Market research for ₪99. Not satisfied? A money-back guarantee, no questions asked.",
+        "body": [
+          "Research price: ₪99. Research can cover Israel and international markets according to your request.",
+          "Not satisfied with the research? A money-back guarantee, no questions asked.",
+          "Continue with us to implementation? The research price is deducted from the project price."
+        ]
+      },
+      {
+        "title": "Timelines",
+        "summary": "A delivery date agreed around the topic and target market.",
+        "body": [
+          "Timing depends on request complexity and information availability. Delivery is agreed before work begins."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "Start with an idea, attach a specification and explore international markets.",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Do I need a complete specification?",
+            "answer": "No. A clear description helps us start; a detailed specification supports more focused research."
+          },
+          {
+            "question": "Can research cover markets outside Israel?",
+            "answer": "Yes. Request Israel, specific countries or an international market."
+          },
+          {
+            "question": "What if I am not satisfied?",
+            "answer": "A money-back guarantee, no questions asked."
+          },
+          {
+            "question": "What if we continue to development or implementation?",
+            "answer": "The research price is deducted from the project price."
+          },
+          {
+            "question": "Does research guarantee business success?",
+            "answer": "It provides information and insights for decisions, not a guarantee of business results."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Have an idea? Let’s see where it meets the market.",
+      "lines": [
+        "Tell us what you want to explore and what you need to understand."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
+
+function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
+ const he=language==='he'; const [filename,setFilename]=useState(''); const [error,setError]=useState('');
+ return <section className="market-order" id="market-order" dir={he?'rtl':'ltr'} aria-labelledby="market-order-title">
+ <h3 id="market-order-title">{he?'הזמנת סקר שוק':'Order market research'}</h3>
+ <p className="market-order-price">{he?'99 ש״ח · ישראל וחו״ל':'₪99 · Israel and international markets'}</p>
+ <p>{he?'החזר כספי מובטח ללא שאלות. ממשיכים לביצוע? מחיר הסקר יקוזז ממחיר העבודה.':'Money-back guarantee, no questions asked. Continue to implementation and the research price is deducted from the project price.'}</p>
+ <p className="market-order-status" role="note">{he?'ההזמנה המקוונת בהכנה. הטופס אינו שולח או שומר מידע עדיין, ולא ניתן לבצע תשלום. אפשר לפנות אלינו באמצעות פרטי הקשר שמתחת לטופס.':'Online ordering is being prepared. This form does not send or save information yet, and payment is unavailable. Contact us using the details below the form.'}</p>
+ <form onSubmit={event=>event.preventDefault()}>
+ <div className="market-order-grid">
+ <label>{he?'שם מלא':'Full name'}<input name="fullName" autoComplete="name" required maxLength={120}/></label>
+ <label>{he?'עסק / ארגון (לא חובה)':'Business / organization (optional)'}<input name="business" autoComplete="organization" maxLength={160}/></label>
+ <label>{he?'אימייל':'Email'}<input type="email" name="email" autoComplete="email" dir="ltr" required maxLength={254}/></label>
+ <label>{he?'טלפון':'Phone'}<input type="tel" name="phone" autoComplete="tel" dir="ltr" required maxLength={40}/></label>
+ </div>
+ <label>{he?'מה תרצו לבדוק?':'What would you like to research?'}<textarea name="description" required rows={5} maxLength={10000} placeholder={he?'תארו את הרעיון והשאלות שחשוב לכם לבדוק':'Describe your idea and the questions that matter to you'}/></label>
+ <div className="market-order-grid">
+ <label>{he?'שוק יעד':'Target market'}<select name="market"><option value="israel">{he?'ישראל':'Israel'}</option><option value="international">{he?'חו״ל':'International'}</option><option value="both">{he?'ישראל וחו״ל':'Israel and international'}</option></select></label>
+ <label>{he?'שפת הסקר':'Report language'}<select name="reportLanguage" defaultValue={language}><option value="he">עברית</option><option value="en">English</option></select></label>
+ </div>
+ <label>{he?'קהל יעד, מדינות ודגשים (לא חובה)':'Audience, countries and priorities (optional)'}<textarea name="audience" rows={3} maxLength={5000}/></label>
+ <label>{he?'מתחרים וקישורים מוכרים (לא חובה)':'Known competitors and links (optional)'}<textarea name="links" rows={3} maxLength={5000}/></label>
+ <label>{he?'צירוף מסמך אפיון (לא חובה)':'Attach a specification (optional)'}<input type="file" accept=".pdf,.docx,.txt" onChange={event=>{const file=event.target.files?.[0];setError('');setFilename('');if(!file)return;if(file.size>10*1024*1024||!['pdf','docx','txt'].includes(file.name.split('.').pop()?.toLowerCase()??'')){setError(he?'בחרו PDF, DOCX או TXT בגודל עד 10MB.':'Choose a PDF, DOCX or TXT file up to 10MB.');event.target.value='';return;}setFilename(file.name);}}/></label>
+ <small>{he?'ככל שהאפיון מפורט וברור יותר, נוכל להפיק סקר איכותי, מקצועי ורלוונטי יותר. הקובץ נבחר במכשיר בלבד ואינו מועלה כרגע.':'The clearer and more detailed the specification, the more focused and useful the research. The file is selected on your device only and is not uploaded yet.'}</small>
+ {filename?<p className="market-file-name"><bdi>{filename}</bdi></p>:null}{error?<p role="alert">{error}</p>:null}
+ <fieldset disabled><legend>{he?'תשלום':'Payment'}</legend><label><input type="radio" name="payment"/> {he?'אשראי / ביט דרך Grow (בחיבור בהמשך)':'Card / bit through Grow (connection pending)'}</label><label><input type="radio" name="payment"/> {he?'העברה בנקאית (פרטים יתווספו בהמשך)':'Bank transfer (details to be added)'}</label></fieldset>
+ <button type="submit" disabled>{he?'שליחה ותשלום יהיו זמינים בקרוב':'Submission and payment coming soon'}</button>
+ </form></section>;
+}
+
 const websiteBrandCaseStudy = {
   he: {
     title: 'אתר ShmilApps',
@@ -1387,11 +1595,12 @@ export default function Home() {
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
   const isAutomationRoute = currentPath === '/services/automation-ai';
   const isIntegrationsRoute = currentPath === '/services/business-integrations';
-  const servicePage = isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const isMarketRoute = currentPath === '/services/market-research';
+  const servicePage = isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -1570,7 +1779,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
@@ -1725,6 +1934,7 @@ export default function Home() {
               );
             })}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
+              {isMarketRoute ? <MarketResearchOrderForm language={language} /> : null}
               <h3 id="service-contact-title">{servicePage.contact.title}</h3>
               {servicePage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
