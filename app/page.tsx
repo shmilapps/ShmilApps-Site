@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import MarketResearchBook from '../components/MarketResearchBook';
 
 const content = {
   he: {
@@ -1141,10 +1142,10 @@ const marketResearchPage: typeof appDevelopmentPage = {
       },
       {
         "title": "עבודה לדוגמה",
-        "summary": "איך סקר שוק עוזר להחליט מה נכון לבנות?",
+        "summary": "טעם של בית - דוח סקר שוק מלא, מישראל ועד השוק הבינלאומי.",
         "body": [
-          "לדוגמה, לפני פיתוח אפליקציה לניהול עסק אפשר לבדוק אילו פתרונות כבר קיימים, למי הם מתאימים, מה הם מציעים ובאיזה מחיר.",
-          "ההשוואה יכולה לעזור לבחור אם לפתח פתרון חדש, להתמקד בקהל מסוים או להשתמש במוצר קיים. זו המחשה לתהליך המחקר, ולא מקרה לקוח או תוצאות מחקר שבוצע."
+          "דפדפו בסקר השוק של ״טעם של בית״, רעיון לספרי מתכונים אישיים וזיכרונות משפחתיים. הדוח בוחן מתחרים בישראל ובחו״ל, מחירים, מודלים עסקיים, הזדמנויות וסיכונים.",
+          "כאן מוצג הדוח המלא, כולל ההשוואות, המקורות וההמלצות להמשך. לחצו על הכריכה כדי לפתוח את הספר ולדפדף בו."
         ]
       },
       {
@@ -1230,10 +1231,10 @@ const marketResearchPage: typeof appDevelopmentPage = {
       },
       {
         "title": "Example project",
-        "summary": "How can market research help decide what to build?",
+        "summary": "A Taste of Home - a complete market research report covering Israel and international markets.",
         "body": [
-          "For example, before building a business management app, research can identify existing solutions, their audiences, capabilities and pricing.",
-          "The comparison can inform whether to build a new solution, focus on a specific audience or use an existing product. This illustrates a research process, not a client case or completed research findings."
+          "Explore the market research for A Taste of Home, a concept for personalized cookbooks and family memories. The report examines competitors in Israel and abroad, pricing, business models, opportunities and risks.",
+          "The complete report includes comparisons, sources and recommendations for the next step. Click the cover to open the book and turn its pages."
         ]
       },
       {
@@ -1919,6 +1920,7 @@ export default function Home() {
                   {!isExamplePanel && !isSoftwareExamplePanel && !isWebsiteExamplePanel ? panel.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>) : null}
 
 
+                  {isMarketRoute && panel.title === servicePage.panels[3].title ? <MarketResearchBook key={language} language={language} /> : null}
                   {isIntegrationExamplePanel ? <><IntegrationCarousel key={carouselVersion} language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
                   {isAutomationExamplePanel ? <figure className="website-case-preview">
                     <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>

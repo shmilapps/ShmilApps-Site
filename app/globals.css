@@ -2945,3 +2945,8 @@ main[dir="rtl"] .ai-chat-input {
 .market-order-cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; padding: 9px 22px; border-radius: 999px; background: #baff00; color: #092000; font: 700 1rem Arial, Helvetica, sans-serif; text-decoration: none; }
 .market-order-cta:focus-visible { outline: 2px solid white; outline-offset: 3px; }
 #service-market-research .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }
+
+/* The approved report is a single inline book in the current page language. */
+.market-research-book { width: 100%; max-width: 880px; margin: 24px auto 8px; }
+.market-research-book iframe { display: block; width: 100%; border: 0; background: transparent; }
+@media(max-width: 900px) { .market-research-book { margin-top: 16px; } }
