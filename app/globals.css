@@ -2950,3 +2950,7 @@ main[dir="rtl"] .ai-chat-input {
 .market-research-book { width: 100%; max-width: 880px; margin: 24px auto 8px; }
 .market-research-book iframe { display: block; width: 100%; border: 0; background: transparent; }
 @media(max-width: 900px) { .market-research-book { margin-top: 16px; } }
+
+#service-quote-cost-reduction .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }
+#service-quote-cost-reduction .service-detail-body, #service-quote-cost-reduction .service-detail-body p, #service-quote-cost-reduction .service-detail-body li { text-align: start; direction: inherit; }
+#service-quote-cost-reduction .service-detail-body ul { padding-inline-start: 24px; padding-inline-end: 0; list-style-position: outside; }

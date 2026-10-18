@@ -150,7 +150,7 @@ const serviceHrefs = [
   '/services/automation-ai',
   '/services/business-integrations',
   '/services/market-research',
-  '/#services',
+  '/services/quote-cost-reduction',
   '/#services',
   '/#services',
   '/#services',
@@ -165,7 +165,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/services/automation-ai' },
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/services/business-integrations' },
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/services/market-research' },
-    { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/#services' },
+    { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/services/quote-cost-reduction' },
     { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/#services' },
     { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/#services' },
     { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/#services' },
@@ -178,7 +178,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/services/automation-ai' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/services/market-research' },
-    { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/#services' },
+    { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/services/quote-cost-reduction' },
     { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/#services' },
     { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/#services' },
     { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/#services' },
@@ -1113,6 +1113,249 @@ function IntegrationCarousel({ language }: { language: 'he' | 'en' }) {
   </section>;
 }
 
+const quoteCostReductionPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "הוזלת הצעות מחיר קיימות",
+    "subtitle": "כבר קיבלתם הצעת מחיר? בואו נבדוק איך אפשר להתקדם בעלות טובה יותר.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "ליחידים, יזמים ועסקים שקיבלו הצעה ורוצים להבין אם קיימת דרך משתלמת יותר.",
+        "body": [
+          "קיבלתם הצעת מחיר לפיתוח תוכנה, אפליקציה, אתר, מערכת ניהול, אוטומציה או אינטגרציה? נבחן את ההצעה מול הצורך שלכם ונבדוק מה באמת נחוץ, מה דורש הבהרה ואילו חלופות יכולות להתאים.",
+          "הצעה גבוהה אינה בהכרח יקרה מדי. משווים גם תכולה, אחריות, איכות, שירות ותחזוקה כדי להבין מה עומד מאחורי המחיר."
+        ]
+      },
+      {
+        "title": "מה תקבלו",
+        "summary": "בחינה של ההצעה והצרכים, עם אפשרויות מעשיות לצמצום עלויות והסבר על ההבדלים.",
+        "body": [
+          "נפרק את ההצעה לרכיבים ונבדוק היכן ניתן לפשט, להשתמש בפתרון קיים, לבחור טכנולוגיה מתאימה יותר או לחלק את הביצוע לשלבים.",
+          "תקבלו מסקנות ברורות לגבי מה מומלץ לשמר, מה אפשר לשנות ומה המשמעות של כל חלופה מבחינת תכולה, איכות, לוחות זמנים ועלויות לאורך זמן."
+        ],
+        "bullets": [
+          "התאמה בין הדרישות שלכם לבין מה שנכלל בהצעה.",
+          "איתור פיתוחים כפולים, מורכבות מיותרת ורכיבים שאפשר לדחות.",
+          "בחינת פתרונות קיימים ואינטגרציה במקום פיתוח הכול מאפס.",
+          "התייחסות לעלויות רישיונות, תשתיות, שימוש ותחזוקה.",
+          "אפשרות להצעת ביצוע דרך ShmilApps, בהתאם לתכולה שתסוכם."
+        ]
+      },
+      {
+        "title": "בית תוכנה חדיש",
+        "summary": "מודל עבודה המבוסס ברובו ככולו על סוכני AI מותאמים ומאומנים לתפקיד, עם הובלה אנושית.",
+        "body": [
+          "ShmilApps פועלת כבית תוכנה חדיש שבו רובו ככולו של צוות הביצוע מורכב מסוכני AI, המותאמים ומאומנים לתפקידים מוגדרים. כל סוכן פועל עם הנחיות, כלים ומידע המתאימים למשימה שלו.",
+          "במודל העבודה שלנו, עלות התפעול המשוערת של סוכן נעה בין 20 ל־500 דולר לחודש, בהתאם לתפקיד, לכלים ולהיקף השימוש. זו עלות תפעול הסוכן, ולא מחיר הפרויקט או מלוא עלות העבודה: ניהול, פיקוח אנושי, תשתיות ושירותים נוספים מתומחרים בהתאם לצורך.",
+          "אפשר להפעיל עותקים נוספים של סוכנים מתאימים לצרכים ולמשימות שונות, ולעבוד במקביל כשזה מועיל לפרויקט. כך ניתן לצמצם עבודה חוזרת ולהתאים את יכולת הביצוע להיקף העבודה ולתקציב. גם לשכפול ולשימוש נוסף יש עלויות תפעול."
+        ]
+      },
+      {
+        "title": "לכל משימה, הסוכן המתאים",
+        "summary": "משייכים עבודה לפי תחום ההתמחות, ומחברים את התוצרים בפיקוח ובדיוק אנושי.",
+        "body": [
+          "מחלקים את הפרויקט למשימות ברורות ומשייכים אותן לסוכנים לפי תחום ההתמחות והכלים הנדרשים. משימות שאינן תלויות זו בזו יכולות להתבצע במקביל.",
+          "האדם מוביל את העבודה: מגדיר מטרות ודרישות, בוחר את דרך הביצוע, בוחן את התוצרים, מתקן ומאשר. תוצר של סוכן עובר בדיקה לפני שמשלבים אותו בפתרון.",
+          "הפיקוח האנושי נועד לשמור על התאמה לצורך שלכם, דיוק בפרטים וחיבור נכון בין חלקי המערכת. לפני מסירה בודקים את התוצאה כמכלול ואת התנהגותה בתרחישים הרלוונטיים."
+        ],
+        "bullets": [
+          "מחקר ואפיון: ריכוז מידע, בירור חלופות ופירוק דרישות.",
+          "פיתוח: ביצוע משימות קוד מוגדרות ושילוב רכיבים.",
+          "עיצוב ותוכן: הכנת ממשקים, מסרים וחומרי עבודה.",
+          "בדיקות ותיעוד: בדיקת תרחישים, איתור פערים והכנת הסברים.",
+          "ניהול ואישור אנושי: קביעת סדרי עדיפויות ובקרת התוצאה הסופית."
+        ]
+      },
+      {
+        "title": "התהליך",
+        "summary": "מצרפים הצעה ואפיון קיים, מבהירים מה חשוב ובוחנים אפשרויות להמשך.",
+        "body": [
+          "מתחילים מהצעת המחיר שקיבלתם, מאפיון או תיאור הצורך ומהדברים שחשוב לכם לשמר. מבררים מה כלול, מה חסר ומה כבר קיים בעסק.",
+          "בוחנים דרכים להוזלה: שימוש ברכיבים קיימים, שינוי תכנון, אינטגרציות, ביצוע בשלבים ועבודה של צוות סוכנים בפיקוח אנושי. כשיש פשרה או שינוי בתכולה, מציגים אותם במפורש.",
+          "מסכמים את האפשרויות ואת הדרך המומלצת. אפשר להיעזר במסקנות מול הספק הקיים, או לבדוק ביצוע דרך ShmilApps. ההחלטה נשארת שלכם."
+        ]
+      },
+      {
+        "title": "תמחור",
+        "summary": "מגדירים מראש את היקף הבדיקה ואת המחיר, בהתאם למורכבות ההצעה והפרויקט.",
+        "body": [
+          "מחיר הבדיקה נקבע לפי היקף החומר, מספר הרכיבים ועומק הבירור הנדרש. נגדיר מראש מה נבדק ומה תקבלו, לפני תחילת העבודה.",
+          "אם תרצו להמשיך לביצוע דרך ShmilApps, תינתן הצעה נפרדת בהתאם לתכולה ולחלופה שנבחרה. עלויות שימוש, רישיונות ותחזוקה יוצגו בהתאם לפתרון.",
+          "אין הבטחה לאחוז חיסכון קבוע או לכך שכל הצעה ניתנת להוזלה. המטרה היא למצוא דרך שמתאימה לצורך ולתקציב, עם תמונה ברורה של העלויות והמשמעויות."
+        ]
+      },
+      {
+        "title": "לוחות זמנים",
+        "summary": "נקבעים מראש לפי היקף ההצעה, החומר הזמין והבירורים הנדרשים.",
+        "body": [
+          "לאחר קבלת הצעת המחיר והמידע הרלוונטי, נסכם לוח זמנים לבדיקה. אם חסר מידע מהותי, נבהיר מה נדרש כדי להתקדם.",
+          "משך ביצוע הפרויקט עצמו יוגדר בנפרד, אם תבחרו להמשיך איתנו לפיתוח או ליישום."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "מה אפשר להוזיל, איך שומרים על איכות ומה תפקיד האדם בתהליך?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "האם תמיד אפשר להוזיל?",
+            "answer": "לא. לפעמים ההצעה כבר מתאימה להיקף ולאיכות הנדרשים. במקרים אחרים החיסכון מגיע מפישוט, שינוי תכנון, פתרון קיים או ביצוע בשלבים. נציג את הממצאים כפי שהם."
+          },
+          {
+            "question": "האם חייבים לעבור ספק?",
+            "answer": "לא. אפשר להשתמש במסקנות כדי לדייק את הדרישות או לשוחח עם הספק הקיים. אפשר גם לבדוק הצעת ביצוע דרך ShmilApps."
+          },
+          {
+            "question": "האם מחיר נמוך יותר בא על חשבון האיכות?",
+            "answer": "נבחן את ההבדלים ונציג כל שינוי בתכולה או ברמת השירות. חיסכון ראשוני עלול ליצור עלויות בהמשך, ולכן בוחנים גם תחזוקה, רישיונות ותשתיות."
+          },
+          {
+            "question": "האם הסוכנים עובדים בלי אדם?",
+            "answer": "לא. יש הובלה, פיקוח ובדיקה אנושית לאורך העבודה. הסוכנים מבצעים משימות מוגדרות, והתוצרים נבדקים לפני שילוב ומסירה."
+          },
+          {
+            "question": "האם 20 עד 500 דולר הם המחיר שאשלם על הפרויקט?",
+            "answer": "לא. זהו טווח עלות תפעול משוערת לחודש לסוכן במודל העבודה שלנו. מחיר הפרויקט כולל את היקף הביצוע, ההובלה והפיקוח האנושי, הכלים והתשתיות הרלוונטיים."
+          },
+          {
+            "question": "מה צריך לשלוח כדי להתחיל?",
+            "answer": "את הצעת המחיר שקיבלתם ואפיון או תיאור ברור של הצורך. כדאי לציין מה חשוב לכם, מה התקציב ומה כבר קיים או בוצע."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "הצעת המחיר עצרה את הרעיון? בואו נבדוק איך אפשר להתקדם.",
+      "lines": [
+        "שלחו את ההצעה וספרו לנו מה אתם באמת צריכים."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Reducing existing quote costs",
+    "subtitle": "Already have a quote? Let’s explore a more cost-effective way forward.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "Individuals, entrepreneurs and businesses with a quote who want to explore better-value alternatives.",
+        "body": [
+          "Have a quote for software, an app, a website, a management system, automation or an integration? We examine it against your needs to identify essentials, points to clarify and alternatives worth considering.",
+          "A high quote is not necessarily overpriced. Scope, responsibility, quality, service and maintenance all matter when understanding the price."
+        ]
+      },
+      {
+        "title": "What you receive",
+        "summary": "A review of your quote and requirements, with practical cost-saving options and their implications.",
+        "body": [
+          "We break the quote into components and consider simplification, existing solutions, a better-suited technology or phased delivery.",
+          "You receive clear findings on what to retain, what could change and what each alternative means for scope, quality, timelines and ongoing costs."
+        ],
+        "bullets": [
+          "Alignment between your requirements and the quoted scope.",
+          "Duplicated development, unnecessary complexity and components that could wait.",
+          "Existing solutions and integrations as alternatives to building everything from scratch.",
+          "License, infrastructure, usage and maintenance costs.",
+          "An option for a ShmilApps implementation quote based on the agreed scope."
+        ]
+      },
+      {
+        "title": "A modern software house",
+        "summary": "A delivery model built almost entirely around role-trained AI agents, with human leadership.",
+        "body": [
+          "ShmilApps operates as a modern software house whose delivery team consists almost entirely of AI agents, tailored and trained for defined roles. Each agent works with instructions, tools and information suited to its task.",
+          "In our working model, an agent’s estimated operating cost ranges from $20 to $500 per month, depending on its role, tools and usage. This is the agent’s operating cost, not the project price or the full cost of delivery: management, human oversight, infrastructure and additional services are priced as needed.",
+          "Additional instances of suitable agents can be deployed for different needs and tasks, working in parallel where that benefits the project. This can reduce repetitive work and match delivery capacity to scope and budget. Replication and additional usage also carry operating costs."
+        ]
+      },
+      {
+        "title": "The right agent for each task",
+        "summary": "Work is assigned by specialty, then brought together with human oversight and attention to detail.",
+        "body": [
+          "We divide a project into clear tasks and assign them according to specialty and required tools. Independent tasks can run in parallel.",
+          "A human leads the work: defining objectives and requirements, choosing the approach, reviewing outputs, correcting and approving. An agent’s output is checked before it becomes part of the solution.",
+          "Human oversight helps maintain alignment with your needs, accuracy in the details and sound integration between components. Before delivery, we check the result as a whole and its behavior in relevant scenarios."
+        ],
+        "bullets": [
+          "Research and specification: gathering information, exploring alternatives and breaking down requirements.",
+          "Development: implementing defined coding tasks and integrating components.",
+          "Design and content: preparing interfaces, messaging and working materials.",
+          "Testing and documentation: checking scenarios, identifying gaps and preparing guidance.",
+          "Human management and approval: setting priorities and reviewing the final result."
+        ]
+      },
+      {
+        "title": "The process",
+        "summary": "Share the quote and existing specification, clarify priorities and explore the next steps.",
+        "body": [
+          "We start with your quote, a specification or description of the need, and the elements you want to preserve. We clarify what is included, what is missing and what your business already has.",
+          "We evaluate cost-saving routes: existing components, design changes, integrations, phased delivery and agent-assisted work under human oversight. Any trade-off or scope change is explained explicitly.",
+          "We summarize the options and recommended approach. Use the findings with your existing supplier, or explore delivery through ShmilApps. The choice remains yours."
+        ]
+      },
+      {
+        "title": "Pricing",
+        "summary": "Review scope and pricing are agreed in advance, based on the quote and project complexity.",
+        "body": [
+          "The review price depends on the material, components and depth of investigation required. We define what will be examined and what you will receive before work begins.",
+          "If you choose ShmilApps for implementation, we provide a separate quote based on the selected scope and approach. Usage, licensing and maintenance costs are identified for the proposed solution.",
+          "There is no guaranteed saving percentage or promise that every quote can be reduced. The aim is to find a route suited to your needs and budget, with a clear picture of costs and implications."
+        ]
+      },
+      {
+        "title": "Timelines",
+        "summary": "Agreed in advance according to the quote, available material and clarification required.",
+        "body": [
+          "Once we have the quote and relevant information, we agree a review timeline. If essential information is missing, we explain what is needed to proceed.",
+          "Implementation timelines are defined separately if you choose to continue with development or delivery through ShmilApps."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "What can be reduced, how is quality considered and where does human oversight fit?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Can every quote be reduced?",
+            "answer": "No. A quote may already reflect the required scope and quality. In other cases, savings come from simplification, redesign, an existing solution or phased delivery. We present the findings as they are."
+          },
+          {
+            "question": "Do I have to change suppliers?",
+            "answer": "No. You can use the findings to clarify requirements or discuss your existing quote. You can also explore an implementation quote from ShmilApps."
+          },
+          {
+            "question": "Does a lower price mean lower quality?",
+            "answer": "We examine the differences and explain scope or service changes. Initial savings can create later costs, so maintenance, licenses and infrastructure are considered too."
+          },
+          {
+            "question": "Do the agents work without a human?",
+            "answer": "No. Human leadership, oversight and review remain part of the process. Agents perform defined tasks, and outputs are checked before integration and delivery."
+          },
+          {
+            "question": "Is $20 to $500 the price of my project?",
+            "answer": "No. It is an estimated monthly operating-cost range per agent in our working model. The project price includes delivery scope, human leadership and oversight, and relevant tools and infrastructure."
+          },
+          {
+            "question": "What should I send to get started?",
+            "answer": "Your existing quote and a specification or clear description of the need. Include your priorities, budget and anything already in place or completed."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Did the quote put your idea on hold? Let’s explore a way forward.",
+      "lines": [
+        "Send the quote and tell us what you actually need."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
+
 const marketResearchPage: typeof appDevelopmentPage = {
   "he": {
     "title": "סקרי שוק",
@@ -1599,12 +1842,13 @@ export default function Home() {
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
   const isAutomationRoute = currentPath === '/services/automation-ai';
   const isIntegrationsRoute = currentPath === '/services/business-integrations';
+  const isQuoteCostRoute = currentPath === '/services/quote-cost-reduction';
   const isMarketRoute = currentPath === '/services/market-research';
-  const servicePage = isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const servicePage = isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v2.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -1783,7 +2027,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
