@@ -166,7 +166,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/services/business-integrations' },
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/services/market-research' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/services/quote-cost-reduction' },
-    { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/services/training-enrichment' },
+    { title: 'הדרכות והעשרה', summary: 'הדרכות AI, חינוך פיננסי, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/services/training-enrichment' },
     { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/#services' },
     { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/#services' },
   ],
@@ -179,7 +179,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/services/market-research' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/services/quote-cost-reduction' },
-    { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/services/training-enrichment' },
+    { title: 'Training and enrichment', summary: 'AI, financial education, capital markets and crypto training for businesses, teams and individuals.', href: '/services/training-enrichment' },
     { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/#services' },
     { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/#services' },
   ],
@@ -1128,7 +1128,7 @@ const trainingEnrichmentPage: typeof appDevelopmentPage = {
       },
       {
         "title": "מה אפשר ללמוד",
-        "summary": "בינה מלאכותית, אוטומציות, כלים דיגיטליים, פיתוח, שוק ההון וקריפטו.",
+        "summary": "בינה מלאכותית, אוטומציות, כלים דיגיטליים, פיתוח, חינוך פיננסי, שוק ההון וקריפטו.",
         "body": [
           "בוחרים נושא ממוקד או משלבים כמה תחומים סביב מטרה אחת. התוכן והדוגמאות מותאמים לרמת המשתתפים ולמה שתרצו לדעת לעשות בסיום."
         ],
@@ -1136,6 +1136,7 @@ const trainingEnrichmentPage: typeof appDevelopmentPage = {
           "בינה מלאכותית: עבודה עם כלי AI, ניסוח בקשות, בדיקת תוצרים ובניית תהליכי עבודה.",
           "אוטומציות וסוכנים: זיהוי משימות חוזרות, חיבור כלים והבנת האפשרויות לייעול העבודה.",
           "פיתוח וכלים דיגיטליים: מרעיון ואפיון ועד הבנת הדרך לבניית פתרון.",
+          "חינוך פיננסי: ניהול תקציב, חיסכון, הבנת ריבית והרגלים לקבלת החלטות כספיות בחיי היום־יום.",
           "שוק ההון וקריפטו: מושגי יסוד, כלי מחקר, קריאת מידע והבנת הזדמנויות וסיכונים."
         ]
       },
@@ -1242,7 +1243,7 @@ const trainingEnrichmentPage: typeof appDevelopmentPage = {
       },
       {
         "title": "What you can learn",
-        "summary": "AI, automation, digital tools, development, capital markets and cryptocurrency.",
+        "summary": "AI, automation, digital tools, development, financial education, capital markets and cryptocurrency.",
         "body": [
           "Choose a focused topic or combine several areas around one objective. Content and examples are adapted to participants’ knowledge and what you want to be able to do afterwards."
         ],
@@ -1250,6 +1251,7 @@ const trainingEnrichmentPage: typeof appDevelopmentPage = {
           "Artificial intelligence: using AI tools, writing prompts, checking outputs and building workflows.",
           "Automation and agents: identifying repetitive tasks, connecting tools and exploring ways to work more efficiently.",
           "Development and digital tools: from ideas and specifications to understanding how a solution is built.",
+          "Financial education: budgeting, saving, understanding interest and everyday financial decision-making habits.",
           "Capital markets and cryptocurrency: core concepts, research tools, interpreting information and understanding opportunities and risks."
         ]
       },
@@ -2516,4 +2518,3 @@ export default function Home() {
     </main>
   );
 }
-
