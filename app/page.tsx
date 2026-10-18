@@ -151,7 +151,7 @@ const serviceHrefs = [
   '/services/business-integrations',
   '/services/market-research',
   '/services/quote-cost-reduction',
-  '/#services',
+  '/services/training-enrichment',
   '/#services',
   '/#services',
 ];
@@ -166,7 +166,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/services/business-integrations' },
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/services/market-research' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/services/quote-cost-reduction' },
-    { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/#services' },
+    { title: 'הדרכות והעשרה', summary: 'הדרכות AI, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/services/training-enrichment' },
     { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/#services' },
     { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/#services' },
   ],
@@ -179,7 +179,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/services/market-research' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/services/quote-cost-reduction' },
-    { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/#services' },
+    { title: 'Training and enrichment', summary: 'AI, capital markets and crypto training for businesses, teams and individuals.', href: '/services/training-enrichment' },
     { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/#services' },
     { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/#services' },
   ],
@@ -1113,6 +1113,237 @@ function IntegrationCarousel({ language }: { language: 'he' | 'en' }) {
   </section>;
 }
 
+const trainingEnrichmentPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "הדרכות והעשרה",
+    "subtitle": "לא רק להכיר את הכלים. לדעת מה לעשות איתם.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "ליחידים, עסקים, צוותים ומוסדות חינוך שרוצים להבין, להתנסות ולהתקדם.",
+        "body": [
+          "למי שרוצים להיכנס לעולם חדש, להעמיק ידע קיים או ללמוד איך להשתמש בטכנולוגיה בעבודה ובחיי היום־יום. ההדרכה מותאמת לנקודת הפתיחה שלכם, ממתחילים ועד משתמשים מנוסים.",
+          "מתאים גם לצוותי הוראה, תלמידים וכיתות. אפשר להתאים תכני העשרה לפעילויות במסגרת גפ״ן (גמישות פדגוגית ניהולית), לפי גיל המשתתפים ומטרות בית הספר."
+        ]
+      },
+      {
+        "title": "מה אפשר ללמוד",
+        "summary": "בינה מלאכותית, אוטומציות, כלים דיגיטליים, פיתוח, שוק ההון וקריפטו.",
+        "body": [
+          "בוחרים נושא ממוקד או משלבים כמה תחומים סביב מטרה אחת. התוכן והדוגמאות מותאמים לרמת המשתתפים ולמה שתרצו לדעת לעשות בסיום."
+        ],
+        "bullets": [
+          "בינה מלאכותית: עבודה עם כלי AI, ניסוח בקשות, בדיקת תוצרים ובניית תהליכי עבודה.",
+          "אוטומציות וסוכנים: זיהוי משימות חוזרות, חיבור כלים והבנת האפשרויות לייעול העבודה.",
+          "פיתוח וכלים דיגיטליים: מרעיון ואפיון ועד הבנת הדרך לבניית פתרון.",
+          "שוק ההון וקריפטו: מושגי יסוד, כלי מחקר, קריאת מידע והבנת הזדמנויות וסיכונים."
+        ]
+      },
+      {
+        "title": "איך תרצו ללמוד?",
+        "summary": "בזום, במפגש פרונטלי או באמצעות מצגת מותאמת עם הסברים ללמידה עצמאית.",
+        "body": [
+          "הדרכה בזום: מפגש אישי או קבוצתי עם הסברים, הדגמות חיות, תרגול ומענה לשאלות.",
+          "הדרכה פרונטלית: בבית הלקוח, בעסק, בכיתות ובבתי ספר. מתאימים את אופן ההעברה, התרגול והדוגמאות לקהל ולסביבה.",
+          "מצגת ללמידה עצמאית: שולחים מצגת בנושא מבוקש, עם הסברים ודוגמאות, כדי שתוכלו ללמוד בקצב שלכם ולחזור לחומר בהמשך.",
+          "לבתי ספר אפשר להתאים נושאים ותכנים לפעילויות במסגרת גפ״ן (גמישות פדגוגית ניהולית), בתיאום עם הצוות החינוכי."
+        ]
+      },
+      {
+        "title": "איך נראית ההדרכה",
+        "summary": "הסברים בגובה העיניים, הדגמות ותרגול על נושאים שרלוונטיים לכם.",
+        "body": [
+          "מחברים בין הבנת הרעיון לבין השימוש בפועל. במפגש חי אפשר לשאול, לעצור, לחזור על פעולה ולנסות בעצמכם.",
+          "אפשר להביא צורך או פרויקט אמיתי ולעבוד על דוגמה שמתאימה לכם, בהתאם לנושא ולהיקף שנסכם. במצגת ללמידה עצמאית, ההסברים והדוגמאות נבנים כך שיהיה אפשר להתקדם גם ללא מפגש חי."
+        ]
+      },
+      {
+        "title": "התאמה אישית והתהליך",
+        "summary": "מגדירים מטרה, בודקים את רמת הידע ובונים את ההדרכה סביב הצורך שלכם.",
+        "body": [
+          "מספרים לנו מה תרצו להבין או לדעת לבצע, מי המשתתפים ומה הניסיון הקודם שלהם. בוחרים פורמט, משך והיקף תוכן.",
+          "מתאמים את הנושאים והדוגמאות מראש. אפשר לבחור הדרכה אישית, סדנה לצוות, סדרת מפגשים או מצגת בנושא מוגדר.",
+          "בהדרכה לכיתה או לצוות, מתאמים גם גיל, מספר משתתפים, ציוד זמין ורמת תרגול. כך ההדרכה מתאימה למשתתפים ולזמן שעומד לרשותם."
+        ]
+      },
+      {
+        "title": "עם מה יוצאים",
+        "summary": "הבנה ברורה יותר, ניסיון מעשי ודרך להמשיך ללמוד ולעבוד באופן עצמאי.",
+        "body": [
+          "המטרה היא שתצאו עם הבנה שתוכלו להשתמש בה: לדעת מה הכלי יכול לעשות, איך לגשת למשימה ואיך לבדוק אם התוצאה עונה לצורך.",
+          "בהתאם להדרכה ולמה שסוכם, אפשר לשלב דוגמאות, תבניות או סיכום שימושי להמשך. בהזמנת מצגת תקבלו את המצגת עם ההסברים כחומר ללמידה עצמאית."
+        ]
+      },
+      {
+        "title": "תמחור ולוחות זמנים",
+        "summary": "מותאמים לפורמט, לנושא, למספר המשתתפים ולהכנת התוכן, ומסוכמים מראש.",
+        "body": [
+          "המחיר נקבע לפי אופן ההעברה, משך ההדרכה, מספר המשתתפים והיקף ההתאמה וההכנה. בהדרכה פרונטלית מתאמים גם את המיקום והציוד הנדרש.",
+          "מועד המפגש, תוכנית סדרת המפגשים או מועד מסירת המצגת ייקבעו מראש בהתאם להיקף העבודה ולזמינות. נגדיר יחד מה כלול ומה תקבלו לפני תחילת ההכנה."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "צריך ידע קודם? אפשר להתמקד בכלי מסוים או להזמין הדרכה לכיתה?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "האם צריך ידע קודם?",
+            "answer": "לא בהכרח. מתאימים את ההדרכה לרמת הידע ולמטרות שלכם, כולל הדרכות למתחילים והעמקה למשתמשים מנוסים."
+          },
+          {
+            "question": "האם אפשר להתמקד בכלי או בנושא מסוים?",
+            "answer": "כן. אפשר לבקש נושא ממוקד או לשלב כמה כלים סביב צורך מעשי. נגדיר מראש מה נכנס להדרכה."
+          },
+          {
+            "question": "אפשר ללמוד על הפרויקט או העבודה שלנו?",
+            "answer": "כן. אפשר להתאים דוגמאות ותרגול לצורך אמיתי שלכם, בהתאם לחומר ולהיקף שנסכם."
+          },
+          {
+            "question": "ההדרכה בזום או פרונטלית?",
+            "answer": "אפשר בשני הפורמטים: בזום או בבית הלקוח, בעסק ובכיתות. אפשר גם להזמין מצגת עם הסברים ללמידה עצמאית."
+          },
+          {
+            "question": "אפשר להזמין מצגת ללא מפגש?",
+            "answer": "כן. מגדירים נושא, קהל ורמת פירוט, ומכינים מצגת מבוקשת עם הסברים ודוגמאות."
+          },
+          {
+            "question": "האם זה מתאים גם לבתי ספר?",
+            "answer": "כן. אפשר להתאים את התוכן לתלמידים, לצוותי הוראה ולכיתות, וגם לפעילויות במסגרת גפ״ן (גמישות פדגוגית ניהולית), בתיאום עם בית הספר."
+          },
+          {
+            "question": "האם אפשר להזמין סדרת מפגשים?",
+            "answer": "כן. אפשר לבנות רצף מפגשים עם התקדמות הדרגתית ותרגול בין הנושאים, בהתאם למטרות ולרמת המשתתפים."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "יש משהו שתמיד רציתם להבין? בואו נהפוך אותו למשהו שאתם יודעים לעשות.",
+      "lines": [
+        "ספרו לנו מה תרצו ללמוד, מי המשתתפים ואיך נוח לכם ללמוד."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Training and enrichment",
+    "subtitle": "More than knowing the tools. Knowing what to do with them.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "Individuals, businesses, teams and educational institutions ready to understand, practice and progress.",
+        "body": [
+          "For people entering a new field, deepening existing knowledge or learning to use technology at work and in everyday life. Training is tailored to your starting point, from beginners to experienced users.",
+          "Also suitable for teaching staff, students and classes. Enrichment content can be adapted for activities within Gefen (Pedagogical and Managerial Flexibility), according to participants’ ages and the school’s objectives."
+        ]
+      },
+      {
+        "title": "What you can learn",
+        "summary": "AI, automation, digital tools, development, capital markets and cryptocurrency.",
+        "body": [
+          "Choose a focused topic or combine several areas around one objective. Content and examples are adapted to participants’ knowledge and what you want to be able to do afterwards."
+        ],
+        "bullets": [
+          "Artificial intelligence: using AI tools, writing prompts, checking outputs and building workflows.",
+          "Automation and agents: identifying repetitive tasks, connecting tools and exploring ways to work more efficiently.",
+          "Development and digital tools: from ideas and specifications to understanding how a solution is built.",
+          "Capital markets and cryptocurrency: core concepts, research tools, interpreting information and understanding opportunities and risks."
+        ]
+      },
+      {
+        "title": "How would you like to learn?",
+        "summary": "Via Zoom, in person or through a tailored presentation with explanations for independent learning.",
+        "body": [
+          "Zoom training: an individual or group session with explanations, live demonstrations, practice and questions.",
+          "In-person training: at your home, business, classroom or school. Delivery, exercises and examples are adapted to the audience and setting.",
+          "Independent-learning presentation: receive a presentation on your requested topic, with explanations and examples, so you can learn at your own pace and revisit the material.",
+          "For schools, topics and content can be adapted for activities within Gefen (Pedagogical and Managerial Flexibility), in coordination with the educational team."
+        ]
+      },
+      {
+        "title": "What the training looks like",
+        "summary": "Accessible explanations, demonstrations and practice built around topics that matter to you.",
+        "body": [
+          "We connect understanding a concept with using it in practice. In a live session, you can ask questions, pause, revisit a step and try it yourself.",
+          "You can bring a real need or project and work through a relevant example within the agreed topic and scope. For independent learning, presentation explanations and examples are designed to support progress without a live session."
+        ]
+      },
+      {
+        "title": "Tailoring and the process",
+        "summary": "Define an objective, establish the starting level and build the training around your needs.",
+        "body": [
+          "Tell us what you want to understand or do, who will participate and their previous experience. We choose a format, duration and content scope.",
+          "Topics and examples are agreed in advance. Choose individual training, a team workshop, a series of sessions or a presentation on a defined subject.",
+          "For classes and teams, we also coordinate participants’ ages, group size, available equipment and level of hands-on practice, matching the training to the audience and available time."
+        ]
+      },
+      {
+        "title": "What you take away",
+        "summary": "Clearer understanding, practical experience and a way to keep learning and working independently.",
+        "body": [
+          "The aim is usable understanding: knowing what a tool can do, how to approach a task and how to check whether the outcome meets the need.",
+          "Depending on the training and agreed scope, examples, templates or a useful summary can support continued work. A presentation order includes the presentation and explanations as independent-learning material."
+        ]
+      },
+      {
+        "title": "Pricing and timelines",
+        "summary": "Tailored to format, topic, participant numbers and content preparation, and agreed in advance.",
+        "body": [
+          "Pricing depends on delivery format, training duration, participant numbers and the tailoring and preparation required. For in-person sessions, we also coordinate the location and equipment.",
+          "Session dates, the schedule for a series or presentation delivery are agreed in advance according to scope and availability. We define what is included and what you will receive before preparation begins."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "Do you need prior knowledge? Can training focus on a specific tool or be delivered to a class?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Do I need prior knowledge?",
+            "answer": "Not necessarily. We adapt training to your knowledge and objectives, including beginner sessions and deeper exploration for experienced users."
+          },
+          {
+            "question": "Can we focus on a specific tool or topic?",
+            "answer": "Yes. Request a focused topic or combine tools around a practical need. The training scope is agreed in advance."
+          },
+          {
+            "question": "Can we learn using our own project or work?",
+            "answer": "Yes. Examples and practice can be tailored to a real need, subject to the material and agreed scope."
+          },
+          {
+            "question": "Is training online or in person?",
+            "answer": "Both are available: via Zoom or at your home, business or classroom. You can also order a presentation with explanations for independent learning."
+          },
+          {
+            "question": "Can I order a presentation without a live session?",
+            "answer": "Yes. We define the topic, audience and level of detail, then prepare the requested presentation with explanations and examples."
+          },
+          {
+            "question": "Is this suitable for schools?",
+            "answer": "Yes. Content can be adapted for students, teaching staff and classes, including activities within Gefen (Pedagogical and Managerial Flexibility), in coordination with the school."
+          },
+          {
+            "question": "Can we arrange a series of sessions?",
+            "answer": "Yes. Sessions can build progressively with practice across topics, according to the objectives and participants’ level."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Always wanted to understand something? Let’s turn it into something you can do.",
+      "lines": [
+        "Tell us what you want to learn, who will participate and how you prefer to learn."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
+
 const quoteCostReductionPage: typeof appDevelopmentPage = {
   "he": {
     "title": "הוזלת הצעות מחיר קיימות",
@@ -1842,13 +2073,14 @@ export default function Home() {
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
   const isAutomationRoute = currentPath === '/services/automation-ai';
   const isIntegrationsRoute = currentPath === '/services/business-integrations';
+  const isTrainingRoute = currentPath === '/services/training-enrichment';
   const isQuoteCostRoute = currentPath === '/services/quote-cost-reduction';
   const isMarketRoute = currentPath === '/services/market-research';
-  const servicePage = isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const servicePage = isTrainingRoute ? trainingEnrichmentPage[language] : isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isTrainingRoute ? 'training-enrichment' : isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isTrainingRoute ? '/brand/services/training-enrichment-hero-6500x500-v2.webp' : isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -2027,7 +2259,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute || isTrainingRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />

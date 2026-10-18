@@ -2954,3 +2954,7 @@ main[dir="rtl"] .ai-chat-input {
 #service-quote-cost-reduction .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }
 #service-quote-cost-reduction .service-detail-body, #service-quote-cost-reduction .service-detail-body p, #service-quote-cost-reduction .service-detail-body li { text-align: start; direction: inherit; }
 #service-quote-cost-reduction .service-detail-body ul { padding-inline-start: 24px; padding-inline-end: 0; list-style-position: outside; }
+
+#service-training-enrichment .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }
+#service-training-enrichment .service-detail-body, #service-training-enrichment .service-detail-body p, #service-training-enrichment .service-detail-body li { text-align: start; direction: inherit; }
+#service-training-enrichment .service-detail-body ul { padding-inline-start: 24px; padding-inline-end: 0; list-style-position: outside; }
