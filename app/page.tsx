@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import MarketResearchBook from '../components/MarketResearchBook';
+import TrainingExampleBook from '../components/TrainingExampleBook';
 
 const content = {
   he: {
@@ -1176,6 +1177,14 @@ const trainingEnrichmentPage: typeof appDevelopmentPage = {
         ]
       },
       {
+        "title": "הדרכה לדוגמה",
+        "summary": "קריפטו וביטקוין: דוגמה לאיכות, לעומק ולבהירות של ההדרכות שלנו.",
+        "body": [
+          "דפדפו במצגת לדוגמה וקבלו הצצה להדרכה והעשרה בעולם הקריפטו והביטקוין. זו דוגמה לאיכות ולעומק ההדרכה: הסברים בגובה העיניים, איורים, השוואות ודוגמאות שמחברים בין מושגים להבנה.",
+          "30 שקופיות על בלוקצ׳יין, כרייה, חצייה, טוקנומיקס, סאטושי, ארנקים, עסקאות, אבטחה ועוד. מהיסודות ועד להבנת המנגנונים, התמריצים והסיכונים, עם מקורות להמשך העמקה."
+        ]
+      },
+      {
         "title": "תמחור ולוחות זמנים",
         "summary": "מותאמים לפורמט, לנושא, למספר המשתתפים ולהכנת התוכן, ומסוכמים מראש.",
         "body": [
@@ -1288,6 +1297,14 @@ const trainingEnrichmentPage: typeof appDevelopmentPage = {
         "body": [
           "The aim is usable understanding: knowing what a tool can do, how to approach a task and how to check whether the outcome meets the need.",
           "Depending on the training and agreed scope, examples, templates or a useful summary can support continued work. A presentation order includes the presentation and explanations as independent-learning material."
+        ]
+      },
+      {
+        "title": "Sample training",
+        "summary": "Crypto and Bitcoin: a sample of the quality, depth and clarity of our training.",
+        "body": [
+          "Explore this sample presentation for a preview of our crypto and Bitcoin training and enrichment. It demonstrates the quality and depth of our teaching through accessible explanations, illustrations, comparisons and examples that turn concepts into understanding.",
+          "30 slides covering blockchain, mining, halving, tokenomics, satoshis, wallets, transactions, security and more. From the foundations to mechanisms, incentives and risks, with sources for further learning."
         ]
       },
       {
@@ -2399,6 +2416,7 @@ export default function Home() {
 
 
                   {isMarketRoute && panel.title === servicePage.panels[3].title ? <MarketResearchBook key={language} language={language} /> : null}
+                  {isTrainingRoute && panel.title === servicePage.panels[6].title ? <TrainingExampleBook key={language} language={language} /> : null}
                   {isIntegrationExamplePanel ? <><IntegrationCarousel key={carouselVersion} language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
                   {isAutomationExamplePanel ? <figure className="website-case-preview">
                     <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>
