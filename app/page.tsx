@@ -1149,6 +1149,7 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         ],
         "bullets": [
           "מטרת הפרויקט, הטכנולוגיה, שימוש בפועל, צוות ומתחרים.",
+          "חקר קהילות המטבע: ערוצים וקהילות ברשתות החברתיות, היקף הפעילות ומעורבות המשתתפים, איכות השיח, שקיפות הצוות מול הקהילה וסימנים לפעילות מלאכותית, ככל שניתן לזהות ממידע ציבורי.",
           "טוקנומיקס: היצע, הקצאות, שחרורי מטבעות, אינפלציה ומנגנוני שריפה, ככל שקיימים.",
           "תפקיד הטוקן, תמריצים והקשר בין פעילות הפרויקט לערך הנכס.",
           "אבטחה, ביזור, נזילות, ריכוז החזקות וסיכונים מהותיים."
@@ -1286,6 +1287,7 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         ],
         "bullets": [
           "Purpose, technology, actual usage, team and competitors.",
+          "Crypto community research: social channels and communities, activity levels and member engagement, discussion quality, team transparency with the community and signs of artificial activity where identifiable from public information.",
           "Tokenomics: supply, allocations, unlocks, inflation and burn mechanisms where applicable.",
           "Token utility, incentives and the relationship between project activity and asset value.",
           "Security, decentralization, liquidity, ownership concentration and material risks."
