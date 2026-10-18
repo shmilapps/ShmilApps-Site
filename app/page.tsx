@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
 import TrainingExampleBook from '../components/TrainingExampleBook';
 
@@ -153,7 +154,7 @@ const serviceHrefs = [
   '/services/market-research',
   '/services/quote-cost-reduction',
   '/services/training-enrichment',
-  '/#services',
+  '/services/stock-crypto-research',
   '/#services',
 ];
 
@@ -168,7 +169,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'סקרי שוק', summary: 'בדיקת מתחרים, קהלי יעד, מחירים והזדמנויות לפני החלטה עסקית.', href: '/services/market-research' },
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/services/quote-cost-reduction' },
     { title: 'הדרכות והעשרה', summary: 'הדרכות AI, חינוך פיננסי, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/services/training-enrichment' },
-    { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/#services' },
+    { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/services/stock-crypto-research' },
     { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/#services' },
   ],
   en: [
@@ -181,7 +182,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Market research', summary: 'Checking competitors, target audiences, pricing and opportunities before a business decision.', href: '/services/market-research' },
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/services/quote-cost-reduction' },
     { title: 'Training and enrichment', summary: 'AI, financial education, capital markets and crypto training for businesses, teams and individuals.', href: '/services/training-enrichment' },
-    { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/#services' },
+    { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/services/stock-crypto-research' },
     { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/#services' },
   ],
 };
@@ -1113,6 +1114,257 @@ function IntegrationCarousel({ language }: { language: 'he' | 'en' }) {
     <p className="integration-slide-caption" aria-live="polite">{index+1} / 6 · {integrationSlideTitles[language][index]}</p>
   </section>;
 }
+
+const stockCryptoPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "סקירות מניות וקריפטו",
+    "subtitle": "להכיר את הנכס לעומק, לפני שמקבלים החלטה.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "למי שרוצים להבין חברה, מניה או מטבע קריפטו בעזרת מחקר ברור ומעמיק.",
+        "body": [
+          "לבחינת נכס שמסקרן אתכם, להעמקה בנכס שכבר מחזיקים או להבנת תחום חדש. הסקירה מחברת בין הנתונים, הפעילות, הטכנולוגיה והסיכונים, ומסבירה אותם בשפה נגישה."
+        ]
+      },
+      {
+        "title": "סקירת מניה - המחקר הפונדמנטלי",
+        "summary": "מה החברה עושה, איך היא מרוויחה ומה עומד מאחורי המספרים.",
+        "body": [
+          "בוחנים את פעילות החברה והמודל העסקי לצד הנתונים הכספיים, הענף והתחרות."
+        ],
+        "bullets": [
+          "מוצרים ושירותים, הנהלה, מתחרים, יתרונות ובידול.",
+          "דוחות כספיים, הכנסות, רווחיות, חוב ותזרים מזומנים.",
+          "תמחור ומדדי שווי רלוונטיים בהקשר של החברה והענף.",
+          "מנועי צמיחה, סיכונים ואירועים שעשויים להשפיע על החברה."
+        ]
+      },
+      {
+        "title": "סקירת קריפטו - המחקר הפונדמנטלי",
+        "summary": "מה הפרויקט פותר, איך הוא פועל ומה הקשר בין השימוש בו לבין הטוקן.",
+        "body": [
+          "בוחנים את הפרויקט והנכס בנפרד: הצלחה טכנולוגית או שימוש במוצר אינם מבטיחים בהכרח ביקוש לטוקן."
+        ],
+        "bullets": [
+          "מטרת הפרויקט, הטכנולוגיה, שימוש בפועל, צוות ומתחרים.",
+          "טוקנומיקס: היצע, הקצאות, שחרורי מטבעות, אינפלציה ומנגנוני שריפה, ככל שקיימים.",
+          "תפקיד הטוקן, תמריצים והקשר בין פעילות הפרויקט לערך הנכס.",
+          "אבטחה, ביזור, נזילות, ריכוז החזקות וסיכונים מהותיים."
+        ]
+      },
+      {
+        "title": "ניתוח טכני אקטואלי וגרפים",
+        "summary": "במניות ובקריפטו: תמונת מצב טכנית עדכנית לצד המחקר הפונדמנטלי.",
+        "body": [
+          "הסקירה כוללת גרפים והסברים על התנהגות המחיר, לפי הנתונים הזמינים במועד הכנתה. נציין את מועד הנתונים, מקורם וטווחי הזמן שנבדקו."
+        ],
+        "bullets": [
+          "מגמות, רמות תמיכה והתנגדות ומבנה המחיר.",
+          "מחזורי מסחר ואינדיקטורים רלוונטיים לנכס ולשאלה הנבדקת.",
+          "תרחישים אפשריים והתנאים שיחזקו או יחלישו כל תרחיש.",
+          "חיבור בין התמונה הטכנית, הממצאים הפונדמנטליים והסיכונים."
+        ]
+      },
+      {
+        "title": "מה תקבלו",
+        "summary": "דוח PDF מסודר עם מחקר פונדמנטלי, ניתוח טכני, גרפים ומקורות.",
+        "body": [
+          "דוח בשפה שתבחרו, בעברית או באנגלית, המציג תמונת מצב, ממצאים מרכזיים, יתרונות וחסרונות, תרחישים ונקודות למעקב. נכלול מקורות וקישורים להמשך העמקה ונבחין בין עובדות, הערכות ומידע שחסר.",
+          "המחקר משקף את המידע הזמין במועד הכנתו. מדובר בסקירה מחקרית ולימודית, ללא הבטחה לתשואה; תנאי השוק והמחירים עשויים להשתנות לאחר המסירה."
+        ]
+      },
+      {
+        "title": "איך זה עובד",
+        "summary": "בוחרים מניה או מטבע, מגדירים את השאלות ומקבלים סקירה ממוקדת.",
+        "body": [
+          "שולחים את שם הנכס והסימול שלו. במניה מציינים גם את הבורסה, ובמטבע אפשר לצרף קישור לאתר הרשמי וכתובת חוזה, אם רלוונטי, כדי לזהות את הנכס במדויק.",
+          "מוסיפים את השאלות והדגשים שמעניינים אתכם ובוחרים שפת דוח. מתאמים את מועד המסירה לפני תחילת העבודה."
+        ]
+      },
+      {
+        "title": "תמחור והתחייבות לשביעות רצון",
+        "summary": "סקירת מניה או מטבע ב־99 ש״ח. לא מרוצים? החזר כספי מלא, ללא שאלות.",
+        "body": [
+          "מחיר סקירה של מניה אחת או מטבע אחד: 99 ש״ח, כולל מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים.",
+          "עד 48 שעות מקבלת הסקירה תוכלו להודיע שאינכם שבעי רצון ולבקש החזר כספי מלא, ללא שאלות."
+        ]
+      },
+      {
+        "title": "רוצים להמשיך לעקוב?",
+        "summary": "עזרה בבניית סקיל או משימה מתוזמנת למעקב מותאם אישית, בתמחור נפרד.",
+        "body": [
+          "אפשר להמשיך מהסקירה לעזרה בבניית סקיל או משימה מתוזמנת למעקב אחר המניה או המטבע. נגדיר יחד מה לנטר, באיזו תדירות ואילו עדכונים או התראות תרצו לקבל.",
+          "אפשר להתמקד, לדוגמה, בדוחות וחדשות, שחרורי מטבעות, רמות מחיר או שינויים בנתונים. שירות המעקב יתומחר בנפרד בהתאם לאפיון, למקורות המידע, לתדירות ולחיבורים הנדרשים. עלויות שירותים חיצוניים, אם יידרשו, יוצגו מראש."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "מה כלול? איך מזמינים? והאם אפשר להמשיך למעקב?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "האם ניתוח טכני כלול גם במניה וגם במטבע?",
+            "answer": "כן. בשני סוגי הסקירות נכללים מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים והסברים."
+          },
+          {
+            "question": "מה כולל המחיר של 99 ש״ח?",
+            "answer": "סקירה של מניה אחת או מטבע אחד, עם מחקר פונדמנטלי, ניתוח טכני, גרפים ומקורות. שירות לבניית מעקב מתומחר בנפרד."
+          },
+          {
+            "question": "מה אם איני שבע רצון מהסקירה?",
+            "answer": "עד 48 שעות מקבלת הסקירה תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות."
+          },
+          {
+            "question": "מתי מקבלים את הסקירה?",
+            "answer": "מועד המסירה מתואם מראש לפני תחילת העבודה."
+          },
+          {
+            "question": "האם הסקירה מתעדכנת באופן שוטף?",
+            "answer": "הסקירה היא תמונת מצב במועד הכנתה. אפשר להזמין בנפרד עזרה בבניית סקיל או משימה מתוזמנת למעקב לפי אפיון."
+          },
+          {
+            "question": "האם אפשר להזמין כבר דרך הטופס?",
+            "answer": "הטופס במצב הכנה ואינו שולח או שומר מידע. עד לחיבור השליחה והתשלום אפשר להזמין באמצעות פרטי הקשר המופיעים בדף."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "יש מניה או מטבע שמסקרנים אתכם? בואו נבין מה באמת עומד מאחוריהם.",
+      "lines": [
+        "שלחו לנו את שם הנכס והשאלות שמעניינות אתכם, ונתאם את הסקירה."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Stock and crypto research",
+    "subtitle": "Understand the asset in depth before making a decision.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "For anyone seeking a clear, in-depth understanding of a company, stock or crypto asset.",
+        "body": [
+          "Explore an asset that interests you, deepen your understanding of an existing holding or learn about a new field. Research connects the data, business activity, technology and risks in accessible language."
+        ]
+      },
+      {
+        "title": "Stock research - fundamental analysis",
+        "summary": "What the company does, how it makes money and what sits behind the numbers.",
+        "body": [
+          "We examine the business model alongside financial data, industry conditions and competition."
+        ],
+        "bullets": [
+          "Products and services, management, competitors, advantages and differentiation.",
+          "Financial statements, revenue, profitability, debt and cash flow.",
+          "Valuation and relevant metrics in the context of the company and its industry.",
+          "Growth drivers, risks and events that may affect the company."
+        ]
+      },
+      {
+        "title": "Crypto research - fundamental analysis",
+        "summary": "What the project solves, how it works and how usage relates to its token.",
+        "body": [
+          "We examine the project and asset separately: technological success or product adoption does not necessarily guarantee demand for the token."
+        ],
+        "bullets": [
+          "Purpose, technology, actual usage, team and competitors.",
+          "Tokenomics: supply, allocations, unlocks, inflation and burn mechanisms where applicable.",
+          "Token utility, incentives and the relationship between project activity and asset value.",
+          "Security, decentralization, liquidity, ownership concentration and material risks."
+        ]
+      },
+      {
+        "title": "Current technical analysis and charts",
+        "summary": "For both stocks and crypto: an up-to-date technical view alongside fundamental research.",
+        "body": [
+          "The review includes charts and explanations of price behavior using data available when it is prepared. We identify the data date, sources and timeframes examined."
+        ],
+        "bullets": [
+          "Trends, support and resistance levels, and price structure.",
+          "Trading volumes and indicators relevant to the asset and research question.",
+          "Possible scenarios and the conditions that would strengthen or weaken each one.",
+          "Connections between the technical picture, fundamental findings and risks."
+        ]
+      },
+      {
+        "title": "What you receive",
+        "summary": "A structured PDF report with fundamental research, technical analysis, charts and sources.",
+        "body": [
+          "Choose a report in Hebrew or English, presenting the current picture, key findings, strengths and weaknesses, scenarios and points to monitor. Sources and links support further reading, with a distinction between facts, estimates and missing information.",
+          "Research reflects information available at the time of preparation. This is research and educational material, with no promise of returns; market conditions and prices may change after delivery."
+        ]
+      },
+      {
+        "title": "How it works",
+        "summary": "Choose a stock or crypto asset, define your questions and receive focused research.",
+        "body": [
+          "Provide the asset name and ticker. For stocks, include the exchange; for crypto, an official website and contract address, where relevant, help identify the exact asset.",
+          "Add your questions and priorities and select a report language. Delivery timing is agreed before work starts."
+        ]
+      },
+      {
+        "title": "Pricing and satisfaction guarantee",
+        "summary": "A stock or crypto review for ₪99. Not satisfied? A full refund, no questions asked.",
+        "body": [
+          "Research on one stock or one crypto asset costs ₪99, including fundamental research and current technical analysis with charts.",
+          "Within 48 hours of receiving the report, you can tell us you are not satisfied and request a full refund, no questions asked."
+        ]
+      },
+      {
+        "title": "Want to keep monitoring?",
+        "summary": "Help building a skill or scheduled task for tailored monitoring, priced separately.",
+        "body": [
+          "Continue from a one-off review with help building a skill or scheduled task to monitor the stock or crypto asset. Together we define what to monitor, how often and which updates or alerts you want.",
+          "Examples include reports and news, token unlocks, price levels or changes in data. Monitoring setup is priced separately based on the specification, data sources, frequency and integrations required. Any required third-party service costs are disclosed in advance."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "What is included, how do you order and can you continue with monitoring?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Is technical analysis included for stocks and crypto?",
+            "answer": "Yes. Both reviews include fundamental research and current technical analysis with charts and explanations."
+          },
+          {
+            "question": "What does ₪99 include?",
+            "answer": "Research on one stock or one crypto asset, including fundamental research, technical analysis, charts and sources. Monitoring setup is priced separately."
+          },
+          {
+            "question": "What if I am not satisfied?",
+            "answer": "Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked."
+          },
+          {
+            "question": "When will I receive the report?",
+            "answer": "Delivery timing is agreed before work starts."
+          },
+          {
+            "question": "Does the report update continuously?",
+            "answer": "The report is a snapshot at the time of preparation. Help building a skill or scheduled monitoring task can be ordered separately to an agreed specification."
+          },
+          {
+            "question": "Can I order through the form now?",
+            "answer": "The form is being prepared and does not send or save information. Until submission and payment are connected, use the contact details on this page to order."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "Curious about a stock or crypto asset? Let’s understand what is behind it.",
+      "lines": [
+        "Send the asset name and your questions, and we will arrange the research."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
 
 const trainingEnrichmentPage: typeof appDevelopmentPage = {
   "he": {
@@ -2092,14 +2344,15 @@ export default function Home() {
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
   const isAutomationRoute = currentPath === '/services/automation-ai';
   const isIntegrationsRoute = currentPath === '/services/business-integrations';
+  const isStockCryptoRoute = currentPath === '/services/stock-crypto-research';
   const isTrainingRoute = currentPath === '/services/training-enrichment';
   const isQuoteCostRoute = currentPath === '/services/quote-cost-reduction';
   const isMarketRoute = currentPath === '/services/market-research';
-  const servicePage = isTrainingRoute ? trainingEnrichmentPage[language] : isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const servicePage = isStockCryptoRoute ? stockCryptoPage[language] : isTrainingRoute ? trainingEnrichmentPage[language] : isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isTrainingRoute ? 'training-enrichment' : isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isStockCryptoRoute ? 'stock-crypto-research' : isTrainingRoute ? 'training-enrichment' : isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isTrainingRoute ? '/brand/services/training-enrichment-hero-6500x500-v2.webp' : isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isStockCryptoRoute ? '/brand/services/stocks-crypto-hero-6500x500-v1.webp' : isTrainingRoute ? '/brand/services/training-enrichment-hero-6500x500-v2.webp' : isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -2278,14 +2531,14 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute || isTrainingRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute || isTrainingRoute || isStockCryptoRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id={`${serviceId}-title`}>{servicePage.title}</h2>
               <p>{servicePage.subtitle}</p>
-              {isMarketRoute ? <a className="market-order-cta" href="#market-order" onClick={(event) => { event.preventDefault(); const target=document.getElementById('market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
+              {(isMarketRoute || isStockCryptoRoute) ? <a className="market-order-cta" href={isStockCryptoRoute ? "#stock-order" : "#market-order"} onClick={(event) => { event.preventDefault(); const target=document.getElementById(isStockCryptoRoute ? 'stock-order' : 'market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
             </div>
           </div>
           <div className="service-page-content">
@@ -2437,6 +2690,7 @@ export default function Home() {
             })}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
               {isMarketRoute ? <MarketResearchOrderForm language={language} /> : null}
+              {isStockCryptoRoute ? <StockResearchOrderForm language={language} /> : null}
               <h3 id="service-contact-title">{servicePage.contact.title}</h3>
               {servicePage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
