@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { researchOrderTerms, ResearchReportLanguage } from './ResearchOrderTerms';
 
 export default function StockResearchOrderForm({ language }: { language: 'he' | 'en' }) {
   const he = language === 'he';
@@ -10,7 +11,10 @@ export default function StockResearchOrderForm({ language }: { language: 'he' | 
   return <section className="market-order" id="stock-order" dir={he ? 'rtl' : 'ltr'} aria-labelledby="stock-order-title">
     <h3 id="stock-order-title">{he ? 'הזמנת סקירת מניה או מטבע' : 'Order stock or crypto research'}</h3>
     <p className="market-order-price">{he ? '99 ש״ח · סקירה של מניה אחת או מטבע אחד' : '₪99 · Research on one stock or one crypto asset'}</p>
-    <p>{he ? 'כולל מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים. עד 48 שעות מקבלת הסקירה תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות.' : 'Includes fundamental research and current technical analysis with charts. Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked.'}</p>
+    <p>{he ? 'כולל מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים.' : 'Includes fundamental research and current technical analysis with charts.'}</p>
+    <p>{researchOrderTerms[language].delivery}</p>
+    <p>{researchOrderTerms[language].refund}</p>
+    <p>{researchOrderTerms[language].languages}</p>
     <p className="market-order-status" role="note">{he ? 'ההזמנה המקוונת בהכנה. הטופס אינו שולח או שומר מידע עדיין, ולא ניתן לבצע תשלום. אפשר לפנות אלינו באמצעות פרטי הקשר שמתחת לטופס.' : 'Online ordering is being prepared. This form does not send or save information yet, and payment is unavailable. Contact us using the details below the form.'}</p>
     <form onSubmit={event => event.preventDefault()}>
       <div className="market-order-grid">
@@ -21,7 +25,7 @@ export default function StockResearchOrderForm({ language }: { language: 'he' | 
         <label>{he ? 'שם החברה או המטבע' : 'Company or crypto asset name'}<input name="assetName" required maxLength={200}/></label>
         <label>{he ? 'סימול הנכס (Ticker)' : 'Asset ticker'}<input name="ticker" dir="ltr" required maxLength={80}/></label>
         {assetType === 'stock' ? <label>{he ? 'בורסת המסחר' : 'Stock exchange'}<input name="exchange" required maxLength={160}/></label> : <label>{he ? 'רשת וכתובת חוזה (אם רלוונטי)' : 'Network and contract address (if applicable)'}<input name="contract" dir="ltr" maxLength={400}/></label>}
-        <label>{he ? 'שפת הסקירה' : 'Report language'}<select name="reportLanguage" defaultValue={language}><option value="he">עברית</option><option value="en">English</option></select></label>
+        <ResearchReportLanguage language={language} />
       </div>
       <label>{he ? 'שאלות ודגשים לסקירה (לא חובה)' : 'Questions and research priorities (optional)'}<textarea name="questions" rows={4} maxLength={10000}/></label>
       <label>{he ? 'קישורים לאתר הרשמי או למידע רלוונטי (לא חובה)' : 'Official website or relevant links (optional)'}<textarea name="links" rows={2} maxLength={5000} dir="ltr"/></label>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { researchOrderTerms, ResearchReportLanguage } from '../components/ResearchOrderTerms';
 import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
 import TrainingExampleBook from '../components/TrainingExampleBook';
@@ -1168,10 +1169,11 @@ const stockCryptoPage: typeof appDevelopmentPage = {
       },
       {
         "title": "מה תקבלו",
-        "summary": "דוח PDF מסודר עם מחקר פונדמנטלי, ניתוח טכני, גרפים ומקורות.",
+        "summary": "בתוך עד 72 שעות: דוח PDF עם מחקר פונדמנטלי, ניתוח טכני, גרפים ומקורות.",
         "body": [
-          "דוח בשפה שתבחרו, בעברית או באנגלית, המציג תמונת מצב, ממצאים מרכזיים, יתרונות וחסרונות, תרחישים ונקודות למעקב. נכלול מקורות וקישורים להמשך העמקה ונבחין בין עובדות, הערכות ומידע שחסר.",
-          "המחקר משקף את המידע הזמין במועד הכנתו. מדובר בסקירה מחקרית ולימודית, ללא הבטחה לתשואה; תנאי השוק והמחירים עשויים להשתנות לאחר המסירה."
+          "דוח בעברית, באנגלית או בשתי השפות, המציג תמונת מצב, ממצאים מרכזיים, יתרונות וחסרונות, תרחישים ונקודות למעקב. נכלול מקורות וקישורים להמשך העמקה ונבחין בין עובדות, הערכות ומידע שחסר.",
+          "המחקר משקף את המידע הזמין במועד הכנתו. מדובר בסקירה מחקרית ולימודית, ללא הבטחה לתשואה; תנאי השוק והמחירים עשויים להשתנות לאחר המסירה.",
+          researchOrderTerms.he.delivery
         ]
       },
       {
@@ -1179,7 +1181,7 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "summary": "בוחרים מניה או מטבע, מגדירים את השאלות ומקבלים סקירה ממוקדת.",
         "body": [
           "שולחים את שם הנכס והסימול שלו. במניה מציינים גם את הבורסה, ובמטבע אפשר לצרף קישור לאתר הרשמי וכתובת חוזה, אם רלוונטי, כדי לזהות את הנכס במדויק.",
-          "מוסיפים את השאלות והדגשים שמעניינים אתכם ובוחרים שפת דוח. מתאמים את מועד המסירה לפני תחילת העבודה."
+          "מוסיפים את השאלות והדגשים שמעניינים אתכם ובוחרים דוח בעברית, באנגלית או בשתי השפות. לאחר קבלת הבקשה המלאה, החומרים הנדרשים והתשלום מתחילים במחקר."
         ]
       },
       {
@@ -1187,7 +1189,15 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "summary": "סקירת מניה או מטבע ב־99 ש״ח. לא מרוצים? החזר כספי מלא, ללא שאלות.",
         "body": [
           "מחיר סקירה של מניה אחת או מטבע אחד: 99 ש״ח, כולל מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים.",
-          "עד 48 שעות מקבלת הסקירה תוכלו להודיע שאינכם שבעי רצון ולבקש החזר כספי מלא, ללא שאלות."
+          researchOrderTerms.he.refund
+        ]
+      },
+      {
+        "title": "לוחות זמנים",
+        "summary": "עד 72 שעות מקבלת הבקשה המלאה, החומרים הנדרשים והתשלום.",
+        "body": [
+          researchOrderTerms.he.delivery,
+          researchOrderTerms.he.refund
         ]
       },
       {
@@ -1213,11 +1223,11 @@ const stockCryptoPage: typeof appDevelopmentPage = {
           },
           {
             "question": "מה אם איני שבע רצון מהסקירה?",
-            "answer": "עד 48 שעות מקבלת הסקירה תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות."
+            "answer": researchOrderTerms.he.refund
           },
           {
             "question": "מתי מקבלים את הסקירה?",
-            "answer": "מועד המסירה מתואם מראש לפני תחילת העבודה."
+            "answer": researchOrderTerms.he.delivery
           },
           {
             "question": "האם הסקירה מתעדכנת באופן שוטף?",
@@ -1226,6 +1236,10 @@ const stockCryptoPage: typeof appDevelopmentPage = {
           {
             "question": "האם אפשר להזמין כבר דרך הטופס?",
             "answer": "הטופס במצב הכנה ואינו שולח או שומר מידע. עד לחיבור השליחה והתשלום אפשר להזמין באמצעות פרטי הקשר המופיעים בדף."
+          },
+          {
+            "question": "אפשר לקבל דוח דו לשוני?",
+            "answer": researchOrderTerms.he.languages
           }
         ]
       }
@@ -1292,10 +1306,11 @@ const stockCryptoPage: typeof appDevelopmentPage = {
       },
       {
         "title": "What you receive",
-        "summary": "A structured PDF report with fundamental research, technical analysis, charts and sources.",
+        "summary": "Within 72 hours: a PDF report with fundamental research, technical analysis, charts and sources.",
         "body": [
-          "Choose a report in Hebrew or English, presenting the current picture, key findings, strengths and weaknesses, scenarios and points to monitor. Sources and links support further reading, with a distinction between facts, estimates and missing information.",
-          "Research reflects information available at the time of preparation. This is research and educational material, with no promise of returns; market conditions and prices may change after delivery."
+          "Choose a report in Hebrew, English or both languages, presenting the current picture, key findings, strengths and weaknesses, scenarios and points to monitor. Sources and links support further reading, with a distinction between facts, estimates and missing information.",
+          "Research reflects information available at the time of preparation. This is research and educational material, with no promise of returns; market conditions and prices may change after delivery.",
+          researchOrderTerms.en.delivery
         ]
       },
       {
@@ -1303,7 +1318,7 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "summary": "Choose a stock or crypto asset, define your questions and receive focused research.",
         "body": [
           "Provide the asset name and ticker. For stocks, include the exchange; for crypto, an official website and contract address, where relevant, help identify the exact asset.",
-          "Add your questions and priorities and select a report language. Delivery timing is agreed before work starts."
+          "Add your questions and priorities and choose Hebrew, English or both languages. Research begins once the complete request, required materials and payment have been received."
         ]
       },
       {
@@ -1311,7 +1326,15 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "summary": "A stock or crypto review for ₪99. Not satisfied? A full refund, no questions asked.",
         "body": [
           "Research on one stock or one crypto asset costs ₪99, including fundamental research and current technical analysis with charts.",
-          "Within 48 hours of receiving the report, you can tell us you are not satisfied and request a full refund, no questions asked."
+          researchOrderTerms.en.refund
+        ]
+      },
+      {
+        "title": "Timelines",
+        "summary": "Within 72 hours of receiving the complete request, required materials and payment.",
+        "body": [
+          researchOrderTerms.en.delivery,
+          researchOrderTerms.en.refund
         ]
       },
       {
@@ -1337,11 +1360,11 @@ const stockCryptoPage: typeof appDevelopmentPage = {
           },
           {
             "question": "What if I am not satisfied?",
-            "answer": "Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked."
+            "answer": researchOrderTerms.en.refund
           },
           {
             "question": "When will I receive the report?",
-            "answer": "Delivery timing is agreed before work starts."
+            "answer": researchOrderTerms.en.delivery
           },
           {
             "question": "Does the report update continuously?",
@@ -1350,6 +1373,10 @@ const stockCryptoPage: typeof appDevelopmentPage = {
           {
             "question": "Can I order through the form now?",
             "answer": "The form is being prepared and does not send or save information. Until submission and payment are connected, use the contact details on this page to order."
+          },
+          {
+            "question": "Can I receive a bilingual report?",
+            "answer": researchOrderTerms.en.languages
           }
         ]
       }
@@ -1872,9 +1899,11 @@ const marketResearchPage: typeof appDevelopmentPage = {
       },
       {
         "title": "תוצרים שיתקבלו",
-        "summary": "בתוך 72 שעות מקבלת מסמך האפיון: ספר PDF מפורט עם השוואות, מקורות וקישורים.",
+        "summary": "בתוך עד 72 שעות: ספר PDF מפורט עם השוואות, מקורות וקישורים.",
         "body": [
-          "בתוך עד 72 שעות מקבלת מסמך האפיון תקבלו ספר PDF מפורט, הכולל השוואת פתרונות, קהלי יעד, מחירים, בידול, הזדמנויות וסיכונים, לצד מקורות ומסקנות מעשיות. הדוח יכלול גם קישורים לאתרים ולרעיונות של מתחרים, אם ישנם. היקף ועומק הבדיקה מותאמים לנושא ולמידע הזמין."
+          "תקבלו ספר PDF מפורט, הכולל השוואת פתרונות, קהלי יעד, מחירים, בידול, הזדמנויות וסיכונים, לצד מקורות ומסקנות מעשיות. הדוח יכלול גם קישורים לאתרים ולרעיונות של מתחרים, אם ישנם. היקף ועומק הבדיקה מותאמים לנושא ולמידע הזמין.",
+          researchOrderTerms.he.languages,
+          researchOrderTerms.he.delivery
         ]
       },
       {
@@ -1882,7 +1911,8 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "summary": "מספרים לנו על הרעיון, מצרפים אפיון ומגדירים את השוק לבדיקה.",
         "body": [
           "ממלאים את פרטי הבקשה ומצרפים מסמך אפיון - הצירוף הוא חובה. ככל שהמידע מפורט וברור יותר, נוכל למקד את המחקר ולהפיק סקר איכותי, מקצועי ורלוונטי יותר.",
-          "מגדירים את השאלות והאזורים הרלוונטיים בישראל או בחו״ל, אוספים מידע, משווים ומגבשים מסקנות להמשך."
+          "מגדירים את השאלות והאזורים הרלוונטיים בישראל או בחו״ל, אוספים מידע, משווים ומגבשים מסקנות להמשך.",
+          "בוחרים דוח בעברית, באנגלית או בשתי השפות. לאחר קבלת הבקשה המלאה, מסמך האפיון והתשלום מתחילים במחקר."
         ]
       },
       {
@@ -1899,15 +1929,16 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "body": [
           "מחיר הסקר: 99 ש״ח. הסקר יכול להתמקד בישראל ובחו״ל, לפי הבקשה.",
           "אם אינכם שבעי רצון מהסקר, תקבלו החזר כספי, ללא שאלות.",
-          "עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולבקש החזר כספי מלא, ללא שאלות.",
+          researchOrderTerms.he.refund,
           "ממשיכים איתנו לביצוע העבודה? מחיר הסקר יקוזז ממחיר העבודה."
         ]
       },
       {
         "title": "לוחות זמנים",
-        "summary": "עד 72 שעות מרגע קבלת מסמך האפיון.",
+        "summary": "עד 72 שעות מקבלת הבקשה המלאה, מסמך האפיון והתשלום.",
         "body": [
-          "סקר השוק יימסר בתוך עד 72 שעות מרגע קבלת מסמך האפיון. עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות."
+          researchOrderTerms.he.delivery,
+          researchOrderTerms.he.refund
         ]
       },
       {
@@ -1925,7 +1956,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
           },
           {
             "question": "מה אם לא אהיה מרוצה?",
-            "answer": "עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות."
+            "answer": researchOrderTerms.he.refund
           },
           {
             "question": "מה קורה אם ממשיכים לפיתוח או לביצוע?",
@@ -1934,6 +1965,14 @@ const marketResearchPage: typeof appDevelopmentPage = {
           {
             "question": "האם הסקר מבטיח הצלחה עסקית?",
             "answer": "הסקר מספק מידע ותובנות לקבלת החלטות. הוא אינו מבטיח תוצאה עסקית."
+          },
+          {
+            "question": "מתי מקבלים את הסקר?",
+            "answer": researchOrderTerms.he.delivery
+          },
+          {
+            "question": "אפשר לקבל דוח דו לשוני?",
+            "answer": researchOrderTerms.he.languages
           }
         ]
       }
@@ -1961,9 +2000,11 @@ const marketResearchPage: typeof appDevelopmentPage = {
       },
       {
         "title": "Deliverables",
-        "summary": "Within 72 hours of receiving your specification: a detailed PDF book with comparisons, sources and links.",
+        "summary": "Within 72 hours: a detailed PDF book with comparisons, sources and links.",
         "body": [
-          "Within 72 hours of receiving your specification, you will receive a detailed PDF book covering solutions, audiences, pricing, differentiation, opportunities and risks, with sources and practical conclusions. The report also includes links to competitor websites and ideas, where available. Depth and scope are tailored to the topic and available information."
+          "You will receive a detailed PDF book covering solutions, audiences, pricing, differentiation, opportunities and risks, with sources and practical conclusions. The report also includes links to competitor websites and ideas, where available. Depth and scope are tailored to the topic and available information.",
+          researchOrderTerms.en.languages,
+          researchOrderTerms.en.delivery
         ]
       },
       {
@@ -1971,7 +2012,8 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "summary": "Describe the idea, attach a specification and identify the markets to explore.",
         "body": [
           "Share your request and attach a specification document - this is required. Clear, detailed information helps us deliver more focused, professional and relevant research.",
-          "Define the questions and relevant regions in Israel or abroad, collect information, compare and develop conclusions for the next step."
+          "Define the questions and relevant regions in Israel or abroad, collect information, compare and develop conclusions for the next step.",
+          "Choose a report in Hebrew, English or both languages. Research begins once the complete request, specification and payment have been received."
         ]
       },
       {
@@ -1988,15 +2030,16 @@ const marketResearchPage: typeof appDevelopmentPage = {
         "body": [
           "Research price: ₪99. Research can cover Israel and international markets according to your request.",
           "If you are not satisfied with the research, you will receive a refund, no questions asked.",
-          "Within 48 hours of receiving the report, you can tell us you are not satisfied and request a full refund, no questions asked.",
+          researchOrderTerms.en.refund,
           "Continue with us to implementation? The research price is deducted from the project price."
         ]
       },
       {
         "title": "Timelines",
-        "summary": "Within 72 hours of receiving your specification document.",
+        "summary": "Within 72 hours of receiving the complete request, specification and payment.",
         "body": [
-          "Your market research will be delivered within 72 hours of receiving your specification document. Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked."
+          researchOrderTerms.en.delivery,
+          researchOrderTerms.en.refund
         ]
       },
       {
@@ -2014,7 +2057,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
           },
           {
             "question": "What if I am not satisfied?",
-            "answer": "Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked."
+            "answer": researchOrderTerms.en.refund
           },
           {
             "question": "What if we continue to development or implementation?",
@@ -2023,6 +2066,14 @@ const marketResearchPage: typeof appDevelopmentPage = {
           {
             "question": "Does research guarantee business success?",
             "answer": "It provides information and insights for decisions, not a guarantee of business results."
+          },
+          {
+            "question": "When will I receive the report?",
+            "answer": researchOrderTerms.en.delivery
+          },
+          {
+            "question": "Can I receive a bilingual report?",
+            "answer": researchOrderTerms.en.languages
           }
         ]
       }
@@ -2045,7 +2096,9 @@ function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  <h3 id="market-order-title">{he?'הזמנת סקר שוק':'Order market research'}</h3>
  <p className="market-order-price">{he?'99 ש״ח · ישראל וחו״ל':'₪99 · Israel and international markets'}</p>
  <p>{he?'אם אינכם שבעי רצון מהסקר, החזר כספי מובטח ללא שאלות. ממשיכים לביצוע? מחיר הסקר יקוזז ממחיר העבודה.':'If you are not satisfied with the research, a money-back guarantee, no questions asked. Continue to implementation and the research price is deducted from the project price.'}</p>
- <p>{he?'מסירה עד 72 שעות מקבלת מסמך האפיון. עד 48 שעות מקבלת הסקר תוכלו להודיע שאינכם שבעי רצון ולקבל החזר כספי מלא, ללא שאלות.':'Delivery within 72 hours of receiving your specification document. Within 48 hours of receiving the report, you can tell us you are not satisfied and receive a full refund, no questions asked.'}</p>
+ <p>{researchOrderTerms[language].delivery}</p>
+ <p>{researchOrderTerms[language].refund}</p>
+ <p>{researchOrderTerms[language].languages}</p>
  <p className="market-order-status" role="note">{he?'ההזמנה המקוונת בהכנה. הטופס אינו שולח או שומר מידע עדיין, ולא ניתן לבצע תשלום. אפשר לפנות אלינו באמצעות פרטי הקשר שמתחת לטופס.':'Online ordering is being prepared. This form does not send or save information yet, and payment is unavailable. Contact us using the details below the form.'}</p>
  <form onSubmit={event=>event.preventDefault()}>
  <div className="market-order-grid">
@@ -2057,7 +2110,7 @@ function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  <label>{he?'מה תרצו לבדוק?':'What would you like to research?'}<textarea name="description" required rows={5} maxLength={10000} placeholder={he?'תארו את הרעיון והשאלות שחשוב לכם לבדוק':'Describe your idea and the questions that matter to you'}/></label>
  <div className="market-order-grid">
  <label>{he?'שוק יעד':'Target market'}<select name="market"><option value="israel">{he?'ישראל':'Israel'}</option><option value="international">{he?'חו״ל':'International'}</option><option value="both">{he?'ישראל וחו״ל':'Israel and international'}</option></select></label>
- <label>{he?'שפת הסקר':'Report language'}<select name="reportLanguage" defaultValue={language}><option value="he">עברית</option><option value="en">English</option></select></label>
+ <ResearchReportLanguage language={language} />
  </div>
  <label>{he?'קהל יעד, מדינות ודגשים (לא חובה)':'Audience, countries and priorities (optional)'}<textarea name="audience" rows={3} maxLength={5000}/></label>
  <label>{he?'מתחרים וקישורים מוכרים (לא חובה)':'Known competitors and links (optional)'}<textarea name="links" rows={3} maxLength={5000}/></label>
