@@ -6,6 +6,7 @@ import { researchOrderTerms, ResearchReportLanguage } from '../components/Resear
 import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
 import TrainingExampleBook from '../components/TrainingExampleBook';
+import LinkReviewBook from '../components/LinkReviewBook';
 
 const content = {
   he: {
@@ -1418,6 +1419,14 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         ]
       },
       {
+        "title": "סקירה לדוגמה",
+        "summary": "Chainlink ו־LINK - סקירה מלאה עם מחקר פונדמנטלי, חקר קהילות, ניתוח טכני וגרפים.",
+        "body": [
+          "דפדפו בסקירת LINK המלאה כדי להתרשם מעומק המחקר, אופן הצגת הנתונים והחיבור בין הפרויקט, כלכלת הטוקן, הקהילה, הסיכונים והתמונה הטכנית. כל 20 עמודי הסקירה מוצגים בספר, כולל המקורות והמסקנות.",
+          "הדוח מתוארך ל־19.10.2026. הנתונים, הגרפים והתרחישים משקפים את מועד המחקר ואינם מתעדכנים בזמן אמת. אפשר לצפות בספר בעברית או באנגלית בהתאם לשפת האתר."
+        ]
+      },
+      {
         "title": "תמחור והתחייבות לשביעות רצון",
         "summary": "סקירת מניה או מטבע ב־99 ש״ח. לא מרוצים? החזר כספי מלא, ללא שאלות.",
         "body": [
@@ -1553,6 +1562,14 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "body": [
           "Provide the asset name and ticker. For stocks, include the exchange; for crypto, an official website and contract address, where relevant, help identify the exact asset.",
           "Add your questions and priorities and choose Hebrew, English or both languages. Research begins once the complete request, required materials and payment have been received."
+        ]
+      },
+      {
+        "title": "Sample research",
+        "summary": "Chainlink and LINK - a complete review with fundamental research, community analysis, technical analysis and charts.",
+        "body": [
+          "Explore the full LINK review to see the research depth, presentation of data and connections between the project, token economics, community, risks and technical picture. All 20 report pages are included, with sources and conclusions.",
+          "The report is dated October 19, 2026. Data, charts and scenarios reflect the research date and do not update in real time. The book appears in Hebrew or English according to the website language."
         ]
       },
       {
@@ -2951,6 +2968,7 @@ export default function Home() {
 
                   {isMarketRoute && panel.title === servicePage.panels[3].title ? <MarketResearchBook key={language} language={language} /> : null}
                   {isTrainingRoute && panel.title === servicePage.panels[6].title ? <TrainingExampleBook key={language} language={language} /> : null}
+                  {isStockCryptoRoute && panel.title === (isHebrew ? 'סקירה לדוגמה' : 'Sample research') ? <LinkReviewBook key={language} language={language} /> : null}
                   {isIntegrationExamplePanel ? <><IntegrationCarousel key={carouselVersion} language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
                   {isAutomationExamplePanel ? <figure className="website-case-preview">
                     <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>
