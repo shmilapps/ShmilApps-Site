@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import ContactSection from '../components/ContactSection';
 import { researchOrderTerms, ResearchReportLanguage } from '../components/ResearchOrderTerms';
 import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
@@ -35,7 +36,6 @@ const content = {
       openMenu: 'פתח תפריט',
     },
     servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה', 'סקירות מניות וקריפטו', 'תחקירי קריפטו מול בורסאות'],
-    portfolioMenu: ['שמילונטורי', 'שמילקליק', 'מערכת ETF וירטואלית', 'קומנד סנטר לדיווחי תוצאות', 'בוט מסחר - קריפטו', 'אפליקציה לניהול מבנים', 'אפליקציה לניהול מכוורות'],
   },
   en: {
     status: 'Website under construction',
@@ -65,7 +65,6 @@ const content = {
       openMenu: 'Open menu',
     },
     servicesMenu: ['App development', 'Software and management systems', 'Business websites and software brand development', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment', 'Stock and crypto research', 'Crypto exchange investigations'],
-    portfolioMenu: ['Shmilventory', 'ShmilaClick', 'Virtual ETF system', 'Results command center', 'Crypto trading bot', 'Building management app', 'Apiary management app'],
   },
 };
 
@@ -2642,6 +2641,7 @@ export default function Home() {
   const serviceId = isExchangeRoute ? 'crypto-exchange-investigations' : isStockCryptoRoute ? 'stock-crypto-research' : isTrainingRoute ? 'training-enrichment' : isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
   const serviceHero = isExchangeRoute ? '/brand/services/crypto-exchange-investigations-hero-6500x500-v1.webp' : isStockCryptoRoute ? '/brand/services/stocks-crypto-hero-6500x500-v1.webp' : isTrainingRoute ? '/brand/services/training-enrichment-hero-6500x500-v2.webp' : isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const isContactRoute = currentPath === '/contact';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -2662,18 +2662,12 @@ export default function Home() {
               <a className="more-link" href={withLanguage(navAnchors.services)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
           </div>
-          <div className={`nav-item has-menu${desktopMenu === 'portfolio' ? ' menu-open' : ''}`} onPointerEnter={() => { setDesktopMenu('portfolio'); setSuppressDropdowns(false); }} onPointerLeave={() => setDesktopMenu(null)}>
-            <button type="button" className="nav-menu-trigger" aria-expanded={desktopMenu === 'portfolio'} onClick={() => { setDesktopMenu(desktopMenu === 'portfolio' ? null : 'portfolio'); setSuppressDropdowns(false); }}><span className="nav-label">{text.nav.portfolio}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
-            <div className="nav-menu">
-              {text.portfolioMenu.map((item) => <a key={item} href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{item}</a>)}
-              <a className="more-link" href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
-            </div>
-          </div>
+          <a href={withLanguage(navAnchors.portfolio)} onClick={handleDropdownTitleClick}>{text.nav.portfolio}</a>
           <div className={`nav-item has-menu${desktopMenu === 'follow' ? ' menu-open' : ''}`} onPointerEnter={() => { setDesktopMenu('follow'); setSuppressDropdowns(false); }} onPointerLeave={() => setDesktopMenu(null)}>
             <button type="button" className="nav-menu-trigger" aria-expanded={desktopMenu === 'follow'} onClick={() => { setDesktopMenu(desktopMenu === 'follow' ? null : 'follow'); setSuppressDropdowns(false); }}><span className="nav-label">{text.nav.follow}</span><span className="dropdown-arrow" aria-hidden="true">⌄</span></button>
             <div className="nav-menu social-nav-menu">
               {socialLinks.map((social) => (
-                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}>{social.labelKey ? text[social.labelKey] : social.name}</a>
+                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={closeFocusedMenu}><span className={`social-menu-icon${social.wideIcon ? ' social-menu-icon-wide' : ''}`} aria-hidden="true"><img src={social.icon} alt="" loading="lazy" /></span><span>{social.labelKey ? text[social.labelKey] : social.name}</span></a>
               ))}
               <a className="more-link" href={withLanguage(navAnchors.follow)} onClick={handleDropdownTitleClick}>{text.nav.more}</a>
             </div>
@@ -2706,15 +2700,11 @@ export default function Home() {
               {text.servicesMenu.map((item, index) => <a key={item} href={withLanguage(serviceHrefs[index] ?? navAnchors.services)} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
               <a className="more-link" href={withLanguage(navAnchors.services)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
-            <details>
-              <summary>{text.nav.portfolio}</summary>
-              {text.portfolioMenu.map((item) => <a key={item} href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{item}</a>)}
-              <a className="more-link" href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
-            </details>
+            <a href={withLanguage(navAnchors.portfolio)} onClick={() => setMobileMenuOpen(false)}>{text.nav.portfolio}</a>
             <details>
               <summary>{text.nav.follow}</summary>
               {socialLinks.map((social) => (
-                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={() => setMobileMenuOpen(false)}>{social.labelKey ? text[social.labelKey] : social.name}</a>
+                <a key={social.name} href={social.href} target="_blank" rel="noreferrer" onClick={() => setMobileMenuOpen(false)}><span className={`social-menu-icon${social.wideIcon ? ' social-menu-icon-wide' : ''}`} aria-hidden="true"><img src={social.icon} alt="" loading="lazy" /></span><span>{social.labelKey ? text[social.labelKey] : social.name}</span></a>
               ))}
               <a className="more-link" href={withLanguage(navAnchors.follow)} onClick={() => setMobileMenuOpen(false)}>{text.nav.more}</a>
             </details>
@@ -2724,7 +2714,9 @@ export default function Home() {
           </nav>
         </div>
       </header>
-      {isAiAssistantRoute ? (
+      {isContactRoute ? (
+        <ContactSection key={language} language={language} services={services} standalone />
+      ) : isAiAssistantRoute ? (
         <section id="ai-assistant-page" className="service-page ai-page" aria-labelledby="ai-page-title">
           <div ref={stickyHeroRef} className="service-sticky-area ai-sticky-area">
             <div className="service-sticky-hero ai-sticky-hero" aria-hidden="true" style={{ backgroundImage: 'url(/brand/services/ai-assistant-hero-6500x500-v2.webp)' }} />
@@ -3048,6 +3040,10 @@ export default function Home() {
                 <span>{service.summary}</span>
               </a>
             ))}
+            <a className="service-card service-card-additional" href={withLanguage('/contact?topic=other')} dir={isHebrew ? 'rtl' : 'ltr'}>
+              <strong>{isHebrew ? 'שירותים נוספים' : 'Additional services'}</strong>
+              <span>{isHebrew ? 'מחפשים שירות שלא מצאתם כאן? ספרו לנו מה אתם צריכים, וננסה למצוא יחד את הדרך לעזור.' : 'Looking for a service you did not find here? Tell us what you need, and we will explore how we can help.'}</span>
+            </a>
           </div>
         </section>
 
@@ -3061,16 +3057,7 @@ export default function Home() {
           <p>{isHebrew ? 'כאן יוקם עוזר AI שיכיר את ShmilApps, השירותים, התהליכים והרעיונות שנוכל להציע.' : 'This area will host an AI assistant that knows ShmilApps, our services, processes and ideas.'}</p>
         </section>
 
-        <section id="contact" className="service-contact home-contact" aria-labelledby="home-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
-          <h2 id="home-contact-title">{text.nav.contact}</h2>
-          <p>{isHebrew ? 'רוצים לבדוק רעיון, שירות או שיתוף פעולה?' : 'Want to check an idea, service or collaboration?'}</p>
-          <p>{isHebrew ? 'דברו איתנו ונבין יחד מה נכון לבנות ואיך להתחיל.' : 'Let’s talk and understand what makes sense to build and how to start.'}</p>
-          <div className="service-contact-links">
-            <a href="tel:+972547886780" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">☎</span><span>{appPage.contact.phone}</span><bdi>+972547886780</bdi></a>
-            <a href="https://wa.me/972547886780" target="_blank" rel="noreferrer" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">💬</span><span>{appPage.contact.whatsapp}</span></a>
-            <a href="mailto:shmilapps@gmail.com" dir={isHebrew ? 'rtl' : 'ltr'}><span className="contact-icon" aria-hidden="true">✉</span><span>{appPage.contact.email}</span><bdi>shmilapps@gmail.com</bdi></a>
-          </div>
-        </section>
+        <ContactSection key={language} language={language} services={services} />
 
 
       </section>
