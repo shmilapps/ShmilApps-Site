@@ -2962,3 +2962,7 @@ main[dir="rtl"] .ai-chat-input {
 #service-stock-crypto-research .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }
 #service-stock-crypto-research .service-detail-body, #service-stock-crypto-research .service-detail-body p, #service-stock-crypto-research .service-detail-body li { text-align: start; direction: inherit; }
 #service-stock-crypto-research .service-detail-body ul { padding-inline-start: 24px; padding-inline-end: 0; list-style-position: outside; }
+
+#service-crypto-exchange-investigations .service-page-content { margin-top: var(--subpage-content-top, 430px) !important; }
+#service-crypto-exchange-investigations .service-detail-body, #service-crypto-exchange-investigations .service-detail-body p, #service-crypto-exchange-investigations .service-detail-body li { text-align: start; direction: inherit; }
+#service-crypto-exchange-investigations .service-detail-body ul { padding-inline-start: 24px; padding-inline-end: 0; list-style-position: outside; }

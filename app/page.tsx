@@ -156,7 +156,7 @@ const serviceHrefs = [
   '/services/quote-cost-reduction',
   '/services/training-enrichment',
   '/services/stock-crypto-research',
-  '/#services',
+  '/services/crypto-exchange-investigations',
 ];
 
 const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
@@ -171,7 +171,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'הוזלת הצעות מחיר קיימות', summary: 'בדיקה מקצועית של הצעות מחיר קיימות, איתור פערים והצעת חלופות משתלמות.', href: '/services/quote-cost-reduction' },
     { title: 'הדרכות והעשרה', summary: 'הדרכות AI, חינוך פיננסי, שוק ההון וקריפטו לעסקים, צוותים ויחידים.', href: '/services/training-enrichment' },
     { title: 'סקירות מניות וקריפטו', summary: 'מחקר וניתוח מסודר של חברה, מניה או מטבע קריפטו, כולל נתונים, סיכונים, תרחישים ונקודות שדורשות זהירות.', href: '/services/stock-crypto-research' },
-    { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/#services' },
+    { title: 'תחקירי קריפטו מול בורסאות', summary: 'ליווי במקרים של אירועי מסחר חריגים, טעויות מערכת, מינוף, ליקווידציות ובניית תחקיר מסודר מול בורסות.', href: '/services/crypto-exchange-investigations' },
   ],
   en: [
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
@@ -184,7 +184,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
     { title: 'Reducing existing quote costs', summary: 'Professional review of existing quotes, finding gaps and suggesting more efficient alternatives.', href: '/services/quote-cost-reduction' },
     { title: 'Training and enrichment', summary: 'AI, financial education, capital markets and crypto training for businesses, teams and individuals.', href: '/services/training-enrichment' },
     { title: 'Stock and crypto research', summary: 'Structured research and analysis of a company, stock or crypto asset, including data, risks, scenarios and points that require caution.', href: '/services/stock-crypto-research' },
-    { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/#services' },
+    { title: 'Crypto exchange investigations', summary: 'Support for unusual trading events, platform errors, leverage, liquidations and structured investigations with crypto exchanges.', href: '/services/crypto-exchange-investigations' },
   ],
 };
 
@@ -1115,6 +1115,239 @@ function IntegrationCarousel({ language }: { language: 'he' | 'en' }) {
     <p className="integration-slide-caption" aria-live="polite">{index+1} / 6 · {integrationSlideTitles[language][index]}</p>
   </section>;
 }
+
+const exchangeInvestigationsPage: typeof appDevelopmentPage = {
+  "he": {
+    "title": "תחקירי קריפטו מול בורסאות",
+    "subtitle": "משהו במסחר לא מסתדר? בואו נבדוק מה קרה.",
+    "panels": [
+      {
+        "title": "למי זה מתאים",
+        "summary": "למי שחוו אירוע מסחר חריג ורוצים להבין אותו ולפעול מול הבורסה עם תיעוד מסודר.",
+        "body": [
+          "ליקווידציה לא צפויה, פקודה שבוצעה אחרת מהצפוי, פערי מחירים, תקלה במערכת, גריעת נכסים או מחלוקת על עמלות וחיובים. מתחילים מבדיקת האירוע והמידע הזמין, כדי להבין מה אפשר לבסס ומה דורש בירור."
+        ]
+      },
+      {
+        "title": "מה אנחנו בודקים",
+        "summary": "מחברים בין היסטוריית הפעולות, נתוני החשבון וההסברים של הבורסה.",
+        "body": [
+          "הבדיקה מותאמת למוצר שבו בוצע המסחר ולמנגנון הפלטפורמה."
+        ],
+        "bullets": [
+          "פקודות, ביצועים, עסקאות, העברות, יתרות ותנועות בלדג׳ר.",
+          "מסחר ספוט, מרג׳ין ופיוצ׳רס, מינוף, בטוחות ואירועי ליקווידציה.",
+          "מחיר העסקה, מחיר הסימון ומחיר המדד, לפי המוצר והאירוע.",
+          "עמלות, חיובי מימון, חותמות זמן והתראות מערכת.",
+          "התכתבויות, תשובות תמיכה ופערים בין הנתונים להסבר שהתקבל."
+        ]
+      },
+      {
+        "title": "בונים את התמונה המלאה",
+        "summary": "מציר זמן מפורט ועד לממצאים, חישובים ושאלות שהבורסה צריכה להסביר.",
+        "body": [
+          "משחזרים את השתלשלות האירועים: מה ביקשתם לבצע, מה התרחש בפועל, מה הוצג במערכת ומה השתנה בחשבון. משווים בין קבצים ומקורות ומרכזים את הנתונים הרלוונטיים.",
+          "מבחינים בין עובדות מתועדות, מסקנות, השערות ומידע שחסר. מטרת התחקיר היא לבנות טענה מדויקת ומבוססת, ולהסביר אותה בצורה שאפשר להבין ולהציג."
+        ]
+      },
+      {
+        "title": "מקרה לדוגמה",
+        "summary": "יפורסם בהמשך.",
+        "body": [
+          "מקרה לדוגמה יפורסם בהמשך."
+        ]
+      },
+      {
+        "title": "מה תקבלו",
+        "summary": "תחקיר מסודר, ראיות רלוונטיות ופנייה מקצועית לבורסה, בהתאם להיקף שסוכם.",
+        "body": [
+          "הסבר ברור של המקרה, ציר זמן, חישובים, טבלאות או גרפים לפי הצורך, ממצאים ומקורות הנתונים. אפשר לשלב ניסוח פנייה באנגלית והכנת החומרים הנלווים.",
+          "התחקיר נועד לבסס את הפנייה ולחדד את הטענות. הוא אינו מבטיח פיצוי או השבת כספים."
+        ]
+      },
+      {
+        "title": "ליווי לאורך המחלוקת",
+        "summary": "בתיאום מראש אפשר לקבל ליווי מלא, מהפנייה הראשונה ועד לסיום ההתנהלות מול הבורסה.",
+        "body": [
+          "הליווי יכול לכלול ניתוח תשובות הבורסה, ניסוח תגובות באנגלית, השלמת ראיות, שאלות המשך ומעקב לאורך המחלוקת. מסבירים לכם את הממצאים ואת מה שעדיין דורש בירור, ומסייעים גם כשפערי שפה מקשים על ההתנהלות.",
+          "היקף הליווי, אופן העבודה והטיפול בפניות יסוכמו מראש בהתאם למקרה."
+        ]
+      },
+      {
+        "title": "איך מתחילים ומה צריך להכין",
+        "summary": "תיאור האירוע, פרטי המוצר והבורסה, קבצי הפעילות והתכתבות קיימת.",
+        "body": [
+          "שולחים תיאור קצר: מה קרה, מתי, באיזה נכס ובאיזה סוג מסחר. מצרפים קבצי CSV או דוחות של פקודות, עסקאות, לדג׳ר ויתרות, צילומי מסך ומספרי פניות תמיכה, ככל שזמינים.",
+          "אין צורך למסור סיסמה, מפתחות פרטיים או מילות שחזור. אם חסר מידע, נדריך אילו דוחות רלוונטיים לבקש או לייצא. לאחר בדיקה ראשונית נגדיר את היקף העבודה ונציע דרך פעולה."
+        ]
+      },
+      {
+        "title": "תמחור ולוחות זמנים",
+        "summary": "עלות ראשונית לפי היקף המחלוקת, ובנוסף 2% מהסכום שהושב בפועל.",
+        "body": [
+          "העלות הראשונית תיקבע לאחר בחינת המקרה והערכת היקף התחקיר והליווי הנדרש, ותסוכם מראש.",
+          "במקרה של זיכוי או השבת כספים, ייגבו בנוסף דמי הצלחה בשיעור 2% מהסכום שהושב בפועל.",
+          "זמן הכנת התחקיר ייקבע לפי היקף החומר ומורכבות הבדיקה. משך ההתנהלות מול הבורסה תלוי גם בזמני התגובה שלה ובהשלמת הנתונים. אבני הדרך יסוכמו מראש."
+        ]
+      },
+      {
+        "title": "שאלות נפוצות",
+        "summary": "אילו חומרים צריך? אפשר לקבל ליווי באנגלית? והאם מובטח החזר?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "באילו בורסאות אפשר לבדוק אירוע?",
+            "answer": "אפשר לפנות לגבי אירועים בבורסאות שונות, ובהן Kraken, Binance, MEXC, Bybit, Bitunix, OKX ו־Coinbase. האפשרות והיקף הבדיקה תלויים במקרה ובנתונים הזמינים."
+          },
+          {
+            "question": "אני לא שולט באנגלית. אפשר לקבל עזרה?",
+            "answer": "כן. אפשר לכלול ניסוח פניות ותגובות באנגלית, לצד הסבר בעברית של הממצאים ותשובות הבורסה."
+          },
+          {
+            "question": "האם השירות כולל ליווי עד לסיום המחלוקת?",
+            "answer": "בתיאום מראש ניתן לקבל ליווי מלא לאורך המחלוקת. היקף הליווי, דרך העבודה והתמחור יסוכמו לפני תחילתו."
+          },
+          {
+            "question": "אפשר לבדוק גם אירוע ישן?",
+            "answer": "אפשר לבדוק את האפשרות לפי זמינות הלוגים, הדוחות והתיעוד. ככל שיש יותר מידע רלוונטי, ניתן לשחזר ולנתח את האירוע בצורה טובה יותר."
+          },
+          {
+            "question": "האם צריך לתת גישה לחשבון?",
+            "answer": "לצורך הבדיקה משתמשים בדוחות ובתיעוד. אין למסור סיסמאות, מפתחות פרטיים או מילות שחזור."
+          },
+          {
+            "question": "האם אתם מבטיחים השבת כספים?",
+            "answer": "לא. נבדוק מה אפשר לבסס ונציג את הממצאים. תוצאת המחלוקת והחלטת הבורסה אינן מובטחות."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "יש אירוע שלא קיבלתם עליו תשובה מספקת? בואו נחבר את הנתונים ונבין מה קרה.",
+      "lines": [
+        "ספרו בקצרה על האירוע, הבורסה והתיעוד הקיים, ונתאם בדיקה ראשונית."
+      ],
+      "phone": "טלפון",
+      "whatsapp": "וואטסאפ",
+      "email": "אימייל"
+    }
+  },
+  "en": {
+    "title": "Crypto exchange investigations",
+    "subtitle": "Something in your trading does not add up? Let’s find out what happened.",
+    "panels": [
+      {
+        "title": "Who is it for",
+        "summary": "For people facing an unusual trading event who want to understand it and approach the exchange with organized evidence.",
+        "body": [
+          "Unexpected liquidation, an order executed differently than expected, price discrepancies, system problems, missing assets or disputed fees and charges. We begin by examining the event and available information to establish what can be supported and what needs clarification."
+        ]
+      },
+      {
+        "title": "What we investigate",
+        "summary": "Connect activity history, account records and the exchange’s explanations.",
+        "body": [
+          "The investigation is tailored to the trading product and platform mechanics."
+        ],
+        "bullets": [
+          "Orders, executions, trades, transfers, balances and ledger entries.",
+          "Spot, margin and futures activity, leverage, collateral and liquidations.",
+          "Trade price, mark price and index price, as relevant to the product and event.",
+          "Fees, funding charges, timestamps and system notifications.",
+          "Correspondence, support replies and discrepancies between the data and explanations."
+        ]
+      },
+      {
+        "title": "Reconstructing the full picture",
+        "summary": "From a detailed timeline to findings, calculations and questions for the exchange.",
+        "body": [
+          "Reconstruct what you requested, what happened, what the platform displayed and how the account changed. We compare files and sources and consolidate relevant records.",
+          "Documented facts, conclusions, hypotheses and missing information are distinguished. The aim is a precise, evidence-based account that can be understood and presented clearly."
+        ]
+      },
+      {
+        "title": "Example case",
+        "summary": "Coming soon.",
+        "body": [
+          "An example case will be published here later."
+        ]
+      },
+      {
+        "title": "What you receive",
+        "summary": "An organized investigation, relevant evidence and a professional exchange inquiry within the agreed scope.",
+        "body": [
+          "A clear account of the event, timeline, calculations, tables or charts where useful, findings and data sources. English correspondence and supporting materials can be included.",
+          "The investigation supports your inquiry and clarifies the issues. It does not guarantee compensation or recovery of funds."
+        ]
+      },
+      {
+        "title": "Support throughout the dispute",
+        "summary": "Full support can be arranged, from the initial inquiry through the end of the exchange dispute.",
+        "body": [
+          "Support can include reviewing exchange replies, drafting responses in English, supplying additional evidence, follow-up questions and ongoing case tracking. We explain findings and remaining uncertainties and help when language barriers make communication difficult.",
+          "The scope of support, working arrangements and handling of inquiries are agreed in advance for each case."
+        ]
+      },
+      {
+        "title": "Getting started and preparing records",
+        "summary": "Describe the event and provide platform and product details, activity exports and existing correspondence.",
+        "body": [
+          "Explain what happened, when, which asset was involved and the trading product used. Include CSV exports or reports of orders, trades, ledger activity and balances, screenshots and support-ticket numbers where available.",
+          "Passwords, private keys and recovery phrases are not required. If information is missing, we help identify reports to export or request. After an initial review, we define the scope and propose next steps."
+        ]
+      },
+      {
+        "title": "Pricing and timelines",
+        "summary": "An initial fee based on dispute scope, plus 2% of funds actually recovered.",
+        "body": [
+          "The initial fee is determined after reviewing the case and estimating the investigation and support required, and is agreed in advance.",
+          "If funds are credited or returned, an additional success fee of 2% of the amount actually recovered applies.",
+          "Investigation timing depends on the volume of records and complexity. The dispute timeline also depends on exchange response times and availability of data. Milestones are agreed in advance."
+        ]
+      },
+      {
+        "title": "FAQ",
+        "summary": "Which records are needed? Can you help in English? Is recovery guaranteed?",
+        "body": [],
+        "faqs": [
+          {
+            "question": "Which exchanges can you investigate?",
+            "answer": "You can inquire about events on exchanges including Kraken, Binance, MEXC, Bybit, Bitunix, OKX and Coinbase. Feasibility and scope depend on the case and available data."
+          },
+          {
+            "question": "Can you help if I am not comfortable with English?",
+            "answer": "Yes. English inquiries and responses can be included, alongside Hebrew explanations of findings and exchange replies."
+          },
+          {
+            "question": "Can support continue until the dispute ends?",
+            "answer": "Full support throughout the dispute can be arranged in advance. Its scope, working arrangements and pricing are agreed before it begins."
+          },
+          {
+            "question": "Can an older incident be examined?",
+            "answer": "We assess feasibility based on the availability of logs, reports and other records. More relevant information generally allows better reconstruction and analysis."
+          },
+          {
+            "question": "Do you need access to my account?",
+            "answer": "We work with reports and records. Do not provide passwords, private keys or recovery phrases."
+          },
+          {
+            "question": "Do you guarantee recovery?",
+            "answer": "No. We investigate what can be substantiated and present the findings. The outcome and the exchange’s decision are not guaranteed."
+          }
+        ]
+      }
+    ],
+    "contact": {
+      "title": "An event still has no satisfactory explanation? Let’s connect the records and understand it.",
+      "lines": [
+        "Briefly describe the event, exchange and available records so we can arrange an initial review."
+      ],
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email"
+    }
+  }
+};
 
 const stockCryptoPage: typeof appDevelopmentPage = {
   "he": {
@@ -2399,15 +2632,16 @@ export default function Home() {
   const isFdeRoute = currentPath === '/services/needs-discovery-fde';
   const isAutomationRoute = currentPath === '/services/automation-ai';
   const isIntegrationsRoute = currentPath === '/services/business-integrations';
+  const isExchangeRoute = currentPath === '/services/crypto-exchange-investigations';
   const isStockCryptoRoute = currentPath === '/services/stock-crypto-research';
   const isTrainingRoute = currentPath === '/services/training-enrichment';
   const isQuoteCostRoute = currentPath === '/services/quote-cost-reduction';
   const isMarketRoute = currentPath === '/services/market-research';
-  const servicePage = isStockCryptoRoute ? stockCryptoPage[language] : isTrainingRoute ? trainingEnrichmentPage[language] : isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
+  const servicePage = isExchangeRoute ? exchangeInvestigationsPage[language] : isStockCryptoRoute ? stockCryptoPage[language] : isTrainingRoute ? trainingEnrichmentPage[language] : isQuoteCostRoute ? quoteCostReductionPage[language] : isMarketRoute ? marketResearchPage[language] : isIntegrationsRoute ? integrationsPage[language] : isAutomationRoute ? automationAiPage[language] : isFdeRoute ? needsDiscoveryPage[language] : isWebsitesBrandingRoute ? websitesBrandingPage[language] : isSoftwareManagementRoute ? softwareManagementPage[language] : appPage;
   const softwareCase = shmilaClickCaseStudy[language];
-  const serviceId = isStockCryptoRoute ? 'stock-crypto-research' : isTrainingRoute ? 'training-enrichment' : isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
+  const serviceId = isExchangeRoute ? 'crypto-exchange-investigations' : isStockCryptoRoute ? 'stock-crypto-research' : isTrainingRoute ? 'training-enrichment' : isQuoteCostRoute ? 'quote-cost-reduction' : isMarketRoute ? 'market-research' : isIntegrationsRoute ? 'business-integrations' : isAutomationRoute ? 'automation-ai' : isFdeRoute ? 'needs-discovery-fde' : isWebsitesBrandingRoute ? 'websites-and-branding' : isSoftwareManagementRoute ? 'software-management' : 'app-development';
   const websiteCase = websiteBrandCaseStudy[language];
-  const serviceHero = isStockCryptoRoute ? '/brand/services/stocks-crypto-hero-6500x500-v1.webp' : isTrainingRoute ? '/brand/services/training-enrichment-hero-6500x500-v2.webp' : isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
+  const serviceHero = isExchangeRoute ? '/brand/services/crypto-exchange-investigations-hero-6500x500-v1.webp' : isStockCryptoRoute ? '/brand/services/stocks-crypto-hero-6500x500-v1.webp' : isTrainingRoute ? '/brand/services/training-enrichment-hero-6500x500-v2.webp' : isQuoteCostRoute ? '/brand/services/quote-cost-reduction-hero-6500x500-v3.webp' : isMarketRoute ? '/brand/services/market-research-hero-6500x500-v1.webp' : isIntegrationsRoute ? '/brand/services/business-integrations-hero-6500x500-v2.webp' : isAutomationRoute ? '/brand/services/automation-ai-hero-6500x500-v3.webp' : isFdeRoute ? '/brand/services/needs-discovery-fde-hero-6500x500-v1.webp' : isWebsitesBrandingRoute ? '/brand/services/business-websites-brand-hero-6500x500-v2.webp' : isSoftwareManagementRoute ? '/brand/services/software-management-hero-6500x500-v1.webp' : '/brand/services/app-development-hero-6500x500-v2.webp';
   const isAiAssistantRoute = currentPath === '/ai-assistant';
   return (
     <main dir={isHebrew ? 'rtl' : 'ltr'}>
@@ -2586,7 +2820,7 @@ export default function Home() {
             <p className="ai-page-note">{aiPage.note}</p>
           </div>
         </section>
-      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute || isTrainingRoute || isStockCryptoRoute) ? (
+      ) : (isAppDevelopmentRoute || isSoftwareManagementRoute || isWebsitesBrandingRoute || isFdeRoute || isAutomationRoute || isIntegrationsRoute || isMarketRoute || isQuoteCostRoute || isTrainingRoute || isStockCryptoRoute || isExchangeRoute) ? (
         <section id={`service-${serviceId}`} className="service-page" aria-labelledby={`${serviceId}-title`}>
           <div ref={stickyHeroRef} className="service-sticky-area">
             <div className="service-sticky-hero" aria-hidden="true" style={{ backgroundImage: `url(${serviceHero})` }} />
