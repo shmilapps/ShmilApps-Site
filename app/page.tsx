@@ -7,6 +7,7 @@ import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
 import TrainingExampleBook from '../components/TrainingExampleBook';
 import LinkReviewBook from '../components/LinkReviewBook';
+import ExchangeCaseStudy from '../components/ExchangeCaseStudy';
 
 const content = {
   he: {
@@ -2981,13 +2982,7 @@ export default function Home() {
                   {isMarketRoute && panel.title === servicePage.panels[3].title ? <MarketResearchBook key={language} language={language} /> : null}
                   {isTrainingRoute && panel.title === servicePage.panels[6].title ? <TrainingExampleBook key={language} language={language} /> : null}
                   {isStockCryptoRoute && panel.title === (isHebrew ? 'סקירה לדוגמה' : 'Sample research') ? <LinkReviewBook key={language} language={language} /> : null}
-                  {isExchangeRoute && panel.title === (isHebrew ? 'מקרה לדוגמה' : 'Example case') ? <article className="exchange-case-intro">
-                    <p>{isHebrew ? 'ביצענו עשרות תחקירים מול כמה וכמה בורסאות מוכרות. בחלקם הצלחנו להחזיר סכומים נאים, ובאחרים הסברנו והראינו ללקוח מה בדיוק קרה, לאחר בדיקה מעמיקה והצגת הוכחות מתוך קבצי הלוגים.' : 'We have conducted dozens of investigations involving several well-known exchanges. In some, we helped recover substantial sums. In others, we explained exactly what happened through in-depth analysis and evidence from the account logs.'}</p>
-                    <p><strong>{isHebrew ? 'אבל מקרה אחד ריגש אותנו עד דמעות!!!' : 'But one case moved us to tears!!!'}</strong></p>
-                    <h3>{isHebrew ? 'סיפורו של א׳, לוחם מילואים בשריון מהמגזר החרדי, אב למשפחה ולילדים, שהיה באותה תקופה בלחימה.' : 'The story of A., an ultra-Orthodox armored-unit reservist, a father with a family and children, who was in combat at the time.'}</h3>
-                    <a href={'/portfolio/crypto-exchange/case/index.html?lang='+language}><img src="/portfolio/crypto-exchange/case/assets/tank-private-v2.png" alt={isHebrew?'א׳ שולח לב מהטנק, פניו מוסתרות':'A. sends a heart from the tank, with his face concealed'} loading="lazy" /></a>
-                    <div className="exchange-case-actions"><a href={'/portfolio/crypto-exchange/case/index.html?lang='+language}>{isHebrew?'לסיפור המלא':'Read the full story'}</a><a href={'/portfolio/crypto-exchange/case/index.html?lang='+language+'#voices'}>{isHebrew?'לשמוע ולהתרגש':'Listen and feel the emotion'}</a></div>
-                  </article> : null}
+                  {isExchangeRoute && panel.title === (isHebrew ? 'מקרה לדוגמה' : 'Example case') ? <ExchangeCaseStudy language={language} /> : null}
                   {isIntegrationExamplePanel ? <><IntegrationCarousel key={carouselVersion} language={language} /><a className="website-case-link" href={withLanguage('/services/software-management#shmilaclick-example')}>{isHebrew ? 'לסיפור המלא של ShmilaClick' : 'Explore the full ShmilaClick case study'}</a></> : null}
                   {isAutomationExamplePanel ? <figure className="website-case-preview">
                     <a href={withLanguage('/ai-assistant')}><img src={isHebrew ? '/portfolio/ai-assistant/assistant-preview-he.webp' : '/portfolio/ai-assistant/assistant-preview-en.webp'} alt={isHebrew ? 'עוזר ה־AI של ShmilApps בעברית' : 'ShmilApps AI Assistant in English'} loading="lazy" /></a>
