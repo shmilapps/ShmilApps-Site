@@ -3084,11 +3084,6 @@ export default function Home() {
           <p>{isHebrew ? 'בקרוב נציג כאן עבודות, מערכות ופרויקטים נבחרים.' : 'Soon we will showcase selected products, systems and projects here.'}</p>
         </section>
 
-        <section id="ai-assistant" className="placeholder-section ai-placeholder" aria-labelledby="ai-title">
-          <h2 id="ai-title">{text.nav.assistant}</h2>
-          <p>{isHebrew ? 'כאן יוקם עוזר AI שיכיר את ShmilApps, השירותים, התהליכים והרעיונות שנוכל להציע.' : 'This area will host an AI assistant that knows ShmilApps, our services, processes and ideas.'}</p>
-        </section>
-
         <ContactSection key={language} language={language} services={services} />
 
 
