@@ -65,7 +65,7 @@ const content = {
       closeMenu: 'Close menu',
       openMenu: 'Open menu',
     },
-    servicesMenu: ['App development', 'Software and management systems', 'Business websites | Software brands | Logos | Advertisements', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment', 'Stock and crypto research', 'Crypto exchange investigations'],
+    servicesMenu: ['App development', 'Software and management systems', 'Websites | Software brands | Logos | Ads.', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment', 'Stock and crypto research', 'Crypto exchange investigations'],
   },
 };
 
@@ -176,7 +176,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   en: [
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
     { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/services/software-management' },
-    { title: 'Business websites | Software brands | Logos | Advertisements', summary: 'Business websites, software brands, logos and creative advertising that capture attention and present your business professionally.', href: '/services/websites-and-branding' },
+    { title: 'Websites | Software brands | Logos | Ads.', summary: 'Business websites, software brands, logos and creative advertising that capture attention and present your business professionally.', href: '/services/websites-and-branding' },
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/services/needs-discovery-fde' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/services/automation-ai' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
@@ -367,7 +367,7 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
     contact: { ...appDevelopmentPage.he.contact, title: 'מוכנים לתת לעסק שלכם במה?', lines: ['רוצים אתר שמייצג אתכם או מותג שלם למוצר התוכנה שלכם?', 'ספרו לנו מה אתם מדמיינים, ונבנה יחד את הדרך לנוכחות דיגיטלית ברורה, מקצועית ומזוהה.'] },
   },
   en: {
-    title: 'Business websites | Software brands | Logos | Advertisements',
+    title: 'Websites | Software brands | Logos | Ads.',
     subtitle: 'Business websites, software brands, logos and creative advertising that capture attention and present your business professionally.',
     panels: [
       { title: 'Who it fits', summary: 'For businesses and founders looking for a website, brand, logo or creative advertisement that captures attention and helps reach new customers.', body: ['From an idea to a brand people can see, experience and remember.', 'Business websites and software brands built around your identity, audience and goals, with attention to every detail and every pixel.', 'Create a website for an existing business, launch a software product, refresh a digital presence or build the complete package from scratch.'] },
