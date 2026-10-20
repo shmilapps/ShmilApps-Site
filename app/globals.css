@@ -3043,3 +3043,5 @@ main[dir="rtl"] .ai-chat-input {
 
 
 .brand-media-examples{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px;padding-top:24px;border-top:1px solid #83b90044}.brand-media-example{min-width:0;text-align:start}.brand-media-example h3{color:#f3f7eb;margin:0 0 12px}.brand-media-example p{line-height:1.8;margin-bottom:18px}.brand-media-example video{display:block;width:100%;max-width:560px;height:auto;aspect-ratio:1;object-fit:contain;margin:0 auto;background:#000;border:1px solid #83b90055;border-radius:14px}.brand-media-example:first-child video{aspect-ratio:16/9}
+
+@media(max-width:900px){.service-hero-titlebar[dir='ltr'] #websites-and-branding-title{font-size:clamp(10px,3.5vw,30px);white-space:nowrap}}
