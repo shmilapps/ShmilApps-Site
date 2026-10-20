@@ -25,7 +25,7 @@ Founder and background:
 Key services:
 - App development: mobile and web apps tailored to the business, from idea to working product. Can include discovery, market research, MVP, screens, development, testing, training and initial support. Preliminary market research can start from ₪99; if development continues with ShmilApps, the research cost can be deducted from the project price according to the commercial agreement.
 - Software and management systems: internal systems for processes, employees, customers, inventory, reports and operations.
-- Business websites and software brand development: business sites, landing pages and digital assets, including content, messaging, UX and conversion.
+- Business websites | Software brands | Advertisements: business sites, landing pages and digital assets, including content, messaging, UX and conversion.
 - Needs discovery: understanding field needs, mapping processes and building a clear direction before development or automation. Can include on-site FDE at the customer's work environment.
 - Automation and AI: smart workflows, bots and AI assistants that reduce manual work and save time.
 - Business integrations: connecting systems, tools, forms, data and existing processes.

@@ -36,7 +36,7 @@ const content = {
       closeMenu: 'סגור תפריט',
       openMenu: 'פתח תפריט',
     },
-    servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה', 'סקירות מניות וקריפטו', 'תחקירי קריפטו מול בורסאות'],
+    servicesMenu: ['פיתוח אפליקציות', 'פיתוח תוכנה ומערכות ניהול', 'פיתוח אתרי עסק | מותגי תוכנה | פרסומות', 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', 'אוטומציות ו־AI', 'אינטגרציה ופתרונות לעסקים', 'סקרי שוק', 'הוזלת הצעות מחיר קיימות', 'הדרכות והעשרה', 'סקירות מניות וקריפטו', 'תחקירי קריפטו מול בורסאות'],
   },
   en: {
     status: 'Website under construction',
@@ -65,7 +65,7 @@ const content = {
       closeMenu: 'Close menu',
       openMenu: 'Open menu',
     },
-    servicesMenu: ['App development', 'Software and management systems', 'Business websites and software brand development', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment', 'Stock and crypto research', 'Crypto exchange investigations'],
+    servicesMenu: ['App development', 'Software and management systems', 'Business websites | Software brands | Advertisements', 'Needs discovery (including on-site FDE)', 'Automation and AI', 'Business integrations and solutions', 'Market research', 'Reducing existing quote costs', 'Training and enrichment', 'Stock and crypto research', 'Crypto exchange investigations'],
   },
 };
 
@@ -163,7 +163,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   he: [
     { title: 'פיתוח אפליקציות', summary: 'אפליקציות מובייל ו־Web מותאמות לעסק, משלב הרעיון ועד מוצר עובד.', href: '/services/app-development' },
     { title: 'פיתוח תוכנה ומערכות ניהול', summary: 'מערכות פנימיות לניהול תהליכים, עובדים, לקוחות, מלאי, דוחות ותפעול.', href: '/services/software-management' },
-    { title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/services/websites-and-branding' },
+    { title: 'פיתוח אתרי עסק | מותגי תוכנה | פרסומות', summary: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.', href: '/services/websites-and-branding' },
     { title: 'איפיון צרכים (גם בצורת FDE אצל הלקוח)', summary: 'הבנת הצרכים בשטח, מיפוי תהליכים ובניית כיוון ברור לפני פיתוח או אוטומציה.', href: '/services/needs-discovery-fde' },
     { title: 'אוטומציות ו־AI', summary: 'תהליכים חכמים, בוטים ועוזרי AI שמקצרים עבודה וחוסכים זמן.', href: '/services/automation-ai' },
     { title: 'אינטגרציה ופתרונות לעסקים', summary: 'חיבור בין מערכות, כלים, טפסים, דאטה ותהליכים עסקיים קיימים.', href: '/services/business-integrations' },
@@ -176,7 +176,7 @@ const servicesContent: Record<'he' | 'en', ServiceSummary[]> = {
   en: [
     { title: 'App development', summary: 'Mobile and web applications tailored to the business, from idea to working product.', href: '/services/app-development' },
     { title: 'Software and management systems', summary: 'Internal systems for managing processes, employees, customers, inventory, reports and operations.', href: '/services/software-management' },
-    { title: 'Business websites and software brand development', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/services/websites-and-branding' },
+    { title: 'Business websites | Software brands | Advertisements', summary: 'Business sites, landing pages and digital assets that present the business or software product professionally.', href: '/services/websites-and-branding' },
     { title: 'Needs discovery (including on-site FDE)', summary: 'Understanding needs in the field, mapping processes and building a clear direction before development or automation.', href: '/services/needs-discovery-fde' },
     { title: 'Automation and AI', summary: 'Smart workflows, bots and AI assistants that shorten work and save time.', href: '/services/automation-ai' },
     { title: 'Business integrations and solutions', summary: 'Connecting systems, tools, forms, data and existing business processes.', href: '/services/business-integrations' },
@@ -353,7 +353,7 @@ const softwareManagementPage: typeof appDevelopmentPage = {
 
 const websitesBrandingPage: typeof appDevelopmentPage = {
   he: {
-    title: 'פיתוח אתרי עסק ופיתוח מותגי תוכנה',
+    title: 'פיתוח אתרי עסק | מותגי תוכנה | פרסומות',
     subtitle: 'אתרי עסק, דפי נחיתה ונכסים דיגיטליים שמציגים את העסק או מוצר התוכנה בצורה מקצועית.',
     panels: [
       { title: 'למי זה מתאים', summary: 'לעסקים שרוצים אתר שמייצג אותם וליזמים שרוצים להפוך מוצר תוכנה למותג שלם ומזוהה.', body: ['מהרעיון ועד למותג שאפשר לראות, לחוות ולזכור.', 'אתרי עסק ומותגי תוכנה שנבנים סביב הזהות, הקהל והמטרות שלכם - עם תשומת לב לכל פרט ולכל פיקסל.', 'אפשר לבנות אתר לעסק קיים, להשיק מוצר תוכנה חדש, לעצב מחדש נוכחות דיגיטלית או ליצור את המעטפת כולה מאפס.'] },
@@ -367,7 +367,7 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
     contact: { ...appDevelopmentPage.he.contact, title: 'מוכנים לתת לעסק שלכם במה?', lines: ['רוצים אתר שמייצג אתכם או מותג שלם למוצר התוכנה שלכם?', 'ספרו לנו מה אתם מדמיינים, ונבנה יחד את הדרך לנוכחות דיגיטלית ברורה, מקצועית ומזוהה.'] },
   },
   en: {
-    title: 'Business websites and software brand development',
+    title: 'Business websites | Software brands | Advertisements',
     subtitle: 'Business sites, landing pages and digital assets that present the business or software product professionally.',
     panels: [
       { title: 'Who it fits', summary: 'For businesses that need a website reflecting their identity and founders turning software products into recognizable brands.', body: ['From an idea to a brand people can see, experience and remember.', 'Business websites and software brands built around your identity, audience and goals, with attention to every detail and every pixel.', 'Create a website for an existing business, launch a software product, refresh a digital presence or build the complete package from scratch.'] },
