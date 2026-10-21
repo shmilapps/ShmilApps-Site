@@ -2356,6 +2356,7 @@ function MarketResearchPaymentSection() {
     <dialog ref={dialogRef} className="market-payment-dialog" dir="rtl" aria-labelledby="market-payment-dialog-title" onCancel={() => setIsOpen(false)} onClose={() => setIsOpen(false)}>
       <div className="market-payment-dialog-header">
         <h3 id="market-payment-dialog-title">תשלום עבור סקר שוק</h3>
+        <label className="market-payment-width-control">רוחב החלון<input type="range" min="300" max="960" defaultValue="380" step="10" aria-label="רוחב חלון התשלום" onChange={(event) => { dialogRef.current?.style.setProperty('width', `min(${event.target.value}px, calc(100vw - 12px))`); }} /></label>
         <button type="button" className="market-payment-close" aria-label="סגירת חלון התשלום" onClick={() => setIsOpen(false)}>סגירה ×</button>
       </div>
       {isOpen ? <iframe className="market-payment-frame" title="תשלום מאובטח באמצעות יופיי" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" /> : null}

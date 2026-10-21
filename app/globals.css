@@ -3067,3 +3067,11 @@ main[dir="rtl"] .ai-chat-input {
 .market-payment-close:focus-visible { outline: 2px solid #a5ff72; outline-offset: 2px; }
 .market-payment-dialog .market-payment-frame { flex: 1 1 auto; min-height: 0; width: 100%; height: 100%; border-radius: 0; }
 @media(max-width:600px) { .market-payment-dialog { width: calc(100vw - 12px); height: calc(100dvh - 12px); max-height: calc(100dvh - 12px); border-radius: 12px; } .market-payment-dialog-header { padding: 10px; } .market-payment-dialog-header h3 { font-size: 16px; } }
+
+@media(min-width:601px) {
+ .market-payment-dialog { width: min(380px, calc(100vw - 32px)); min-width: 300px; resize: horizontal; overflow: auto; }
+ .market-payment-dialog-header { flex-wrap: wrap; }
+ .market-payment-width-control { display: flex; align-items: center; gap: 8px; width: 100%; order: 3; font-size: 13px; }
+ .market-payment-width-control input { flex: 1; min-width: 0; accent-color: #a5ff72; direction: ltr; }
+}
+@media(max-width:600px) { .market-payment-width-control { display: none; } }
