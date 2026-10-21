@@ -3047,3 +3047,13 @@ main[dir="rtl"] .ai-chat-input {
 @media(max-width:900px){.service-hero-titlebar[dir='ltr'] #websites-and-branding-title{font-size:clamp(10px,3.5vw,30px);white-space:nowrap}}
 
 .exchange-case-intro h3{font-size:clamp(21px,2.1vw,27px);line-height:1.65;margin:20px 0}.exchange-case-intro img{display:block;width:100%;max-width:600px;height:auto;margin:22px auto;border-radius:18px;border:1px solid #56752b}.exchange-case-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:20px 0}.construction .exchange-case-actions a{display:inline-flex;padding:10px 22px;border:1px solid #789c2b;border-radius:28px;background:#101b08;color:#eaffb1;text-decoration:none;font-weight:700;transition:box-shadow .2s}.construction .exchange-case-actions a:hover{box-shadow:0 0 22px #baff0070;border-color:#baff00}.construction .exchange-case-actions a:first-child{background:#baff00;color:#102000}
+
+/* Hebrew market research embedded payment section. */
+.market-payment-section { margin: 2rem 0; padding: clamp(1rem, 3vw, 2rem); border: 1px solid rgba(131, 239, 82, .3); border-radius: 18px; background: rgba(10, 20, 12, .7); text-align: right; scroll-margin-top: 180px; }
+.market-payment-section h3 { margin: 0 0 1rem; }
+.market-payment-link { display: inline-block; color: #a5ff72; text-decoration: underline; text-underline-offset: .25em; padding: .5rem 0; }
+.market-payment-link:focus-visible { outline: 2px solid #a5ff72; outline-offset: 5px; border-radius: 3px; }
+.market-payment-content { margin-top: 1rem; min-width: 0; }
+.market-payment-frame { display: block; width: 100%; height: 1000px; height: max(760px, 85dvh); border: 0; border-radius: 12px; background: white; }
+.market-payment-help { font-size: .875rem; line-height: 1.6; opacity: .8; margin: .75rem 0 0; }
+@media (max-width: 600px) { .market-payment-section { padding: .75rem; } .market-payment-frame { height: 1050px; } }

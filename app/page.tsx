@@ -2338,6 +2338,19 @@ const marketResearchPage: typeof appDevelopmentPage = {
   }
 };
 
+function MarketResearchPaymentSection() {
+  const [isOpen, setIsOpen] = useState(false);
+  const paymentUrl = 'https://app.upay.co.il/API6/s.php?m=aHl6N0JlelBnaXFMbVVrelFMYXBwQT09';
+  return <section className="market-payment-section" id="market-payment" dir="rtl" aria-labelledby="market-payment-title">
+    <h3 id="market-payment-title">תשלום</h3>
+    <a className="market-payment-link" href={paymentUrl} aria-expanded={isOpen} aria-controls="market-payment-frame" onClick={(event) => { event.preventDefault(); setIsOpen(true); }}>לחץ על הקישור לדף התשלום</a>
+    {isOpen ? <div className="market-payment-content">
+      <iframe id="market-payment-frame" className="market-payment-frame" title="תשלום מאובטח באמצעות יופיי" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" />
+      <p className="market-payment-help">אם טופס התשלום אינו מוצג, לא ניתן להשלים תשלום מתוך מסגרת זו.</p>
+    </div> : null}
+  </section>;
+}
+
 function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  const he=language==='he'; const [filename,setFilename]=useState(''); const [error,setError]=useState('');
  return <section className="market-order" id="market-order" dir={he?'rtl':'ltr'} aria-labelledby="market-order-title">
@@ -3001,6 +3014,7 @@ export default function Home() {
               </details>
               );
             })}
+            {isMarketRoute && isHebrew ? <MarketResearchPaymentSection /> : null}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
               {isMarketRoute ? <MarketResearchOrderForm language={language} /> : null}
               {isStockCryptoRoute ? <StockResearchOrderForm language={language} /> : null}
