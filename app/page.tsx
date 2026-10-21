@@ -2340,14 +2340,26 @@ const marketResearchPage: typeof appDevelopmentPage = {
 
 function MarketResearchPaymentSection() {
   const [isOpen, setIsOpen] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const paymentUrl = 'https://app.upay.co.il/API6/s.php?m=aHl6N0JlelBnaXFMbVVrelFMYXBwQT09';
+  useEffect(() => {
+    if (!isOpen) return;
+    const dialog = dialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    dialog?.showModal();
+    document.body.style.overflow = 'hidden';
+    return () => { dialog?.close(); document.body.style.overflow = previousOverflow; };
+  }, [isOpen]);
   return <section className="market-payment-section" id="market-payment" dir="rtl" aria-labelledby="market-payment-title">
     <h3 id="market-payment-title">תשלום</h3>
-    <a className="market-payment-link" href={paymentUrl} aria-expanded={isOpen} aria-controls="market-payment-frame" onClick={(event) => { event.preventDefault(); setIsOpen(true); }}>לחץ על הקישור לדף התשלום</a>
-    {isOpen ? <div className="market-payment-content">
-      <iframe id="market-payment-frame" className="market-payment-frame" title="תשלום מאובטח באמצעות יופיי" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" />
-      <p className="market-payment-help">אם טופס התשלום אינו מוצג, לא ניתן להשלים תשלום מתוך מסגרת זו.</p>
-    </div> : null}
+    <a className="market-payment-link" href={paymentUrl} aria-haspopup="dialog" onClick={(event) => { event.preventDefault(); setIsOpen(true); }}>לחץ על הקישור לדף התשלום</a>
+    <dialog ref={dialogRef} className="market-payment-dialog" dir="rtl" aria-labelledby="market-payment-dialog-title" onCancel={() => setIsOpen(false)} onClose={() => setIsOpen(false)}>
+      <div className="market-payment-dialog-header">
+        <h3 id="market-payment-dialog-title">תשלום עבור סקר שוק</h3>
+        <button type="button" className="market-payment-close" aria-label="סגירת חלון התשלום" onClick={() => setIsOpen(false)}>סגירה ×</button>
+      </div>
+      {isOpen ? <iframe className="market-payment-frame" title="תשלום מאובטח באמצעות יופיי" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" /> : null}
+    </dialog>
   </section>;
 }
 
