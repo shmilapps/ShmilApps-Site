@@ -2341,7 +2341,7 @@ const marketResearchPage: typeof appDevelopmentPage = {
 function MarketResearchPaymentSection() {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const paymentUrl = 'https://app.upay.co.il/API6/s.php?m=aHl6N0JlelBnaXFMbVVrelFMYXBwQT09';
+  const paymentUrl = 'https://pay.sumit.co.il/15ajtmv/15cgqv4/15cgqv6/payment/';
   useEffect(() => {
     if (!isOpen) return;
     const dialog = dialogRef.current;
@@ -2359,7 +2359,7 @@ function MarketResearchPaymentSection() {
         <label className="market-payment-width-control">רוחב החלון<input type="range" min="300" max="960" defaultValue="380" step="10" aria-label="רוחב חלון התשלום" onChange={(event) => { dialogRef.current?.style.setProperty('width', `min(${event.target.value}px, calc(100vw - 12px))`); }} /></label>
         <button type="button" className="market-payment-close" aria-label="סגירת חלון התשלום" onClick={() => setIsOpen(false)}>סגירה ×</button>
       </div>
-      {isOpen ? <iframe className="market-payment-frame" title="תשלום מאובטח באמצעות יופיי" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" /> : null}
+      {isOpen ? <iframe className="market-payment-frame" title="תשלום מאובטח באמצעות סאמיט" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" /> : null}
     </dialog>
   </section>;
 }
