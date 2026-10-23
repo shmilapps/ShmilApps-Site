@@ -5,6 +5,7 @@ import ContactSection from '../components/ContactSection';
 import { researchOrderTerms, ResearchReportLanguage } from '../components/ResearchOrderTerms';
 import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
+import MarketResearchCheckout from '../components/MarketResearchCheckout';
 import TrainingExampleBook from '../components/TrainingExampleBook';
 import LinkReviewBook from '../components/LinkReviewBook';
 import ExchangeCaseStudy from '../components/ExchangeCaseStudy';
@@ -2338,32 +2339,6 @@ const marketResearchPage: typeof appDevelopmentPage = {
   }
 };
 
-function MarketResearchPaymentSection() {
-  const [isOpen, setIsOpen] = useState(false);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const paymentUrl = 'https://pay.sumit.co.il/15ajtmv/15cgqv4/15cgqv6/payment/';
-  useEffect(() => {
-    if (!isOpen) return;
-    const dialog = dialogRef.current;
-    const previousOverflow = document.body.style.overflow;
-    dialog?.showModal();
-    document.body.style.overflow = 'hidden';
-    return () => { dialog?.close(); document.body.style.overflow = previousOverflow; };
-  }, [isOpen]);
-  return <section className="market-payment-section" id="market-payment" dir="rtl" aria-labelledby="market-payment-title">
-    <h3 id="market-payment-title">תשלום</h3>
-    <a className="market-payment-link" href={paymentUrl} aria-haspopup="dialog" onClick={(event) => { event.preventDefault(); setIsOpen(true); }}>לחץ על הקישור לדף התשלום</a>
-    <dialog ref={dialogRef} className="market-payment-dialog" dir="rtl" aria-labelledby="market-payment-dialog-title" onCancel={() => setIsOpen(false)} onClose={() => setIsOpen(false)}>
-      <div className="market-payment-dialog-header">
-        <h3 id="market-payment-dialog-title">תשלום עבור סקר שוק</h3>
-        <label className="market-payment-width-control">רוחב החלון<input type="range" min="300" max="960" defaultValue="380" step="10" aria-label="רוחב חלון התשלום" onChange={(event) => { dialogRef.current?.style.setProperty('width', `min(${event.target.value}px, calc(100vw - 12px))`); }} /></label>
-        <button type="button" className="market-payment-close" aria-label="סגירת חלון התשלום" onClick={() => setIsOpen(false)}>סגירה ×</button>
-      </div>
-      {isOpen ? <iframe className="market-payment-frame" title="תשלום מאובטח באמצעות סאמיט" src={paymentUrl} allow="payment" referrerPolicy="strict-origin-when-cross-origin" /> : null}
-    </dialog>
-  </section>;
-}
-
 function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
  const he=language==='he'; const [filename,setFilename]=useState(''); const [error,setError]=useState('');
  return <section className="market-order" id="market-order" dir={he?'rtl':'ltr'} aria-labelledby="market-order-title">
@@ -3027,9 +3002,9 @@ export default function Home() {
               </details>
               );
             })}
-            {isMarketRoute && isHebrew ? <MarketResearchPaymentSection /> : null}
+            {isMarketRoute && isHebrew ? <MarketResearchCheckout /> : null}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
-              {isMarketRoute ? <MarketResearchOrderForm language={language} /> : null}
+              {isMarketRoute && !isHebrew ? <MarketResearchOrderForm language={language} /> : null}
               {isStockCryptoRoute ? <StockResearchOrderForm language={language} /> : null}
               <h3 id="service-contact-title">{servicePage.contact.title}</h3>
               {servicePage.contact.lines.map((line) => <p key={line}>{line}</p>)}

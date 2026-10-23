@@ -3048,30 +3048,20 @@ main[dir="rtl"] .ai-chat-input {
 
 .exchange-case-intro h3{font-size:clamp(21px,2.1vw,27px);line-height:1.65;margin:20px 0}.exchange-case-intro img{display:block;width:100%;max-width:600px;height:auto;margin:22px auto;border-radius:18px;border:1px solid #56752b}.exchange-case-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:20px 0}.construction .exchange-case-actions a{display:inline-flex;padding:10px 22px;border:1px solid #789c2b;border-radius:28px;background:#101b08;color:#eaffb1;text-decoration:none;font-weight:700;transition:box-shadow .2s}.construction .exchange-case-actions a:hover{box-shadow:0 0 22px #baff0070;border-color:#baff00}.construction .exchange-case-actions a:first-child{background:#baff00;color:#102000}
 
-/* Hebrew market research embedded payment section. */
-.market-payment-section { margin: 2rem 0; padding: clamp(1rem, 3vw, 2rem); border: 1px solid rgba(131, 239, 82, .3); border-radius: 18px; background: rgba(10, 20, 12, .7); text-align: right; scroll-margin-top: 180px; }
-.market-payment-section h3 { margin: 0 0 1rem; }
-.market-payment-link { display: inline-block; color: #a5ff72; text-decoration: underline; text-underline-offset: .25em; padding: .5rem 0; }
-.market-payment-link:focus-visible { outline: 2px solid #a5ff72; outline-offset: 5px; border-radius: 3px; }
-.market-payment-content { margin-top: 1rem; min-width: 0; }
-.market-payment-frame { display: block; width: 100%; height: 1000px; height: max(760px, 85dvh); border: 0; border-radius: 12px; background: white; }
-.market-payment-help { font-size: .875rem; line-height: 1.6; opacity: .8; margin: .75rem 0 0; }
-@media (max-width: 600px) { .market-payment-section { padding: .75rem; } .market-payment-frame { height: 1050px; } }
-
-.market-payment-dialog { position: fixed; inset: 0; margin: auto; width: min(440px, calc(100vw - 32px)); max-width: none; height: min(920px, calc(100dvh - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid #83ef5266; border-radius: 18px; background: #fff; color: #102000; box-shadow: 0 20px 90px #0009; overflow: hidden; }
-.market-payment-dialog::backdrop { background: #000b; backdrop-filter: blur(5px); }
-.market-payment-dialog[open] { display: flex; flex-direction: column; }
-.market-payment-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: 0 0 auto; padding: 12px 18px; background: #101b08; color: #f3f7eb; }
-.market-payment-dialog-header h3 { margin: 0; font-size: 18px; line-height: 1.5; }
-.market-payment-dialog .market-payment-close { flex: 0 0 auto; padding: 8px 14px; border: 1px solid #83ef5280; border-radius: 8px; background: transparent; color: #fff; cursor: pointer; font: inherit; }
-.market-payment-close:focus-visible { outline: 2px solid #a5ff72; outline-offset: 2px; }
-.market-payment-dialog .market-payment-frame { flex: 1 1 auto; min-height: 0; width: 100%; height: 100%; border-radius: 0; }
-@media(max-width:600px) { .market-payment-dialog { width: calc(100vw - 12px); height: calc(100dvh - 12px); max-height: calc(100dvh - 12px); border-radius: 12px; } .market-payment-dialog-header { padding: 10px; } .market-payment-dialog-header h3 { font-size: 16px; } }
-
-@media(min-width:601px) {
- .market-payment-dialog { width: min(380px, calc(100vw - 32px)); min-width: 300px; resize: horizontal; overflow: auto; }
- .market-payment-dialog-header { flex-wrap: wrap; }
- .market-payment-width-control { display: flex; align-items: center; gap: 8px; width: 100%; order: 3; font-size: 13px; }
- .market-payment-width-control input { flex: 1; min-width: 0; accent-color: #a5ff72; direction: ltr; }
-}
-@media(max-width:600px) { .market-payment-width-control { display: none; } }
+/* Hebrew-only checkout pilot. Shared order layout stays available to other services. */
+.market-checkout { margin-block: 2rem; scroll-margin-top: 180px; }
+.market-checkout-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.market-checkout-card > img { width: 100%; height: auto; border-radius: 12px; display: block; }
+.market-checkout-price { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; }
+.market-checkout-price strong { font-size: 2rem; color: #dfff7a; }
+.market-checkout-original { color: #c3cec4; }
+.market-checkout-coupon > div { display: flex; gap: 8px; margin-top: 8px; }
+.market-checkout-coupon input { flex: 1; width: 0 !important; }
+.market-checkout-coupon button { flex-shrink: 0; cursor: pointer; }
+.market-checkout-coupon p { min-height: 1.5em; font-size: .9rem; }
+.market-checkout .market-checkout-submit { background: #baff00; color: #102000; font-weight: 700; cursor: pointer; }
+.market-checkout .market-checkout-consent { display: flex; gap: 10px; align-items: start; }
+.market-checkout .market-checkout-consent input { width: 20px; height: 20px; margin: 3px 0 0; flex-shrink: 0; accent-color: #baff00; }
+.market-checkout-message { margin: 0; color: #f5dd9c; }
+.market-checkout button:focus-visible { outline: 2px solid #baff00; outline-offset: 3px; }
+@media(max-width: 800px) { .market-checkout-card { grid-template-columns: minmax(0, 1fr); } }
