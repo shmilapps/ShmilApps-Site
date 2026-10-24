@@ -8,6 +8,9 @@
     },
     "api/research-payment-return.js": {
       "maxDuration": 60
+    },
+    "api/sumit-payment-test.js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
