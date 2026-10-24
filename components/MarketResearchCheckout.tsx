@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { researchOrderTerms, ResearchReportLanguage } from './ResearchOrderTerms';
 
-const RequiredMark = () => <strong aria-hidden="true" style={{color:'#ff4d4f',fontWeight:900,fontSize:'1.2em',position:'relative',top:'0.18em',lineHeight:0}}>*</strong>;
+const RequiredMark = () => <strong aria-hidden="true" style={{color:'#ff4d4f',fontWeight:900,fontSize:'1.2em',position:'relative',top:'0.28em',lineHeight:0}}>*</strong>;
 
 export default function MarketResearchCheckout() {
   const formRef = useRef<HTMLFormElement>(null);
