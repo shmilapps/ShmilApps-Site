@@ -2,17 +2,19 @@
 
 Scope: only the existing Hebrew market research test section (`#market-payment`). English and other services keep their existing forms. Product `market-research-full`, regular price ILS 99, discounted price ILS 69. Use the approved Agri research artwork. Checkout should expand inline, never as a dialog. Start collapsed, without mounting a payment iframe.
 
-## Implemented
+Current implementation and activation instructions: see [server intake setup](research-intake-server.md) and [database handoff](research-intake-db-handoff.md). Intake APIs are implemented but disabled until server credentials and the feature flag are configured; payment is always disabled.
+
+## Original pilot implementation
 
 - Product card, regular price, image, optional coupon, server-side coupon quote.
 - Three approved coupons stored only as SHA-256 digests in the server function. No plaintext coupon list, coupon hashes, or discounted payment URL in frontend assets. A customer necessarily knows any coupon they enter and may share it; coupon redemption is not authentication.
 - Optional coupon entry is case-insensitive and trimmed. An invalid or unchecked entered coupon must be cleared or verified before checkout. Price resets immediately on edits; stale network responses are ignored.
 - Required contact fields, description, target market, report language, specification, and agreement to visible delivery/refund terms. File restricted on client to nonempty PDF/DOCX/TXT <=10 MiB. Current selection remains on device.
-- Checkout deliberately stops after validation while order storage is unconfigured. No personal details/files are transmitted and no payment is possible through this pilot. The displayed availability notice states this explicitly.
+- When intake is disabled, the form stops after validation and nothing is transmitted. When explicitly enabled on the server, it uploads privately and saves an unpaid order. No payment is possible through this pilot. The availability notice reflects intake status.
 
 ## Required before enabling checkout
 
-1. Choose/connect a database and private document storage. Use minimal customer/order data and a documented retention policy. No public file URLs or public customer reads. Supabase connector was unavailable during this implementation; no database was created.
+1. Choose/connect a database and private document storage. Use minimal customer/order data and a documented retention policy. No public file URLs or public customer reads. The database has since been created through the authorized ordinary Chat conversation workaround. See the current database handoff.
 2. Implement server-side order creation and validation, including real file content/type/size validation (not filename alone), whitespace-only text rejection, and abuse controls. Persist the complete order and document before allowing payment.
 3. Revalidate the coupon server-side during order creation. Never trust a submitted amount, the displayed quote, local storage, or browser state. Store product, currency, gross amount, discount decision and a unique immutable order ID.
 4. Current regular-price URL: https://pay.sumit.co.il/15ajtmv/15cgqv4/15cgqv6/payment/ . User supplied the 69 ILS URL: https://pay.sumit.co.il/15ajtmv/15cgqv4/15em78t/payment/ . Both URLs and their price mapping are stored in lib/server/research-products.js. The discounted amount on the provider page still needs verification. Prefer server-generated per-order SUMIT payment sessions. A reusable static link by itself does not establish reliable order/payment correlation.

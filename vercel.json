@@ -2,6 +2,7 @@
   "framework": "vite",
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist-vercel",
+  "functions": { "api/research-orders.js": { "maxDuration": 60 } },
   "rewrites": [
     {
       "source": "/(.*)",

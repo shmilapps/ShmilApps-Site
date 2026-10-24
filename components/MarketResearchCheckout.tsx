@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { researchOrderTerms, ResearchReportLanguage } from './ResearchOrderTerms';
 
 export default function MarketResearchCheckout() {
@@ -12,7 +12,17 @@ export default function MarketResearchCheckout() {
   const [couponMessage, setCouponMessage] = useState('');
   const [formMessage, setFormMessage] = useState('');
   const [filename, setFilename] = useState('');
+  const [intakeEnabled, setIntakeEnabled] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [savedOrder, setSavedOrder] = useState('');
+  const pendingUpload = useRef<{fingerprint:string; ticket:string; uploadUrl:string; contentType:string; uploaded:boolean} | null>(null);
   const requestVersion = useRef(0);
+
+  useEffect(() => {
+    const controller=new AbortController();
+    fetch('/api/research-orders',{signal:controller.signal}).then(response=>response.ok?response.json():null).then(config=>{if (!controller.signal.aborted) setIntakeEnabled(config?.intakeEnabled===true);}).catch(()=>{});
+    return ()=>controller.abort();
+  },[]);
 
   async function checkCoupon() {
     const version = ++requestVersion.current;
@@ -39,7 +49,7 @@ export default function MarketResearchCheckout() {
     }
   }
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFormMessage('');
     if (!formRef.current?.reportValidity()) return;
@@ -48,9 +58,53 @@ export default function MarketResearchCheckout() {
       document.getElementById('market-coupon')?.focus();
       return;
     }
-    // Fail closed until private order/file storage and verified SUMIT callbacks are connected.
-    // A valid form alone must never expose an untracked payment link.
-    setFormMessage('התשלום המקוון עדיין בהכנה. הפרטים והמסמך לא נשלחו. לתיאום ההזמנה אפשר לפנות אלינו במייל.');
+    if (!intakeEnabled) {setFormMessage('שמירת ההזמנה עדיין בהכנה. הפרטים והמסמך לא נשלחו.');return;}
+    if (saving || savedOrder) return;
+    const form=new FormData(event.currentTarget);
+    const file=form.get('specification');
+    if (!(file instanceof File) || !file.size || file.size>10*1024*1024) {setFormMessage('צרפו מסמך אפיון תקין, עד 10MB.');return;}
+    setSaving(true);
+    try {
+      setFormMessage('מכינים את מסמך האפיון…');
+      const hash=await crypto.subtle.digest('SHA-256',await file.arrayBuffer());
+      const sha256=Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,'0')).join('');
+      const payload={service:'market-research-full',fullName:form.get('fullName'),email:form.get('email'),phone:form.get('phone'),business:form.get('business'),description:form.get('description'),market:form.get('market'),reportLanguage:form.get('reportLanguage'),audience:form.get('audience'),links:form.get('links'),terms:form.get('terms')==='on',coupon,file:{name:file.name,size:file.size,sha256}};
+      const fingerprint=JSON.stringify(payload);
+      const post=async(action:string,ticket?:string)=>{
+        const response=await fetch('/api/research-orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,action,ticket})});
+        const data=await response.json().catch(()=>({}));
+        if (!response.ok) throw new Error(data.error || 'save_unavailable');
+        return data;
+      };
+      if (pendingUpload.current?.fingerprint!==fingerprint) {
+        const prepared=await post('prepare');
+        if (typeof prepared.ticket!=='string' || typeof prepared.uploadUrl!=='string' || typeof prepared.contentType!=='string') throw new Error('save_unavailable');
+        const destination=new URL(prepared.uploadUrl);
+        if (destination.protocol!=='https:' || destination.hostname!=='ufolbezpnhyrsyuxuaox.supabase.co' || !destination.pathname.startsWith('/storage/v1/object/upload/sign/order-specifications/intake/')) throw new Error('save_unavailable');
+        pendingUpload.current={fingerprint,ticket:prepared.ticket,uploadUrl:destination.toString(),contentType:prepared.contentType,uploaded:false};
+      }
+      const pending=pendingUpload.current;
+      if (!pending) throw new Error('save_unavailable');
+      if (!pending.uploaded) {
+        setFormMessage('מעלים את המסמך באופן מאובטח…');
+        const upload=await fetch(pending.uploadUrl,{method:'PUT',headers:{'Content-Type':pending.contentType,'x-upsert':'false'},body:file,credentials:'omit',referrerPolicy:'no-referrer'});
+        // A previous upload may have completed while its response was lost. The
+        // server always verifies the immutable object's exact hash before saving.
+        if (!upload.ok && ![400,409].includes(upload.status)) throw new Error('upload_failed');
+        pending.uploaded=true;
+      }
+      setFormMessage('בודקים את המסמך ושומרים את ההזמנה…');
+      const saved=await post('finalize',pending.ticket);
+      if (saved.status!=='saved' || typeof saved.orderId!=='string') throw new Error('save_unavailable');
+      setSavedOrder(saved.orderId); pendingUpload.current=null;
+      setFormMessage('ההזמנה ומסמך האפיון נשמרו. אפשרות התשלום עדיין בהכנה; לא בוצע חיוב.');
+    } catch(error) {
+      const code=error instanceof Error?error.message:'';
+      if (code==='upload_missing' && pendingUpload.current) pendingUpload.current.uploaded=false;
+      if (['expired_session','invalid_session','changed_details','invalid_document'].includes(code)) pendingUpload.current=null;
+      const messages:Record<string,string>={invalid_fields:'השלימו את כל שדות החובה בפרטים תקינים.',invalid_coupon:'קוד ההנחה אינו תקין. בדקו אותו או הסירו אותו.',invalid_document:'תוכן המסמך אינו תואם לקובץ PDF, DOCX או TXT תקין. בחרו מסמך אחר.',expired_session:'זמן ההעלאה הסתיים. לחצו שוב כדי להתחיל מחדש.',rate_limited:'בוצעו יותר מדי ניסיונות. נסו שוב מאוחר יותר.',upload_missing:'המסמך טרם הועלה. לחצו שוב כדי לנסות להעלות אותו.',upload_failed:'העלאת המסמך לא הושלמה. בדקו את החיבור ונסו שוב.',intake_not_ready:'שמירת ההזמנות עדיין אינה זמינה. ההזמנה לא נשמרה.'};
+      setFormMessage(messages[code] || 'לא ניתן לאשר שההזמנה נשמרה. לחצו שוב לניסיון נוסף.');
+    } finally {setSaving(false);}
   }
 
   return <section className="market-payment-section market-order market-checkout" id="market-payment" dir="rtl" aria-labelledby="market-payment-title">
@@ -62,18 +116,19 @@ export default function MarketResearchCheckout() {
         <p className="market-checkout-price">{price === 69 ? <><span className="market-checkout-original">מחיר רגיל: <s>99 ש״ח</s></span><strong>69 ש״ח</strong><span>לאחר הנחה של 30 ש״ח</span></> : <><span>מחיר השירות</span><strong>99 ש״ח</strong></>}</p>
         <div className="market-checkout-coupon">
           <label htmlFor="market-coupon">קוד קופון / קוד הנחה</label>
-          <div><input id="market-coupon" value={coupon} dir="ltr" autoComplete="off" spellCheck={false} maxLength={80} aria-describedby="market-coupon-message" onChange={event => {
+          <div><input id="market-coupon" disabled={saving || !!savedOrder} value={coupon} dir="ltr" autoComplete="off" spellCheck={false} maxLength={80} aria-describedby="market-coupon-message" onChange={event => {
             requestVersion.current++;
             setCoupon(event.target.value); setPrice(99); setCouponChecked(false); setChecking(false); setCouponMessage(''); setFormMessage('');
-          }} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); if (!checking) void checkCoupon(); } }} /><button type="button" disabled={checking} onClick={() => void checkCoupon()}>{checking ? 'בודקים…' : 'בדיקת קוד'}</button></div>
+          }} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); if (!checking) void checkCoupon(); } }} /><button type="button" disabled={checking || saving || !!savedOrder} onClick={() => void checkCoupon()}>{checking ? 'בודקים…' : 'בדיקת קוד'}</button></div>
           <p id="market-coupon-message" role="status">{couponMessage}</p>
         </div>
       </div>
     </div>
     <p>{researchOrderTerms.he.delivery}</p>
     <p>{researchOrderTerms.he.refund}</p>
-    <p className="market-order-status">ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.</p>
+    <p className="market-order-status">{intakeEnabled?'לאחר הלחיצה נבדוק ונשמור את פרטי ההזמנה ואת המסמך באופן פרטי. התשלום עדיין אינו פעיל בשלב הבדיקות.':'ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.'}</p>
     <form ref={formRef} onSubmit={submit} onInvalidCapture={() => setFormMessage('כדי להמשיך, השלימו את שדות החובה וצרפו מסמך אפיון.')}>
+      <fieldset className="market-intake-fields" disabled={saving || !!savedOrder}>
       <div className="market-order-grid">
         <label>שם מלא (חובה)<input name="fullName" autoComplete="name" required minLength={2} maxLength={120} pattern=".*\S.*" /></label>
         <label>עסק / ארגון (לא חובה)<input name="business" autoComplete="organization" maxLength={160} /></label>
@@ -98,10 +153,12 @@ export default function MarketResearchCheckout() {
         }
         setFilename(file.name);
       }} /></label>
-      <small id="market-spec-help">מסמך PDF, DOCX או TXT, עד 10MB. ככל שהאפיון מפורט יותר, הסקר יהיה ממוקד ורלוונטי יותר. הקובץ נשאר במכשיר בשלב הבדיקות.</small>
+      <small id="market-spec-help">מסמך PDF, DOCX או TXT, עד 10MB. ככל שהאפיון מפורט יותר, הסקר יהיה ממוקד ורלוונטי יותר. {intakeEnabled?'המסמך יועלה למאגר פרטי לאחר הלחיצה.':'הקובץ נשאר במכשיר בשלב הבדיקות.'}</small>
       {filename ? <p className="market-file-name"><bdi>{filename}</bdi></p> : null}
       <label className="market-checkout-consent"><input type="checkbox" name="terms" required />קראתי את זמן האספקה ותנאי ההחזר המופיעים למעלה.</label>
-      <button className="market-checkout-submit" type="submit" disabled={checking}>מעבר לתשלום · {price} ש״ח</button>
+      </fieldset>
+      <button className="market-checkout-submit" type="submit" disabled={checking || saving || !!savedOrder}>{saving?'שומרים את ההזמנה…':savedOrder?'ההזמנה נשמרה':`מעבר לתשלום · ${price} ש״ח`}</button>
+      {savedOrder?<p>מספר הזמנה: <bdi>{savedOrder}</bdi></p>:null}
       <p className="market-checkout-message" role="alert">{formMessage}</p>
     </form>
   </section>;
