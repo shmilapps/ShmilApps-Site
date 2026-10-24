@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { researchOrderTerms, ResearchReportLanguage } from './ResearchOrderTerms';
 
+const RequiredMark = () => <strong aria-hidden="true" style={{color:'#ff4d4f',fontWeight:900,fontSize:'1.2em'}}>*</strong>;
+
 export default function MarketResearchCheckout() {
   const formRef = useRef<HTMLFormElement>(null);
   const [coupon, setCoupon] = useState('');
@@ -132,26 +134,26 @@ export default function MarketResearchCheckout() {
     </div>
     <p>{researchOrderTerms.he.delivery}</p>
     <p>{researchOrderTerms.he.refund}</p>
-    <p className="market-order-status">{intakeEnabled?'לאחר השלמת שדות החובה ושמירת מסמך האפיון, ייפתח כאן תשלום מאובטח בסאמיט לפי המחיר שאושר.':'ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.'}</p>
+    <p className="market-order-status">{intakeEnabled?<>לאחר השלמת שדות החובה <span style={{whiteSpace:'nowrap'}}>( <RequiredMark /> )</span> ושמירת מסמך האפיון, ייפתח כאן תשלום מאובטח בסאמיט לפי המחיר שאושר.</>:'ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.'}</p>
     <form ref={formRef} onSubmit={submit} onInvalidCapture={() => setFormMessage('כדי להמשיך, השלימו את שדות החובה וצרפו מסמך אפיון.')}>
       <fieldset className="market-intake-fields" disabled={saving || !!savedOrder}>
       <div className="market-order-grid">
-        <label>שם מלא (חובה)<input name="fullName" autoComplete="name" required minLength={2} maxLength={120} pattern=".*\S.*" /></label>
-        <label>עסק / ארגון (לא חובה)<input name="business" autoComplete="organization" maxLength={160} /></label>
-        <label>אימייל (חובה)<input type="email" name="email" autoComplete="email" dir="ltr" required maxLength={254} /></label>
-        <label>טלפון (חובה)<input type="tel" name="phone" autoComplete="tel" dir="ltr" required minLength={7} maxLength={40} onChange={event => {
+        <label><span>שם מלא <RequiredMark /></span><input name="fullName" autoComplete="name" required minLength={2} maxLength={120} pattern=".*\S.*" /></label>
+        <label>עסק / ארגון<input name="business" autoComplete="organization" maxLength={160} /></label>
+        <label><span>אימייל <RequiredMark /></span><input type="email" name="email" autoComplete="email" dir="ltr" required maxLength={254} /></label>
+        <label><span>טלפון <RequiredMark /></span><input type="tel" name="phone" autoComplete="tel" dir="ltr" required minLength={7} maxLength={40} onChange={event => {
           const value = event.target.value; const digits = value.replace(/\D/g, '');
           event.target.setCustomValidity(/^\+?[\d ()-]+$/.test(value) && digits.length >= 7 && digits.length <= 15 ? '' : 'הזינו מספר טלפון תקין.');
         }} /></label>
       </div>
-      <label>מה תרצו לבדוק? (חובה)<textarea name="description" required rows={4} maxLength={10000} onChange={event => event.target.setCustomValidity(event.target.value.trim() ? '' : 'כתבו מה תרצו לבדוק.')} /></label>
+      <label><span>מה תרצו לבדוק? <RequiredMark /></span><textarea name="description" required rows={4} maxLength={10000} onChange={event => event.target.setCustomValidity(event.target.value.trim() ? '' : 'כתבו מה תרצו לבדוק.')} /></label>
       <div className="market-order-grid">
-        <label>שוק יעד<select name="market" defaultValue="both" required><option value="israel">ישראל</option><option value="international">חו״ל</option><option value="both">ישראל וחו״ל</option></select></label>
-        <ResearchReportLanguage language="he" />
+        <label><span>שוק יעד <RequiredMark /></span><select name="market" defaultValue="both" required><option value="israel">ישראל</option><option value="international">חו״ל</option><option value="both">ישראל וחו״ל</option></select></label>
+        <ResearchReportLanguage language="he" requiredIndicator />
       </div>
-      <label>קהל יעד, מדינות ודגשים (לא חובה)<textarea name="audience" rows={3} maxLength={5000} /></label>
-      <label>מתחרים וקישורים מוכרים (לא חובה)<textarea name="links" rows={3} maxLength={5000} /></label>
-      <label>מסמך אפיון (חובה)<input type="file" name="specification" required accept=".pdf,.docx,.txt" aria-describedby="market-spec-help" onChange={event => {
+      <label>קהל יעד, מדינות ודגשים<textarea name="audience" rows={3} maxLength={5000} /></label>
+      <label>מתחרים וקישורים מוכרים<textarea name="links" rows={3} maxLength={5000} /></label>
+      <label><span>מסמך אפיון <RequiredMark /></span><input type="file" name="specification" required accept=".pdf,.docx,.txt" aria-describedby="market-spec-help" onChange={event => {
         const input = event.target; const file = input.files?.[0]; setFilename(''); setFormMessage(''); input.setCustomValidity('');
         if (!file) return;
         if (!file.size || file.size > 10 * 1024 * 1024 || !/\.(pdf|docx|txt)$/i.test(file.name)) {
@@ -161,7 +163,7 @@ export default function MarketResearchCheckout() {
       }} /></label>
       <small id="market-spec-help">מסמך PDF, DOCX או TXT, עד 10MB. ככל שהאפיון מפורט יותר, הסקר יהיה ממוקד ורלוונטי יותר. {intakeEnabled?'המסמך יועלה למאגר פרטי לאחר הלחיצה.':'הקובץ נשאר במכשיר בשלב הבדיקות.'}</small>
       {filename ? <p className="market-file-name"><bdi>{filename}</bdi></p> : null}
-      <label className="market-checkout-consent"><input type="checkbox" name="terms" required />קראתי את זמן האספקה ותנאי ההחזר המופיעים למעלה.</label>
+      <label className="market-checkout-consent"><input type="checkbox" name="terms" required /><span>קראתי את זמן האספקה ותנאי ההחזר המופיעים למעלה. <RequiredMark /></span></label>
       </fieldset>
       <button className="market-checkout-submit" type="submit" disabled={checking || saving || !!savedOrder}>{saving?'שומרים את ההזמנה…':savedOrder?'ההזמנה נשמרה':`מעבר לתשלום · ${price} ש״ח`}</button>
       {savedOrder?<p>מספר הזמנה: <bdi>{savedOrder}</bdi></p>:null}
