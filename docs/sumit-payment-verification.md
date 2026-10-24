@@ -1,0 +1,13 @@
+# SUMIT payment verification preparation — 2026-10-24
+
+Implemented signed order reference in hosted checkout `externalidentifier`, derived server-side from the existing Supabase server key with domain separation. New endpoint GET https://www.shmilapps.com/api/research-payment-return accepts SUMIT og-paymentid and og-externalidentifier; validates reference before database/provider access, then reads authoritative /billing/payments/get/ using fixed merchant CompanyID 2496834247 and SUMIT_API_KEY. It verifies payment ID, signed order reference, ValidPayment, exact order amount and ILS before calling existing atomic confirm_order_payment with stable event payment:<id>. Already-paid retries require a matching verified stored event for the same order/transaction. No provider or card/customer payloads are logged or returned.
+
+Inline callback uses nonce-protected same-origin postMessage with iframe source and order ID checks. Successful confirmation updates UI; failures never mark paid. New server endpoint has maxDuration 60 and no-store/no-referrer/CSP. Closing iframe still does not cancel or delete order. Local tests only, no real charge/receipt/email.
+
+Rollout intentionally OFF unless SUMIT_PAYMENT_VERIFICATION_ENABLED=true in addition to existing intake config and SUMIT_API_KEY. Do not turn on until existing RPC audit result is read and return URLs configured for BOTH 99/69 catalogs. For now static checkout continues with manual verification; older orders without signed external reference cannot be automatically matched by this flow.
+
+Pending: read actual audit from authorized Chat Supabase ShmilApps (no Chrome for DB); correct RPC if audit finds required behavior missing; configure both catalog success redirects to endpoint; test authorized sandbox success/failure/replay (no live charge without user action); enable production flag only after validation. API key presence is not proof the credential is valid; no authenticated provider call has been made yet.
+
+This callback relies on provider redirect; it is not a reliable server webhook or reconciliation job for customers who close browser before redirect. Need durable provider notification or periodic reconciliation. SUMIT documented Bit caveat: hosted redirect parameters not returned for Bit, so Bit is not covered by this implementation. Current forms show card only. Email outbox worker/provider still not configured; verified RPC can enqueue but does not itself deliver email. SUMIT customer receipt configuration remains separate.
+
+Official sources: https://api.sumit.co.il/swagger/v1/swagger.json (downloaded and inspected 2026-10-24); https://help.sumit.co.il/he/articles/5836159

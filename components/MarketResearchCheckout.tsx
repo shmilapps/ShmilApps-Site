@@ -19,6 +19,8 @@ export default function MarketResearchCheckout() {
   const [savedOrder, setSavedOrder] = useState('');
   const [checkoutUrl, setCheckoutUrl] = useState('');
   const [paymentOpen, setPaymentOpen] = useState(false);
+  const [paid, setPaid] = useState(false);
+  const paymentFrameRef=useRef<HTMLIFrameElement>(null);
   const paymentRef = useRef<HTMLDivElement>(null);
   useEffect(()=>{if(paymentOpen) paymentRef.current?.scrollIntoView({behavior:'smooth',block:'start'});},[paymentOpen]);
   const pendingUpload = useRef<{fingerprint:string; ticket:string; uploadUrl:string; contentType:string; uploaded:boolean} | null>(null);
@@ -29,6 +31,15 @@ export default function MarketResearchCheckout() {
     fetch('/api/research-orders',{signal:controller.signal}).then(response=>response.ok?response.json():null).then(config=>{if (!controller.signal.aborted) setIntakeEnabled(config?.intakeEnabled===true);}).catch(()=>{});
     return ()=>controller.abort();
   },[]);
+
+  useEffect(()=>{
+    const onPayment=(event:MessageEvent)=>{
+      if(event.origin!==window.location.origin || event.source!==paymentFrameRef.current?.contentWindow || event.data?.type!=='shmilapps:payment-result')return;
+      if(event.data.status==='paid' && event.data.orderId===savedOrder){setPaid(true);setPaymentOpen(false);setFormMessage('התשלום אומת וההזמנה התקבלה. תודה!');}
+      else setFormMessage('לא ניתן לאמת כרגע את התשלום. אם חויבתם, אין לשלם שוב. פנו אלינו עם אישור התשלום.');
+    };
+    window.addEventListener('message',onPayment);return()=>window.removeEventListener('message',onPayment);
+  },[savedOrder]);
 
   async function checkCoupon() {
     const version = ++requestVersion.current;
@@ -169,8 +180,8 @@ export default function MarketResearchCheckout() {
       {filename ? <p className="market-file-name"><bdi>{filename}</bdi></p> : null}
       <label className="market-checkout-consent"><input type="checkbox" name="terms" required /><span>קראתי את זמן האספקה ותנאי ההחזר המופיעים למעלה. <RequiredMark /></span></label>
       </fieldset>
-      <button className="market-checkout-submit" type="submit" disabled={checking || saving || !!savedOrder}>{saving?'שומרים את ההזמנה…':savedOrder?'ההזמנה נשמרה':`מעבר לתשלום · ${price} ש״ח`}</button>
-      {savedOrder && !paymentOpen?<button className="market-checkout-submit" type="button" onClick={()=>setPaymentOpen(true)}>פתיחת התשלום · {price} ש״ח</button>:null}
+      <button className="market-checkout-submit" type="submit" disabled={checking || saving || !!savedOrder}>{saving?'שומרים את ההזמנה…':savedOrder?(paid?'ההזמנה שולמה':'ההזמנה נשמרה'):`מעבר לתשלום · ${price} ש״ח`}</button>
+      {savedOrder && !paymentOpen && !paid?<button className="market-checkout-submit" type="button" onClick={()=>setPaymentOpen(true)}>פתיחת התשלום · {price} ש״ח</button>:null}
       {savedOrder?<p>מספר הזמנה: <bdi>{savedOrder}</bdi></p>:null}
       <p className="market-checkout-message" role="alert">{formMessage}</p>
     </form>
@@ -179,7 +190,7 @@ export default function MarketResearchCheckout() {
         <h3>תשלום עבור סקר שוק מלא · {price} ש״ח</h3>
         <button type="button" aria-label="סגירת טופס התשלום" title="סגירת טופס התשלום" onClick={()=>setPaymentOpen(false)} style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'44px',height:'44px',fontSize:'30px',lineHeight:1,cursor:'pointer'}}>×</button>
       </div>
-      <iframe title={`תשלום מאובטח בסאמיט עבור סקר שוק מלא — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="no-referrer" />
+      <iframe ref={paymentFrameRef} title={`תשלום מאובטח בסאמיט עבור סקר שוק מלא — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="no-referrer" />
       <p><a href={checkoutUrl} target="_blank" rel="noopener noreferrer">אם טופס התשלום אינו מוצג, פתחו אותו בחלון נפרד</a></p>
     </div>:null}
   </section>;
