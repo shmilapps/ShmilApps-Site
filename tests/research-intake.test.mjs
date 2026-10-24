@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('..',import.meta.url));
 const {createIntakeHandler,intakeSettings,normalizeIntake}=await import(pathToFileURL(root+'/lib/server/research-intake.js'));
+const {marketResearchProduct}=await import(pathToFileURL(root+'/lib/server/research-products.js'));
 const {documentMetadata,validateDocument}=await import(pathToFileURL(root+'/lib/server/research-document.js'));
 const bytes=Buffer.from('Synthetic agriculture specification.');
 const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -57,14 +58,16 @@ assert.equal((await finalize({...first,ticket:first.ticket+'x'})).body.error,'in
 assert.equal((await finalize(first,{...valid,description:'changed'})).body.error,'changed_details');
 assert.equal((await finalize(first)).body.error,'upload_missing');
 objects.set(first.path,bytes);
-assert.equal((await finalize(first)).body.status,'saved');assert.equal(commits,1);
+const regularReceipt=(await finalize(first)).body;
+assert.equal(regularReceipt.status,'saved');assert.equal(commits,1);
+assert.equal(regularReceipt.checkoutUrl,marketResearchProduct.paymentUrls.regular);assert.equal(regularReceipt.amount,99);assert.equal(regularReceipt.paymentVerification,'manual');assert.equal(regularReceipt.paymentEnabled,false);
 assert.equal((await finalize(first)).body.orderId,first.id);assert.equal(commits,1);
 const lost=await prepare();objects.set(lost.path,bytes);commitResponseLost=true;
 assert.equal((await finalize(lost)).status,503);assert.equal((await finalize(lost)).body.orderId,lost.id);assert.equal(commits,2);
 const bad=await prepare();objects.set(bad.path,Buffer.from('malicious bytes'));
 assert.equal((await finalize(bad)).body.error,'invalid_document');assert(!objects.has(bad.path));
 const expired=await prepare();sessions.get(expired.id).expires_at=new Date(0).toISOString();assert.equal((await finalize(expired)).status,410);
-if(process.env.TEST_RESEARCH_COUPON){valid.coupon=process.env.TEST_RESEARCH_COUPON;assert.equal(normalizeIntake(valid).payload.final_price_agorot,6900);const discounted=await prepare();objects.set(discounted.path,bytes);assert.equal((await finalize(discounted)).body.status,'saved');}
+if(process.env.TEST_RESEARCH_COUPON){valid.coupon=process.env.TEST_RESEARCH_COUPON;assert.equal(normalizeIntake(valid).payload.final_price_agorot,6900);const discounted=await prepare();objects.set(discounted.path,bytes);const receipt=(await finalize(discounted)).body;assert.equal(receipt.status,'saved');assert.equal(receipt.amount,69);assert.equal(receipt.checkoutUrl,marketResearchProduct.paymentUrls.discounted);assert.equal((await finalize(discounted)).body.checkoutUrl,receipt.checkoutUrl);}
 
 await validateDocument(bytes,metadata('spec.txt',bytes));
 await assert.rejects(()=>validateDocument(Buffer.from([0xff,0xff]),metadata('spec.txt',Buffer.from([0xff,0xff]))));

@@ -1,3 +1,11 @@
+# Temporary SUMIT checkout update — 2026-10-24
+
+By explicit user request, the Hebrew market research section now opens the fixed SUMIT 99/69 ILS checkout in an inline iframe only after required fields, a private specification upload and atomic order persistence succeed. The server recomputes coupon price and returns the matching configured URL in finalize (including retries). Invalid coupons block continuation. Coupon edits reset the displayed discount.
+
+These static links cannot authoritatively correlate payment to an order. The order stays pending_payment, paymentEnabled stays false (meaning no automated payment verification), and paymentVerification is manual. Opening, iframe navigation or return does not mark paid or enqueue mail. Customer copy states manual verification. No receipt/email behavior has been newly verified or promised. No changes to English or other services.
+
+The following is historical setup documentation; its statements that no checkout URL is released are superseded by this temporary integration.
+
 # Research order intake: server setup and rollout
 
 ## State

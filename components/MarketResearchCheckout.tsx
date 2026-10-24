@@ -15,6 +15,9 @@ export default function MarketResearchCheckout() {
   const [intakeEnabled, setIntakeEnabled] = useState(false);
   const [saving, setSaving] = useState(false);
   const [savedOrder, setSavedOrder] = useState('');
+  const [checkoutUrl, setCheckoutUrl] = useState('');
+  const paymentRef = useRef<HTMLDivElement>(null);
+  useEffect(()=>{if(checkoutUrl) paymentRef.current?.scrollIntoView({behavior:'smooth',block:'start'});},[checkoutUrl]);
   const pendingUpload = useRef<{fingerprint:string; ticket:string; uploadUrl:string; contentType:string; uploaded:boolean} | null>(null);
   const requestVersion = useRef(0);
 
@@ -96,8 +99,11 @@ export default function MarketResearchCheckout() {
       setFormMessage('בודקים את המסמך ושומרים את ההזמנה…');
       const saved=await post('finalize',pending.ticket);
       if (saved.status!=='saved' || typeof saved.orderId!=='string') throw new Error('save_unavailable');
+      const destination=new URL(saved.checkoutUrl);
+      if(destination.origin!=='https://pay.sumit.co.il' || ![69,99].includes(saved.amount)) throw new Error('save_unavailable');
+      setPrice(saved.amount); setCheckoutUrl(destination.toString());
       setSavedOrder(saved.orderId); pendingUpload.current=null;
-      setFormMessage('ההזמנה ומסמך האפיון נשמרו. אפשרות התשלום עדיין בהכנה; לא בוצע חיוב.');
+      setFormMessage('ההזמנה ומסמך האפיון נשמרו. אפשר לשלם בטופס שלמטה. אישור התשלום ייבדק ידנית לפני תחילת העבודה.');
     } catch(error) {
       const code=error instanceof Error?error.message:'';
       if (code==='upload_missing' && pendingUpload.current) pendingUpload.current.uploaded=false;
@@ -126,7 +132,7 @@ export default function MarketResearchCheckout() {
     </div>
     <p>{researchOrderTerms.he.delivery}</p>
     <p>{researchOrderTerms.he.refund}</p>
-    <p className="market-order-status">{intakeEnabled?'לאחר הלחיצה נבדוק ונשמור את פרטי ההזמנה ואת המסמך באופן פרטי. התשלום עדיין אינו פעיל בשלב הבדיקות.':'ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.'}</p>
+    <p className="market-order-status">{intakeEnabled?'לאחר השלמת שדות החובה ושמירת מסמך האפיון, ייפתח כאן תשלום מאובטח בסאמיט לפי המחיר שאושר.':'ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.'}</p>
     <form ref={formRef} onSubmit={submit} onInvalidCapture={() => setFormMessage('כדי להמשיך, השלימו את שדות החובה וצרפו מסמך אפיון.')}>
       <fieldset className="market-intake-fields" disabled={saving || !!savedOrder}>
       <div className="market-order-grid">
@@ -161,5 +167,11 @@ export default function MarketResearchCheckout() {
       {savedOrder?<p>מספר הזמנה: <bdi>{savedOrder}</bdi></p>:null}
       <p className="market-checkout-message" role="alert">{formMessage}</p>
     </form>
+    {checkoutUrl?<div ref={paymentRef} className="market-temporary-payment" style={{scrollMarginTop:'100px'}}>
+      <h3>תשלום עבור סקר שוק מלא · {price} ש״ח</h3>
+      <p>אישור התשלום והקבלה יוצגו או יישלחו דרך סאמיט בהתאם להגדרות העסק. סטטוס ההזמנה באתר יעודכן לאחר בדיקה ידנית.</p>
+      <iframe title={`תשלום מאובטח בסאמיט עבור סקר שוק מלא — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="strict-origin-when-cross-origin" />
+      <p><a href={checkoutUrl} target="_blank" rel="noopener noreferrer">אם טופס התשלום אינו מוצג, פתחו אותו בחלון נפרד</a></p>
+    </div>:null}
   </section>;
 }
