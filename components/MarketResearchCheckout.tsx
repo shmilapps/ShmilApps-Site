@@ -120,7 +120,7 @@ export default function MarketResearchCheckout() {
       destination.searchParams.set('emailaddress',String(payload.email || ''));
       setPrice(saved.amount); setCheckoutUrl(destination.toString()); setPaymentOpen(true);
       setSavedOrder(saved.orderId); pendingUpload.current=null;
-      setFormMessage('ההזמנה ומסמך האפיון נשמרו. אפשר לשלם בטופס שלמטה. אישור התשלום ייבדק ידנית לפני תחילת העבודה.');
+      setFormMessage('ההזמנה ומסמך האפיון נשמרו. אפשר לשלם בטופס שלמטה.');
     } catch(error) {
       const code=error instanceof Error?error.message:'';
       if (code==='upload_missing' && pendingUpload.current) pendingUpload.current.uploaded=false;
