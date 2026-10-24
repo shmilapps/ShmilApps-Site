@@ -18,8 +18,9 @@ export default function MarketResearchCheckout() {
   const [saving, setSaving] = useState(false);
   const [savedOrder, setSavedOrder] = useState('');
   const [checkoutUrl, setCheckoutUrl] = useState('');
+  const [paymentOpen, setPaymentOpen] = useState(false);
   const paymentRef = useRef<HTMLDivElement>(null);
-  useEffect(()=>{if(checkoutUrl) paymentRef.current?.scrollIntoView({behavior:'smooth',block:'start'});},[checkoutUrl]);
+  useEffect(()=>{if(paymentOpen) paymentRef.current?.scrollIntoView({behavior:'smooth',block:'start'});},[paymentOpen]);
   const pendingUpload = useRef<{fingerprint:string; ticket:string; uploadUrl:string; contentType:string; uploaded:boolean} | null>(null);
   const requestVersion = useRef(0);
 
@@ -103,7 +104,10 @@ export default function MarketResearchCheckout() {
       if (saved.status!=='saved' || typeof saved.orderId!=='string') throw new Error('save_unavailable');
       const destination=new URL(saved.checkoutUrl);
       if(destination.origin!=='https://pay.sumit.co.il' || ![69,99].includes(saved.amount)) throw new Error('save_unavailable');
-      setPrice(saved.amount); setCheckoutUrl(destination.toString());
+      // SUMIT's documented hosted-checkout prefill parameters. Never add card data.
+      destination.searchParams.set('name',String(payload.fullName || ''));
+      destination.searchParams.set('emailaddress',String(payload.email || ''));
+      setPrice(saved.amount); setCheckoutUrl(destination.toString()); setPaymentOpen(true);
       setSavedOrder(saved.orderId); pendingUpload.current=null;
       setFormMessage('ההזמנה ומסמך האפיון נשמרו. אפשר לשלם בטופס שלמטה. אישור התשלום ייבדק ידנית לפני תחילת העבודה.');
     } catch(error) {
@@ -166,13 +170,16 @@ export default function MarketResearchCheckout() {
       <label className="market-checkout-consent"><input type="checkbox" name="terms" required /><span>קראתי את זמן האספקה ותנאי ההחזר המופיעים למעלה. <RequiredMark /></span></label>
       </fieldset>
       <button className="market-checkout-submit" type="submit" disabled={checking || saving || !!savedOrder}>{saving?'שומרים את ההזמנה…':savedOrder?'ההזמנה נשמרה':`מעבר לתשלום · ${price} ש״ח`}</button>
+      {savedOrder && !paymentOpen?<button className="market-checkout-submit" type="button" onClick={()=>setPaymentOpen(true)}>פתיחת התשלום · {price} ש״ח</button>:null}
       {savedOrder?<p>מספר הזמנה: <bdi>{savedOrder}</bdi></p>:null}
       <p className="market-checkout-message" role="alert">{formMessage}</p>
     </form>
-    {checkoutUrl?<div ref={paymentRef} className="market-temporary-payment" style={{scrollMarginTop:'100px'}}>
-      <h3>תשלום עבור סקר שוק מלא · {price} ש״ח</h3>
-      <p>אישור התשלום והקבלה יוצגו או יישלחו דרך סאמיט בהתאם להגדרות העסק. סטטוס ההזמנה באתר יעודכן לאחר בדיקה ידנית.</p>
-      <iframe title={`תשלום מאובטח בסאמיט עבור סקר שוק מלא — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="strict-origin-when-cross-origin" />
+    {checkoutUrl && paymentOpen?<div ref={paymentRef} className="market-temporary-payment" style={{scrollMarginTop:'100px'}}>
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'1rem'}}>
+        <h3>תשלום עבור סקר שוק מלא · {price} ש״ח</h3>
+        <button type="button" aria-label="סגירת טופס התשלום" title="סגירת טופס התשלום" onClick={()=>setPaymentOpen(false)} style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'44px',height:'44px',fontSize:'30px',lineHeight:1,cursor:'pointer'}}>×</button>
+      </div>
+      <iframe title={`תשלום מאובטח בסאמיט עבור סקר שוק מלא — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="no-referrer" />
       <p><a href={checkoutUrl} target="_blank" rel="noopener noreferrer">אם טופס התשלום אינו מוצג, פתחו אותו בחלון נפרד</a></p>
     </div>:null}
   </section>;
