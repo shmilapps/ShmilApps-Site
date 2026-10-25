@@ -3081,3 +3081,5 @@ main[dir="rtl"] .ai-chat-input {
 @keyframes order-button-shine { 0%,65% { left: -65%; } 100% { left: 150%; } }
 @media(prefers-reduced-motion: reduce) { .online-order-cta::after { animation: none; } }
 @media(max-width: 600px) { .online-order-heading { flex-basis: 100%; } .online-order > summary { gap: 12px; } .online-order > summary em { margin-inline-start: auto; } }
+
+.online-order > summary > .online-order-cta { margin-inline-end: 12px; }

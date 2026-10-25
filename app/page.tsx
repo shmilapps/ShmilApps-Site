@@ -2802,7 +2802,7 @@ export default function Home() {
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id={`${serviceId}-title`}>{servicePage.title}</h2>
               <p>{servicePage.subtitle}</p>
-              {(isMarketRoute || isStockCryptoRoute) ? <a className="market-order-cta" href={isStockCryptoRoute ? "#stock-order" : "#market-order"} onClick={(event) => { event.preventDefault(); if(isMarketRoute){openMarketResearchOrder();return;} const target=document.getElementById(isStockCryptoRoute ? 'stock-order' : 'market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
+              {(isMarketRoute || isStockCryptoRoute) ? <a className={isMarketRoute ? "market-order-cta online-order-cta" : "market-order-cta"} href={isStockCryptoRoute ? "#stock-order" : "#market-order"} onClick={(event) => { event.preventDefault(); if(isMarketRoute){openMarketResearchOrder();return;} const target=document.getElementById(isStockCryptoRoute ? 'stock-order' : 'market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
             </div>
           </div>
           <div className="service-page-content">
