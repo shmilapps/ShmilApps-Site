@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createNotificationProcessor,sendSumitDocument,notificationMessage} from '../lib/server/research-notifications.js';
+import {createNotificationProcessor,sendSumitDocument,notificationMessage,notificationHtml} from '../lib/server/research-notifications.js';
 import {paymentReference} from '../lib/server/research-payment-reference.js';
 const orderId='00000000-0000-4000-8000-000000000001',key='sb_secret_only_mock';
 const reference=paymentReference(orderId,key);
@@ -47,3 +47,8 @@ assert.equal(await sendSumitDocument(args,async()=>({ok:true,json:async()=>({})}
 assert.throws(()=>notificationMessage(base,'attacker','https://example.invalid'));
 console.log('PASS notification claims/replay, customer and owner separation, private specification link, strict paid provider/document matching, safe partial retry, unknown-outcome suppression, and SUMIT existing-document-only send. Mock calls only; no real mail, payment or DB access.');
 
+
+const safeHtml=notificationHtml('שלום <script>alert(1)</script>\nפרטי הזמנה\n\nסיום');
+assert(safeHtml.includes('&lt;script&gt;'));assert(!safeHtml.includes('<script>'));assert(safeHtml.includes('<br>'));assert(safeHtml.includes('dir="rtl"'));
+assert.throws(()=>notificationHtml('link','https://attacker.invalid/spec.pdf'));
+console.log('PASS Hebrew email paragraphs, line breaks, safe HTML escaping and restricted specification download link.');
