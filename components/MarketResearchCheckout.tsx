@@ -35,7 +35,7 @@ export default function MarketResearchCheckout() {
   useEffect(()=>{
     const onPayment=(event:MessageEvent)=>{
       if(event.origin!==window.location.origin || event.source!==paymentFrameRef.current?.contentWindow || event.data?.type!=='shmilapps:payment-result')return;
-      if(event.data.status==='paid' && event.data.orderId===savedOrder){setPaid(true);setPaymentOpen(false);setFormMessage('התשלום אומת וההזמנה התקבלה. תודה!');}
+      if(event.data.status==='paid' && event.data.orderId===savedOrder){setPaid(true);setPaymentOpen(false);setFormMessage(event.data.notifications?.customer==='sent'?'התשלום אומת וההזמנה התקבלה. אישור ההזמנה והקבלה נשלחו למייל שהזנתם. תודה!':'התשלום אומת וההזמנה התקבלה. משלוח האישור והקבלה עדיין בטיפול. אין צורך לשלם שוב.');}
       else setFormMessage('לא ניתן לאמת כרגע את התשלום. אם חויבתם, אין לשלם שוב. פנו אלינו עם אישור התשלום.');
     };
     window.addEventListener('message',onPayment);return()=>window.removeEventListener('message',onPayment);
