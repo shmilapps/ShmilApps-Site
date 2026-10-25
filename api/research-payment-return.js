@@ -1,12 +1,12 @@
 import {randomBytes} from 'node:crypto';
 import {createPaymentVerifier} from '../lib/server/research-payment.js';
+import {paymentReturnParams} from '../lib/server/research-payment-return-params.js';
 const verify=createPaymentVerifier();
 export default async function handler(req,res){
  res.setHeader('Cache-Control','no-store');res.setHeader('Referrer-Policy','no-referrer');res.setHeader('X-Content-Type-Options','nosniff');
  if(req.method!=='GET'){res.statusCode=405;res.setHeader('Allow','GET');return res.end();}
  const url=new URL(req.url,'https://www.shmilapps.com');
- const rawId=url.searchParams.get('og-paymentid');const reference=url.searchParams.get('og-externalidentifier');
- const paymentId=/^[1-9]\d{0,14}$/.test(rawId||'')?Number(rawId):0;
+ const {paymentId,reference}=paymentReturnParams(url.searchParams);
  const result=await verify({paymentId,reference});
  const nonce=randomBytes(18).toString('base64');
  res.setHeader('Content-Type','text/html; charset=utf-8');

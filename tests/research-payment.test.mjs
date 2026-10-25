@@ -24,3 +24,13 @@ assert(validPayment({...payment,Currency:'ILS'},{paymentId:123,reference,amount:
 await getSumitPayment(123,'private-test',async(url,options)=>{assert.equal(url,'https://api.sumit.co.il/billing/payments/get/');const body=JSON.parse(options.body);assert.equal(body.Credentials.CompanyID,2496834247);assert.equal(body.Credentials.APIKey,'private-test');assert.equal(body.PaymentID,123);assert.equal(options.redirect,'error');return{ok:true,json:async()=>({Status:0,Data:{Payment:payment}})};});
 await assert.rejects(()=>getSumitPayment(123,'private-test',async()=>({ok:true,json:async()=>({Status:1,TechnicalErrorDetails:'private details'})})));
 console.log('PASS signed mapping, authoritative payment ID/order/amount/currency/success checks, no write on mismatch, atomic confirm contract, idempotent paid retry, failed provider response and absent configuration. No real payment or DB mutation.');
+
+const {paymentReturnParams}=await import('../lib/server/research-payment-return-params.js');
+for(const [idKey,refKey] of [['OG-PaymentID','OG-ExternalIdentifier'],['og-paymentid','og-externalidentifier'],['Og-PaymentId','og-ExternalIdentifier']]) {
+ const params=new URLSearchParams([[idKey,'123'],[refKey,reference]]);
+ assert.deepEqual(paymentReturnParams(params),{paymentId:123,reference});
+}
+assert.equal(paymentReturnParams(new URLSearchParams('OG-PaymentID=123&og-paymentid=456')).paymentId,0);
+assert.equal(paymentReturnParams(new URLSearchParams('OG-ExternalIdentifier=a&og-externalidentifier=b')).reference,null);
+for(const value of ['','0','-1','1.2','123x','9999999999999999'])assert.equal(paymentReturnParams(new URLSearchParams([['OG-PaymentID',value]])).paymentId,0);
+console.log('PASS SUMIT actual uppercase redirect keys, legacy lowercase and mixed case; duplicate aliases and invalid IDs rejected.');
