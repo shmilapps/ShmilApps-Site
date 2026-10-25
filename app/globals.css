@@ -3067,3 +3067,17 @@ main[dir="rtl"] .ai-chat-input {
 .market-checkout button:disabled { opacity: .65; cursor: default; }
 .market-checkout button:focus-visible { outline: 2px solid #baff00; outline-offset: 3px; }
 @media(max-width: 800px) { .market-checkout-card { grid-template-columns: minmax(0, 1fr); } }
+
+/* Shared online-order entry: the existing service accordion stays separate from pricing. */
+.online-order { scroll-margin-top: 160px; }
+.online-order > summary { flex-wrap: wrap; }
+.online-order-heading { flex: 1 1 280px; min-width: 0; }
+.online-order .market-order { margin: 0; padding: 0; border: 0; background: transparent; }
+.online-order-cta { position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 11px 24px; border: 1px solid #d7ff73; border-radius: 999px; background: linear-gradient(115deg,#74bd16,#c3ff00,#a3e526); color: #102000; box-shadow: 0 0 20px rgba(186,255,0,.24); font: 700 1rem Arial,Helvetica,sans-serif; cursor: pointer; }
+.online-order-cta::after { content: ''; position: absolute; inset: -50% auto -50% -65%; width: 40%; transform: skewX(-22deg); background: linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent); animation: order-button-shine 4s ease-in-out infinite; pointer-events: none; }
+.online-order-cta:hover { box-shadow: 0 0 28px rgba(186,255,0,.42); }
+.online-order-cta:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+.market-checkout-language-note { padding: 12px 16px; border-inline-start: 3px solid #baff00; background: #152009; color: #dce8ca; }
+@keyframes order-button-shine { 0%,65% { left: -65%; } 100% { left: 150%; } }
+@media(prefers-reduced-motion: reduce) { .online-order-cta::after { animation: none; } }
+@media(max-width: 600px) { .online-order-heading { flex-basis: 100%; } .online-order > summary { gap: 12px; } .online-order > summary em { margin-inline-start: auto; } }

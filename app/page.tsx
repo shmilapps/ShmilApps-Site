@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import ContactSection from '../components/ContactSection';
-import { researchOrderTerms, ResearchReportLanguage } from '../components/ResearchOrderTerms';
+import { researchOrderTerms } from '../components/ResearchOrderTerms';
 import StockResearchOrderForm from '../components/StockResearchOrderForm';
 import MarketResearchBook from '../components/MarketResearchBook';
-import MarketResearchCheckout from '../components/MarketResearchCheckout';
+import MarketResearchCheckout, { openMarketResearchOrder } from '../components/MarketResearchCheckout';
 import TrainingExampleBook from '../components/TrainingExampleBook';
 import LinkReviewBook from '../components/LinkReviewBook';
 import ExchangeCaseStudy from '../components/ExchangeCaseStudy';
@@ -2339,38 +2339,6 @@ const marketResearchPage: typeof appDevelopmentPage = {
   }
 };
 
-function MarketResearchOrderForm({ language }: { language: 'he' | 'en' }) {
- const he=language==='he'; const [filename,setFilename]=useState(''); const [error,setError]=useState('');
- return <section className="market-order" id="market-order" dir={he?'rtl':'ltr'} aria-labelledby="market-order-title">
- <h3 id="market-order-title">{he?'הזמנת סקר שוק':'Order market research'}</h3>
- <p className="market-order-price">{he?'99 ש״ח · ישראל וחו״ל':'₪99 · Israel and international markets'}</p>
- <p>{he?'אם אינכם שבעי רצון מהסקר, החזר כספי מובטח ללא שאלות. ממשיכים לביצוע? מחיר הסקר יקוזז ממחיר העבודה.':'If you are not satisfied with the research, a money-back guarantee, no questions asked. Continue to implementation and the research price is deducted from the project price.'}</p>
- <p>{researchOrderTerms[language].delivery}</p>
- <p>{researchOrderTerms[language].refund}</p>
- <p>{researchOrderTerms[language].languages}</p>
- <p className="market-order-status" role="note">{he?'ההזמנה המקוונת בהכנה. הטופס אינו שולח או שומר מידע עדיין, ולא ניתן לבצע תשלום. אפשר לפנות אלינו באמצעות פרטי הקשר שמתחת לטופס.':'Online ordering is being prepared. This form does not send or save information yet, and payment is unavailable. Contact us using the details below the form.'}</p>
- <form onSubmit={event=>event.preventDefault()}>
- <div className="market-order-grid">
- <label>{he?'שם מלא':'Full name'}<input name="fullName" autoComplete="name" required maxLength={120}/></label>
- <label>{he?'עסק / ארגון (לא חובה)':'Business / organization (optional)'}<input name="business" autoComplete="organization" maxLength={160}/></label>
- <label>{he?'אימייל':'Email'}<input type="email" name="email" autoComplete="email" dir="ltr" required maxLength={254}/></label>
- <label>{he?'טלפון':'Phone'}<input type="tel" name="phone" autoComplete="tel" dir="ltr" required maxLength={40}/></label>
- </div>
- <label>{he?'מה תרצו לבדוק?':'What would you like to research?'}<textarea name="description" required rows={5} maxLength={10000} placeholder={he?'תארו את הרעיון והשאלות שחשוב לכם לבדוק':'Describe your idea and the questions that matter to you'}/></label>
- <div className="market-order-grid">
- <label>{he?'שוק יעד':'Target market'}<select name="market"><option value="israel">{he?'ישראל':'Israel'}</option><option value="international">{he?'חו״ל':'International'}</option><option value="both">{he?'ישראל וחו״ל':'Israel and international'}</option></select></label>
- <ResearchReportLanguage language={language} />
- </div>
- <label>{he?'קהל יעד, מדינות ודגשים (לא חובה)':'Audience, countries and priorities (optional)'}<textarea name="audience" rows={3} maxLength={5000}/></label>
- <label>{he?'מתחרים וקישורים מוכרים (לא חובה)':'Known competitors and links (optional)'}<textarea name="links" rows={3} maxLength={5000}/></label>
- <label>{he?'צירוף מסמך אפיון (חובה)':'Attach a specification (required)'}<input type="file" name="specification" required accept=".pdf,.docx,.txt" onChange={event=>{const file=event.target.files?.[0];setError('');setFilename('');if(!file)return;if(file.size>10*1024*1024||!['pdf','docx','txt'].includes(file.name.split('.').pop()?.toLowerCase()??'')){setError(he?'בחרו PDF, DOCX או TXT בגודל עד 10MB.':'Choose a PDF, DOCX or TXT file up to 10MB.');event.target.value='';return;}setFilename(file.name);}}/></label>
- <small>{he?'ככל שהאפיון מפורט וברור יותר, נוכל להפיק סקר איכותי, מקצועי ורלוונטי יותר. הקובץ נבחר במכשיר בלבד ואינו מועלה כרגע.':'The clearer and more detailed the specification, the more focused and useful the research. The file is selected on your device only and is not uploaded yet.'}</small>
- {filename?<p className="market-file-name"><bdi>{filename}</bdi></p>:null}{error?<p role="alert">{error}</p>:null}
- <fieldset disabled><legend>{he?'תשלום':'Payment'}</legend><label><input type="radio" name="payment"/> {he?'אשראי / ביט דרך Grow (בחיבור בהמשך)':'Card / bit through Grow (connection pending)'}</label><label><input type="radio" name="payment"/> {he?'העברה בנקאית (פרטים יתווספו בהמשך)':'Bank transfer (details to be added)'}</label></fieldset>
- <button type="submit" disabled>{he?'שליחה ותשלום יהיו זמינים בקרוב':'Submission and payment coming soon'}</button>
- </form></section>;
-}
-
 const websiteBrandCaseStudy = {
   he: {
     title: 'אתר ShmilApps',
@@ -2834,7 +2802,7 @@ export default function Home() {
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id={`${serviceId}-title`}>{servicePage.title}</h2>
               <p>{servicePage.subtitle}</p>
-              {(isMarketRoute || isStockCryptoRoute) ? <a className="market-order-cta" href={isStockCryptoRoute ? "#stock-order" : "#market-order"} onClick={(event) => { event.preventDefault(); const target=document.getElementById(isStockCryptoRoute ? 'stock-order' : 'market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
+              {(isMarketRoute || isStockCryptoRoute) ? <a className="market-order-cta" href={isStockCryptoRoute ? "#stock-order" : "#market-order"} onClick={(event) => { event.preventDefault(); if(isMarketRoute){openMarketResearchOrder();return;} const target=document.getElementById(isStockCryptoRoute ? 'stock-order' : 'market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
             </div>
           </div>
           <div className="service-page-content">
@@ -3002,9 +2970,8 @@ export default function Home() {
               </details>
               );
             })}
-            {isMarketRoute && isHebrew ? <MarketResearchCheckout /> : null}
+            {isMarketRoute ? <MarketResearchCheckout language={language} /> : null}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
-              {isMarketRoute && !isHebrew ? <MarketResearchOrderForm language={language} /> : null}
               {isStockCryptoRoute ? <StockResearchOrderForm language={language} /> : null}
               <h3 id="service-contact-title">{servicePage.contact.title}</h3>
               {servicePage.contact.lines.map((line) => <p key={line}>{line}</p>)}
