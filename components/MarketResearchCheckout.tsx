@@ -39,6 +39,9 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
   const [checkoutUrl, setCheckoutUrl] = useState('');
   const [paymentOpen, setPaymentOpen] = useState(false);
   const [paid, setPaid] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const editTicket = useRef('');
+  const savedFingerprint = useRef('');
   // Changing the page language keeps the order and fields, but clears stale localized hints.
   useEffect(() => {
     setCouponMessage('');
@@ -62,7 +65,7 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
   useEffect(()=>{
     const onPayment=(event:MessageEvent)=>{
       if(event.origin!==window.location.origin || event.source!==paymentFrameRef.current?.contentWindow || event.data?.type!=='shmilapps:payment-result')return;
-      if(event.data.status==='paid' && event.data.orderId===savedOrder){setPaid(true);setPaymentOpen(false);setFormMessage(event.data.notifications?.customer==='sent'?t("התשלום אומת וההזמנה התקבלה. אישור ההזמנה והקבלה נשלחו למייל שהזנתם. תודה!","Payment verified and order received. Your confirmation and receipt have been emailed. Thank you!"):t("התשלום אומת וההזמנה התקבלה. משלוח האישור והקבלה עדיין בטיפול. אין צורך לשלם שוב.","Payment verified and order received. Your confirmation and receipt are being sent. Do not pay again."));}
+      if(event.data.status==='paid' && event.data.orderId===savedOrder){setPaid(true);setEditing(false);setPaymentOpen(false);setFormMessage(event.data.notifications?.customer==='sent'?t("התשלום אומת וההזמנה התקבלה. אישור ההזמנה והקבלה נשלחו למייל שהזנתם. תודה!","Payment verified and order received. Your confirmation and receipt have been emailed. Thank you!"):t("התשלום אומת וההזמנה התקבלה. משלוח האישור והקבלה עדיין בטיפול. אין צורך לשלם שוב.","Payment verified and order received. Your confirmation and receipt are being sent. Do not pay again."));}
       else setFormMessage(t("לא ניתן לאמת כרגע את התשלום. אם חויבתם, אין לשלם שוב. פנו אלינו עם אישור התשלום.","We cannot verify the payment right now. If you were charged, do not pay again. Contact us with your payment confirmation."));
     };
     window.addEventListener('message',onPayment);return()=>window.removeEventListener('message',onPayment);
@@ -103,7 +106,7 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
       return;
     }
     if (!intakeEnabled) {setFormMessage(t("שמירת ההזמנה עדיין בהכנה. הפרטים והמסמך לא נשלחו.","Online ordering is currently unavailable. Your details and document have not been sent."));return;}
-    if (saving || savedOrder) return;
+    if (saving || paid || (savedOrder && !editing)) return;
     const form=new FormData(event.currentTarget);
     const file=form.get('specification');
     if (!(file instanceof File) || !file.size || file.size>10*1024*1024) {setFormMessage(t("צרפו מסמך אפיון תקין, עד 10MB.","Attach a valid specification file, up to 10MB."));return;}
@@ -114,8 +117,9 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
       const sha256=Array.from(new Uint8Array(hash),byte=>byte.toString(16).padStart(2,'0')).join('');
       const payload={service:'market-research-full',fullName:form.get('fullName'),email:form.get('email'),phone:form.get('phone'),business:form.get('business'),description:form.get('description'),market:form.get('market'),reportLanguage:form.get('reportLanguage'),audience:form.get('audience'),links:form.get('links'),terms:form.get('terms')==='on',coupon,file:{name:file.name,size:file.size,sha256}};
       const fingerprint=JSON.stringify(payload);
+      if(savedOrder && fingerprint===savedFingerprint.current){setEditing(false);setPaymentOpen(true);return;}
       const post=async(action:string,ticket?:string)=>{
-        const response=await fetch('/api/research-orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,action,ticket})});
+        const response=await fetch('/api/research-orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,action,ticket,...(editTicket.current?{editTicket:editTicket.current}:{})})});
         const data=await response.json().catch(()=>({}));
         if (!response.ok) throw new Error(data.error || 'save_unavailable');
         return data;
@@ -146,13 +150,18 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
       destination.searchParams.set('name',String(payload.fullName || ''));
       destination.searchParams.set('emailaddress',String(payload.email || ''));
       setPrice(saved.amount); setCheckoutUrl(destination.toString()); setPaymentOpen(true);
-      setSavedOrder(saved.orderId); pendingUpload.current=null;
+      setSavedOrder(saved.orderId); editTicket.current=saved.editTicket || pending.ticket;
+      savedFingerprint.current=fingerprint;setEditing(false);pendingUpload.current=null;
       setFormMessage(t("ההזמנה ומסמך האפיון נשמרו. אפשר לשלם בטופס שלמטה.","Your order and specification have been saved. Continue with the payment form below."));
     } catch(error) {
       const code=error instanceof Error?error.message:'';
       if (code==='upload_missing' && pendingUpload.current) pendingUpload.current.uploaded=false;
       if (['expired_session','invalid_session','changed_details','invalid_document'].includes(code)) pendingUpload.current=null;
-      const messages:Record<string,string>={invalid_fields:t("השלימו את כל שדות החובה בפרטים תקינים.","Complete all required fields with valid details."),invalid_coupon:t("קוד ההנחה אינו תקין. בדקו אותו או הסירו אותו.","Invalid discount code. Check it or remove it."),invalid_document:t("תוכן המסמך אינו תואם לקובץ PDF, DOCX או TXT תקין. בחרו מסמך אחר.","The document is not a valid PDF, DOCX or TXT file. Choose another file."),expired_session:t("זמן ההעלאה הסתיים. לחצו שוב כדי להתחיל מחדש.","Your upload session expired. Please try again."),rate_limited:t("בוצעו יותר מדי ניסיונות. נסו שוב מאוחר יותר.","Too many attempts. Please try again later."),upload_missing:t("המסמך טרם הועלה. לחצו שוב כדי לנסות להעלות אותו.","Your document has not been uploaded. Please try again."),upload_failed:t("העלאת המסמך לא הושלמה. בדקו את החיבור ונסו שוב.","The upload did not finish. Check your connection and try again."),intake_not_ready:t("שמירת ההזמנות עדיין אינה זמינה. ההזמנה לא נשמרה.","Order saving is unavailable. Your order has not been saved.")};
+      if(code==='order_not_editable')setEditing(false);
+      const messages:Record<string,string>={
+        order_not_editable:t('ההזמנה כבר אינה פתוחה לעריכה. אם שילמתם, אין לשלם שוב; פנו אלינו לשינוי הפרטים.','This order is no longer editable. If you have paid, do not pay again; contact us to change the details.'),
+        invalid_edit_session:t('לא ניתן לאמת הרשאה לעריכת ההזמנה. פנו אלינו עם מספר ההזמנה.','Unable to verify permission to edit this order. Contact us with the order number.'),
+        checkout_price_locked:t('המחיר של התשלום שכבר נפתח נשמר. ניתן לערוך את פרטי הבקשה ואת האפיון.','The price of the checkout already opened stays unchanged. You can edit request details and the specification.'),invalid_fields:t("השלימו את כל שדות החובה בפרטים תקינים.","Complete all required fields with valid details."),invalid_coupon:t("קוד ההנחה אינו תקין. בדקו אותו או הסירו אותו.","Invalid discount code. Check it or remove it."),invalid_document:t("תוכן המסמך אינו תואם לקובץ PDF, DOCX או TXT תקין. בחרו מסמך אחר.","The document is not a valid PDF, DOCX or TXT file. Choose another file."),expired_session:t("זמן ההעלאה הסתיים. לחצו שוב כדי להתחיל מחדש.","Your upload session expired. Please try again."),rate_limited:t("בוצעו יותר מדי ניסיונות. נסו שוב מאוחר יותר.","Too many attempts. Please try again later."),upload_missing:t("המסמך טרם הועלה. לחצו שוב כדי לנסות להעלות אותו.","Your document has not been uploaded. Please try again."),upload_failed:t("העלאת המסמך לא הושלמה. בדקו את החיבור ונסו שוב.","The upload did not finish. Check your connection and try again."),intake_not_ready:t("שמירת ההזמנות עדיין אינה זמינה. ההזמנה לא נשמרה.","Order saving is unavailable. Your order has not been saved.")};
       setFormMessage(messages[code] || t("לא ניתן לאשר שההזמנה נשמרה. לחצו שוב לניסיון נוסף.","Unable to confirm that your order was saved. Please try again."));
     } finally {setSaving(false);}
   }
@@ -186,7 +195,7 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
     <p className="market-order-status">{intakeEnabled?<>{t('לאחר השלמת שדות החובה','After completing the required fields')} <span style={{whiteSpace:'nowrap'}}>( <RequiredMark /> )</span> {t('ושמירת מסמך האפיון, ייפתח כאן תשלום מאובטח בסאמיט לפי המחיר שאושר.','and saving your specification, secure SUMIT payment will open here at the confirmed price.')}</>:t("ההזמנה המקוונת בהכנה. אפשר למלא ולבדוק את הטופס; הפרטים והקובץ אינם נשלחים בשלב זה.","Online ordering is currently unavailable. Your details and file will not be sent.")}</p>
     {language === 'en' ? <p className="market-checkout-language-note">The secure SUMIT payment form is currently in Hebrew. You can order your research report in Hebrew, English or both.</p> : null}
     <form ref={formRef} onSubmit={submit} onInvalidCapture={() => setFormMessage(t("כדי להמשיך, השלימו את שדות החובה וצרפו מסמך אפיון.","Complete the required fields and attach a specification to continue."))}>
-      <fieldset className="market-intake-fields" disabled={saving || !!savedOrder}>
+      <fieldset className="market-intake-fields" disabled={saving || paid || (!!savedOrder && !editing)}>
       <div className="market-order-grid">
         <label><span>{t("שם מלא ","Full name ")}<RequiredMark /></span><input name="fullName" autoComplete="name" required minLength={2} maxLength={120} pattern=".*\S.*" /></label>
         <label>{t("עסק / ארגון","Business / organization")}<input name="business" autoComplete="organization" maxLength={160} /></label>
@@ -215,15 +224,16 @@ export default function MarketResearchCheckout({language = 'he'}: {language?: 'h
       {filename ? <p className="market-file-name"><bdi>{filename}</bdi></p> : null}
       <label className="market-checkout-consent"><input type="checkbox" name="terms" required /><span>{t("קראתי את זמן האספקה ותנאי ההחזר המופיעים למעלה. ","I have read the delivery time and refund terms above. ")}<RequiredMark /></span></label>
       </fieldset>
-      <button className="market-checkout-submit" type="submit" disabled={checking || saving || !!savedOrder}>{saving?t("שומרים את ההזמנה…","Saving your order…"):savedOrder?(paid?t("ההזמנה שולמה","Order paid"):t("ההזמנה נשמרה","Order saved")):t(`מעבר לתשלום · ${price} ש״ח`,`Continue to payment · ₪${price}`)}</button>
-      {savedOrder && !paymentOpen && !paid?<button className="market-checkout-submit" type="button" onClick={()=>setPaymentOpen(true)}>{t(`פתיחת התשלום · ${price} ש״ח`,`Reopen payment · ₪${price}`)}</button>:null}
+      <button className="market-checkout-submit" type="submit" disabled={checking || saving || paid || (!!savedOrder && !editing)}>{saving?t("שומרים את ההזמנה…","Saving your order…"):savedOrder && !editing?(paid?t("ההזמנה שולמה","Order paid"):t("ההזמנה נשמרה","Order saved")):t(`מעבר לתשלום · ${price} ש״ח`,`Continue to payment · ₪${price}`)}</button>
+      {savedOrder && !paymentOpen && !paid && !editing?<button className="market-checkout-submit" type="button" onClick={()=>setPaymentOpen(true)}>{t(`פתיחת התשלום · ${price} ש״ח`,`Reopen payment · ₪${price}`)}</button>:null}
+      {editing ? <p className="market-checkout-edit-note">{t('אפשר לעדכן את פרטי הבקשה והאפיון. לחיצה על מעבר לתשלום תשמור את השינויים באותה הזמנה. המחיר והקופון של התשלום שכבר נפתח נשארים כפי שאושרו.','Edit the request details and specification. Continuing to payment saves the changes to the same order. The price and coupon of the checkout already opened remain as approved.')}</p> : null}
       {savedOrder?<p>{t("מספר הזמנה: ","Order number: ")}<bdi>{savedOrder}</bdi></p>:null}
       <p className="market-checkout-message" role="alert">{formMessage}</p>
     </form>
     {checkoutUrl && paymentOpen?<div ref={paymentRef} className="market-checkout-payment" style={{scrollMarginTop:'100px'}}>
       <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'1rem'}}>
         <h3>{price===5?t("חיוב בדיקה","Test payment"):t("תשלום עבור סקר שוק מלא","Full market research payment")} · <bdi>{t(`${price} ש״ח`,`₪${price}`)}</bdi></h3>
-        <button type="button" aria-label={t('סגירת טופס התשלום','Close payment form')} title={t('סגירת טופס התשלום','Close payment form')} onClick={()=>setPaymentOpen(false)} style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'44px',height:'44px',fontSize:'30px',lineHeight:1,cursor:'pointer'}}>×</button>
+        <button type="button" aria-label={t('סגירת טופס התשלום','Close payment form')} title={t('סגירת טופס התשלום','Close payment form')} onClick={()=>{setPaymentOpen(false);if(!paid){setEditing(true);setFormMessage(t('התשלום נסגר. ניתן לערוך את הבקשה ולהמשיך שוב לתשלום.','Payment closed. You can edit your request and continue to payment again.'));}}} style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'44px',height:'44px',fontSize:'30px',lineHeight:1,cursor:'pointer'}}>×</button>
       </div>
       <iframe ref={paymentFrameRef} title={`${price===5?t("תשלום בדיקה","Test payment"):t("תשלום עבור סקר שוק מלא","Full market research payment")} — SUMIT · ${price} ILS`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="no-referrer" />
       <p><a href={checkoutUrl} target="_blank" rel="noopener noreferrer">{t("אם טופס התשלום אינו מוצג, פתחו אותו בחלון נפרד","If the payment form is not displayed, open it in a separate window")}</a></p>
