@@ -52,10 +52,10 @@ export default function MarketResearchCheckout() {
       });
       const quote = await response.json();
       if (version !== requestVersion.current) return;
-      if (!response.ok || ![69, 99].includes(quote.amount)) throw new Error();
+      if (!response.ok || ![5, 69, 99].includes(quote.amount)) throw new Error();
       setPrice(quote.amount);
       setCouponChecked(quote.accepted === true);
-      setCouponMessage(quote.accepted ? 'קוד ההנחה אושר. המחיר לתשלום: 69 ש״ח.' : coupon.trim() ? 'קוד ההנחה אינו תקין. המחיר הרגיל הוא 99 ש״ח.' : 'המחיר הרגיל הוא 99 ש״ח.');
+      setCouponMessage(quote.isTest===true && quote.amount===5 ? 'קוד הבדיקה אושר. חיוב בדיקה אמיתי בסך 5 ש״ח.' : quote.accepted ? 'קוד ההנחה אושר. המחיר לתשלום: 69 ש״ח.' : coupon.trim() ? 'קוד ההנחה אינו תקין. המחיר הרגיל הוא 99 ש״ח.' : 'המחיר הרגיל הוא 99 ש״ח.');
     } catch {
       if (version !== requestVersion.current) return;
       setPrice(99);
@@ -114,7 +114,7 @@ export default function MarketResearchCheckout() {
       const saved=await post('finalize',pending.ticket);
       if (saved.status!=='saved' || typeof saved.orderId!=='string') throw new Error('save_unavailable');
       const destination=new URL(saved.checkoutUrl);
-      if(destination.origin!=='https://pay.sumit.co.il' || ![69,99].includes(saved.amount)) throw new Error('save_unavailable');
+      if(destination.origin!=='https://pay.sumit.co.il' || ![5,69,99].includes(saved.amount)) throw new Error('save_unavailable');
       // SUMIT's documented hosted-checkout prefill parameters. Never add card data.
       destination.searchParams.set('name',String(payload.fullName || ''));
       destination.searchParams.set('emailaddress',String(payload.email || ''));
@@ -136,7 +136,7 @@ export default function MarketResearchCheckout() {
       <div>
         <h3 id="market-payment-title">סקר שוק מלא</h3>
         <p>מחקר מעמיק בישראל ובחו״ל, ניתוח מתחרים והמלצות מוצר.</p>
-        <p className="market-checkout-price">{price === 69 ? <><span className="market-checkout-original">מחיר רגיל: <s>99 ש״ח</s></span><strong>69 ש״ח</strong><span>לאחר הנחה של 30 ש״ח</span></> : <><span>מחיר השירות</span><strong>99 ש״ח</strong></>}</p>
+        <p className="market-checkout-price">{price === 5 ? <><span>חיוב בדיקה</span><strong>5 ש״ח</strong><span>זהו תשלום בדיקה אמיתי</span></> : price === 69 ? <><span className="market-checkout-original">מחיר רגיל: <s>99 ש״ח</s></span><strong>69 ש״ח</strong><span>לאחר הנחה של 30 ש״ח</span></> : <><span>מחיר השירות</span><strong>99 ש״ח</strong></>}</p>
         <div className="market-checkout-coupon">
           <label htmlFor="market-coupon">קוד קופון / קוד הנחה</label>
           <div><input id="market-coupon" disabled={saving || !!savedOrder} value={coupon} dir="ltr" autoComplete="off" spellCheck={false} maxLength={80} aria-describedby="market-coupon-message" onChange={event => {
@@ -187,10 +187,10 @@ export default function MarketResearchCheckout() {
     </form>
     {checkoutUrl && paymentOpen?<div ref={paymentRef} className="market-temporary-payment" style={{scrollMarginTop:'100px'}}>
       <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',gap:'1rem'}}>
-        <h3>תשלום עבור סקר שוק מלא · {price} ש״ח</h3>
+        <h3>{price===5?'חיוב בדיקה':'תשלום עבור סקר שוק מלא'} · {price} ש״ח</h3>
         <button type="button" aria-label="סגירת טופס התשלום" title="סגירת טופס התשלום" onClick={()=>setPaymentOpen(false)} style={{display:'inline-flex',alignItems:'center',justifyContent:'center',flexShrink:0,width:'44px',height:'44px',fontSize:'30px',lineHeight:1,cursor:'pointer'}}>×</button>
       </div>
-      <iframe ref={paymentFrameRef} title={`תשלום מאובטח בסאמיט עבור סקר שוק מלא — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="no-referrer" />
+      <iframe ref={paymentFrameRef} title={`${price===5?'תשלום בדיקה':'תשלום עבור סקר שוק מלא'} מאובטח בסאמיט — ${price} ש״ח`} src={checkoutUrl} style={{display:'block',width:'100%',height:'850px',border:0,borderRadius:'12px',background:'#fff'}} allow="payment" referrerPolicy="no-referrer" />
       <p><a href={checkoutUrl} target="_blank" rel="noopener noreferrer">אם טופס התשלום אינו מוצג, פתחו אותו בחלון נפרד</a></p>
     </div>:null}
   </section>;

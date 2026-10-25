@@ -19,7 +19,8 @@ const db={
    sessions.set(args.p_id,{id:args.p_id,request_hash:args.p_request_hash,object_path:args.p_object_path,order_id:null,expires_at:new Date(Date.now()+1800000).toISOString()});return{data:true};
   }
   assert.equal(name,'commit_research_intake');
-  assert.equal(args.p_payload.final_price_agorot,valid.coupon?6900:9900);
+  assert.equal(args.p_payload.final_price_agorot,normalizeIntake(valid).payload.final_price_agorot);
+  assert.equal(args.p_payload.is_test,normalizeIntake(valid).payload.is_test);
   assert(!('status' in args.p_payload));assert(!('coupon' in args.p_payload));
   const session=sessions.get(args.p_id);if(!session.order_id){session.order_id=args.p_id;commits++;}
   if(commitResponseLost){commitResponseLost=false;throw new Error('lost response');}
@@ -68,6 +69,19 @@ const bad=await prepare();objects.set(bad.path,Buffer.from('malicious bytes'));
 assert.equal((await finalize(bad)).body.error,'invalid_document');assert(!objects.has(bad.path));
 const expired=await prepare();sessions.get(expired.id).expires_at=new Date(0).toISOString();assert.equal((await finalize(expired)).status,410);
 if(process.env.TEST_RESEARCH_COUPON){valid.coupon=process.env.TEST_RESEARCH_COUPON;assert.equal(normalizeIntake(valid).payload.final_price_agorot,6900);const discounted=await prepare();objects.set(discounted.path,bytes);const receipt=(await finalize(discounted)).body;assert.equal(receipt.status,'saved');assert.equal(receipt.amount,69);assert.equal(receipt.checkoutUrl.split('?')[0],marketResearchProduct.paymentUrls.discounted);assert.equal((await finalize(discounted)).body.checkoutUrl,receipt.checkoutUrl);}
+
+// Client-provided test flags never select test pricing.
+assert.equal(normalizeIntake({...valid,coupon:'',is_test:true,isTest:true}).payload.is_test,false);
+assert.equal(normalizeIntake({...valid,coupon:'',is_test:true,amount:5}).payload.final_price_agorot,9900);
+if(process.env.TEST_RESEARCH_TEST_COUPON){
+ const previous=valid.coupon;valid.coupon=process.env.TEST_RESEARCH_TEST_COUPON;
+ const normalized=normalizeIntake({...valid,isTest:false,amount:99});assert.equal(normalized.payload.is_test,true);assert.equal(normalized.payload.final_price_agorot,500);
+ const test=await prepare();objects.set(test.path,bytes);const receipt=(await finalize(test)).body;
+ assert.equal(receipt.amount,5);assert.equal(receipt.isTest,true);assert.equal(receipt.checkoutUrl.split('?')[0],marketResearchProduct.paymentUrls.test);
+ assert.equal((await finalize(test)).body.orderId,receipt.orderId);
+ const denied=await finalize(test,{...valid,coupon:''});assert.equal(denied.body.error,'changed_details');
+ valid.coupon=previous;
+}
 
 await validateDocument(bytes,metadata('spec.txt',bytes));
 await assert.rejects(()=>validateDocument(Buffer.from([0xff,0xff]),metadata('spec.txt',Buffer.from([0xff,0xff]))));
