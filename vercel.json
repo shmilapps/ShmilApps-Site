@@ -3,6 +3,7 @@
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "dist-vercel",
   "functions": {
+    "api/research-payment-reconcile.js": {"maxDuration":120},
     "api/research-orders.js": {
       "maxDuration": 60
     },

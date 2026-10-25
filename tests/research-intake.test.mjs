@@ -10,7 +10,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 const metadata=(name,data)=>documentMetadata({name,size:data.length,sha256:hash(data)});
 const valid={service:'market-research-full',fullName:'Test Customer',email:'test@example.com',phone:'050-0000000',business:'',description:'Agriculture application research',market:'both',reportLanguage:'he',audience:'',links:'',terms:true,coupon:'',file:{name:'spec.txt',size:bytes.length,sha256:hash(bytes)}};
 const settings={enabled:true,key:'sb_secret_test_server_key_only',url:'https://ufolbezpnhyrsyuxuaox.supabase.co'};
-const sessions=new Map();const objects=new Map();let commits=0;let rateAllowed=true;let uploadWrongHost=false;let commitResponseLost=false;let rpcError=false;
+const sessions=new Map();const objects=new Map();let commits=0;let rateAllowed=true;let uploadWrongHost=false;let commitResponseLost=false;let rpcError=false;let registrationError=false;
 const db={
  rpc:async(name,args)=>{
   if(rpcError)return{error:{message:'private error'}};
@@ -18,6 +18,7 @@ const db={
    if(!rateAllowed)return{data:false};
    sessions.set(args.p_id,{id:args.p_id,request_hash:args.p_request_hash,object_path:args.p_object_path,order_id:null,expires_at:new Date(Date.now()+1800000).toISOString()});return{data:true};
   }
+  if(name==='register_research_payment_check'){if(registrationError)return{data:false};assert.equal(sessions.get(args.p_order_id)?.order_id,args.p_order_id);assert(args.p_reference.startsWith(args.p_order_id+'.'));return{data:true};}
   assert.equal(name,'commit_research_intake');
   assert.equal(args.p_payload.final_price_agorot,normalizeIntake(valid).payload.final_price_agorot);
   assert.equal(args.p_payload.is_test,normalizeIntake(valid).payload.is_test);
@@ -61,7 +62,7 @@ assert.equal((await finalize(first)).body.error,'upload_missing');
 objects.set(first.path,bytes);
 const regularReceipt=(await finalize(first)).body;
 assert.equal(regularReceipt.status,'saved');assert.equal(commits,1);
-assert.equal(regularReceipt.checkoutUrl.split('?')[0],marketResearchProduct.paymentUrls.regular);assert(new URL(regularReceipt.checkoutUrl).searchParams.get('externalidentifier').startsWith(first.id+'.'));assert.equal(regularReceipt.amount,99);assert.equal(regularReceipt.paymentVerification,'manual');assert.equal(regularReceipt.paymentEnabled,false);
+assert.equal(regularReceipt.checkoutUrl.split('?')[0],marketResearchProduct.paymentUrls.regular);assert(new URL(regularReceipt.checkoutUrl).searchParams.get('externalidentifier').startsWith(first.id+'.'));assert.equal(regularReceipt.amount,99);assert.equal(regularReceipt.paymentVerification,'automatic');assert.equal(regularReceipt.paymentEnabled,false);
 assert.equal((await finalize(first)).body.orderId,first.id);assert.equal(commits,1);
 const lost=await prepare();objects.set(lost.path,bytes);commitResponseLost=true;
 assert.equal((await finalize(lost)).status,503);assert.equal((await finalize(lost)).body.orderId,lost.id);assert.equal(commits,2);
@@ -94,3 +95,9 @@ const docx=zipStored({'[Content_Types].xml':'<Types><Override ContentType="appli
 await validateDocument(docx,metadata('spec.docx',docx));
 const invalidDocx=zipStored({'word/document.xml':'plain wrong content'});await assert.rejects(()=>validateDocument(invalidDocx,metadata('spec.docx',invalidDocx)));
 console.log('PASS: server validation, locked project, feature gate, origins, rate limits, private upload scope, metadata binding, tampered/expired sessions, byte hashes, TXT/PDF/DOCX checks, atomic persistence contract and lost-response retries; no payments.');
+
+// A saved order must not expose checkout until background checks are durable.
+const registrationLost=await prepare();objects.set(registrationLost.path,bytes);registrationError=true;
+const noCheckout=await finalize(registrationLost);assert.equal(noCheckout.status,503);assert(!noCheckout.body.checkoutUrl);
+const beforeRetry=commits;registrationError=false;assert.equal((await finalize(registrationLost)).body.orderId,registrationLost.id);assert.equal(commits,beforeRetry);
+console.log('PASS checkout withheld when watcher registration fails; retry registers the same existing order without duplication.');
