@@ -14,7 +14,7 @@ const db={from:table=>({select:()=>{const q={eq:()=>q,maybeSingle:async()=>({dat
 }};
 const verify=createPaymentVerifier({env:()=>env,getDb:()=>db,getPayment:async()=>{verifiedCalls++;return payment;}});
 const sync=createPaymentSync({env:()=>env,getDb:()=>db,verify,now:()=>Date.parse('2026-10-25T12:00:00Z'),listPayments:async args=>{listCalls.push(args);return pages?pages.shift():{payments:[payment],hasNextPage:false};},notify:async()=>{assert(registered>0);if(throwNotify)throw new Error('transient');sends++;mail={order_id:id,customer_mail_state:'sent',owner_mail_state:'sent'};}});
-for(const amount of [500,6900,9900]){
+for(const amount of [500,6900,9900,49900,34900,99800,69800]){
  reset(amount);const result=await sync();assert.equal(result.status,'complete');assert.equal(order.status,'paid');assert.equal(commits,1);assert.equal(sends,1);assert.equal(verifiedCalls,1);
  await sync();assert.equal(commits,1);assert.equal(sends,1);assert.equal(verifiedCalls,1);
 }
@@ -31,4 +31,4 @@ await assert.rejects(()=>listSumitPayments(request,async()=>({ok:true,json:async
 assert(validSyncAuthorization('Bearer '+secret,secret));assert(!validSyncAuthorization('Bearer '+secret+'0',secret));assert(!validSyncAuthorization('Bearer '+'b'.repeat(64),secret));assert(!validSyncAuthorization(undefined,secret));
 async function invoke(method,authorization){let result,called=false;const res={setHeader(){},end(value){result={code:this.statusCode,body:JSON.parse(value)};}};await createReconciliationHandler({env:()=>env,sync:async()=>{called=true;return{status:'complete',pages:1};},log:()=>{}})({method,headers:{authorization}},res);return{...result,called};}
 assert.equal((await invoke('GET','Bearer '+secret)).code,405);assert.equal((await invoke('POST',undefined)).called,false);assert.equal((await invoke('POST','Bearer '+secret)).code,200);
-console.log('PASS scheduler-only full paid transition for99/69/5 without browser callback; replay skips paid/sent; authoritative amount/currency/reference/provider checks; durable mail retries; pagination/time bounds; secret header authentication; no new tables/RPCs, charge or document creation. Mock only.');
+console.log('PASS scheduler-only full paid transition for all products including two-minute videos without browser callback; replay skips paid/sent; authoritative amount/currency/reference/provider checks; durable mail retries; pagination/time bounds; secret header authentication; no new tables/RPCs, charge or document creation. Mock only.');

@@ -3083,3 +3083,10 @@ main[dir="rtl"] .ai-chat-input {
 @media(max-width: 600px) { .online-order-heading { flex-basis: 100%; } .online-order > summary { gap: 12px; } .online-order > summary em { margin-inline-start: auto; } }
 
 .online-order > summary > .online-order-cta { margin-inline-end: 12px; }
+
+/* Product choices stay mounted when switching, preserving drafts and checkouts. */
+.online-product-row{display:flex;width:100%;gap:18px;align-items:center;text-align:start;padding:16px;margin-block:12px;border:1px solid #5c722c;border-radius:14px;background:#0b1406;color:inherit;cursor:pointer}
+.online-product-row:hover,.online-product-row[aria-expanded="true"]{border-color:#b8ef22;background:#17240b}
+.online-product-row img{width:80px;height:80px;object-fit:contain;border-radius:10px;background:#030800}
+.online-product-row>span:nth-child(2){display:grid;gap:8px;flex:1}.online-product-row strong{font-size:1.15rem}.online-product-row small{opacity:.85}
+.market-checkout-card img{object-fit:contain;max-height:330px}

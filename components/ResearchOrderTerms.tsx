@@ -11,8 +11,8 @@ export const researchOrderTerms = {
   },
 };
 
-export function ResearchReportLanguage({ language, requiredIndicator = false }: { language: 'he' | 'en'; requiredIndicator?: boolean }) {
-  return <label><span>{language === 'he' ? 'שפת הדוח' : 'Report language'}{requiredIndicator ? <> <strong aria-hidden="true" style={{color:'#ff4d4f',fontWeight:900,fontSize:'1.2em',position:'relative',top:'0.28em',lineHeight:0}}>*</strong></> : null}</span>
+export function ResearchReportLanguage({ language, requiredIndicator = false, label }: { language: 'he' | 'en'; requiredIndicator?: boolean; label?:string }) {
+  return <label><span>{label ?? (language === 'he' ? 'שפת הדוח' : 'Report language')}{requiredIndicator ? <> <strong aria-hidden="true" style={{color:'#ff4d4f',fontWeight:900,fontSize:'1.2em',position:'relative',top:'0.28em',lineHeight:0}}>*</strong></> : null}</span>
     <select name="reportLanguage" defaultValue={language} required>
       <option value="he">עברית</option>
       <option value="en">English</option>

@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {researchQuote} from '../lib/server/research-coupons.js';
+import {normalizeIntake,createIntakeHandler} from '../lib/server/research-intake.js';
+import {orderMail} from '../lib/server/research-gmail.js';
+const bytes=Buffer.from('Synthetic brief'),hash=createHash('sha256').update(bytes).digest('hex');
+const base={fullName:'Synthetic Customer',email:'research-integration@example.invalid',phone:'0500000000',description:'Synthetic request',market:'both',reportLanguage:'en',terms:true,coupon:'',file:{name:'brief.txt',size:bytes.length,sha256:hash},uiLanguage:'en'};
+const extra={'market-research-full':{},'logo-full':{brandName:'Test brand',style:'Minimal'},'advertising-video':{brandName:'Test brand',goal:'Product launch',format:'9:16'},'asset-research-full':{assetType:'stock',assetName:'Test corporation',ticker:'TEST',exchange:'TEST exchange'}};
+const urls={'market-research-full':['15em4qr','15em78t'],'logo-full':['15iyy4l','15iyz6f'],'advertising-video':['15izcsr','15izfya'],'asset-research-full':['15izhms','15izi24']};
+const settings={enabled:true,key:'sb_secret_mock_only',url:'https://ufolbezpnhyrsyuxuaox.supabase.co'};
+for(const service of Object.keys(extra))for(const discounted of [false,true]){
+ const quantity=service==='advertising-video'?2:1,coupon=discounted?'SHMILAPPSFRIEND':'';
+ const payload={...base,...extra[service],service,quantity,coupon};
+ const quote=researchQuote(coupon,{service,quantity}),input=normalizeIntake({...payload,is_test:true,final_price_agorot:1,product_id:'forged',request_details:{secret:'forged'}});
+ assert.equal(input.payload.final_price_agorot,quote.amount*100);assert.equal(input.payload.is_test,false);assert.equal(input.payload.product_id,service);assert.equal(input.payload.quantity,quantity);assert.equal(input.payload.request_details.secret,undefined);
+ const id='00000000-0000-4000-8000-000000000001';let session,commits=0;
+ const db={rpc:async(name,args)=>{if(name==='reserve_research_intake'){session={id:args.p_id,request_hash:args.p_request_hash,object_path:args.p_object_path,expires_at:new Date(Date.now()+1000000).toISOString(),order_id:null};return{data:true};}assert.equal(name,'commit_research_intake');assert.deepEqual(args.p_payload,input.payload);commits++;session.order_id=session.id;return{data:session.id};},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:session})})})}),storage:{from:()=>({createSignedUploadUrl:async path=>({data:{signedUrl:`${settings.url}/storage/v1/object/upload/sign/order-specifications/${path}?token=mock`}}),download:async()=>({data:new Blob([bytes])})})}};
+ const handler=createIntakeHandler({settings:()=>settings,getClient:()=>db});
+ const invoke=async body=>{let result;await handler({method:'POST',headers:{origin:'https://www.shmilapps.com','content-type':'application/json'},body,socket:{remoteAddress:'mock'}},{setHeader(){},end(value){result={code:this.statusCode,data:JSON.parse(value)};}});return result;};
+ const prepared=await invoke({...payload,action:'prepare'});assert.equal(prepared.code,200);
+ const saved=await invoke({...payload,action:'finalize',ticket:prepared.data.ticket});assert.equal(saved.code,200);assert.equal(commits,1);assert.equal(saved.data.amount,quote.amount);
+ const url=new URL(saved.data.checkoutUrl);assert(url.pathname.includes(urls[service][discounted?1:0]));assert.equal(url.searchParams.get('quantity'),service==='advertising-video'?'2':null);assert(url.searchParams.get('externalidentifier').startsWith(session.id+'.'));
+ assert.equal((await invoke({...payload,action:'finalize',ticket:prepared.data.ticket})).code,200);assert.equal(commits,1);
+ const context={...input.payload,order_id:id,amount_agorot:input.payload.final_price_agorot,email:base.email,full_name:base.fullName,paid_at:'2026-10-26T10:00:00Z'};
+ const owner=orderMail(context,'owner',{filename:'receipt.pdf',content:Buffer.from('receipt')},{filename:'brief.txt',content:bytes});assert.equal(owner.attachments.length,2);assert(!owner.text.includes('forged'));
+ const customer=orderMail(context,'customer',{filename:'receipt.pdf',content:Buffer.from('receipt')});assert(customer.subject.includes('Payment confirmation'));assert.equal(customer.attachments.length,1);if(service==='advertising-video')assert(customer.text.includes('Quantity: 2'));if(!service.includes('research'))assert(!customer.text.includes('72 hours'));
+}
+for(const service of Object.keys(extra))for(const coupon of ['SHMILAPPSFAMILY','SHMILAPPSDEAL'])assert.equal(researchQuote(coupon,{service}).accepted,true);
+for(const quantity of [0,-1,1.5,'2',61])assert.throws(()=>normalizeIntake({...base,...extra['advertising-video'],service:'advertising-video',quantity}));
+assert.throws(()=>normalizeIntake({...base,service:'logo-full',brandName:''}));
+assert.throws(()=>normalizeIntake({...base,...extra['asset-research-full'],service:'asset-research-full',exchange:''}));
+assert.throws(()=>researchQuote('SHMILAPPSTEST',{service:'logo-full'}));
+assert.equal(researchQuote('SHMILAPPSTEST',{service:'market-research-full'}).amount,5);
+console.log('PASS eight full mocked intake/finalize/replay flows, exact hosted URLs and video quantity, four-product coupon pricing, server-owned amount/test flag, whole-minute validation, product-specific owner/customer emails with attachments. No live DB, mail or charge.');

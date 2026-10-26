@@ -1,5 +1,5 @@
 import { researchQuote } from '../lib/server/research-coupons.js';
-import { marketResearchProduct as product } from '../lib/server/research-products.js';
+import { getOrderProduct,orderQuantity } from '../lib/server/research-products.js';
 
 export default function handler(req,res) {
   res.setHeader('Cache-Control','no-store');
@@ -12,8 +12,10 @@ export default function handler(req,res) {
     body=typeof req.body==='string'?JSON.parse(req.body):req.body;
     if(JSON.stringify(body)?.length>2048)return send(413,{error:'body_too_large'});
   }catch{return send(400,{error:'invalid_json'});}
-  if(body?.service!==product.id || typeof body.coupon!=='string' || body.coupon.length>80)return send(400,{error:'invalid_request'});
+  const product=getOrderProduct(body?.service);
+  if(!product || typeof body.coupon!=='string' || body.coupon.length>80)return send(400,{error:'invalid_request'});
+  let quantity;try{quantity=orderQuantity(product,body.quantity??1);}catch{return send(400,{error:'invalid_quantity'});}
   let quote;
-  try{quote=researchQuote(body.coupon);}catch{quote={accepted:false,amount:product.regularAmount};}
-  return send(200,{service:product.id,currency:product.currency,regularAmount:product.regularAmount,...quote});
+  try{quote=researchQuote(body.coupon,{service:product.id,quantity});}catch{quote={accepted:false,amount:product.regularAmount*quantity};}
+  return send(200,{service:product.id,currency:product.currency,regularAmount:product.regularAmount*quantity,quantity,...quote});
 }

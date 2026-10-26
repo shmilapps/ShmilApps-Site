@@ -23,3 +23,10 @@ assert.equal(await sendGmailOrder(customer,{password:'mock'},transport({accepted
 assert.equal(await sendGmailOrder(owner,{password:'mock'},()=>({sendMail:async()=>{throw Object.assign(new Error('lost response'),{command:'DATA'});}})),'uncertain');
 assert.equal(await sendGmailOrder(owner,{password:'mock'},()=>({sendMail:async()=>{throw Object.assign(new Error('auth'),{code:'EAUTH'});}})),'failed');
 console.log('PASS existing receipt PDF only, private specification Buffer attachment, MIME with two actual files, separate subjects/customer accounting copy, strict Gmail sender, unsafe paths/oversize/invalid PDF rejected, partial and unknown delivery never retried automatically. Mock only; no charge, DB query or real mail.');
+
+const revisedId='00000000-0000-4000-8000-000000000002';
+const revisedPath=`intake/${revisedId}/specification.txt`;
+const revisedDb={from:table=>{assert.equal(table,'research_intake_sessions');return{select:()=>({eq:(_,value)=>{assert.equal(value,revisedId);return{maybeSingle:async()=>({data:{order_id:id}})};}})};},storage:{from:()=>({download:async path=>{assert.equal(path,revisedPath);return{data:new Blob(['Revised specification'])};}})}};
+assert.equal((await getSpecificationAttachment(revisedDb,{...context,object_path:revisedPath})).content.toString(),'Revised specification');
+await assert.rejects(()=>getSpecificationAttachment({...revisedDb,from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{order_id:revisedId}})})})})},{...context,object_path:revisedPath}));
+console.log('PASS revised specification attachment belongs to the same order; unrelated upload sessions rejected.');

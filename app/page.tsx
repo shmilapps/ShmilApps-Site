@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import ContactSection from '../components/ContactSection';
 import { researchOrderTerms } from '../components/ResearchOrderTerms';
-import StockResearchOrderForm from '../components/StockResearchOrderForm';
+import ServiceOnlineOrder from '../components/ServiceOnlineOrder';
+import {openOnlineOrder} from '../components/OnlineOrderSection';
 import MarketResearchBook from '../components/MarketResearchBook';
-import MarketResearchCheckout, { openMarketResearchOrder } from '../components/MarketResearchCheckout';
+import MarketResearchCheckout from '../components/MarketResearchCheckout';
 import TrainingExampleBook from '../components/TrainingExampleBook';
 import LinkReviewBook from '../components/LinkReviewBook';
 import ExchangeCaseStudy from '../components/ExchangeCaseStudy';
@@ -362,7 +363,7 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
       { title: 'תוצרים שיתקבלו', summary: 'מעטפת מלאה לפי הצורך: זהות מותג, תוכן, אתר, עיצוב, מדיה, חוויות אינטראקטיביות וחיבורים.', body: ['השירות יכול לכלול את כל המרכיבים שהעסק או המוצר צריכים. בוחרים יחד מה מתאים לרצון, לקהל, לתקציב ולהיקף העבודה.', 'גם פרסומת בפני עצמה: מגיבוש רעיון מקורי לעסק ועד לפלייר, וואן פייג׳, פוסט, קרוסלה או סרטון AI מדליק. המטרה היא למשוך תשומת לב, להעביר מסר ברור ולעזור בהגעה ללקוחות חדשים.'], bullets: ['בחירת שם, מסרים ובידול', 'לוגו ושפה חזותית', 'תכנון מבנה האתר וחוויית המשתמש', 'כתיבת תוכן ושפות נוספות לפי הצורך', 'עיצוב ופיתוח אתר עסק, אתר מוצר או דף נחיתה', 'תמונות, הירואים, סרטונים ואנימציות', 'התאמה למחשב, לטאבלט ולמובייל', 'חוויות אינטראקטיביות ועוזרי AI', 'חיבור לכלים ומערכות עסקיות לפי הצורך', 'חומרי השקה ונכסים דיגיטליים למותג', 'פרסומות, פליירים, וואן פייג׳ ופוסטים לרשתות החברתיות', 'קרוסלות וסרטוני AI לפרסום ולסטטוסים', 'הגדרות בסיס לחיפוש ולנגישות בהתאם להיקף שסוכם', 'בדיקות, העלאה לאוויר והדרכה'] },
       { title: 'התהליך', summary: 'מכירים את העסק והקהל, מגדירים את המותג והמסרים, מעצבים, מפתחים ובודקים עד להשקה.', body: ['מתחילים בשיחת היכרות: מה העסק או המוצר עושים, למי הם פונים ומה האתר או הפרסומת צריכים להשיג.', 'מפתחים יחד רעיון וכיוון יצירתי, מציגים הצעות ומתקדמים בשיתוף פעולה מלא לאורך כל הדרך. הלקוח שותף להחלטות, נותן משוב ומאשר את הכיוון והתוצר בכל שלב שסוכם.', 'מגבשים את המסרים, הזהות, השפה החזותית ומבנה העמודים. אפשר לכלול גם שם, לוגו ותכנון חומרי ההשקה.', 'יוצרים תוכן, עיצוב ומדיה, ומפתחים את האתר והחוויות שנבחרו. בוחנים טכנולוגיות ואפקטים בהתאם לערך שהם מוסיפים ולנוחות השימוש.', 'בודקים גדלי מסך, שפות, כיווניות, קישורים, טעינה וזרימת שימוש. לאחר אישור עולים לאוויר, מדריכים וממשיכים לשפר בהתאם לצורך.'] },
       { title: 'עבודה לדוגמה', summary: 'ShmilApps כדוגמה: האתר, הלוגו וסרטון פרסומת AI שפורסם בסטטוסים ברשתות החברתיות.', body: [] },
-      { title: 'תמחור', summary: 'המחיר מותאם למעטפת הנדרשת: מאתר ממוקד ועד לפיתוח מותג ונוכחות דיגיטלית מקצה לקצה.', body: ['המחיר תלוי בהיקף המיתוג, מספר העמודים, עומק התוכן, כמות השפות, המדיה, האינטראקטיביות והחיבורים.', 'מגדירים מראש תוצרים, שלבים והיקף עבודה. אפשר להתחיל בליבה ולהרחיב בהמשך, בהתאם לצורך ולהיקף שסוכם.', 'אחסון, דומיין, שירותי צד שלישי ותחזוקה מתומחרים או מוסדרים לפי ההצעה. ניתן לתאם בנפרד תמיכה ועדכונים שוטפים.'] },
+      { title: 'תמחור', summary: 'לוגו מלא: 99 ש״ח. סרטון פרסומת: 499 ש״ח לדקה שלמה. אתרים ומיתוג רחב בהצעה מותאמת.', body: ['לוגו מלא: 99 ש״ח, או 69 ש״ח עם קוד הנחה מאושר.', 'סרטון פרסומת: 499 ש״ח לדקה שלמה, או 349 ש״ח לדקה עם קוד הנחה מאושר. ניתן לבחור מספר דקות בטופס ההזמנה.', 'המחיר תלוי בהיקף המיתוג, מספר העמודים, עומק התוכן, כמות השפות, המדיה, האינטראקטיביות והחיבורים.', 'מגדירים מראש תוצרים, שלבים והיקף עבודה. אפשר להתחיל בליבה ולהרחיב בהמשך, בהתאם לצורך ולהיקף שסוכם.', 'אחסון, דומיין, שירותי צד שלישי ותחזוקה מתומחרים או מוסדרים לפי ההצעה. ניתן לתאם בנפרד תמיכה ועדכונים שוטפים.'] },
       { title: 'לוחות זמנים', summary: 'נקבעים לפי היקף האתר, עבודת המיתוג, יצירת המדיה והחיבורים הנדרשים.', body: ['דף נחיתה ממוקד, אתר עסק ואתר מוצר עשיר דורשים היקפי עבודה שונים. קובעים לוח זמנים ואבני דרך אחרי הבנת הצורך.', 'איסוף חומרים, יצירת תוכן, תרגום ומשוב על העיצוב משפיעים על ההתקדמות. ניתן להשיק בשלבים ולהוסיף יכולות בהמשך.'] },
       { title: 'שאלות נפוצות', summary: 'אפשר להתחיל בלי לוגו או תוכן, לשדרג אתר קיים ולשלב מדיה ו־AI כחלק מהפתרון.', body: [], faqs: [{ question: 'אין לי עדיין שם, לוגו או טקסטים. אפשר להתחיל?', answer: 'כן. אפשר לבנות יחד את המעטפת מתחילתה, או לעבוד עם חומרים וזהות קיימים.' }, { question: 'אפשר לשלב סרטונים, אנימציות ועוזר AI?', answer: 'כן, בהתאם לצורך ולהיקף שסוכם, תוך התחשבות במהירות, בקריאות ובנוחות השימוש.' }, { question: 'האתר יהיה מותאם למובייל ולשפות נוספות?', answer: 'ההתאמה למכשירים היא חלק מהתכנון. שפות נוספות ותרגום מוגדרים לפי הפרויקט.' }, { question: 'אפשר להמשיך לפתח את האתר אחרי ההשקה?', answer: 'כן. אפשר להוסיף עמודים, מדיה, יכולות וחיבורים, ולתאם תחזוקה ותמיכה בהמשך.' }] },
     ],
@@ -376,7 +377,7 @@ const websitesBrandingPage: typeof appDevelopmentPage = {
       { title: 'Deliverables', summary: 'A complete package as needed: brand identity, content, website, design, media, interactive experiences and integrations.', body: ['The service can cover everything your business or product needs. We define the right combination around your goals, audience, budget and agreed scope.', 'Advertising can also be a standalone project: from an original idea for your business to a flyer, one-pager, social post, carousel or eye-catching AI video. The goal is to capture attention, communicate clearly and help you reach new customers.'], bullets: ['Naming, messaging and positioning', 'Logo and visual identity', 'Website structure and user experience', 'Content and additional languages as needed', 'Business website, product site or landing page design and development', 'Images, hero artwork, videos and animation', 'Desktop, tablet and mobile layouts', 'Interactive experiences and AI assistants', 'Business tool and system integrations as needed', 'Launch materials and digital brand assets', 'Advertisements, flyers, one-pagers and social media posts', 'Carousels and AI videos for advertising and social status updates', 'Basic search and accessibility setup within the agreed scope', 'Testing, launch and training'] },
       { title: 'The process', summary: 'Understand the business and audience, define identity and messaging, design, develop and test through launch.', body: ['Start with the business or product, its audience and the goals of the website or advertisement.', 'Develop the idea and creative direction together, share proposals and collaborate throughout. Your feedback guides the work, with direction and deliverables approved at the agreed stages.', 'Define messaging, identity, visual language and page structure, including naming, logo and launch materials when needed.', 'Create content, design and media, then develop the website and chosen experiences. Technology and effects are selected for the value and usability they add.', 'Check screen sizes, languages, text direction, links, loading and user journeys. After approval, launch, hand over and improve as needed.'] },
       { title: 'Example project', summary: 'ShmilApps in practice: the website, logo and an AI advertisement published in social media status updates.', body: [] },
-      { title: 'Pricing', summary: 'Tailored to the package, from a focused website to complete brand and digital presence development.', body: ['Pricing depends on branding scope, page count, content, languages, media, interactivity and integrations.', 'Deliverables, stages and scope are agreed in advance. Start with the core and expand later, according to your needs and the agreed scope.', 'Hosting, domains, third-party services and maintenance are arranged according to the proposal. Ongoing support and updates can be agreed separately.'] },
+      { title: 'Pricing', summary: 'Full logo: ₪99. Advertising video: ₪499 per whole minute. Websites and wider branding by tailored quote.', body: ['Full logo: ₪99, or ₪69 with an approved discount code.', 'Advertising video: ₪499 per whole minute, or ₪349 per minute with an approved discount code. Choose whole minutes in the order form.', 'Pricing depends on branding scope, page count, content, languages, media, interactivity and integrations.', 'Deliverables, stages and scope are agreed in advance. Start with the core and expand later, according to your needs and the agreed scope.', 'Hosting, domains, third-party services and maintenance are arranged according to the proposal. Ongoing support and updates can be agreed separately.'] },
       { title: 'Timelines', summary: 'Based on website scope, branding work, media creation and required integrations.', body: ['A focused landing page, business website and rich product site involve different workloads. We agree on timing and milestones after discovery.', 'Source materials, content creation, translation and design feedback affect progress. Staged launches can add capabilities over time.'] },
       { title: 'FAQ', summary: 'Start without a logo or copy, refresh an existing site and include media or AI in the solution.', body: [], faqs: [{ question: 'Can we start without a name, logo or website copy?', answer: 'Yes. We can build the package from the beginning or work with an existing identity and materials.' }, { question: 'Can you include video, animation and an AI assistant?', answer: 'Yes, according to the agreed needs and scope, with attention to speed, readability and usability.' }, { question: 'Will the site work on mobile and in other languages?', answer: 'Device adaptation is part of the design. Additional languages and translation are defined for the project.' }, { question: 'Can the website keep evolving after launch?', answer: 'Yes. Add pages, media, features and integrations, with maintenance and support agreed as needed.' }] },
     ],
@@ -1428,7 +1429,7 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "title": "תמחור והתחייבות לשביעות רצון",
         "summary": "סקירת מניה או מטבע ב־99 ש״ח. לא מרוצים? החזר כספי מלא, ללא שאלות.",
         "body": [
-          "מחיר סקירה של מניה אחת או מטבע אחד: 99 ש״ח, כולל מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים.",
+          "מחיר סקירה של מניה אחת או מטבע אחד: 99 ש״ח, או 69 ש״ח עם קוד הנחה מאושר, כולל מחקר פונדמנטלי וניתוח טכני אקטואלי עם גרפים.",
           researchOrderTerms.he.refund
         ]
       },
@@ -1574,7 +1575,7 @@ const stockCryptoPage: typeof appDevelopmentPage = {
         "title": "Pricing and satisfaction guarantee",
         "summary": "A stock or crypto review for ₪99. Not satisfied? A full refund, no questions asked.",
         "body": [
-          "Research on one stock or one crypto asset costs ₪99, including fundamental research and current technical analysis with charts.",
+          "Research on one stock or one crypto asset costs ₪99, or ₪69 with an approved discount code, including fundamental research and current technical analysis with charts.",
           researchOrderTerms.en.refund
         ]
       },
@@ -2802,7 +2803,7 @@ export default function Home() {
             <div className="service-hero-titlebar" dir={isHebrew ? 'rtl' : 'ltr'}>
               <h2 id={`${serviceId}-title`}>{servicePage.title}</h2>
               <p>{servicePage.subtitle}</p>
-              {(isMarketRoute || isStockCryptoRoute) ? <a className={isMarketRoute ? "market-order-cta online-order-cta" : "market-order-cta"} href={isStockCryptoRoute ? "#stock-order" : "#market-order"} onClick={(event) => { event.preventDefault(); if(isMarketRoute){openMarketResearchOrder();return;} const target=document.getElementById(isStockCryptoRoute ? 'stock-order' : 'market-order'); if(!target)return; const offset=stickyHeroRef.current?.getBoundingClientRect().bottom ?? 0; window.scrollTo({top:window.scrollY+target.getBoundingClientRect().top-offset-16,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}); }}>{isHebrew ? 'הזמן עכשיו' : 'Order now'}</a> : null}
+              {(isMarketRoute || isStockCryptoRoute || isWebsitesBrandingRoute) ? <a className="market-order-cta online-order-cta" href={isMarketRoute?'#market-order':isStockCryptoRoute?'#stock-order':'#branding-order'} onClick={event=>{event.preventDefault();openOnlineOrder(isMarketRoute?'market-order':isStockCryptoRoute?'stock-order':'branding-order');}}>{isHebrew?'הזמן עכשיו':'Order now'}</a> : null}
             </div>
           </div>
           <div className="service-page-content">
@@ -2971,8 +2972,8 @@ export default function Home() {
               );
             })}
             {isMarketRoute ? <MarketResearchCheckout language={language} /> : null}
+            {isStockCryptoRoute||isWebsitesBrandingRoute?<ServiceOnlineOrder language={language} branding={isWebsitesBrandingRoute}/>:null}
             <section className="service-contact" aria-labelledby="service-contact-title" dir={isHebrew ? 'rtl' : 'ltr'}>
-              {isStockCryptoRoute ? <StockResearchOrderForm language={language} /> : null}
               <h3 id="service-contact-title">{servicePage.contact.title}</h3>
               {servicePage.contact.lines.map((line) => <p key={line}>{line}</p>)}
               <div className="service-contact-links">
