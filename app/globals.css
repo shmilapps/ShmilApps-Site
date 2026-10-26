@@ -3090,3 +3090,20 @@ main[dir="rtl"] .ai-chat-input {
 .online-product-row img{width:80px;height:80px;object-fit:contain;border-radius:10px;background:#030800}
 .online-product-row>span:nth-child(2){display:grid;gap:8px;flex:1}.online-product-row strong{font-size:1.15rem}.online-product-row small{opacity:.85}
 .market-checkout-card img{object-fit:contain;max-height:330px}
+
+/* Clear whole-minute controls; labels remain wide while the number stays compact. */
+.market-checkout .video-duration{display:grid;justify-items:start;gap:8px;margin-block:12px}
+.market-checkout .duration-control{display:inline-flex;align-items:stretch;gap:6px;direction:ltr;width:auto}
+.market-checkout .duration-control input{width:5ch!important;min-width:5ch;max-width:5ch;padding:8px;text-align:center;font-size:1.2rem;appearance:textfield;margin:0}
+.duration-control input::-webkit-inner-spin-button,.duration-control input::-webkit-outer-spin-button{appearance:none;margin:0}
+.duration-arrows{display:grid;gap:3px}.market-checkout .duration-arrows button{width:36px;min-height:26px;padding:0;color:#dfff7a;background:#24370d;border:1px solid #9bb83e;font-size:14px;cursor:pointer;border-radius:5px}
+.market-checkout input,.market-checkout select,.market-checkout textarea{scroll-margin-top:calc(var(--subpage-content-top,100px) + 24px)}
+.custom-format-note{display:block;line-height:1.7;color:#dfff7a;margin-top:8px}
+.service-example-mark{display:flex;align-items:center;justify-content:center;flex:0 0 128px;width:128px;height:68px;margin-inline-end:12px;pointer-events:none}
+.service-example-mark img,.service-example-mark svg{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 8px #7aaf1730)}
+.service-example-mark.brand-motion img{animation:example-brand-float 5s ease-in-out infinite}
+@keyframes example-brand-float{50%{transform:translateY(-3px);filter:drop-shadow(0 3px 12px #baff0060)}}
+@media(max-width:600px){.service-example-mark{flex-basis:90px;width:90px;height:58px;margin-inline-end:0}}
+@media(prefers-reduced-motion:reduce){.service-example-mark.brand-motion img{animation:none}}
+
+.service-example-mark video{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}

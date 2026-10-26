@@ -32,3 +32,12 @@ assert.throws(()=>normalizeIntake({...base,...extra['asset-research-full'],servi
 assert.throws(()=>researchQuote('SHMILAPPSTEST',{service:'logo-full'}));
 assert.equal(researchQuote('SHMILAPPSTEST',{service:'market-research-full'}).amount,5);
 console.log('PASS eight full mocked intake/finalize/replay flows, exact hosted URLs and video quantity, four-product coupon pricing, server-owned amount/test flag, whole-minute validation, product-specific owner/customer emails with attachments. No live DB, mail or charge.');
+
+const minimalAsset={...base,...extra['asset-research-full'],service:'asset-research-full',market:undefined,description:'',audience:undefined,links:undefined,exchange:'unknown'};
+const normalizedAsset=normalizeIntake(minimalAsset);assert.equal(normalizedAsset.payload.market,'both');assert(normalizedAsset.payload.description.includes('TEST'));assert.equal(normalizedAsset.payload.audience,'');assert.equal(normalizedAsset.payload.links,'');
+const minimalLogo=normalizeIntake({...base,...extra['logo-full'],service:'logo-full',market:null});assert.equal(minimalLogo.payload.market,'both');
+for(const format of ['2:3','3:2','1:1','9:16','16:9','custom'])assert.equal(normalizeIntake({...base,...extra['advertising-video'],service:'advertising-video',market:null,format}).payload.request_details.format,format);
+for(const format of ['',undefined,'forged'])assert.throws(()=>normalizeIntake({...base,...extra['advertising-video'],service:'advertising-video',format}));
+const custom=normalizeIntake({...base,...extra['advertising-video'],service:'advertising-video',format:'custom'}).payload;
+const customMail=orderMail({...custom,order_id:'00000000-0000-4000-8000-000000000001',amount_agorot:49900,email:base.email,full_name:base.fullName},'owner',{filename:'receipt.pdf'},{filename:'brief.txt'});assert(customMail.text.includes('נדרש תיאום'));assert(!customMail.text.includes('שוק יעד'));
+console.log('PASS simplified asset order accepts empty research question and unknown exchange; no target-market input needed for logo/video; all five aspect ratios/custom accepted, absent/invalid ratio rejected; custom follow-up preserved in owner mail.');

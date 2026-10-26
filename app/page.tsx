@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import ContactSection from '../components/ContactSection';
 import { researchOrderTerms } from '../components/ResearchOrderTerms';
+import ServiceExampleMark from '../components/ServiceExampleMark';
 import ServiceOnlineOrder from '../components/ServiceOnlineOrder';
 import {openOnlineOrder} from '../components/OnlineOrderSection';
 import MarketResearchBook from '../components/MarketResearchBook';
@@ -1954,6 +1955,7 @@ const quoteCostReductionPage: typeof appDevelopmentPage = {
           "מסכמים את האפשרויות ואת הדרך המומלצת. אפשר להיעזר במסקנות מול הספק הקיים, או לבדוק ביצוע דרך ShmilApps. ההחלטה נשארת שלכם."
         ]
       },
+      {"title": "דוגמה לתהליך", "summary": "בחינת הצעה למערכת עסקית והשוואת חלופות לפני פיתוח.", "body": ["לדוגמה, בהצעה למערכת עסקית בודקים אילו רכיבים כבר קיימים, אילו חיבורים יכולים לחסוך פיתוח ואילו יכולות אפשר לדחות לשלב הבא. משווים גם תחזוקה ורישיונות, ומציגים את ההבדלים בתכולה לפני החלטה. זו המחשה לתהליך, ללא הבטחה לסכום חיסכון."]},
       {
         "title": "תמחור",
         "summary": "מגדירים מראש את היקף הבדיקה ואת המחיר, בהתאם למורכבות ההצעה והפרויקט.",
@@ -2074,6 +2076,7 @@ const quoteCostReductionPage: typeof appDevelopmentPage = {
           "We summarize the options and recommended approach. Use the findings with your existing supplier, or explore delivery through ShmilApps. The choice remains yours."
         ]
       },
+      {"title": "Example process", "summary": "Reviewing a business-system quote and comparing alternatives before development.", "body": ["For example, we check which components already exist, which integrations can avoid new development, and which capabilities can wait for a later phase. We compare maintenance and licensing as well, and explain scope differences before a decision. This illustrates the process and does not promise a saving amount."]},
       {
         "title": "Pricing",
         "summary": "Review scope and pricing are agreed in advance, based on the quote and project complexity.",
@@ -2346,7 +2349,7 @@ const websiteBrandCaseStudy = {
     subtitle: 'מהרעיון ועד למותג שאפשר לראות, לחוות ולזכור',
     intro: 'האתר שבו אתם נמצאים הוא דוגמה לחיבור בין מיתוג, תוכן, עיצוב ופיתוח. כל חלק נבנה כחלק מחוויה אחת: זהות שחורה־ירוקה, דמות רובוט מזוהה, סרטון מותג, הירואים ייעודיים, שפות וניווט עקביים ועוזר AI.',
     benefitsTitle: 'יתרונות מרכזיים',
-    benefits: ['זהות מותג עקבית - צבעים, מסרים, מדיה ודמות שמחברים בין העמודים.', 'תשומת לב לכל פרט ולכל פיקסל - טיפוגרפיה, יישור, ריווח, כפתורים והתנהגות במכשירים שונים.', 'חוויה בשתי שפות - עברית ואנגלית, עם התאמה לכיווניות ולניווט.', 'מדיה עשירה - סרטון מותג והירואים שנוצרו במיוחד לכל שירות.', 'עוזר AI פעיל - הכוונה ראשונית לשירותים ולצורכי המבקר.', 'בסיס מתפתח - אפשרות להוסיף בהמשך עמודים, תוכן, טכנולוגיות וחוויות חדשות.'],
+    benefits: ['סוכן סושיאל שמתאים ומפרסם תכנים בכל אחת מהרשתות החברתיות שאליהן הוא מחובר.', 'זהות מותג עקבית - צבעים, מסרים, מדיה ודמות שמחברים בין העמודים.', 'תשומת לב לכל פרט ולכל פיקסל - טיפוגרפיה, יישור, ריווח, כפתורים והתנהגות במכשירים שונים.', 'חוויה בשתי שפות - עברית ואנגלית, עם התאמה לכיווניות ולניווט.', 'מדיה עשירה - סרטון מותג והירואים שנוצרו במיוחד לכל שירות.', 'עוזר AI פעיל - הכוונה ראשונית לשירותים ולצורכי המבקר.', 'בסיס מתפתח - אפשרות להוסיף בהמשך עמודים, תוכן, טכנולוגיות וחוויות חדשות.'],
     techTitle: 'טכנולוגיות ויכולות',
     tech: 'האתר משלב פיתוח ב־React ו־TypeScript, עיצוב רספונסיבי, וידאו, אייקונים וגרפיקה, תמונות WebP מותאמות לטעינה ועוזר AI המחובר לשירות שרת. תהליך העדכון מחבר בין ניהול הקוד לפרסום האתר.',
     processTitle: 'תהליך העבודה',
@@ -2363,7 +2366,7 @@ const websiteBrandCaseStudy = {
     subtitle: 'From an idea to a brand people can see, experience and remember',
     intro: 'The website you are visiting brings branding, content, design and development into one experience: a black-and-green identity, recognizable robot mascot, brand video, dedicated service heroes, consistent bilingual navigation and an AI assistant.',
     benefitsTitle: 'Key benefits',
-    benefits: ['Consistent brand identity across colors, messaging, media and the mascot.', 'Attention to every detail and every pixel, from typography and spacing to controls and device behavior.', 'A bilingual experience in Hebrew and English, with appropriate text direction and navigation.', 'Rich media, including a brand video and purpose-made service hero artwork.', 'An active AI assistant that helps visitors explore services and clarify their needs.', 'An evolving foundation for additional pages, content, technologies and experiences.'],
+    benefits: ['A social media agent that adapts and publishes content to each connected social network.', 'Consistent brand identity across colors, messaging, media and the mascot.', 'Attention to every detail and every pixel, from typography and spacing to controls and device behavior.', 'A bilingual experience in Hebrew and English, with appropriate text direction and navigation.', 'Rich media, including a brand video and purpose-made service hero artwork.', 'An active AI assistant that helps visitors explore services and clarify their needs.', 'An evolving foundation for additional pages, content, technologies and experiences.'],
     techTitle: 'Technologies and capabilities',
     tech: 'React and TypeScript development, responsive styling, video, icons and graphics, WebP images optimized for loading, and an AI assistant connected to a server endpoint. Code management is connected to website publishing.',
     processTitle: 'The work behind it',
@@ -2480,6 +2483,23 @@ export default function Home() {
     video.volume = 1;
     video.play().catch(() => undefined);
   }, []);
+
+  // The home sections mount after the browser's initial fragment navigation.
+  useEffect(()=>{
+    if(window.location.pathname!=='/')return;
+    let cancelled=false,frame=0;
+    const scroll=()=>{if(cancelled)return;const id=window.location.hash.slice(1);if(!['home','services','follow','portfolio','about','contact'].includes(id))return;
+      if(id==='follow')setSocialOpen(true);
+      frame=requestAnimationFrame(()=>{frame=requestAnimationFrame(()=>{
+        const target=document.getElementById(id);if(!target||cancelled)return;
+        const offset=document.querySelector('.site-header')?.getBoundingClientRect().bottom??0;
+        window.scrollTo({top:Math.max(0,window.scrollY+target.getBoundingClientRect().top-offset-16),behavior:'instant'});
+      });});
+    };
+    const hash=()=>{cancelled=false;scroll();};const cancel=()=>{cancelled=true;};
+    scroll();window.addEventListener('hashchange',hash);window.addEventListener('load',scroll);window.addEventListener('wheel',cancel,{passive:true});window.addEventListener('touchstart',cancel,{passive:true});
+    return()=>{cancelAnimationFrame(frame);window.removeEventListener('hashchange',hash);window.removeEventListener('load',scroll);window.removeEventListener('wheel',cancel);window.removeEventListener('touchstart',cancel);};
+  },[]);
 
   const setLanguage = (nextLanguage: 'he' | 'en') => {
     setLanguageState(nextLanguage);
@@ -2822,6 +2842,7 @@ export default function Home() {
                     {isSoftwareExamplePanel ? <small className="service-case-quote">{softwareCase.quote}</small> : null}
                     <small className="service-summary-text">{panel.summary}</small>
                   </span>
+                  {/דוגמ|example|sample/i.test(panel.title)?<ServiceExampleMark service={serviceId}/>:null}
                   <em><span className="more-text">{text.nav.more}</span><span className="less-text">{text.nav.less}</span></em>
                 </summary>
                 <div className="service-detail-body" dir={isHebrew ? 'rtl' : 'ltr'}>
