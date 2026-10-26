@@ -10,7 +10,7 @@ const images:Record<string,string>={
  'websites-and-branding':'/brand/shmilapps-hero-transparent.webp',
  'automation-ai':'/brand/ai/shmilapps-ai-bot-icon-512.png',
  'business-integrations':'/brand/examples/integration.png',
- 'market-research':'/brand/examples/market.png?v=rtl'
+ 'market-research':'/brand/examples/market.png?v=he-brochure'
 };
 export default function ServiceExampleMark({service}:{service:string}){
  const image=images[service];const ref=useRef<HTMLSpanElement>(null);const [animate,setAnimate]=useState(false);
