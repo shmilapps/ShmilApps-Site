@@ -3107,3 +3107,6 @@ main[dir="rtl"] .ai-chat-input {
 @media(prefers-reduced-motion:reduce){.service-example-mark.brand-motion img{animation:none}}
 
 .service-example-mark video{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:screen}
+
+/* ShmilVentory lettering needs a white backing on the dark site. */
+.service-example-mark img[src="/portfolio/shmilventory/shmilventory-logo.png"],.case-study-logo-wrap img[src="/portfolio/shmilventory/shmilventory-logo.png"]{background:#fff;border-radius:10px;padding:5px;box-sizing:border-box}
