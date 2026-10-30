@@ -47,7 +47,7 @@ export function galaxyFrame(index:number,seconds:number){
 /** The image and every route use the same undistorted, contained rectangle. */
 export function galaxyLayout(width:number,height:number){
  const ratio=1581/995,scale=width<=600?.95:.93;
- const imageWidth=Math.min(width,height*ratio)*scale;
+ const imageWidth=width<=600?Math.max(width*.95,height*.78*ratio):Math.min(width,height*ratio)*scale;
  const imageHeight=imageWidth/ratio;
  return {left:(width-imageWidth)/2,top:(height-imageHeight)/2,width:imageWidth,height:imageHeight};
 }
