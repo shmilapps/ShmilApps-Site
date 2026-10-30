@@ -3,7 +3,7 @@
 import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import type {CSSProperties} from 'react';
 import './portfolio-galaxy.css';
-import {orbitCount,galaxyFrame} from './galaxyMotion';
+import {orbitCount,galaxyFrame,galaxyLayout,pointOnGalaxy} from './galaxyMotion';
 
 type Technology={id:string;name:string;logo:string;enabled:boolean};
 type Project={id:string;title:string;subtitle:{he:string;en:string};description:{he:string;en:string};video:string;poster:string;href:string};
@@ -65,11 +65,15 @@ export default function PortfolioGalaxy({language}:{language:'he'|'en'}){
    last=time;
    const content=element.parentElement!;
    const width=content.clientWidth,height=content.clientHeight;
-   const stageTop=element.offsetTop;
+   const layout=galaxyLayout(width,height);
+   const image=content.querySelector<HTMLElement>('.galaxy-space-image');
+   if(image){Object.assign(image.style,{left:layout.left+'px',top:layout.top+'px',width:layout.width+'px',height:layout.height+'px'});}
+   const stageTop=element.getBoundingClientRect().top-content.getBoundingClientRect().top;
    cards.forEach((card,index)=>{
     const motion=galaxyFrame(index,elapsed.current);
-    const x=(motion.x-.5)*width*(width<600?.72:1);
-    const y=motion.y*height-stageTop-element.clientHeight/2;
+    const point=pointOnGalaxy(motion,layout);
+    const x=point.x-width/2;
+    const y=point.y-stageTop-element.clientHeight/2;
     card.style.transform=`translate(-50%,-50%) translate(${x}px,${y}px) scale(${motion.scale})`;
     card.style.opacity=String(motion.opacity);
     card.style.zIndex=String(Math.round(motion.progress*100));
@@ -86,7 +90,9 @@ export default function PortfolioGalaxy({language}:{language:'he'|'en'}){
    if(!paused)frame=requestAnimationFrame(paint);
   };
   paint(performance.now());
-  return()=>cancelAnimationFrame(frame);
+  const resize=new ResizeObserver(()=>{if(paused)paint(performance.now());});
+  resize.observe(element.parentElement!);
+  return()=>{cancelAnimationFrame(frame);resize.disconnect();};
  },[paused]);
  useEffect(()=>{
   stage.current?.querySelectorAll('video').forEach(v=>{

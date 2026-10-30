@@ -47,3 +47,6 @@
 
 /* Center the desktop backdrop with a slightly wider view of the galaxy. */
 @media(min-width:601px){.galaxy-content>.galaxy-space-image{object-position:center;transform:scale(.93)}}
+
+/* A shared image rectangle keeps the artwork and routes aligned at every width. */
+.galaxy-content>.galaxy-space-image{inset:auto;object-fit:fill;transform:none;max-width:none}

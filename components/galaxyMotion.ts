@@ -43,3 +43,18 @@ export function galaxyFrame(index:number,seconds:number){
  const progress=Math.log1p(3*phase)/Math.log(4);
  return {...routePoint(arm,progress),...routeAppearance(progress),arm,progress,active,launchAt};
 }
+
+/** The image and every route use the same undistorted, contained rectangle. */
+export function galaxyLayout(width:number,height:number){
+ const ratio=1581/995,scale=width<=600?.95:.93;
+ const imageWidth=Math.min(width,height*ratio)*scale;
+ const imageHeight=imageWidth/ratio;
+ return {left:(width-imageWidth)/2,top:(height-imageHeight)/2,width:imageWidth,height:imageHeight};
+}
+export function pointOnGalaxy(point:Point,layout:ReturnType<typeof galaxyLayout>){
+ // Convert the original traced 1440 x 928 scene to source-image coordinates.
+ const referenceHeight=928*1.15,referenceWidth=referenceHeight*(1581/995);
+ const u=(point.x*1440-(1440-referenceWidth)/2)/referenceWidth;
+ const v=(point.y*928-(928-referenceHeight)/2)/referenceHeight;
+ return {x:layout.left+u*layout.width,y:layout.top+v*layout.height};
+}
