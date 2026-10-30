@@ -1,0 +1,46 @@
+.portfolio-galaxy-section{margin-block:72px;isolation:isolate;scroll-margin-top:90px;background:#020704;border:1px solid #b9ef3626;border-radius:28px;overflow:hidden;color:#f3f8ea}
+.galaxy-heading{text-align:center;padding:44px 20px 0;position:relative;z-index:2}.galaxy-eyebrow{font-size:11px;letter-spacing:.22em;color:#b9ee54;font-weight:700;direction:ltr;display:block}.galaxy-heading h2{direction:ltr;font-size:clamp(36px,5.8vw,76px);line-height:1.1;margin:16px 0;letter-spacing:-.045em;font-weight:800}.galaxy-heading em{font-style:normal;color:#c5ff21;text-shadow:0 0 35px #baff2844}.galaxy-heading p{color:#b4c3b0;font-size:16px;margin:0 auto;max-width:550px}
+.galaxy-tech-strip{overflow:hidden;border-block:1px solid #c5ff211c;background:#0b130c;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.galaxy-tech-track{display:flex;width:max-content;animation:galaxy-strip 55s linear infinite}.galaxy-tech-group{display:flex;flex-shrink:0;align-items:center;gap:40px;padding:16px 20px;min-width:100vw}.galaxy-tech-strip.reverse .galaxy-tech-track{animation-direction:reverse}.galaxy-tech-item{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;color:#d7dfd1;font-size:13px;font-weight:600}.galaxy-tech-item img{object-fit:contain;width:32px;height:32px}
+.galaxy-stage{position:relative;height:650px;max-height:70vw;min-height:420px;overflow:hidden;background:radial-gradient(ellipse at center,#466f1823 0,transparent 60%),radial-gradient(circle at 18% 30%,#c5ff2155 0 1px,transparent 2px),radial-gradient(circle at 82% 72%,#c5ff2140 0 1px,transparent 2px),radial-gradient(circle at 65% 17%,#fff8 0 1px,transparent 1.5px)}
+.galaxy-orbit-card{position:absolute;left:50%;top:50%;width:226px;aspect-ratio:16/10;padding:0;overflow:hidden;border-radius:12px;border:1px solid #b9f13b80;background:#101b0e;box-shadow:0 10px 25px #0009,0 0 18px #aaff2220;cursor:pointer;will-change:transform,opacity;text-align:start;transform:translate(-50%,-50%) scale(.1);opacity:0;transition:border-color .2s}.galaxy-orbit-card:hover{border-color:#ddff7e;box-shadow:0 0 26px #baff2266}.galaxy-orbit-card video{display:block;width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.galaxy-orbit-card>span{position:absolute;inset:auto 0 0;padding:25px 10px 9px;background:linear-gradient(transparent,#020802ed);display:flex;flex-direction:column;color:white}.galaxy-orbit-card strong{font-size:14px;line-height:1.2;direction:ltr}.galaxy-orbit-card small{font-size:10px;color:#d5e4c8;margin-top:3px}
+.galaxy-controls{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 28px 20px;color:#85967e;font-size:12px}.galaxy-controls button{border:1px solid #c5ff2144;color:#c5ff21;background:#15200e;border-radius:25px;padding:9px 16px;cursor:pointer}
+.galaxy-dialog{position:fixed;inset:0;width:min(860px,92vw);max-width:92vw;max-height:88dvh;margin:auto;padding:0;border:1px solid #b5ee4366;border-radius:22px;color:#f3f9ed;background:#0b1209;overflow:auto;box-shadow:0 30px 100px #000b}.galaxy-dialog::backdrop{background:#000c;backdrop-filter:blur(9px)}.galaxy-dialog article{position:relative}.galaxy-dialog-close{position:absolute;top:12px;inset-inline-end:12px;z-index:2;width:40px;height:40px;border:1px solid #c5ff2177;border-radius:50%;background:#071003e8;color:white;font-size:27px;cursor:pointer}.galaxy-dialog video{display:block;width:100%;max-height:45dvh;background:#000}.galaxy-dialog-copy{padding:30px}.galaxy-dialog h3{font-size:32px;margin:12px 0;direction:ltr;text-align:start}.galaxy-dialog h4{color:#c5ff21;font-size:19px;margin:10px 0}.galaxy-dialog p{color:#c4cebd;line-height:1.85;margin:16px 0 24px}.galaxy-dialog a{display:inline-block;color:#071000;background:#c5ff21;border-radius:24px;padding:10px 20px;text-decoration:none;font-weight:700}
+@keyframes galaxy-strip{to{transform:translateX(-50%)}}
+@media(max-width:600px){.portfolio-galaxy-section{margin-block:38px;border-radius:18px}.galaxy-heading{padding-top:30px}.galaxy-heading p{font-size:14px}.galaxy-stage{height:460px;min-height:460px;max-height:none}.galaxy-orbit-card{width:145px}.galaxy-tech-group{gap:28px;padding-block:12px}.galaxy-tech-item{font-size:12px}.galaxy-controls{padding-inline:16px}.galaxy-controls>span{max-width:140px}.galaxy-dialog-copy{padding:22px}}
+@media(prefers-reduced-motion:reduce){.galaxy-tech-track{animation:none}.galaxy-tech-strip{overflow:auto;mask-image:none}.galaxy-tech-group[aria-hidden=true]{display:none}.galaxy-stage{display:grid}.galaxy-controls{padding-top:24px}}
+
+/* Prevent the marquee's intrinsic width from expanding the parent grid. */
+.portfolio-galaxy-section{width:100%;max-width:100%;min-width:0;box-sizing:border-box}.galaxy-tech-strip{width:100%;max-width:100%;min-width:0;contain:inline-size}
+
+/* The dust paths and orbit cards share spiralPoint(), not elliptical orbits. */
+.galaxy-heading h2[dir=rtl]{direction:rtl;letter-spacing:-.025em}
+.galaxy-heading p{max-width:760px;line-height:1.8}
+.galaxy-space-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;pointer-events:none;mask-image:none;filter:none;transform:scale(1.15);z-index:0}
+.galaxy-spiral-arms{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;opacity:.045}
+.galaxy-spiral-arms path{fill:none;stroke:#c4dd80;stroke-width:15;stroke-linecap:round}
+.galaxy-controls{position:relative;min-height:78px;padding:8px 28px 26px;justify-content:center}
+.galaxy-controls button{position:absolute;inset-inline-start:28px;top:16px;display:grid;place-items:center;width:42px;height:42px;padding:0;border-radius:50%;flex-shrink:0}
+.galaxy-controls button:hover,.galaxy-controls button:focus-visible{background:#24350d;border-color:#c5ff21;outline:2px solid #b9ef3660;outline-offset:3px}
+.galaxy-promise{margin:0;text-align:center;display:flex;flex-direction:column;gap:6px;line-height:1.6;font-size:14px;color:#b3c5a9}
+.galaxy-promise strong{color:#c5ff21;font-size:17px;font-weight:700}
+.galaxy-orbit-card:focus-visible{opacity:1!important;z-index:200!important;outline:3px solid #d1ff63;outline-offset:5px;pointer-events:auto!important}
+@media(max-width:600px){.galaxy-controls{padding:8px 64px 24px;min-height:108px}.galaxy-controls button{inset-inline-start:14px}.galaxy-promise{font-size:12px}.galaxy-promise strong{font-size:15px}.galaxy-spiral-arms{opacity:.035}.galaxy-space-image{opacity:.45}.galaxy-heading h2{font-size:clamp(33px,9vw,48px)}}
+@media(prefers-reduced-motion:reduce){.galaxy-stage{height:auto;min-height:0;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:30px 20px}.galaxy-orbit-card{position:relative;inset:auto;width:100%;transform:none!important;opacity:1!important;pointer-events:auto!important;will-change:auto}.galaxy-orbit-card:nth-of-type(n+5){display:none}.galaxy-orbit-card:focus-visible{transform:none!important}.galaxy-space-image,.galaxy-spiral-arms{display:none}.galaxy-controls button{display:none}}
+
+.galaxy-heading h2{font-family:Arial,Helvetica,sans-serif}.galaxy-heading h2 em{font-family:inherit}
+
+@media(max-width:600px){.galaxy-spiral-arms{inset-inline-start:14%;inset-inline-end:auto;width:72%}}
+
+/* One continuous galaxy backdrop fills the space between both strips. */
+.galaxy-content{position:relative;isolation:isolate;overflow:hidden}.galaxy-content .galaxy-stage{z-index:1}.galaxy-content .galaxy-controls{z-index:2}.galaxy-heading h2,.galaxy-heading p,.galaxy-promise{text-shadow:0 2px 12px #000,0 0 22px #000}
+
+/* Route tips may reach behind the heading; the whole panel clips their fade. */
+.galaxy-content .galaxy-stage{overflow:visible}.galaxy-heading{pointer-events:none}
+
+/* Cards pass in front of copy; the pause control stays reachable. */
+.galaxy-content .galaxy-stage{z-index:3}.galaxy-content .galaxy-controls{z-index:auto;pointer-events:none}.galaxy-controls button{z-index:500;pointer-events:auto}
+
+/* Lift the whole scene while retaining both strip positions and fade clearance. */
+.galaxy-content{--galaxy-scene-lift:64px}.galaxy-content>.galaxy-heading,.galaxy-content>.galaxy-stage,.galaxy-content>.galaxy-controls{translate:0 calc(-1 * var(--galaxy-scene-lift))}.galaxy-content>.galaxy-space-image{transform:translateY(calc(-1 * var(--galaxy-scene-lift))) scale(1.15)}
+@media(max-width:600px){.galaxy-content{--galaxy-scene-lift:32px}}
+@media(prefers-reduced-motion:reduce){.galaxy-content{--galaxy-scene-lift:0px}}

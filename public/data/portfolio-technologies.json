@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "technologies": [
+    {
+      "id": "codex",
+      "name": "Codex",
+      "logo": "/brand/technologies/codex.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/codex-color.svg"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "logo": "/brand/technologies/claude-code.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/claudecode-color.svg"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "logo": "/brand/technologies/gemini.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/gemini-color.svg"
+    },
+    {
+      "id": "grok-bot",
+      "name": "Grok Bot",
+      "logo": "/brand/technologies/grok-bot.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/grokbot.svg"
+    },
+    {
+      "id": "agents",
+      "name": "Agents",
+      "logo": "/brand/technologies/agents.svg?v=color-v2",
+      "enabled": true,
+      "source": "ShmilApps original capability illustration"
+    },
+    {
+      "id": "skills",
+      "name": "Skills",
+      "logo": "/brand/technologies/skills.svg?v=color-v2",
+      "enabled": true,
+      "source": "ShmilApps original capability illustration"
+    },
+    {
+      "id": "mcp",
+      "name": "MCP",
+      "logo": "/brand/technologies/mcp.svg?v=color-v2",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/mcp.svg"
+    },
+    {
+      "id": "rag",
+      "name": "RAG",
+      "logo": "/brand/technologies/rag.svg?v=color-v2",
+      "enabled": true,
+      "source": "ShmilApps original capability illustration"
+    },
+    {
+      "id": "api-integrations",
+      "name": "API Integrations",
+      "logo": "/brand/technologies/api-integrations.svg?v=color-v2",
+      "enabled": true,
+      "source": "ShmilApps original capability illustration"
+    },
+    {
+      "id": "prompt-engineering",
+      "name": "Prompt Engineering",
+      "logo": "/brand/technologies/prompt-engineering.svg?v=color-v2",
+      "enabled": true,
+      "source": "ShmilApps original capability illustration"
+    },
+    {
+      "id": "flutter",
+      "name": "Flutter",
+      "logo": "/brand/technologies/flutter.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg"
+    },
+    {
+      "id": "dart",
+      "name": "Dart",
+      "logo": "/brand/technologies/dart.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "logo": "/brand/technologies/supabase.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/supabase/supabase-original.svg"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "logo": "/brand/technologies/postgresql.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg"
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "logo": "/brand/technologies/sqlite.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "logo": "/brand/technologies/python.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "logo": "/brand/technologies/react.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "logo": "/brand/technologies/java.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+    },
+    {
+      "id": "oracle",
+      "name": "Oracle",
+      "logo": "/brand/technologies/oracle.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "logo": "/brand/technologies/typescript.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg"
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "logo": "/brand/technologies/javascript.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+    },
+    {
+      "id": "html5",
+      "name": "HTML5",
+      "logo": "/brand/technologies/html5.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+    },
+    {
+      "id": "css3",
+      "name": "CSS3",
+      "logo": "/brand/technologies/css3.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "logo": "/brand/technologies/github.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "logo": "/brand/technologies/vercel.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg"
+    },
+    {
+      "id": "firebase",
+      "name": "Firebase",
+      "logo": "/brand/technologies/firebase.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-original.svg"
+    },
+    {
+      "id": "streamlit",
+      "name": "Streamlit",
+      "logo": "/brand/technologies/streamlit.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/streamlit/streamlit-original.svg"
+    },
+    {
+      "id": "visualbasic",
+      "name": "VB / VBA",
+      "logo": "/brand/technologies/visualbasic.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/visualbasic/visualbasic-original.svg"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "logo": "/brand/technologies/nodejs.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg"
+    },
+    {
+      "id": "powerbi",
+      "name": "Power BI",
+      "logo": "/brand/technologies/powerbi.svg",
+      "enabled": true,
+      "source": "https://raw.githubusercontent.com/microsoft/PowerBI-Icons/main/SVG/Power-BI.svg"
+    }
+  ]
+}

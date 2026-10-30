@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import ContactSection from '../components/ContactSection';
+import PortfolioGalaxy from '../components/PortfolioGalaxy';
 import { researchOrderTerms } from '../components/ResearchOrderTerms';
 import ServiceExampleMark from '../components/ServiceExampleMark';
 import ServiceOnlineOrder from '../components/ServiceOnlineOrder';
@@ -3070,10 +3071,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="portfolio" className="placeholder-section" aria-labelledby="portfolio-title">
-          <h2 id="portfolio-title">{text.nav.portfolio}</h2>
-          <p>{isHebrew ? 'בקרוב נציג כאן עבודות, מערכות ופרויקטים נבחרים.' : 'Soon we will showcase selected products, systems and projects here.'}</p>
-        </section>
+        <PortfolioGalaxy language={language} />
 
         <ContactSection key={language} language={language} services={services} />
 
