@@ -46,4 +46,4 @@
 @media(prefers-reduced-motion:reduce){.galaxy-content{--galaxy-scene-lift:0px}}
 
 /* Center the desktop backdrop with a slightly wider view of the galaxy. */
-@media(min-width:601px){.galaxy-content>.galaxy-space-image{object-position:center;transform:scale(1.03)}}
+@media(min-width:601px){.galaxy-content>.galaxy-space-image{object-position:center;transform:scale(.93)}}
