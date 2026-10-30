@@ -50,3 +50,9 @@
 
 /* A shared image rectangle keeps the artwork and routes aligned at every width. */
 .galaxy-content>.galaxy-space-image{inset:auto;object-fit:fill;transform:none;max-width:none}
+
+/* Full-bleed deep space surrounds the original, route-aligned galaxy. */
+.galaxy-space-surroundings{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0;filter:brightness(.5)}
+.galaxy-content>.galaxy-space-image{opacity:1;filter:brightness(.5);mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent);mask-composite:intersect}
+@media(max-width:600px){.galaxy-space-surroundings,.galaxy-content>.galaxy-space-image{filter:brightness(.45)}}
+@media(prefers-reduced-motion:reduce){.galaxy-space-surroundings{display:none}}

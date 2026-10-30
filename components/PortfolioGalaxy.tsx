@@ -110,6 +110,7 @@ export default function PortfolioGalaxy({language}:{language:'he'|'en'}){
  return <section id="portfolio" className="portfolio-galaxy-section" ref={section} aria-labelledby="portfolio-title" dir={he?'rtl':'ltr'}>
   <TechnologyStrip items={technologies} paused={paused}/>
   <div className="galaxy-content">
+   <img className="galaxy-space-surroundings" src="/brand/examples/portfolio-galaxy-panorama.webp" alt="" loading="lazy" aria-hidden="true"/>
    <img className="galaxy-space-image" src="/brand/examples/portfolio-galaxy-selected.webp" alt="" loading="lazy" aria-hidden="true"/>
   <div className="galaxy-heading"><h2 id="portfolio-title" dir={he?'rtl':'ltr'}>{he?<>גלקסיית <em>עבודות</em></>:<>Portfolio <em>Galaxy</em></>}</h2><p>{he?'רעיונות שהפכו למציאות | עבודות נבחרות | לחצו וגלו את הסיפור של כל אחת.':'Ideas turned into reality | Selected work | Click to discover each story.'}</p></div>
   <div className={'galaxy-stage'+(reduced?' reduced':'')} ref={stage}>
