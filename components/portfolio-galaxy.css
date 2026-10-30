@@ -44,3 +44,6 @@
 .galaxy-content{--galaxy-scene-lift:64px}.galaxy-content>.galaxy-heading,.galaxy-content>.galaxy-stage,.galaxy-content>.galaxy-controls{translate:0 calc(-1 * var(--galaxy-scene-lift))}.galaxy-content>.galaxy-space-image{transform:translateY(calc(-1 * var(--galaxy-scene-lift))) scale(1.15)}
 @media(max-width:600px){.galaxy-content{--galaxy-scene-lift:32px}}
 @media(prefers-reduced-motion:reduce){.galaxy-content{--galaxy-scene-lift:0px}}
+
+/* Center the desktop backdrop with a slightly wider view of the galaxy. */
+@media(min-width:601px){.galaxy-content>.galaxy-space-image{object-position:center;transform:scale(1.03)}}
